@@ -19,9 +19,10 @@ extension GameScene {
     func spawnPlayer () {
         player = SKSpriteNode(color: UIColor.gray, size: CGSize(width: 24, height: 24))
         
-        // Give name and position
+        // Give name, position and texture
         player.name = "PlayerOne"
         player.position = CGPoint(x: self.size.width / 2 , y: 60)
+        player.texture = SKTexture(imageNamed: "Spaceship") // add spaceship texture to sprite
         
         // Give physics
         player.physicsBody?.isDynamic = false
@@ -38,7 +39,7 @@ extension GameScene {
         var actionArray = [SKAction]()
         let asteroid    = SKSpriteNode(color: UIColor.brown, size: CGSize(width: 10, height: 10))
         let speed       = 5
-        let size        = Int(arc4random_uniform(14))
+        let size        = Int(arc4random_uniform(10))
 
         // Give name, size and position
         asteroid.name = "asteroid"
