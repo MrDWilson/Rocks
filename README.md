@@ -1,7 +1,7 @@
 # MobileGame
 
 ## Overview
-A simple space game, allowing you to navigate and around astroids. Score is recorded in seconds.
+A simple space game, allowing you to navigate and avoid astroids. Score is recorded in seconds.
 
 ### Contributers 
 __Ryan Needham__ and __Danny Wilson__
