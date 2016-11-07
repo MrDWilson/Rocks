@@ -14,6 +14,8 @@
 		CE5B25F11DD02ACE00A0AB64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5B25EF1DD02ACE00A0AB64 /* Main.storyboard */; };
 		CE5B25F31DD02ACE00A0AB64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5B25F21DD02ACE00A0AB64 /* Assets.xcassets */; };
 		CE5B25F61DD02ACE00A0AB64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5B25F41DD02ACE00A0AB64 /* LaunchScreen.storyboard */; };
+		CE5B26011DD02ACE00A0AB64 /* SnowboardingGamePrototypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B26001DD02ACE00A0AB64 /* SnowboardingGamePrototypeTests.swift */; };
+		CE5B260C1DD02ACE00A0AB64 /* SnowboardingGamePrototypeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B260B1DD02ACE00A0AB64 /* SnowboardingGamePrototypeUITests.swift */; };
 		CEF20EE71DD0965B0044F7B7 /* GameElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF20EE61DD0965B0044F7B7 /* GameElements.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,7 +47,11 @@
 		CE5B25F51DD02ACE00A0AB64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE5B25F71DD02ACE00A0AB64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE5B25FC1DD02ACE00A0AB64 /* SnowboardingGamePrototypeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnowboardingGamePrototypeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE5B26001DD02ACE00A0AB64 /* SnowboardingGamePrototypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowboardingGamePrototypeTests.swift; sourceTree = "<group>"; };
+		CE5B26021DD02ACE00A0AB64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE5B26071DD02ACE00A0AB64 /* SnowboardingGamePrototypeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnowboardingGamePrototypeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE5B260B1DD02ACE00A0AB64 /* SnowboardingGamePrototypeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowboardingGamePrototypeUITests.swift; sourceTree = "<group>"; };
+		CE5B260D1DD02ACE00A0AB64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEF20EE61DD0965B0044F7B7 /* GameElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameElements.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				CE5B25E41DD02ACE00A0AB64 /* SnowboardingGamePrototype */,
+				CE5B25FF1DD02ACE00A0AB64 /* SnowboardingGamePrototypeTests */,
+				CE5B260A1DD02ACE00A0AB64 /* SnowboardingGamePrototypeUITests */,
 				CE5B25E31DD02ACE00A0AB64 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -106,6 +114,24 @@
 				CE5B25F71DD02ACE00A0AB64 /* Info.plist */,
 			);
 			path = SnowboardingGamePrototype;
+			sourceTree = "<group>";
+		};
+		CE5B25FF1DD02ACE00A0AB64 /* SnowboardingGamePrototypeTests */ = {
+			isa = PBXGroup;
+			children = (
+				CE5B26001DD02ACE00A0AB64 /* SnowboardingGamePrototypeTests.swift */,
+				CE5B26021DD02ACE00A0AB64 /* Info.plist */,
+			);
+			path = SnowboardingGamePrototypeTests;
+			sourceTree = "<group>";
+		};
+		CE5B260A1DD02ACE00A0AB64 /* SnowboardingGamePrototypeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CE5B260B1DD02ACE00A0AB64 /* SnowboardingGamePrototypeUITests.swift */,
+				CE5B260D1DD02ACE00A0AB64 /* Info.plist */,
+			);
+			path = SnowboardingGamePrototypeUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE5B26011DD02ACE00A0AB64 /* SnowboardingGamePrototypeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE5B260C1DD02ACE00A0AB64 /* SnowboardingGamePrototypeUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
