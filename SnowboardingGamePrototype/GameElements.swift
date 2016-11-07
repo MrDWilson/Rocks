@@ -46,6 +46,7 @@ extension GameScene {
         asteroid.size.width = asteroid.size.width * CGFloat(size)
         asteroid.size.height = asteroid.size.height * CGFloat(size)
         asteroid.position = CGPoint(x: CGFloat(Int(arc4random_uniform(UInt32(self.size.width)))), y: self.size.height + asteroid.size.height)
+        asteroid.texture = SKTexture(imageNamed: "rock")
 
         // Give physics components
         asteroid.physicsBody?.isDynamic = true
