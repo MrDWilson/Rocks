@@ -1,11 +1,12 @@
-//
-//  GameViewController.swift
-//  SnowboardingGamePrototype
-//
-//  Created by user on 07/11/2016.
-//  Copyright © 2016 Ryan Needham. All rights reserved.
-//
-
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  GameViewController.swift
+ *  Space Game
+ *
+ *  Created by Ryan Needham & Danny Wilson on 07/11/2016.
+ *  Copyright © 2016 Ryan Needham & Danny Wilson.
+ *  All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 import UIKit
 import SpriteKit
 import GameplayKit
@@ -19,7 +20,7 @@ class GameViewController: UIViewController {
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {
                 // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
+                scene.scaleMode = .resizeFill
                 
                 // Present the scene
                 view.presentScene(scene)
@@ -29,6 +30,7 @@ class GameViewController: UIViewController {
             
             view.showsFPS = true
             view.showsNodeCount = true
+            
         }
     }
 
