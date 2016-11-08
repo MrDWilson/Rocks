@@ -9,6 +9,9 @@
 import SpriteKit
 
 extension GameScene {
+    // TO-DO: if player swipes down on either side, rotate player
+    // TO-DO: add a ship weapon
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch: AnyObject in touches {
             let center = CGFloat(self.size.width / 2)

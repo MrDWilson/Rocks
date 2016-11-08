@@ -15,6 +15,7 @@ extension GameScene {
         private let sprite = SKSpriteNode(color: UIColor.brown, size: CGSize(width: 10, height: 10))
         private var actionArray = [SKAction]()
         private let speed = 5
+        private let spin = Int(arc4random_uniform(5))
         private let size = Int(arc4random_uniform(10))
         
         func spawn (x: Int, y: Int) -> SKSpriteNode {
@@ -35,7 +36,9 @@ extension GameScene {
             sprite.texture = SKTexture(imageNamed: "Asteroid")
             
             // Give motion
+            //actionArray.append(SKAction.rotate(byAngle: 360, duration: TimeInterval(spin)))
             actionArray.append(SKAction.move(to: CGPoint(x: sprite.position.x, y: -sprite.size.height), duration: TimeInterval(speed)))
+            
             actionArray.append(SKAction.removeFromParent()); // ISSUE: Asteroids aren't removing themselves to be garbage collected
             sprite.run(SKAction.sequence(actionArray))
             

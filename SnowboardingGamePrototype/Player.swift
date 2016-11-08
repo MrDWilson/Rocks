@@ -20,6 +20,9 @@ extension GameScene {
         func stopMovingRight  () { movingRight = false }
         func stopMovingLeft   () { movingLeft  = false }
         
+        func rotateLeft () {}
+        func rotateRight () {}
+        
         
         func spawn (x: Int, y: Int) -> SKSpriteNode {
              
