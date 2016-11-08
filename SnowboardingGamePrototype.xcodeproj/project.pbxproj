@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62220EB41DD23FF200FBAF50 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62220EB31DD23FF200FBAF50 /* HUD.swift */; };
 		629AE0A61DD16BC2008292F9 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AE0A51DD16BC2008292F9 /* Player.swift */; };
 		629AE0A81DD1711D008292F9 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AE0A71DD1711D008292F9 /* Counter.swift */; };
 		629AE0AA1DD17288008292F9 /* InputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AE0A91DD17288008292F9 /* InputHandler.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		62220EB31DD23FF200FBAF50 /* HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		629AE0A51DD16BC2008292F9 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		629AE0A71DD1711D008292F9 /* Counter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		629AE0A91DD17288008292F9 /* InputHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				629AE0A51DD16BC2008292F9 /* Player.swift */,
 				629AE0A91DD17288008292F9 /* InputHandler.swift */,
 				629AE0A71DD1711D008292F9 /* Counter.swift */,
+				62220EB31DD23FF200FBAF50 /* HUD.swift */,
 				629AE0AD1DD17593008292F9 /* CollisionMasks.swift */,
 				629AE0AB1DD172FE008292F9 /* Asteroid.swift */,
 				CE5B25ED1DD02ACE00A0AB64 /* GameViewController.swift */,
@@ -292,6 +295,7 @@
 				629AE0AE1DD17593008292F9 /* CollisionMasks.swift in Sources */,
 				629AE0AC1DD172FE008292F9 /* Asteroid.swift in Sources */,
 				629AE0A61DD16BC2008292F9 /* Player.swift in Sources */,
+				62220EB41DD23FF200FBAF50 /* HUD.swift in Sources */,
 				CE5B25E61DD02ACE00A0AB64 /* AppDelegate.swift in Sources */,
 				629AE0AA1DD17288008292F9 /* InputHandler.swift in Sources */,
 			);

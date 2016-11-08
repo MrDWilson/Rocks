@@ -17,44 +17,46 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var lastUpdateInterval    = TimeInterval()
     
     var player: Player = Player()
+    var hud: HUD = HUD()
     
+    let score = Counter()
     var timer = Timer()
-    var score = Counter()
-    var scoreLabel:SKLabelNode!
-    var gameOverLabel:SKLabelNode!
+    
+    var playing: Bool!
 
     // On-Start
     override func didMove(to view: SKView) {
         physicsWorld.gravity = CGVector (dx: 0.0, dy: 0.0)
         physicsWorld.contactDelegate = self
         
-        addChild(player.spawn(x: Int(self.size.width / 2), y: 60))
+        addChild(player.spawn(x: Int(self.size.width / 2), y: 160))
+        addChild(hud.initialise(width:Int(self.size.width) ,height: Int(self.size.height)))
         
-        increaseScore()
+//        increaseScore()   // keeps increasing score regardless of whether game is paused or not
         
-        scoreLabel = SKLabelNode(fontNamed: "Arial")
-        scoreLabel.text = String(score.getCount())
-        scoreLabel.fontSize = 20
-        scoreLabel.horizontalAlignmentMode = .left
-        scoreLabel.position = CGPoint(x:6, y:6)
-        addChild(scoreLabel);
-        
+        playing = true
     }
     
     // On-Update
     override func update(_ currentTime: TimeInterval) {
-        var timeSinceLastUpdate = currentTime - lastUpdateInterval
-        lastUpdateInterval = currentTime
         
-        if (timeSinceLastUpdate > 2) {
-            timeSinceLastUpdate = 1/60
+        // if not paused, spawn asteroids and move the player
+        if (!isPaused) {
+            var timeSinceLastUpdate = currentTime - lastUpdateInterval
             lastUpdateInterval = currentTime
+            
+            if (timeSinceLastUpdate > 2) {
+                timeSinceLastUpdate = 1/60
+                lastUpdateInterval = currentTime
+            }
+            
+            updateWithLast(lastUpdate: timeSinceLastUpdate)
+            
+            player.update()
         }
         
-        updateWithLast(lastUpdate: timeSinceLastUpdate)
-        scoreLabel.text = String(score.getCount())
-        
-        player.update()
+        // always update HUD
+        hud.update(state: isPaused, score: score.getCount())
     }
     
     // On-Update delegate I
@@ -62,6 +64,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         lastYieldTimeInterval += lastUpdate
         if (lastYieldTimeInterval > 0.6) {
             lastYieldTimeInterval = 0
+            
+            // 10 points for every asteroid on screen (this should maybe depend on siae of asteroid)
+            var i = 0
+            while (i != 10) { score.increment(); i+=1;}
             let asteroid = Asteroid()
             
             addChild ( asteroid.spawn(
@@ -74,27 +80,47 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // On-Collision
     func didBegin(_ contact: SKPhysicsContact) {
         if (contact.bodyA.node?.name == "PlayerOne") {
-            gameOverLabel = SKLabelNode(fontNamed: "Arial")
-            gameOverLabel.text = String("GAME OVER")
-            gameOverLabel.fontSize = 32
-            gameOverLabel.horizontalAlignmentMode = .center
-            gameOverLabel.color = UIColor.red
-            gameOverLabel.position = CGPoint(x:self.size.width / 2, y:self.size.height / 2)
-            addChild(gameOverLabel);
-            
-            print("collision detected");
-            
-            score.reset()
+            hud.gameEnded()
+            hud.update(state: isPaused, score: score.getCount()) // HUD needs to be updated before a pause
+            playing  = false
+            isPaused = true
         }
     }
 
     //Increase score
     func increaseScore() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateScore), userInfo: nil, repeats: true)
+        
+        // once timer is set it doesn't care if the game is paused
+        if (!isPaused) {
+            timer = Timer.scheduledTimer(
+                timeInterval: 1,
+                target: self,
+                selector: #selector(self.updateScore),
+                userInfo: nil,
+                repeats: true
+            )
+        }
     }
     
     func updateScore() {
         score.increment()
         print("Score:", score.getCount())
+    }
+    
+    func resetGame () {
+        score.reset()
+        hud.reset()
+        player.moveTo(x: Int(self.size.width / 2), y: 160)
+        
+        // remove asteroids
+        for child in children {
+            if(child.name == "asteroid"){
+                child.removeFromParent()
+            }
+        }
+        
+        playing  = true
+        isPaused = false
+        
     }
 }

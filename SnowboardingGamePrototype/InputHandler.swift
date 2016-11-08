@@ -14,14 +14,28 @@ extension GameScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch: AnyObject in touches {
+            let location = touch.location(in: self)
             let center = CGFloat(self.size.width / 2)
+            let node   = self.atPoint(location)
+        
             
-            if (touch.location(in: self).x < center) {
-                player.startMovingLeft()
+            if (node.name == "PauseButton") || (node.name == "PauseLabel") {
+                isPaused = !isPaused
+                hud.update(state: isPaused, score: score.getCount())
             }
             
-            if (touch.location(in: self).x > center) {
-                player.startMovingRight()
+            else {
+                if (touch.location(in: self).x < center) {
+                    player.startMovingLeft()
+                }
+                
+                if (touch.location(in: self).x > center) {
+                    player.startMovingRight()
+                }
+            }
+            
+            if (!playing) {
+                resetGame()
             }
         }
     }

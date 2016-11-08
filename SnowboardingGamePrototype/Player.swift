@@ -20,9 +20,10 @@ extension GameScene {
         func stopMovingRight  () { movingRight = false }
         func stopMovingLeft   () { movingLeft  = false }
         
-        func rotateLeft () {}
-        func rotateRight () {}
+        func rotateLeft  () { sprite.run(SKAction.rotate(byAngle: 2, duration:1)) }
+        func rotateRight () { sprite.run(SKAction.rotate(byAngle: -2, duration:1)) }
         
+        func moveTo (x: Int, y: Int) { sprite.position = CGPoint(x: x, y: y) }
         
         func spawn (x: Int, y: Int) -> SKSpriteNode {
              
@@ -32,6 +33,9 @@ extension GameScene {
             
             // Give graphics
             sprite.texture = SKTexture(imageNamed: "Spaceship") // add spaceship texture to sprite
+            
+            sprite.size.width = 24
+            sprite.size.height = 24
             
             // Give physics
             sprite.physicsBody?.isDynamic = false
