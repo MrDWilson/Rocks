@@ -26,14 +26,14 @@ extension GameScene {
             sprite.size.height = sprite.size.height * CGFloat(size)
             sprite.position = CGPoint(x: x, y: y)
             
-            // Give physics components
-            sprite.physicsBody?.isDynamic = true
-            sprite.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: sprite.size.width, height: sprite.size.height))
-            sprite.physicsBody?.categoryBitMask = collision.asteroid
-            sprite.physicsBody?.collisionBitMask = 0
-            
             // Give graphics
             sprite.texture = SKTexture(imageNamed: "Asteroid")
+            
+            // Give physics components
+            sprite.physicsBody?.isDynamic = true
+            sprite.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
+            sprite.physicsBody?.categoryBitMask = collision.asteroid
+            sprite.physicsBody?.collisionBitMask = 0
             
             // Give motion
             //actionArray.append(SKAction.rotate(byAngle: 360, duration: TimeInterval(spin)))
