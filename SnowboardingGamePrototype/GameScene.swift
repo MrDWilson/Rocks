@@ -33,7 +33,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.text = String(score.getCount())
         scoreLabel.fontSize = 20
         scoreLabel.horizontalAlignmentMode = .left
-        scoreLabel.position = CGPoint(x:self.size.width, y:self.size.height)
+        scoreLabel.position = CGPoint(x:6, y:6)
+        addChild(scoreLabel);
         
     }
     
@@ -48,6 +49,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         updateWithLast(lastUpdate: timeSinceLastUpdate)
+        scoreLabel.text = String(score.getCount())
     }
     
     // On-Update delegate
