@@ -217,6 +217,7 @@
 				TargetAttributes = {
 					CE5B25E11DD02ACE00A0AB64 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = EM2LKXB8R4;
 						ProvisioningStyle = Automatic;
 					};
 					CE5B25FB1DD02ACE00A0AB64 = {
@@ -444,6 +445,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = EM2LKXB8R4;
 				INFOPLIST_FILE = SnowboardingGamePrototype/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Needham.SnowboardingGamePrototype";
@@ -456,6 +458,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = EM2LKXB8R4;
 				INFOPLIST_FILE = SnowboardingGamePrototype/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Needham.SnowboardingGamePrototype";
