@@ -32,10 +32,10 @@ extension GameScene {
             sprite.position = CGPoint(x: x , y: y)
             
             // Give graphics
-            sprite.texture = SKTexture(imageNamed: "Spaceship") // add spaceship texture to sprite
+            sprite.texture = SKTexture(imageNamed: "Ship") // add spaceship texture to sprite
             
-            sprite.size.width = 24
-            sprite.size.height = 24
+            sprite.size.width = 64
+            sprite.size.height = 64
             
             // Give physics
             sprite.physicsBody?.isDynamic = false
