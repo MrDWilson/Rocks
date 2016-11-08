@@ -46,6 +46,14 @@ extension GameScene {
             sprite.physicsBody?.categoryBitMask = collision.player
             sprite.physicsBody?.collisionBitMask = 0
             sprite.physicsBody?.contactTestBitMask = collision.asteroid
+            
+            //Movement
+            //Movement
+            sprite.physicsBody!.affectedByGravity = false
+            sprite.physicsBody!.mass = 0.02
+            sprite.physicsBody!.allowsRotation = false
+            sprite.physicsBody!.usesPreciseCollisionDetection = true
+            sprite.physicsBody!.linearDamping = 3
 
             return sprite
         }
