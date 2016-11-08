@@ -1,12 +1,11 @@
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *  HUD.swift
- *  Space Game
- *
- *  Created by Ryan Needham & Danny Wilson on 07/11/2016.
- *  Copyright © 2016 Ryan Needham & Danny Wilson.
- *  All rights reserved.
- *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+//
+//  HUD.swift
+//  SnowboardingGamePrototype
+//
+//  Created by Ryan Needham on 08/11/2016.
+//  Copyright © 2016 Ryan Needham. All rights reserved.
+//
+
 import SpriteKit
 
 extension GameScene {
@@ -18,6 +17,7 @@ extension GameScene {
         private let pauseAlertNode = SKLabelNode()
         private let scoreLabelNode = SKLabelNode(fontNamed: "Arial")
         private let deathLabelNode = SKLabelNode(fontNamed: "Arial")
+        private let finalScoreNode = SKLabelNode(fontNamed: "Arial")
         private let timer          = Timer()
         private var over           = false
         
@@ -35,20 +35,27 @@ extension GameScene {
             
             // make death label
             deathLabelNode.text                     = String("GAME OVER")
-            deathLabelNode.fontSize                 = 32
+            deathLabelNode.fontSize                 = 48
             deathLabelNode.horizontalAlignmentMode  = .center
             deathLabelNode.fontColor                = UIColor.clear
             deathLabelNode.position                 = CGPoint(x: width / 2, y: height / 2)
             HUDContainer.addChild(deathLabelNode)
             
+            // make death label
+            finalScoreNode.fontSize                 = 24
+            finalScoreNode.horizontalAlignmentMode  = .center
+            finalScoreNode.fontColor                = UIColor.clear
+            finalScoreNode.position                 = CGPoint(x: width / 2, y: height / 2 - 40)
+            HUDContainer.addChild(finalScoreNode)
+            
             // make pause button
-            pauseButton.position                    = CGPoint(x: 0, y: 10)
-            pauseButton.size                        = CGSize(width: width, height: 20)
+            pauseButton.position                    = CGPoint(x: width/2, y: 6)
+            pauseButton.size                        = CGSize(width: width-300, height: height-300)
             pauseButton.name                        = "PauseButton"
             HUDContainer.addChild(pauseButton)
             
             pauseLabelNode.position                 = CGPoint(x: width/2,y: 6)
-            pauseLabelNode.text                     = ".    I I    ."
+            pauseLabelNode.text                     = "I I"
             pauseLabelNode.fontSize                 = 42
             pauseLabelNode.horizontalAlignmentMode  = .center
             pauseLabelNode.name                     = "PauseLabel"
@@ -81,26 +88,34 @@ extension GameScene {
             scoreLabelNode.text = String(score)
             
             if (state) {
-                pauseAlertNode.fontColor = UIColor.white
-                pauseLabelNode.text = "resume"
-                pauseLabelNode.fontSize = 28
-
+                if (!over) {
+                    pauseAlertNode.fontColor = UIColor.white
+                    pauseLabelNode.text = "resume"
+                    pauseLabelNode.fontSize = 28
+                }
             }
                 
             else {
                 pauseAlertNode.fontColor = UIColor.clear
-                pauseLabelNode.text = ".    I I    ."
+                pauseLabelNode.text = "I I"
                 pauseLabelNode.fontSize = 50
             }
             
             // update game over label
             if (over) {
                 deathLabelNode.fontColor = UIColor.white
+                finalScoreNode.text = String(score)
+                finalScoreNode.fontColor = UIColor.white
+                
+                scoreLabelNode.fontColor = UIColor.clear
                 pauseLabelNode.fontColor = UIColor.clear
             }
                 
             else {
                 deathLabelNode.fontColor = UIColor.clear
+                finalScoreNode.fontColor = UIColor.clear
+                
+                scoreLabelNode.fontColor = UIColor.white
                 pauseLabelNode.fontColor = UIColor.white
             }
         }
