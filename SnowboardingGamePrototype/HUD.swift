@@ -82,12 +82,14 @@ extension GameScene {
             if (state) {
                 pauseAlertNode.fontColor = UIColor.white
                 pauseLabelNode.text = "resume"
+                pauseLabelNode.fontSize = 28
 
             }
                 
             else {
                 pauseAlertNode.fontColor = UIColor.clear
                 pauseLabelNode.text = ".    I I    ."
+                pauseLabelNode.fontSize = 50
             }
             
             // update game over label
