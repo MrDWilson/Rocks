@@ -13,14 +13,12 @@
 		629AE0AA1DD17288008292F9 /* InputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AE0A91DD17288008292F9 /* InputHandler.swift */; };
 		629AE0AC1DD172FE008292F9 /* Asteroid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AE0AB1DD172FE008292F9 /* Asteroid.swift */; };
 		629AE0AE1DD17593008292F9 /* CollisionMasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AE0AD1DD17593008292F9 /* CollisionMasks.swift */; };
-		62F97BB81DD0DF6A00CD8C4F /* Screens in Resources */ = {isa = PBXBuildFile; fileRef = 62F97BB71DD0DF6A00CD8C4F /* Screens */; };
 		A153BCDA1DD2796C006BB8D3 /* Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = A153BCD91DD2796C006BB8D3 /* Save.swift */; };
 		CE5B25E61DD02ACE00A0AB64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B25E51DD02ACE00A0AB64 /* AppDelegate.swift */; };
 		CE5B25E81DD02ACE00A0AB64 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE5B25E71DD02ACE00A0AB64 /* GameScene.sks */; };
 		CE5B25EC1DD02ACE00A0AB64 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B25EB1DD02ACE00A0AB64 /* GameScene.swift */; };
 		CE5B25EE1DD02ACE00A0AB64 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B25ED1DD02ACE00A0AB64 /* GameViewController.swift */; };
 		CE5B25F11DD02ACE00A0AB64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5B25EF1DD02ACE00A0AB64 /* Main.storyboard */; };
-		CE5B25F31DD02ACE00A0AB64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5B25F21DD02ACE00A0AB64 /* Assets.xcassets */; };
 		CE5B25F61DD02ACE00A0AB64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5B25F41DD02ACE00A0AB64 /* LaunchScreen.storyboard */; };
 		CE5B26011DD02ACE00A0AB64 /* SnowboardingGamePrototypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B26001DD02ACE00A0AB64 /* SnowboardingGamePrototypeTests.swift */; };
 		CE5B260C1DD02ACE00A0AB64 /* SnowboardingGamePrototypeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B260B1DD02ACE00A0AB64 /* SnowboardingGamePrototypeUITests.swift */; };
@@ -50,7 +48,6 @@
 		629AE0A91DD17288008292F9 /* InputHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler.swift; sourceTree = "<group>"; };
 		629AE0AB1DD172FE008292F9 /* Asteroid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asteroid.swift; sourceTree = "<group>"; };
 		629AE0AD1DD17593008292F9 /* CollisionMasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollisionMasks.swift; sourceTree = "<group>"; };
-		62F97BB71DD0DF6A00CD8C4F /* Screens */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Screens; sourceTree = SOURCE_ROOT; };
 		A153BCD91DD2796C006BB8D3 /* Save.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Save.swift; sourceTree = "<group>"; };
 		A153BCDB1DD27B2D006BB8D3 /* SnowboardingGamePrototype.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnowboardingGamePrototype.entitlements; sourceTree = "<group>"; };
 		CE5B25E21DD02ACE00A0AB64 /* SnowboardingGamePrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnowboardingGamePrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,7 +56,6 @@
 		CE5B25EB1DD02ACE00A0AB64 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		CE5B25ED1DD02ACE00A0AB64 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		CE5B25F01DD02ACE00A0AB64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CE5B25F21DD02ACE00A0AB64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE5B25F51DD02ACE00A0AB64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE5B25F71DD02ACE00A0AB64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE5B25FC1DD02ACE00A0AB64 /* SnowboardingGamePrototypeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnowboardingGamePrototypeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,7 +115,6 @@
 			isa = PBXGroup;
 			children = (
 				A153BCDB1DD27B2D006BB8D3 /* SnowboardingGamePrototype.entitlements */,
-				62F97BB71DD0DF6A00CD8C4F /* Screens */,
 				CE5B25E51DD02ACE00A0AB64 /* AppDelegate.swift */,
 				CE5B25E71DD02ACE00A0AB64 /* GameScene.sks */,
 				CE5B25EB1DD02ACE00A0AB64 /* GameScene.swift */,
@@ -132,7 +127,6 @@
 				CE5B25ED1DD02ACE00A0AB64 /* GameViewController.swift */,
 				A153BCD91DD2796C006BB8D3 /* Save.swift */,
 				CE5B25EF1DD02ACE00A0AB64 /* Main.storyboard */,
-				CE5B25F21DD02ACE00A0AB64 /* Assets.xcassets */,
 				CE5B25F41DD02ACE00A0AB64 /* LaunchScreen.storyboard */,
 				CE5B25F71DD02ACE00A0AB64 /* Info.plist */,
 			);
@@ -272,9 +266,7 @@
 			files = (
 				CE5B25F11DD02ACE00A0AB64 /* Main.storyboard in Resources */,
 				CE5B25E81DD02ACE00A0AB64 /* GameScene.sks in Resources */,
-				CE5B25F31DD02ACE00A0AB64 /* Assets.xcassets in Resources */,
 				CE5B25F61DD02ACE00A0AB64 /* LaunchScreen.storyboard in Resources */,
-				62F97BB81DD0DF6A00CD8C4F /* Screens in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
