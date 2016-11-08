@@ -21,6 +21,9 @@ extension GameScene {
         private let timer          = Timer()
         private var over           = false
         
+        // high score
+        private let highScoreNode = SKLabelNode ()
+        
 //      private let score = Counter()
         
         func initialise (width: Int, height: Int) -> SKNode {
@@ -47,6 +50,13 @@ extension GameScene {
             finalScoreNode.fontColor                = UIColor.clear
             finalScoreNode.position                 = CGPoint(x: width / 2, y: height / 2 - 40)
             HUDContainer.addChild(finalScoreNode)
+            
+            highScoreNode.text                     = String ("[iCloud score]")
+            highScoreNode.fontSize                 = 24
+            highScoreNode.horizontalAlignmentMode  = .center
+            highScoreNode.fontColor                = UIColor.clear
+            highScoreNode.position                 = CGPoint(x: width / 2, y: height / 2 - 68)
+            HUDContainer.addChild(highScoreNode)
             
             // make pause button
             pauseButton.position                    = CGPoint(x: width/2, y: 6)
@@ -106,6 +116,7 @@ extension GameScene {
                 deathLabelNode.fontColor = UIColor.white
                 finalScoreNode.text = String(score)
                 finalScoreNode.fontColor = UIColor.white
+                highScoreNode.fontColor = UIColor.white
                 
                 scoreLabelNode.fontColor = UIColor.clear
                 pauseLabelNode.fontColor = UIColor.clear
@@ -114,6 +125,7 @@ extension GameScene {
             else {
                 deathLabelNode.fontColor = UIColor.clear
                 finalScoreNode.fontColor = UIColor.clear
+                highScoreNode.fontColor = UIColor.clear
                 
                 scoreLabelNode.fontColor = UIColor.white
                 pauseLabelNode.fontColor = UIColor.white

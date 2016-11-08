@@ -47,4 +47,14 @@ extension GameScene {
             player.stopMovingRight()
         }
     }
+    
+    func processUserMotion(forUpdate currentTime: CFTimeInterval) {
+        if let ship = childNode(withName: player.getName()) as? SKSpriteNode {
+            if let data = motionManager.accelerometerData {
+                if fabs(data.acceleration.x) > 0.06 {
+                    ship.physicsBody!.applyForce(CGVector(dx: 90 * CGFloat(data.acceleration.x), dy: 0))
+                }
+            }
+        }
+    }
 }

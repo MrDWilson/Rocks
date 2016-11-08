@@ -9,6 +9,8 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 import SpriteKit
 import GameplayKit
+import AudioToolbox
+import CoreMotion
 
 //  as if theres no fucking ++ or -- operator in swift 3...
 
@@ -23,6 +25,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let score = Counter()
     var timer = Timer()
+    let save = Save()
+    
+    //Accelerometer
+    let motionManager = CMMotionManager()
     
     var playing: Bool!
 
@@ -31,11 +37,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.gravity = CGVector (dx: 0.0, dy: 0.0)
         physicsWorld.contactDelegate = self
         
+        //Accelerometer start updating
+        motionManager.startAccelerometerUpdates()
+        
         addChild(player.spawn(x: Int(self.size.width / 2), y: 160))
         addChild(hud.initialise(width:Int(self.size.width) ,height: Int(self.size.height)))
-        
-//        increaseScore()   // keeps increasing score regardless of whether game is paused or not
-        
+
         playing = true
     }
     
@@ -59,6 +66,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // always update HUD
         hud.update(state: isPaused, score: score.getCount())
+        
+        // always update movement
+        // shouldn't we not process movement when paused? - Ryan
+        processUserMotion(forUpdate: currentTime)
     }
     
     // On-Update delegate I
@@ -86,21 +97,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             hud.update(state: isPaused, score: score.getCount()) // HUD needs to be updated before a pause
             playing  = false
             isPaused = true
-        }
-    }
-
-    //Increase score
-    func increaseScore() {
-        
-        // once timer is set it doesn't care if the game is paused
-        if (!isPaused) {
-            timer = Timer.scheduledTimer(
-                timeInterval: 1,
-                target: self,
-                selector: #selector(self.updateScore),
-                userInfo: nil,
-                repeats: true
-            )
+            
+            // save high scores
+            if(score.getCount() > save.getHighScore()) {
+                save.setHighScore(x: score.getCount())
+                save.saveToiCloud()
+            }
         }
     }
     

@@ -14,6 +14,9 @@ extension GameScene {
         private let sprite = SKSpriteNode(color: UIColor.gray, size: CGSize(width: 24, height: 24))
         private var movingLeft:  Bool = false
         private var movingRight: Bool = false
+        private var name = String ("PlayerOne")
+        
+        func getName() -> String { return name! }
         
         func startMovingRight () { movingRight = true }
         func startMovingLeft  () { movingLeft  = true }
@@ -28,7 +31,7 @@ extension GameScene {
         func spawn (x: Int, y: Int) -> SKSpriteNode {
              
             // Give name, position
-            sprite.name = "PlayerOne"
+            sprite.name = String("PlayerOne")
             sprite.position = CGPoint(x: x , y: y)
             
             // Give graphics
