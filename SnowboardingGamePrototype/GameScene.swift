@@ -1,16 +1,18 @@
-//
-//  GameScene.swift
-//  SnowboardingGamePrototype
-//
-//  Created by user on 07/11/2016.
-//  Copyright © 2016 Ryan Needham. All rights reserved.
-//
-//  as if theres no fucking ++ or -- operator in swift 3...
-//
-//  as if an if statement doesn't compile without braces...
-
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  GameScene.swift
+ *  Space Game
+ *
+ *  Created by Ryan Needham & Danny Wilson on 07/11/2016.
+ *  Copyright © 2016 Ryan Needham & Danny Wilson.
+ *  All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 import SpriteKit
 import GameplayKit
+
+//  as if theres no fucking ++ or -- operator in swift 3...
+
+//  as if an if statement doesn't compile without braces...
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     var lastYieldTimeInterval = TimeInterval()

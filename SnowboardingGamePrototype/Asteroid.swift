@@ -1,13 +1,13 @@
-//
-//  Asteroid.swift
-//  SnowboardingGamePrototype
-//
-//  Created by Ryan Needham on 08/11/2016.
-//  Copyright © 2016 Ryan Needham. All rights reserved.
-//
-
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  Asteroid.swift
+ *  Space Game
+ *
+ *  Created by Ryan Needham & Danny Wilson on 07/11/2016.
+ *  Copyright © 2016 Ryan Needham & Danny Wilson.
+ *  All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 // CGFloat(Int(arc4random_uniform(UInt32(self.size.width))))
-
 import SpriteKit
 
 extension GameScene {
