@@ -33,7 +33,8 @@ extension GameScene {
             sprite.physicsBody?.isDynamic = true
             sprite.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
             sprite.physicsBody?.categoryBitMask = collision.asteroid
-            sprite.physicsBody?.collisionBitMask = 0
+            sprite.physicsBody?.collisionBitMask = collision.player
+            sprite.physicsBody?.contactTestBitMask = collision.asteroid
             
             // Give motion
             //actionArray.append(SKAction.rotate(byAngle: 360, duration: TimeInterval(spin)))
