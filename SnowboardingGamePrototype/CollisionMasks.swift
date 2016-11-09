@@ -12,4 +12,5 @@
 struct collision {
     static let player:UInt32 = 0x00
     static let asteroid:UInt32 = 0x01
+    static let laserbeam:UInt32 = 0x02
 }

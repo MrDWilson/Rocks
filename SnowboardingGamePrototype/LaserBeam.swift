@@ -15,7 +15,7 @@ extension GameScene {
         private var path = CGVector(dx: 0, dy: 10)
         
         init () {
-            sprite.name = "LaserBeam"
+            sprite.name = "laserbeam"
             sprite.physicsBody = SKPhysicsBody(rectangleOf: sprite.size)
         }
         
