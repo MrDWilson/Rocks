@@ -11,22 +11,18 @@ import SpriteKit
 
 extension GameScene {
     class Player {
-        private let sprite = SKSpriteNode(color: UIColor.gray, size: CGSize(width: 24, height: 24))
-        private var movingLeft:  Bool = false
-        private var movingRight: Bool = false
-        private var name = String ("PlayerOne")
+        private let sprite      = SKSpriteNode(color: UIColor.gray, size: CGSize(width: 24, height: 24))
+        private var velocity    = CGVector     (dx: 0, dy: 0)
+        private var name        = String ("PlayerOne")
         
         func getName() -> String { return name! }
         
-        func startMovingRight () { movingRight = true }
-        func startMovingLeft  () { movingLeft  = true }
-        func stopMovingRight  () { movingRight = false }
-        func stopMovingLeft   () { movingLeft  = false }
+        func moveRight () { velocity.dx += 10 }
+        func moveLeft  () { velocity.dx -= 10 }
         
-        func rotateLeft  () { sprite.run(SKAction.rotate(byAngle: 2, duration:1)) }
-        func rotateRight () { sprite.run(SKAction.rotate(byAngle: -2, duration:1)) }
-        
-        func moveTo (x: Int, y: Int) { sprite.position = CGPoint(x: x, y: y) }
+        func moveTo (x: Int, y: Int) { 
+            sprite.position = CGPoint(x: x, y: y) 
+        }
         
         func spawn (x: Int, y: Int) -> SKSpriteNode {
              
@@ -35,37 +31,37 @@ extension GameScene {
             sprite.position = CGPoint(x: x , y: y)
             
             // Give graphics
-            sprite.texture = SKTexture(imageNamed: "Ship") // add spaceship texture to sprite
+            sprite.texture          = SKTexture(imageNamed: "Ship") // add spaceship texture to sprite
             
-            sprite.size.width = 64
-            sprite.size.height = 64
+            sprite.size.width       = 42
+            sprite.size.height      = 42
             
             // Give physics
-            sprite.physicsBody?.isDynamic = false
-            sprite.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: sprite.size.width, height: sprite.size.height))
-            sprite.physicsBody?.categoryBitMask = collision.player
-            sprite.physicsBody?.collisionBitMask = 0
-            sprite.physicsBody?.contactTestBitMask = collision.asteroid
-            
+            sprite.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
+            sprite.physicsBody?.isDynamic           = false
+            sprite.physicsBody?.categoryBitMask     = collision.player
+            sprite.physicsBody?.collisionBitMask    = 0
+            sprite.physicsBody?.contactTestBitMask  = collision.asteroid
+
             //Movement
-            //Movement
-            sprite.physicsBody!.affectedByGravity = false
-            sprite.physicsBody!.mass = 0.02
-            sprite.physicsBody!.allowsRotation = false
-            sprite.physicsBody!.usesPreciseCollisionDetection = true
-            sprite.physicsBody!.linearDamping = 3
+            sprite.physicsBody? = SKPhysicsBody(rectangleOf: sprite.frame.size)
+            sprite.physicsBody!.affectedByGravity               = false
+            sprite.physicsBody!.mass                            = 0.02
+            sprite.physicsBody!.allowsRotation                  = false
+            sprite.physicsBody!.usesPreciseCollisionDetection   = true
+            sprite.physicsBody!.linearDamping                   = 3
 
             return sprite
         }
         
         func update () {
-            if (movingLeft) {
-                sprite.position.x += 6
-            }
+            // apply velocity
+            sprite.position.x += velocity.dx
+            sprite.position.y += velocity.dy
             
-            if (movingRight) {
-                sprite.position.x -= 6
-            }
+            // dampen
+            velocity.dx = velocity.dx / 2
+            velocity.dy = velocity.dy / 2
             
         }
     }
