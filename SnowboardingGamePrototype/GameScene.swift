@@ -23,8 +23,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var player: Player = Player()
     var hud: HUD = HUD()
     
-    let score = Counter()
-    var timer = Timer()
     let save = Save()
     
     //Accelerometer
@@ -76,7 +74,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         // always update HUD
-        hud.update(state: isPaused, score: score.getCount())
+        hud.update(state: isPaused, score: player.getScore())
         
         // always update movement
         // shouldn't we not process movement when paused? - Ryan
@@ -91,7 +89,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             // 10 points for every asteroid on screen (this should maybe depend on siae of asteroid)
             var i = 0
-            while (i != 10) { score.increment(); i+=1;}
+            player.give(points: 10)
             let asteroid = Asteroid()
             
             addChild ( asteroid.spawn(
@@ -114,70 +112,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     }
     
-    // On-Collision
-    func didBegin(_ contact: SKPhysicsContact) {
-
-        // LASER HITS ASTEROID
-        if (contact.bodyA.node?.name == "laserbeam" && contact.bodyB.node?.name == "asteroid" ) {
-            contact.bodyA.node?.run(SKAction.removeFromParent())
-            contact.bodyB.node?.run(SKAction.removeFromParent())
-        }
-        if (contact.bodyA.node?.name == "asteroid" && contact.bodyB.node?.name == "laserbeam" ) {
-            contact.bodyA.node?.run(SKAction.removeFromParent())
-            contact.bodyB.node?.run(SKAction.removeFromParent())
-        }
-        
-        // PLAYER HITS ASTEROID
-        if (contact.bodyA.node?.name == "PlayerOne" && contact.bodyB.node?.name == "asteroid" ) {
-            hud.gameEnded()
-            hud.update(state: isPaused, score: score.getCount()) // HUD needs to be updated before a pause
-            player.clearLasers()
-            playing  = false
-            isPaused = true
-            
-            // save high scores
-            if(score.getCount() > save.getHighScore()) {
-                save.setHighScore(x: score.getCount())
-                save.saveToiCloud()
-            }
-            
-            // bzzz
-            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-        }
-        if (contact.bodyA.node?.name == "asteroid" && contact.bodyB.node?.name == "PlayerOne" ) {
-            hud.gameEnded()
-            hud.update(state: isPaused, score: score.getCount()) // HUD needs to be updated before a pause
-            player.clearLasers()
-            playing  = false
-            isPaused = true
-            
-            // save high scores
-            if(score.getCount() > save.getHighScore()) {
-                save.setHighScore(x: score.getCount())
-                save.saveToiCloud()
-            }
-            
-            // bzzz
-            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-        }
-        
-        // PLAYER HITS POWERUP
-        if (contact.bodyA.node?.name == "PlayerOne" && contact.bodyB.node?.name == "powerup" ) {
-            contact.bodyB.node?.run(SKAction.removeFromParent())
-        }
-        
-        if (contact.bodyA.node?.name == "powerup" && contact.bodyB.node?.name == "PlayerOne" ) {
-            contact.bodyA.node?.run(SKAction.removeFromParent())
-        }
-    }
-    
-    func updateScore() {
-        score.increment()
-        print("Score:", score.getCount())
-    }
-    
     func resetGame () {
-        score.reset()
         hud.reset()
         player.moveTo(x: Int(self.size.width / 2), y: 160)
         

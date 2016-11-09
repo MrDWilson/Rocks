@@ -22,7 +22,7 @@ extension GameScene {
         private var over           = false
         
         // high score
-        private let highScoreNode = SKLabelNode ()
+        private let highScoreNode = SKLabelNode (fontNamed: "Arial")
         
 //      private let score = Counter()
         
@@ -64,7 +64,7 @@ extension GameScene {
             
             // make pause button
             pauseButton.position                    = CGPoint(x: width/2, y: 6)
-            pauseButton.size                        = CGSize(width: width-300, height: height-300)
+            pauseButton.size                        = CGSize(width: width, height: 225)
             pauseButton.name                        = "PauseButton"
             HUDContainer.addChild(pauseButton)
             
@@ -85,6 +85,8 @@ extension GameScene {
             pauseAlertNode.fontColor                = UIColor.clear
             HUDContainer.addChild(pauseAlertNode);
             
+            HUDContainer.zPosition = 1
+            
             return HUDContainer
         }
         
@@ -96,8 +98,6 @@ extension GameScene {
 //          score.reset()
             over = false
         }
-        
-        
         
         func update (state: Bool, score: Int) {
             // update score label

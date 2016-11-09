@@ -21,7 +21,7 @@ extension GameScene {
             
             if (node.name == "PauseButton") || (node.name == "PauseLabel") {
                 isPaused = !isPaused
-                hud.update(state: isPaused, score: score.getCount())
+                hud.update(state: isPaused, score: player.getScore())
             }
             
             else {

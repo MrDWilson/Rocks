@@ -15,7 +15,10 @@ extension GameScene {
             sprite.position = CGPoint(x: x, y: y)
             
             // Give graphics
-            //sprite.texture = SKTexture(imageNamed: "Asteroid")
+            sprite.texture = SKTexture(imageNamed: "powerup")
+            
+            sprite.size.width = 20
+            sprite.size.height = 20
             
             // Give physics components
             sprite.physicsBody?.isDynamic = true

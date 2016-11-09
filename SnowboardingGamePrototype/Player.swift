@@ -15,18 +15,18 @@ extension GameScene {
         private var velocity    = CGVector     (dx: 0, dy: 0)
         private var name        = String ("PlayerOne")
         private var lasers      = NSMutableArray()
+        private let score       = Counter()
         
         func getName() -> String { return name! }
-        
-        func getPosition() -> CGPoint {
-            return sprite.position   
-        }
+        func getPosition() -> CGPoint { return sprite.position }
+        func getScore() -> Int { return score.getCount() }
         
         func moveRight () { velocity.dx += 10 }
         func moveLeft  () { velocity.dx -= 10 }
         
         func moveTo (x: Int, y: Int) { 
-            sprite.position = CGPoint(x: x, y: y) 
+            sprite.position = CGPoint(x: x, y: y)
+            score.reset()
         }
         
         func spawn (x: Int, y: Int) -> SKSpriteNode {
@@ -38,11 +38,11 @@ extension GameScene {
             // Give graphics
             sprite.texture          = SKTexture(imageNamed: "Ship") // add spaceship texture to sprite
             
-            sprite.size.width       = 42
+            sprite.size.width       = 42    // has to be reset 
             sprite.size.height      = 42
             
             // Give physics
-            sprite.physicsBody = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
+            sprite.physicsBody = SKPhysicsBody(rectangleOf: sprite.size)
             sprite.physicsBody?.isDynamic           = false
             sprite.physicsBody?.categoryBitMask     = collision.player
             sprite.physicsBody?.collisionBitMask    = 0
@@ -77,7 +77,11 @@ extension GameScene {
         }
         
         func gotPowerUp () {
-            
+            give (points: 100)
+        }
+        
+        func give (points: Int) {
+            for _ in 1...points { score.increment() }
         }
         
         func fireLaser () -> SKSpriteNode {
@@ -90,7 +94,6 @@ extension GameScene {
             for laser in (lasers as NSArray as! [LaserBeam]) {
                 if (laser.getPosition().dy > 1000) {
                     laser.cull()
-                    print ("laser culled")
                 }
             }
         }
@@ -99,8 +102,6 @@ extension GameScene {
             for laser in (lasers as NSArray as! [LaserBeam]) {
                 laser.cull()
             }
-            
-            print("lasers cleared")
         }
     }
 }
