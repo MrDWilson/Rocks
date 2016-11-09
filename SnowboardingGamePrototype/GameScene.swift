@@ -37,6 +37,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.gravity = CGVector (dx: 0.0, dy: 0.0)
         physicsWorld.contactDelegate = self
         
+        physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+        
         //Accelerometer start updating
         motionManager.startAccelerometerUpdates()
         
