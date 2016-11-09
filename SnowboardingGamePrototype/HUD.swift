@@ -29,6 +29,7 @@ extension GameScene {
         func initialise (width: Int, height: Int) -> SKNode {
             
             // make score label
+            scoreLabelNode.name                     = String("Label")
             scoreLabelNode.text                     = String(0)
             scoreLabelNode.fontSize                 = 20
             scoreLabelNode.horizontalAlignmentMode  = .left
@@ -37,6 +38,7 @@ extension GameScene {
 
             
             // make death label
+            deathLabelNode.name                     = String("Label")
             deathLabelNode.text                     = String("GAME OVER")
             deathLabelNode.fontSize                 = 48
             deathLabelNode.horizontalAlignmentMode  = .center
@@ -45,12 +47,14 @@ extension GameScene {
             HUDContainer.addChild(deathLabelNode)
             
             // make death label
+            finalScoreNode.name                     = String("Label")
             finalScoreNode.fontSize                 = 24
             finalScoreNode.horizontalAlignmentMode  = .center
             finalScoreNode.fontColor                = UIColor.clear
             finalScoreNode.position                 = CGPoint(x: width / 2, y: height / 2 - 40)
             HUDContainer.addChild(finalScoreNode)
             
+            highScoreNode.name                     = String("Label")
             highScoreNode.text                     = String ("[iCloud score]")
             highScoreNode.fontSize                 = 24
             highScoreNode.horizontalAlignmentMode  = .center
@@ -64,6 +68,7 @@ extension GameScene {
             pauseButton.name                        = "PauseButton"
             HUDContainer.addChild(pauseButton)
             
+            pauseLabelNode.name                     = String("Label")
             pauseLabelNode.position                 = CGPoint(x: width/2,y: 6)
             pauseLabelNode.text                     = "I I"
             pauseLabelNode.fontSize                 = 42
@@ -72,6 +77,7 @@ extension GameScene {
             HUDContainer.addChild(pauseLabelNode)
             
             // pause alert
+            pauseAlertNode.name                     = String("Label")
             pauseAlertNode.text                     = String("PAUSED")
             pauseAlertNode.position                 = CGPoint(x: width / 2, y: height / 2)
             pauseAlertNode.fontSize                 = 68
