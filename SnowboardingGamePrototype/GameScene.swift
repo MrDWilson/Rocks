@@ -116,9 +116,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 save.saveToiCloud()
             }
             
-            if (contact.bodyA.node?.name == "LaserBeam" && contact.bodyB.node?.name == "asteroid" ) ||
-               (contact.bodyB.node?.name == "LaserBeam" && contact.bodyA.node?.name == "asteroid" ) {
+            if (contact.bodyA.node?.name == "laserbeam" && contact.bodyB.node?.name == "asteroid" ) {
+                contact.bodyA.node?.run(SKAction.removeFromParent())
                 contact.bodyB.node?.run(SKAction.removeFromParent())
+            }
+        
+            if (contact.bodyA.node?.name == "asteroid" && contact.bodyB.node?.name == "laserbeam" ) {
+               contact.bodyA.node?.run(SKAction.removeFromParent())
+               contact.bodyB.node?.run(SKAction.removeFromParent())
             }
             
             // bzzz
