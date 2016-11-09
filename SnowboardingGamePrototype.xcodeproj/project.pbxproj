@@ -24,6 +24,7 @@
 		CE5B25F61DD02ACE00A0AB64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5B25F41DD02ACE00A0AB64 /* LaunchScreen.storyboard */; };
 		CE5B26011DD02ACE00A0AB64 /* SnowboardingGamePrototypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B26001DD02ACE00A0AB64 /* SnowboardingGamePrototypeTests.swift */; };
 		CE5B260C1DD02ACE00A0AB64 /* SnowboardingGamePrototypeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B260B1DD02ACE00A0AB64 /* SnowboardingGamePrototypeUITests.swift */; };
+		CE677B831DD3CF390002E466 /* Powerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE677B821DD3CF390002E466 /* Powerup.swift */; };
 		CEEEC8F21DD37F74007F8470 /* LaserBeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEEC8F11DD37F74007F8470 /* LaserBeam.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,7 @@
 		CE5B26071DD02ACE00A0AB64 /* SnowboardingGamePrototypeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnowboardingGamePrototypeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5B260B1DD02ACE00A0AB64 /* SnowboardingGamePrototypeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowboardingGamePrototypeUITests.swift; sourceTree = "<group>"; };
 		CE5B260D1DD02ACE00A0AB64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE677B821DD3CF390002E466 /* Powerup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Powerup.swift; sourceTree = "<group>"; };
 		CEEEC8F11DD37F74007F8470 /* LaserBeam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaserBeam.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,6 +128,7 @@
 				629AE0AD1DD17593008292F9 /* CollisionMasks.swift */,
 				629AE0A71DD1711D008292F9 /* Counter.swift */,
 				CE5B25E71DD02ACE00A0AB64 /* GameScene.sks */,
+				CE677B821DD3CF390002E466 /* Powerup.swift */,
 				CE5B25EB1DD02ACE00A0AB64 /* GameScene.swift */,
 				623211B91DD283AB0087AE07 /* Save.swift */,
 				CE5B25ED1DD02ACE00A0AB64 /* GameViewController.swift */,
@@ -299,6 +302,7 @@
 			files = (
 				CE5B25EC1DD02ACE00A0AB64 /* GameScene.swift in Sources */,
 				629AE0A81DD1711D008292F9 /* Counter.swift in Sources */,
+				CE677B831DD3CF390002E466 /* Powerup.swift in Sources */,
 				623211BA1DD283AB0087AE07 /* Save.swift in Sources */,
 				CE5B25EE1DD02ACE00A0AB64 /* GameViewController.swift in Sources */,
 				629AE0AE1DD17593008292F9 /* CollisionMasks.swift in Sources */,

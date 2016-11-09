@@ -76,6 +76,10 @@ extension GameScene {
             cullLasers()
         }
         
+        func gotPowerUp () {
+            
+        }
+        
         func fireLaser () -> SKSpriteNode {
             let beam = LaserBeam()
             lasers.add(beam)

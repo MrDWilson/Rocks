@@ -98,12 +98,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 x: Int(arc4random_uniform(UInt32(self.size.width))),
                 y: Int(self.size.height + 50))
             )
+            
+            // maybe spawn a powerup
+            let ting = Int(arc4random_uniform(100))
+            if (ting < 12) {
+                let powerup = Powerup()
+                
+                addChild ( powerup.spawn(
+                    x: Int(arc4random_uniform(UInt32(self.size.width))),
+                    y: Int(self.size.height + 50))
+                )
+            }
         }
+        
+
     }
     
     // On-Collision
     func didBegin(_ contact: SKPhysicsContact) {
-        if (contact.bodyA.node?.name == "PlayerOne") {
+
+        // LASER HITS ASTEROID
+        if (contact.bodyA.node?.name == "laserbeam" && contact.bodyB.node?.name == "asteroid" ) {
+            contact.bodyA.node?.run(SKAction.removeFromParent())
+            contact.bodyB.node?.run(SKAction.removeFromParent())
+        }
+        if (contact.bodyA.node?.name == "asteroid" && contact.bodyB.node?.name == "laserbeam" ) {
+            contact.bodyA.node?.run(SKAction.removeFromParent())
+            contact.bodyB.node?.run(SKAction.removeFromParent())
+        }
+        
+        // PLAYER HITS ASTEROID
+        if (contact.bodyA.node?.name == "PlayerOne" && contact.bodyB.node?.name == "asteroid" ) {
             hud.gameEnded()
             hud.update(state: isPaused, score: score.getCount()) // HUD needs to be updated before a pause
             player.clearLasers()
@@ -115,19 +140,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 save.setHighScore(x: score.getCount())
                 save.saveToiCloud()
             }
-       
+            
+            // bzzz
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+        }
+        if (contact.bodyA.node?.name == "asteroid" && contact.bodyB.node?.name == "PlayerOne" ) {
+            hud.gameEnded()
+            hud.update(state: isPaused, score: score.getCount()) // HUD needs to be updated before a pause
+            player.clearLasers()
+            playing  = false
+            isPaused = true
+            
+            // save high scores
+            if(score.getCount() > save.getHighScore()) {
+                save.setHighScore(x: score.getCount())
+                save.saveToiCloud()
+            }
+            
             // bzzz
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         }
         
-        if (contact.bodyA.node?.name == "laserbeam" && contact.bodyB.node?.name == "asteroid" ) {
-            contact.bodyA.node?.run(SKAction.removeFromParent())
+        // PLAYER HITS POWERUP
+        if (contact.bodyA.node?.name == "PlayerOne" && contact.bodyB.node?.name == "powerup" ) {
             contact.bodyB.node?.run(SKAction.removeFromParent())
         }
         
-        if (contact.bodyA.node?.name == "asteroid" && contact.bodyB.node?.name == "laserbeam" ) {
+        if (contact.bodyA.node?.name == "powerup" && contact.bodyB.node?.name == "PlayerOne" ) {
             contact.bodyA.node?.run(SKAction.removeFromParent())
-            contact.bodyB.node?.run(SKAction.removeFromParent())
         }
     }
     
