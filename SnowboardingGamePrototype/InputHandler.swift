@@ -27,11 +27,11 @@ extension GameScene {
             
             else {
                 if (touch.location(in: self).x < center) {
-                    player.startMovingLeft()
+                    player.moveLeft()
                 }
                 
                 if (touch.location(in: self).x > center) {
-                    player.startMovingRight()
+                    player.moveRight()
                 }
             }
             
@@ -43,8 +43,7 @@ extension GameScene {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for _: AnyObject in touches {
-            player.stopMovingLeft()
-            player.stopMovingRight()
+
         }
     }
     
