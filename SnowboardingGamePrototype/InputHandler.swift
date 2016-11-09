@@ -16,9 +16,8 @@ extension GameScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch: AnyObject in touches {
             let location = touch.location(in: self)
-            let center = CGFloat(self.size.width / 2)
+//            let center = CGFloat(self.size.width / 2)
             let node   = self.atPoint(location)
-        
             
             if (node.name == "PauseButton") || (node.name == "PauseLabel") {
                 isPaused = !isPaused
@@ -26,12 +25,8 @@ extension GameScene {
             }
             
             else {
-                if (touch.location(in: self).x < center) {
-                    player.moveLeft()
-                }
-                
-                if (touch.location(in: self).x > center) {
-                    player.moveRight()
+                if (!isPaused) {
+                    addChild(player.fireLaser())
                 }
             }
             

@@ -106,6 +106,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (contact.bodyA.node?.name == "PlayerOne") {
             hud.gameEnded()
             hud.update(state: isPaused, score: score.getCount()) // HUD needs to be updated before a pause
+            player.clearLasers()
             playing  = false
             isPaused = true
             
@@ -113,6 +114,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if(score.getCount() > save.getHighScore()) {
                 save.setHighScore(x: score.getCount())
                 save.saveToiCloud()
+            }
+            
+            if (contact.bodyA.node?.name == "LaserBeam" && contact.bodyB.node?.name == "asteroid" ) ||
+               (contact.bodyB.node?.name == "LaserBeam" && contact.bodyA.node?.name == "asteroid" ) {
+                contact.bodyB.node?.run(SKAction.removeFromParent())
             }
             
             // bzzz

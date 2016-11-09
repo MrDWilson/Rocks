@@ -14,6 +14,7 @@ extension GameScene {
         private let sprite      = SKSpriteNode(color: UIColor.gray, size: CGSize(width: 24, height: 24))
         private var velocity    = CGVector     (dx: 0, dy: 0)
         private var name        = String ("PlayerOne")
+        private var lasers      = NSMutableArray()
         
         func getName() -> String { return name! }
         
@@ -63,6 +64,35 @@ extension GameScene {
             velocity.dx = velocity.dx / 2
             velocity.dy = velocity.dy / 2
             
+            // laser
+            for laser in (lasers as NSArray as! [LaserBeam]) {
+                laser.update()
+            }
+            
+            cullLasers()
+        }
+        
+        func fireLaser () -> SKSpriteNode {
+            let beam = LaserBeam()
+            lasers.add(beam)
+            return beam.fire(o: CGVector(dx: sprite.position.x, dy: sprite.position.y))
+        }
+        
+        func cullLasers () {
+            for laser in (lasers as NSArray as! [LaserBeam]) {
+                if (laser.getPosition().dy > 1000) {
+                    laser.cull()
+                    print ("laser culled")
+                }
+            }
+        }
+        
+        func clearLasers () {
+            for laser in (lasers as NSArray as! [LaserBeam]) {
+                laser.cull()
+            }
+            
+            print("lasers cleared")
         }
     }
 }
