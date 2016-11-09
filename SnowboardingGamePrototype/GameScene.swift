@@ -51,6 +51,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // On-Update
     override func update(_ currentTime: TimeInterval) {
         
+        // SORT CHILDREN ARRAY SO ALL LABELS ARE AT WHICHEVER END GETS RENDERED LAST
+        
         // if not paused, spawn asteroids and move the player
         if (!isPaused) {
             var timeSinceLastUpdate = currentTime - lastUpdateInterval
@@ -105,6 +107,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 save.setHighScore(x: score.getCount())
                 save.saveToiCloud()
             }
+            
+            // bzzz
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         }
     }
     
