@@ -52,6 +52,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         
         // SORT CHILDREN ARRAY SO ALL LABELS ARE AT WHICHEVER END GETS RENDERED LAST
+        /*
+        func renderQueueSort (nodes: (SKNode,SKNode)) -> Bool {
+            return (nodes.0.name?.contains("Label"))!
+        }
+        
+        children.sort(by: renderQueueSort) // according to the documentation this call should work but it won't compile
+        */
         
         // if not paused, spawn asteroids and move the player
         if (!isPaused) {
