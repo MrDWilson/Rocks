@@ -18,6 +18,10 @@ extension GameScene {
         
         func getName() -> String { return name! }
         
+        func getPosition() -> CGPoint {
+            return sprite.position   
+        }
+        
         func moveRight () { velocity.dx += 10 }
         func moveLeft  () { velocity.dx -= 10 }
         
