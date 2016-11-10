@@ -1,7 +1,10 @@
 # MobileGame
 
 ## Overview
-A simple space game, allowing you to navigate and avoid astroids. Score is recorded in seconds.
+A simple space game, allowing you to navigate, avoid and destroy astroids.
+
+BUG
+ - if you lock the phone on the game over screen, then unlock it, it vibrates again
 
 ### Contributers 
 __Ryan Needham__ and __Danny Wilson__
