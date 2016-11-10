@@ -90,7 +90,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             lastYieldTimeInterval = 0
             
             // 10 points for every asteroid on screen (this should maybe depend on siae of asteroid)
-            var i = 0
             player.give(points: 10)
             let asteroid = Asteroid()
             
