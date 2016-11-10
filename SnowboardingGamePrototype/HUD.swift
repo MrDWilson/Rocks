@@ -143,7 +143,7 @@ extension GameScene {
                 finalScoreNode.fontColor = UIColor.clear
                 highScoreNode.fontColor = UIColor.clear
                 
-                previousBestLabelNode.fontColor = UIColor.white]
+                previousBestLabelNode.fontColor = UIColor.white
                 scoreLabelNode.fontColor = UIColor.white
                 pauseLabelNode.fontColor = UIColor.white
             }
