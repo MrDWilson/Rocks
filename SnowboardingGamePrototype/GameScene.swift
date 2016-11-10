@@ -27,6 +27,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let save = Save()
     
+    let pauseBlur = SKEffectNode()
+    
     //Accelerometer
     let motionManager = CMMotionManager()
     
@@ -44,6 +46,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         addChild(player.spawn(x: Int(self.size.width / 2), y: 160))
         addChild(hud.initialise(width:Int(self.size.width) ,height: Int(self.size.height)))
+        
+        // pause blur
+        let blur = CIFilter(name: "CIGaussianBlur", withInputParameters: ["inputRadius": 10.0])
+        pauseBlur.filter = blur
+        addChild(pauseBlur)
+        
 
         playing = true
     }
