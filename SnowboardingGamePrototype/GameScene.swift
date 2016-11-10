@@ -128,7 +128,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // remove asteroids
         for child in children {
-            if(child.name == "asteroid"){
+            if (child.name == "asteroid") ||
+               (child.name == "powerup") {
                 child.removeFromParent()
             }
         }
