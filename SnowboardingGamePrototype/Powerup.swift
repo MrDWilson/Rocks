@@ -15,7 +15,16 @@ extension GameScene {
             sprite.position = CGPoint(x: x, y: y)
             
             // Give graphics
-            sprite.texture = SKTexture(imageNamed: "powerup")
+            let ting = Int(arc4random_uniform(100))
+            
+            if (ting < 50) {
+                sprite.texture = SKTexture(imageNamed: "PointsPickup")
+            }
+                
+            else {
+                sprite.texture = SKTexture(imageNamed: "PowerUp")
+            }
+            
             
             sprite.size.width = 20
             sprite.size.height = 20

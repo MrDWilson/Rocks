@@ -16,6 +16,7 @@ extension GameScene {
         private let pauseLabelNode = SKLabelNode()
         private let pauseAlertNode = SKLabelNode()
         private let scoreLabelNode = SKLabelNode(fontNamed: "Arial")
+        private let previousBestLabelNode = SKLabelNode(fontNamed: "Arial")
         private let deathLabelNode = SKLabelNode(fontNamed: "Arial")
         private let finalScoreNode = SKLabelNode(fontNamed: "Arial")
         private let timer          = Timer()
@@ -35,6 +36,14 @@ extension GameScene {
             scoreLabelNode.horizontalAlignmentMode  = .left
             scoreLabelNode.position                 = CGPoint(x:6, y:6)
             HUDContainer.addChild(scoreLabelNode)
+            
+            // make previous best label
+            previousBestLabelNode.name                     = String("Label")
+            previousBestLabelNode.text                     = String("27543") // previous best icloud score should be visible in game
+            previousBestLabelNode.fontSize                 = 20
+            previousBestLabelNode.horizontalAlignmentMode  = .left
+            previousBestLabelNode.position                 = CGPoint(x:6, y:28)
+            HUDContainer.addChild(previousBestLabelNode)
 
             
             // make death label
