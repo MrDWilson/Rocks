@@ -122,6 +122,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func resetGame () {
+        unblurScene()
         hud.reset()
         player.moveTo(x: Int(self.size.width / 2), y: 160)
         
@@ -135,5 +136,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         playing  = true
         isPaused = false
         
+    }
+    
+    func blurScene () {
+        // blur scene
+        children.forEach {
+            // DONT BLUR LASERS - LOOKS COOL
+            if ($0.name == String("asteroid")) ||
+                ($0.name == String("PlayerOne")) ||
+                ($0.name == String("powerup")){
+                $0.removeFromParent()
+                pauseBlur.addChild($0)
+            }
+        }
+    }
+    
+    func unblurScene () {
+        // unblur scene
+        pauseBlur.children.forEach { $0.removeFromParent(); addChild($0) }
     }
 }

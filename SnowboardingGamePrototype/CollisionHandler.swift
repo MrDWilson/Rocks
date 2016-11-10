@@ -28,6 +28,7 @@ extension GameScene {
             hud.gameEnded()
             hud.update(state: isPaused, score: player.getScore()) // HUD needs to be updated before a pause
             player.clearLasers()
+            blurScene()
             playing  = false
             isPaused = true
             
@@ -44,6 +45,7 @@ extension GameScene {
             hud.gameEnded()
             hud.update(state: isPaused, score: player.getScore()) // HUD needs to be updated before a pause
             player.clearLasers()
+            blurScene()
             playing  = false
             isPaused = true
             

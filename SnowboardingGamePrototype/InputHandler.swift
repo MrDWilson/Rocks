@@ -22,27 +22,15 @@ extension GameScene {
             if (node.name == "PauseButton") || (node.name == "PauseLabel") {
                 
                 if (!isPaused) {
-                    // blur scene
-                    children.forEach {
-                        // DONT BLUR LASERS - LOOKS COOL
-                        if ($0.name == String("asteroid")) ||
-                           ($0.name == String("PlayerOne")) ||
-                           ($0.name == String("powerup")){
-                            $0.removeFromParent()
-                            pauseBlur.addChild($0)
-                        }
-                    }
-                
+                    blurScene()
                     isPaused = true
                 }
                 
                 else {
-                    // unblur scene
-                    pauseBlur.children.forEach { $0.removeFromParent(); addChild($0) }
+                    unblurScene()
                     isPaused = false
                 }
                 
-               // isPaused = !isPaused
                 hud.update(state: isPaused, score: player.getScore())
             }
             
