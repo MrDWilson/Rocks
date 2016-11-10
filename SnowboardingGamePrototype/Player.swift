@@ -56,6 +56,8 @@ extension GameScene {
             sprite.physicsBody!.usesPreciseCollisionDetection   = true
             sprite.physicsBody!.linearDamping                   = 3
 
+            sprite.zPosition = -1
+
             return sprite
         }
         

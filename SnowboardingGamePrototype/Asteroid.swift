@@ -43,6 +43,8 @@ extension GameScene {
             actionArray.append(SKAction.removeFromParent()); // ISSUE: Asteroids aren't removing themselves to be garbage collected
             sprite.run(SKAction.sequence(actionArray))
             
+            sprite.zPosition = -1
+            
             // add to scene
             return sprite
         }
