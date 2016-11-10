@@ -12,6 +12,8 @@ import GameplayKit
 import AudioToolbox
 import CoreMotion
 
+// git test
+
 //  as if theres no fucking ++ or -- operator in swift 3...
 
 //  as if an if statement doesn't compile without braces...
