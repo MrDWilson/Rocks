@@ -35,7 +35,7 @@ extension GameScene {
             }
             
             else {
-                if (!isPaused) {
+                if !isPaused && playing {
                     addChild(player.fireLaser())
                 }
             }
