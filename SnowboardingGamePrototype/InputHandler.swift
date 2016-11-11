@@ -34,10 +34,15 @@ extension GameScene {
                 if !isPaused && playing {
                     addChild(player.fireLaser())
                 }
-            }
-            
-            if (!playing) {
-                resetGame()
+                
+                if isPaused {
+                    unblurScene()
+                    isPaused = false
+                }
+                
+                if (!playing) {
+                    resetGame()
+                }
             }
         }
     }

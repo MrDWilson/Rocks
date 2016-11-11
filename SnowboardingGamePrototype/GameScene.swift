@@ -13,11 +13,8 @@ import AudioToolbox
 import CoreMotion
 
 // git test
-
 //  as if theres no fucking ++ or -- operator in swift 3...
-
 //  as if an if statement doesn't compile without braces...
-
 class GameScene: SKScene, SKPhysicsContactDelegate {
     var lastYieldTimeInterval = TimeInterval()
     var lastUpdateInterval    = TimeInterval()
@@ -31,7 +28,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //Accelerometer
     let motionManager = CMMotionManager()
-
+    
     // On-Start
     override func didMove(to view: SKView) {
         physicsWorld.gravity = CGVector (dx: 0.0, dy: 0.0)
@@ -120,9 +117,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // remove asteroids
         for child in children {
             if (child.name == "asteroid") ||
-               (child.name == "HealthPickup") ||
-               (child.name == "AmmoPickup") ||
-               (child.name == "PointsPickup") {
+                (child.name == "HealthPickup") ||
+                (child.name == "AmmoPickup") ||
+                (child.name == "PointsPickup") {
                 child.removeFromParent()
             }
         }
@@ -137,11 +134,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         children.forEach {
             // DONT BLUR LASERS - LOOKS COOL
             if ($0.name == String("asteroid")) ||
-               ($0.name == String("PlayerOne")) ||
-               ($0.name == String("HealthPickup")) ||
-               ($0.name == String("AmmoPickup")) ||
-               ($0.name == String("PointsPickup")) ||
-               ($0.name == String("explosion")){
+                ($0.name == String("PlayerOne")) ||
+                ($0.name == String("HealthPickup")) ||
+                ($0.name == String("AmmoPickup")) ||
+                ($0.name == String("PointsPickup")) ||
+                ($0.name == String("explosion")){
                 $0.removeFromParent()
                 pauseBlur.addChild($0)
             }

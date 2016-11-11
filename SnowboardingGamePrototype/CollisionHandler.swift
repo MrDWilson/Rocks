@@ -87,12 +87,12 @@ extension GameScene {
         // PLAYER HITS POINTS PICKUP
         if (contact.bodyA.node?.name == "PlayerOne" && contact.bodyB.node?.name == "PointsPickup" ) {
             contact.bodyB.node?.run(SKAction.removeFromParent())
-            player.give(points: 10)
+            player.pickupPoints()
         }
         
         if (contact.bodyA.node?.name == "PointsPickup" && contact.bodyB.node?.name == "PlayerOne" ) {
             contact.bodyA.node?.run(SKAction.removeFromParent())
-            player.give(points: 10)
+            player.pickupPoints()
         }
     }
 }
