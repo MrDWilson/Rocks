@@ -35,6 +35,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // On-Start
     override func didMove(to view: SKView) {
+        //Stop screen dimming
+        UIApplication.shared.isIdleTimerDisabled = true
+        
         physicsWorld.gravity = CGVector (dx: 0.0, dy: 0.0)
         physicsWorld.contactDelegate = self
         
