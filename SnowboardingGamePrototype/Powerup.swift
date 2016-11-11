@@ -2,27 +2,46 @@ import SpriteKit
 
 extension GameScene {
     class Powerup {
-        private let sprite = SKSpriteNode(color: UIColor.red, size: CGSize(width: 15, height: 15))
-        private var actionArray = [SKAction]()
-        private let speed = 5
-        private let spin = Int(arc4random_uniform(5))
-        private let size = Int(arc4random_uniform(10))
+        private enum PowerupType {
+            case HealthPickup
+            case AmmoPickup
+            case PointsPickup
+        }
+    
+        private let sprite  = SKSpriteNode(color: UIColor.red, size: CGSize(width: 15, height: 15))
+        private var actions = [SKAction]()
+        private let speed   = 5
+        private var type    = PowerupType.PointsPickup // default to points powerup
         
         func spawn (x: Int, y: Int) -> SKSpriteNode {
             
             // Give name, size and position
-            sprite.name = "powerup"
             sprite.position = CGPoint(x: x, y: y)
-            
-            // Give graphics
-            let ting = Int(arc4random_uniform(100))
-            
-            if (ting < 50) {
-                sprite.texture = SKTexture(imageNamed: "PointsPickup")
-            }
-                
-            else {
-                sprite.texture = SKTexture(imageNamed: "PowerUp")
+    
+            // decide type
+            let ting = arc4random_uniform(3)
+            switch ting {
+                case 0:
+                    sprite.name = "HealthPickup"
+                    type = .HealthPickup
+                    sprite.texture = SKTexture(imageNamed: "HealthPickup")
+                    let changeColorAction = SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0)
+                    sprite.run(changeColorAction)
+                    break
+                case 1:
+                    sprite.name = "AmmoPickup"
+                    type = .AmmoPickup
+                    sprite.texture = SKTexture(imageNamed: "AmmoPickup")
+                    let changeColorAction = SKAction.colorize(with: UIColor.cyan, colorBlendFactor: 1.0, duration: 0)
+                    sprite.run(changeColorAction)
+                    break
+                case 2:
+                    sprite.name = "PointsPickup"
+                    type = .PointsPickup
+                    sprite.texture = SKTexture(imageNamed: "PointsPickup")
+                    break
+                default:
+                    break
             }
             
             
@@ -38,10 +57,9 @@ extension GameScene {
             
             // Give motion
             //actionArray.append(SKAction.rotate(byAngle: 360, duration: TimeInterval(spin)))
-            actionArray.append(SKAction.move(to: CGPoint(x: sprite.position.x, y: -sprite.size.height), duration: TimeInterval(speed)))
-            
-            actionArray.append(SKAction.removeFromParent()); // ISSUE: Asteroids aren't removing themselves to be garbage collected
-            sprite.run(SKAction.sequence(actionArray))
+            actions.append (SKAction.move(to: CGPoint(x: sprite.position.x, y: -sprite.size.height), duration: TimeInterval(speed)))
+            actions.append (SKAction.removeFromParent()); // ISSUE: Asteroids aren't removing themselves to be garbage collected
+            sprite.run     (SKAction.sequence(actions))
             
             sprite.zPosition = -2
             
