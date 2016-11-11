@@ -22,17 +22,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var lastYieldTimeInterval = TimeInterval()
     var lastUpdateInterval    = TimeInterval()
     
-    var player: Player = Player()
-    var hud: HUD = HUD()
+    let pauseBlur: SKEffectNode = SKEffectNode()
+    let player: Player          = Player()
+    let hud: HUD                = HUD()
+    var playing: Bool           = true
     
     let save = Save()
     
-    let pauseBlur = SKEffectNode()
-    
     //Accelerometer
     let motionManager = CMMotionManager()
-    
-    var playing: Bool!
 
     // On-Start
     override func didMove(to view: SKView) {
@@ -44,29 +42,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //Accelerometer start updating
         motionManager.startAccelerometerUpdates()
         
+        // spawn a player, build a hud
         addChild(player.spawn(x: Int(self.size.width / 2), y: 160))
-        addChild(hud.initialise(width:Int(self.size.width) ,height: Int(self.size.height)))
+        addChild(hud.initialise(width:Int(self.size.width), height: Int(self.size.height), player: player))
         
-        // pause blur
-        let blur = CIFilter(name: "CIGaussianBlur", withInputParameters: ["inputRadius": 10.0])
-        pauseBlur.filter = blur
+        // set up blur filter
+        pauseBlur.filter = CIFilter(name: "CIGaussianBlur", withInputParameters: ["inputRadius": 10.0])
         addChild(pauseBlur)
-        
-
-        playing = true
     }
     
     // On-Update
     override func update(_ currentTime: TimeInterval) {
-        
-        // SORT CHILDREN ARRAY SO ALL LABELS ARE AT WHICHEVER END GETS RENDERED LAST
-        /*
-        func renderQueueSort (nodes: (SKNode,SKNode)) -> Bool {
-            return (nodes.0.name?.contains("Label"))!
-        }
-        
-        children.sort(by: renderQueueSort) // according to the documentation this call should work but it won't compile
-        */
         
         // if not paused, spawn asteroids and move the player
         if (!isPaused) {
@@ -86,8 +72,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // always update HUD
         hud.update(state: isPaused, score: player.getScore())
         
+        // apply blur if appropriate
+        if (!playing) {
+            blurScene()
+        }
+        
         // always update movement
-        // shouldn't we not process movement when paused? - Ryan
         processUserMotion(forUpdate: currentTime)
     }
     
@@ -98,7 +88,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             lastYieldTimeInterval = 0
             
             // 10 points for every asteroid on screen (this should maybe depend on siae of asteroid)
-            player.give(points: 10)
+            if (playing) {
+                player.give(points: 10)
+            }
+            
             let asteroid = Asteroid()
             
             addChild ( asteroid.spawn(
@@ -108,7 +101,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             // maybe spawn a powerup
             let ting = Int(arc4random_uniform(100))
-            if (ting < 12) {
+            if (ting < 33) {
                 let powerup = Powerup()
                 
                 addChild ( powerup.spawn(
@@ -117,8 +110,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 )
             }
         }
-        
-
     }
     
     func resetGame () {
@@ -129,7 +120,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // remove asteroids
         for child in children {
             if (child.name == "asteroid") ||
-               (child.name == "powerup") {
+               (child.name == "HealthPickup") ||
+               (child.name == "AmmoPickup") ||
+               (child.name == "PointsPickup") {
                 child.removeFromParent()
             }
         }
@@ -144,8 +137,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         children.forEach {
             // DONT BLUR LASERS - LOOKS COOL
             if ($0.name == String("asteroid")) ||
-                ($0.name == String("PlayerOne")) ||
-                ($0.name == String("powerup")){
+               ($0.name == String("PlayerOne")) ||
+               ($0.name == String("HealthPickup")) ||
+               ($0.name == String("AmmoPickup")) ||
+               ($0.name == String("PointsPickup")) ||
+               ($0.name == String("explosion")){
                 $0.removeFromParent()
                 pauseBlur.addChild($0)
             }
