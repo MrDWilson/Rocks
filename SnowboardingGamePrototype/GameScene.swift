@@ -29,6 +29,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //Accelerometer
     let motionManager = CMMotionManager()
     
+    //Cache
+    let asteroidCache = Cache()
+    
+    
     // On-Start
     override func didMove(to view: SKView) {
         physicsWorld.gravity = CGVector (dx: 0.0, dy: 0.0)
@@ -93,7 +97,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             addChild ( asteroid.spawn(
                 x: Int(arc4random_uniform(UInt32(self.size.width))),
-                y: Int(self.size.height + 50))
+                y: Int(self.size.height + 50)),
+                texture: asteroidCache.getCache("asteroid")
             )
             
             // maybe spawn a powerup
@@ -149,4 +154,5 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // unblur scene
         pauseBlur.children.forEach { $0.removeFromParent(); addChild($0) }
     }
+    
 }

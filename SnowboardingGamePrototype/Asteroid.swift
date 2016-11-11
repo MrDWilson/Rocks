@@ -18,7 +18,7 @@ extension GameScene {
         private let spin    = Int(arc4random_uniform(5))
         private let size    = Int(arc4random_uniform(10))
         
-        func spawn (x: Int, y: Int) -> SKSpriteNode {
+        func spawn (x: Int, y: Int, texture: SKTexture) -> SKSpriteNode {
             
             // Give name, size and position
             sprite.name         = "asteroid"
@@ -27,7 +27,7 @@ extension GameScene {
             sprite.position     = CGPoint(x: x, y: y)
             
             // Give graphics
-            sprite.texture = SKTexture(imageNamed: "Asteroid")
+            sprite.texture = texture
             
             // Give physics components
             sprite.physicsBody                     = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
