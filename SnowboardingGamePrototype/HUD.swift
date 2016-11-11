@@ -103,7 +103,7 @@ extension GameScene {
             HUDContainer.addChild(finalScoreNode)
             
             highScoreNode.name                          = String("Label")
-            highScoreNode.text                          = String ("[iCloud score]")
+            highScoreNode.text                          = String ("HIGH SCORE: [iCloud score]")
             highScoreNode.fontSize                      = 24
             highScoreNode.horizontalAlignmentMode       = .center
             highScoreNode.fontColor                     = UIColor.clear
@@ -229,7 +229,7 @@ extension GameScene {
             if (over) {
                 // show death screen
                 deathLabelNode.fontColor = UIColor.white
-                finalScoreNode.text      = String(score)
+                finalScoreNode.text      = String("SCORE: \(score)")
                 finalScoreNode.fontColor = UIColor.white
                 highScoreNode.fontColor  = UIColor.white
                 
