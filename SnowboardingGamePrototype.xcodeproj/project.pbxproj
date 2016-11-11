@@ -22,7 +22,6 @@
 		CE5B25EE1DD02ACE00A0AB64 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B25ED1DD02ACE00A0AB64 /* GameViewController.swift */; };
 		CE5B25F11DD02ACE00A0AB64 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5B25EF1DD02ACE00A0AB64 /* Main.storyboard */; };
 		CE5B25F31DD02ACE00A0AB64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE5B25F21DD02ACE00A0AB64 /* Assets.xcassets */; };
-		CE5B25F61DD02ACE00A0AB64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5B25F41DD02ACE00A0AB64 /* LaunchScreen.storyboard */; };
 		CE5B26011DD02ACE00A0AB64 /* SnowboardingGamePrototypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B26001DD02ACE00A0AB64 /* SnowboardingGamePrototypeTests.swift */; };
 		CE5B260C1DD02ACE00A0AB64 /* SnowboardingGamePrototypeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B260B1DD02ACE00A0AB64 /* SnowboardingGamePrototypeUITests.swift */; };
 		CE677B831DD3CF390002E466 /* Powerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE677B821DD3CF390002E466 /* Powerup.swift */; };
@@ -65,7 +64,6 @@
 		CE5B25ED1DD02ACE00A0AB64 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		CE5B25F01DD02ACE00A0AB64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE5B25F21DD02ACE00A0AB64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CE5B25F51DD02ACE00A0AB64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE5B25F71DD02ACE00A0AB64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE5B25FC1DD02ACE00A0AB64 /* SnowboardingGamePrototypeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnowboardingGamePrototypeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5B26001DD02ACE00A0AB64 /* SnowboardingGamePrototypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowboardingGamePrototypeTests.swift; sourceTree = "<group>"; };
@@ -143,7 +141,6 @@
 				CE5B25F71DD02ACE00A0AB64 /* Info.plist */,
 				629AE0A91DD17288008292F9 /* InputHandler.swift */,
 				623211B81DD2832C0087AE07 /* SnowboardingGamePrototype.entitlements */,
-				CE5B25F41DD02ACE00A0AB64 /* LaunchScreen.storyboard */,
 				CE5B25EF1DD02ACE00A0AB64 /* Main.storyboard */,
 				629AE0A51DD16BC2008292F9 /* Player.swift */,
 				62F97BB71DD0DF6A00CD8C4F /* Screens */,
@@ -280,7 +277,6 @@
 				CE5B25F11DD02ACE00A0AB64 /* Main.storyboard in Resources */,
 				CE5B25E81DD02ACE00A0AB64 /* GameScene.sks in Resources */,
 				CE5B25F31DD02ACE00A0AB64 /* Assets.xcassets in Resources */,
-				CE5B25F61DD02ACE00A0AB64 /* LaunchScreen.storyboard in Resources */,
 				62F97BB81DD0DF6A00CD8C4F /* Screens in Resources */,
 				62ECB12F1DD5E127002B4308 /* ExplosionParticle.sks in Resources */,
 			);
@@ -361,14 +357,6 @@
 				CE5B25F01DD02ACE00A0AB64 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		CE5B25F41DD02ACE00A0AB64 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CE5B25F51DD02ACE00A0AB64 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -471,8 +459,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = SB9YX4B3N4;
 				INFOPLIST_FILE = SnowboardingGamePrototype/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Needham.ast";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -484,8 +474,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = SB9YX4B3N4;
 				INFOPLIST_FILE = SnowboardingGamePrototype/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Needham.ast";
 				PRODUCT_NAME = "$(TARGET_NAME)";
