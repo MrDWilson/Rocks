@@ -10,17 +10,13 @@
 import SpriteKit
 
 extension GameScene {
-    // TO-DO: if player swipes down on either side, rotate player
-    // TO-DO: add a ship weapon
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch: AnyObject in touches {
             let location = touch.location(in: self)
-//            let center = CGFloat(self.size.width / 2)
-            let node   = self.atPoint(location)
+            let node     = self.atPoint(location)
             
             if (node.name == "PauseButton") || (node.name == "PauseLabel") {
-                
                 if (!isPaused) {
                     blurScene()
                     isPaused = true
@@ -43,12 +39,6 @@ extension GameScene {
             if (!playing) {
                 resetGame()
             }
-        }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for _: AnyObject in touches {
-
         }
     }
     
