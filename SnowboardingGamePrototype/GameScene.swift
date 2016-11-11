@@ -98,7 +98,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addChild ( asteroid.spawn(
                 x: Int(arc4random_uniform(UInt32(self.size.width))),
                 y: Int(self.size.height + 50),
-                texture: textureCache.getCached(key: "asteroid"))
+                texture: textureCache)
             )
             
             // maybe spawn a powerup
