@@ -1,11 +1,12 @@
-//
-//  LaserBeam.swift
-//  SnowboardingGamePrototype
-//
-//  Created by user on 09/11/2016.
-//  Copyright © 2016 Ryan Needham. All rights reserved.
-//
-
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *  GameScene.swift
+ *  Space Game
+ *
+ *  Created by Ryan Needham & Danny Wilson on 07/11/2016.
+ *  Copyright © 2016 Ryan Needham & Danny Wilson.
+ *  All rights reserved.
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 import SpriteKit
 
 extension GameScene {
@@ -13,13 +14,11 @@ extension GameScene {
         private let sprite = SKSpriteNode(color: UIColor.cyan , size: CGSize(width: 0.5, height: 10))
         private var origin = CGVector(dx: 0, dy: 0)
         private var path = CGVector(dx: 0, dy: 10)
-        
-        init () {
+
+        func fire (o: CGVector) -> SKSpriteNode {
             sprite.name = "laserbeam"
             sprite.physicsBody = SKPhysicsBody(rectangleOf: sprite.size)
-        }
         
-        func fire (o: CGVector) -> SKSpriteNode {
             origin.dx = o.dx
             origin.dy = o.dy
             
@@ -30,7 +29,6 @@ extension GameScene {
         }
         
         func update () {
-
             sprite.position.x += path.dx
             sprite.position.y += path.dy
         }
