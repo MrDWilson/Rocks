@@ -38,7 +38,9 @@ extension GameScene {
            (contact.bodyB.node?.name == "PlayerOne" && contact.bodyA.node?.name == "asteroid" ) {
             if (player.getHealth() == 0) {
                 // bzzz
-                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+                if(!player.isExploding()) {
+                    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+                }
                 
                 player.spin()
                 player.explode()

@@ -37,8 +37,9 @@ extension GameScene {
             ammo   = AMMO_MAX                           // reset ammo
             sprite.position = CGPoint(x: x, y: y)       // reset position
             score.reset()                               // reset score
-            sprite.physicsBody!.allowsRotation = false
-            sprite.zRotation = 0
+            sprite.physicsBody!.allowsRotation = false  // Stop spinning
+            sprite.zRotation = 0                        // Reset orientation
+            exploding = false                           // No longer exploding
         }
         
         func spawn (x: Int, y: Int) -> SKSpriteNode {
@@ -125,10 +126,9 @@ extension GameScene {
         }
         
         func explode () {
-            if (!exploding) {
                 particalEffect?.removeFromParent()
                 sprite.addChild(particalEffect!)
-            }
+                exploding = true
         }
         
         func cullLasers () {
@@ -147,6 +147,11 @@ extension GameScene {
         
         func spin() {
             sprite.physicsBody!.allowsRotation = true
+        }
+        
+        //Check if we have been initially hit for vibration
+        func isExploding() -> Bool {
+            return exploding
         }
     }
 }
