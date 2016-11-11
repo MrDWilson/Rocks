@@ -22,7 +22,7 @@ extension GameScene {
         private let speed   = 5
         private var type    = PowerupType.PointsPickup // default to points powerup
         
-        func spawn (x: Int, y: Int) -> SKSpriteNode {
+        func spawn (x: Int, y: Int, texture: Cache) -> SKSpriteNode {
             
             // Give name, size and position
             sprite.position = CGPoint(x: x, y: y)
@@ -33,21 +33,21 @@ extension GameScene {
                 case 0:
                     sprite.name = "HealthPickup"
                     type = .HealthPickup
-                    sprite.texture = SKTexture(imageNamed: "HealthPickup")
+                    sprite.texture = texture.getCached(key: "health")
                     let changeColorAction = SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0)
                     sprite.run(changeColorAction)
                     break
                 case 1:
                     sprite.name = "AmmoPickup"
                     type = .AmmoPickup
-                    sprite.texture = SKTexture(imageNamed: "AmmoPickup")
+                    sprite.texture = texture.getCached(key: "ammo")
                     let changeColorAction = SKAction.colorize(with: UIColor.cyan, colorBlendFactor: 1.0, duration: 0)
                     sprite.run(changeColorAction)
                     break
                 case 2:
                     sprite.name = "PointsPickup"
                     type = .PointsPickup
-                    sprite.texture = SKTexture(imageNamed: "PointsPickup")
+                    sprite.texture = texture.getCached(key: "points")
                     break
                 default:
                     break

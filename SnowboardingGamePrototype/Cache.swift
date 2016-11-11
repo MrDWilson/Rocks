@@ -15,19 +15,55 @@ extension GameScene {
     
         //Cache
         private let cache = NSCache<NSString, SKTexture>()
-        private var asteroidCache = SKTexture()
+        private var result = SKTexture()
         
         func getCached(key: String) -> SKTexture {
-            if let cachedVersion = cache.object(forKey: key as NSString) {
-                // use the cached version
-                asteroidCache = cachedVersion
-                return asteroidCache
-            } else {
-                // create it from scratch then store in the cache
-                asteroidCache = SKTexture(imageNamed: "Asteroid")
-                cache.setObject(asteroidCache, forKey: key as NSString)
-                return asteroidCache
+            switch key {
+                case "asteroid":
+                    if let cachedVersion = cache.object(forKey: key as NSString) {
+                        // use the cached version
+                        result = cachedVersion
+                    } else {
+                        // create it from scratch then store in the cache
+                        result = SKTexture(imageNamed: "Asteroid")
+                        cache.setObject(result, forKey: key as NSString)
+                    }
+                
+                case "health":
+                    if let cachedVersion = cache.object(forKey: key as NSString) {
+                        // use the cached version
+                        result = cachedVersion
+                    } else {
+                        // create it from scratch then store in the cache
+                        result = SKTexture(imageNamed: "HealthPickup")
+                        cache.setObject(result, forKey: key as NSString)
+                    }
+                
+                case "ammo":
+                    if let cachedVersion = cache.object(forKey: key as NSString) {
+                        // use the cached version
+                        result = cachedVersion
+                    } else {
+                        // create it from scratch then store in the cache
+                        result = SKTexture(imageNamed: "AmmoPickup")
+                        cache.setObject(result, forKey: key as NSString)
+                    }
+                
+                case "points":
+                    if let cachedVersion = cache.object(forKey: key as NSString) {
+                        // use the cached version
+                        result = cachedVersion
+                    } else {
+                        // create it from scratch then store in the cache
+                        result = SKTexture(imageNamed: "PointsPickup")
+                        cache.setObject(result, forKey: key as NSString)
+                    }
+                
+                default:
+                break
             }
+            
+            return result
         }
         
     }
