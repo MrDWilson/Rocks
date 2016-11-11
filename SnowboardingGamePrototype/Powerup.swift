@@ -63,6 +63,7 @@ extension GameScene {
             sprite.physicsBody?.categoryBitMask = collision.powerup
             sprite.physicsBody?.collisionBitMask = collision.player
             sprite.physicsBody?.contactTestBitMask = collision.powerup
+            sprite.physicsBody?.density = 0.001 // fix hitting powerups side on
             
             // Give motion
             //actionArray.append(SKAction.rotate(byAngle: 360, duration: TimeInterval(spin)))
