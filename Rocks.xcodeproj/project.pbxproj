@@ -245,9 +245,14 @@
 				TargetAttributes = {
 					CE5B25E11DD02ACE00A0AB64 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = EM2LKXB8R4;
+						DevelopmentTeam = SB9YX4B3N4;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					CE5B25FB1DD02ACE00A0AB64 = {
 						CreatedOnToolsVersion = 8.1;
@@ -466,11 +471,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = EM2LKXB8R4;
+				CODE_SIGN_ENTITLEMENTS = Rocks/Rocks.entitlements;
+				DEVELOPMENT_TEAM = SB9YX4B3N4;
 				INFOPLIST_FILE = Rocks/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Needham.ast";
+				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Danny.Rocks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -483,11 +489,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = EM2LKXB8R4;
+				CODE_SIGN_ENTITLEMENTS = Rocks/Rocks.entitlements;
+				DEVELOPMENT_TEAM = SB9YX4B3N4;
 				INFOPLIST_FILE = Rocks/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Needham.ast";
+				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Danny.Rocks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

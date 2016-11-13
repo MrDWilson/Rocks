@@ -48,11 +48,16 @@ extension GameScene {
         // hold reference to player
         private var player: Player!
         
+        //saving
+        private var saver = Save()
+        
          /* * * * * * * * * * * * * * * * * * * * *
           *  CONSTRUCT HUD
           * * * * * * * * * * * * * * * * * * * * */
         func initialise (width: Int, height: Int, player: Player) -> SKNode {
             self.player = player
+            //initialise 
+            saver.iCloudSetUp()
         
             // health bar
             healthBarNode.name                    = String("Label")
@@ -76,7 +81,7 @@ extension GameScene {
             
             // best score
             bestScoreLabelNode.name                     = String("Label")
-            bestScoreLabelNode.text                     = String(String(describing: bestScore)) // previous best icloud score should be visible in game
+            bestScoreLabelNode.text                     = String(saver.getHighScore()) // previous best icloud score should be visible in game
             bestScoreLabelNode.fontSize                 = 20
             bestScoreLabelNode.horizontalAlignmentMode  = .left
             bestScoreLabelNode.position                 = CGPoint(x:6, y:28)
@@ -208,8 +213,8 @@ extension GameScene {
         func update (state: Bool, score: Int) {
             
             // update score label
-            if (score > bestScore) { bestScore = score }
-            bestScoreLabelNode.text = String(bestScore)
+            if (score > saver.getHighScore()) { saver.setHighScore(x: score) }
+            bestScoreLabelNode.text = String(saver.getHighScore())
             thisScoreLabelNode.text = String(score)
             
             // update health and ammo bars
@@ -263,7 +268,7 @@ extension GameScene {
                 deathLabelNode.fontColor = UIColor.white
                 finalScoreNode.text      = String(score)
                 finalScoreNode.fontColor = UIColor.lightGray
-                highScoreNode.text       = String(bestScore)
+                highScoreNode.text       = String(saver.getHighScore())
                 highScoreNode.fontColor  = UIColor.gray
                 
                 // hide everything else

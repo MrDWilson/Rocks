@@ -31,7 +31,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // saver
     var playing = true
-    var saver = Save()
+    //var saver = Save()
     
     /* * * * * * * * * * * * * * * * * * * * *
      *  ENTRY POINT

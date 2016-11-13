@@ -38,6 +38,7 @@ extension GameScene {
         
         func setHighScore(x : Int) {
             highScore = x
+            saveToiCloud()
         }
         
     }
