@@ -57,7 +57,7 @@ extension GameScene {
                 hud.update(state: isPaused, score: player.getScore()) // HUD needs to be updated before a pause
                 playing  = false
                 
-                blurScene()
+                //blur()
                 
                 // save high scores
                 if(player.getScore() > saver.getHighScore()) {

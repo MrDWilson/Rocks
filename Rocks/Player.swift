@@ -76,7 +76,7 @@ extension GameScene {
             sprite.size.width  = 42                     // reset size after adding sprite
             sprite.size.height = 42                     // reset size after adding sprite
             sprite.position    = CGPoint(x: x, y: y)    // reset position
-            sprite.zRotation   = 0                      // Reset orientation
+            //sprite.zRotation   = 0                      // Reset orientation
             sprite.physicsBody!.allowsRotation = false  // Stop spinning
             
             colourChangeArray.removeAll()
@@ -272,15 +272,13 @@ extension GameScene {
             else if (health >= 2) { health -= 1; }
         }
         
-        func fireLaser () -> SKSpriteNode {
+        func fireLaser () {
             if (ammo > 0) {
                 let beam = LaserBeam()
                 lasers.add(beam)
                 ammo -= 1
-                return beam.fire(o: CGVector(dx: sprite.position.x, dy: sprite.position.y))
+                sprite.parent?.addChild(beam.fire(o: CGVector(dx: sprite.position.x, dy: sprite.position.y)))
             }
-            
-            return SKSpriteNode() // BAD, BAD, BAD (but it works for now)
         }
         
         func explode () {
@@ -329,7 +327,7 @@ extension GameScene {
         }
         
         func spin() {
-            sprite.physicsBody!.allowsRotation = true
+            //sprite.physicsBody!.allowsRotation = true
         }
         
         //Check if we have been initially hit for vibration

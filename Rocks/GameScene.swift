@@ -13,6 +13,8 @@ import AudioToolbox
 import CoreMotion
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+    let clearScene = SKNode()
+    //let blurScene = SKEffectNode()
 
     /* * * * * * * * * * * * * * * * * * * * *
      *  GamePlay Aspects
@@ -26,7 +28,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // Graphics Stuff
     var worldTextureCache   = TextureCache()
-    var pauseBlur           = SKEffectNode()
     
     // saver
     var playing = true
@@ -62,16 +63,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         // spawn player and HUD
-        addChild(player.spawn(x: Int(self.size.width / 2), y: 228))
-        addChild(hud.initialise(width:Int(self.size.width), height: Int(self.size.height), player: player))
+        clearScene.addChild(player.spawn(x: Int(self.size.width / 2), y: 228))
+        clearScene.addChild(hud.initialise(width:Int(self.size.width), height: Int(self.size.height), player: player))
         
         // spawn asteroids and powerups
-        asteroids.forEach { addChild($0.spawn(textureCache: worldTextureCache)) }
-        powerups.forEach  { addChild($0.spawn(textureCache: worldTextureCache)) }
+        asteroids.forEach { clearScene.addChild($0.spawn(textureCache: worldTextureCache)) }
+        powerups.forEach  { clearScene.addChild($0.spawn(textureCache: worldTextureCache)) }
         
         // set up blur filter
-        pauseBlur.filter = CIFilter(name: "CIGaussianBlur", withInputParameters: ["inputRadius": 5.5])
-        addChild(pauseBlur)
+        //blurScene.filter = CIFilter(name: "CIGaussianBlur", withInputParameters: ["inputRadius": 5.5])
+        
+        // show clear scene
+        addChild(clearScene)
     }
     
     /* * * * * * * * * * * * * * * * * * * * *
@@ -97,7 +100,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if (asteroids.count == Difficulty.Easy.rawValue) {
                     while (asteroids.count < Difficulty.Medium.rawValue) {
                         asteroids.append(Asteroid())
-                        addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
+                        clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
                     }
                 }
             }
@@ -106,7 +109,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if (asteroids.count == Difficulty.Medium.rawValue) {
                     while (asteroids.count < Difficulty.Hard.rawValue) {
                         asteroids.append(Asteroid())
-                        addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
+                        clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
                     }
                 }
             }
@@ -126,7 +129,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         hud.reset()
         
         // remove scene blur
-        unblurScene()
+        //unblur()
 
         // reset difficulty
         difficulty = .Easy
@@ -147,6 +150,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     /* * * * * * * * * * * * * * * * * * * * *
      *  BLUR / UNBLUR FUNCTIONS
      * * * * * * * * * * * * * * * * * * * * */
+    /*
+    func blur () {
+        clearScene.removeFromParent()
+        blurScene.addChild(clearScene)
+        blurScene.removeFromParent()
+        addChild(blurScene)
+    }
+    
+    func unblur () {
+        clearScene.removeFromParent()
+        addChild(clearScene)
+        blurScene.removeFromParent()
+    }
+    */
+    /*
     func blurScene () {
         // blur scene
         children.forEach {
@@ -172,4 +190,5 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addChild($0)
         }
     }
+     */
 }

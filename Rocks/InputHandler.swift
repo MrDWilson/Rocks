@@ -22,12 +22,12 @@ extension GameScene {
             if (node.name == "PauseButton") || (node.name == "PauseLabel") {
                 if (playing) {
                     if (!isPaused) {
-                        blurScene()
+                        //blur()
                         isPaused = true
                     }
                         
                     else {
-                        unblurScene()
+                        //unblur()
                         isPaused = false
                     }
                     
@@ -36,11 +36,11 @@ extension GameScene {
             }
             
             else {
-                if !isPaused && playing { addChild(player.fireLaser()) }
+                if !isPaused && playing { player.fireLaser() }
                 
                 if isPaused {
                     isPaused = false
-                    unblurScene()
+                    //unblur()
                 }
                 
                 if (!playing) { resetGame() }
@@ -52,7 +52,7 @@ extension GameScene {
      *  ON - MOTION
      * * * * * * * * * * * * * * * * * * * * */
     func processUserMotion(forUpdate currentTime: CFTimeInterval) {
-        if let ship = childNode(withName: player.getName()) as? SKSpriteNode {
+        if let ship = clearScene.childNode(withName: player.getName()) as? SKSpriteNode {
             if let data = motionManager.accelerometerData {
                 if fabs(data.acceleration.x) > 0.06 {
                     ship.physicsBody!.applyForce(CGVector(dx: 90 * CGFloat(data.acceleration.x), dy: 0))
