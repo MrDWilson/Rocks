@@ -1,5 +1,5 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *  Asteroid.swift
+ *  TextureCache.swift
  *  Space Game
  *
  *  Created by Ryan Needham & Danny Wilson on 07/11/2016.
@@ -28,7 +28,5 @@ extension GameScene {
                 return texture
             }
         }
-        
     }
-    
 }

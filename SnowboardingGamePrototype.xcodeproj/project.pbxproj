@@ -9,13 +9,15 @@
 /* Begin PBXBuildFile section */
 		62220EB41DD23FF200FBAF50 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62220EB31DD23FF200FBAF50 /* HUD.swift */; };
 		623211BA1DD283AB0087AE07 /* Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623211B91DD283AB0087AE07 /* Save.swift */; };
+		623BA5601DD8A8720014B50A /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623BA55F1DD8A8720014B50A /* Difficulty.swift */; };
+		623BA5631DD8A8BA0014B50A /* TextureCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623BA5611DD8A8BA0014B50A /* TextureCache.swift */; };
+		623BA5641DD8A8BA0014B50A /* ThrusterParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 623BA5621DD8A8BA0014B50A /* ThrusterParticle.sks */; };
 		629AE0A61DD16BC2008292F9 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AE0A51DD16BC2008292F9 /* Player.swift */; };
 		629AE0A81DD1711D008292F9 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AE0A71DD1711D008292F9 /* Counter.swift */; };
 		629AE0AA1DD17288008292F9 /* InputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AE0A91DD17288008292F9 /* InputHandler.swift */; };
 		629AE0AC1DD172FE008292F9 /* Asteroid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629AE0AB1DD172FE008292F9 /* Asteroid.swift */; };
 		62ECB12F1DD5E127002B4308 /* ExplosionParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62ECB12E1DD5E127002B4308 /* ExplosionParticle.sks */; };
 		62F97BB81DD0DF6A00CD8C4F /* Screens in Resources */ = {isa = PBXBuildFile; fileRef = 62F97BB71DD0DF6A00CD8C4F /* Screens */; };
-		A1B9BB5A1DD5EF8A00F661E7 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B9BB591DD5EF8A00F661E7 /* Cache.swift */; };
 		CE5B25E61DD02ACE00A0AB64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B25E51DD02ACE00A0AB64 /* AppDelegate.swift */; };
 		CE5B25E81DD02ACE00A0AB64 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE5B25E71DD02ACE00A0AB64 /* GameScene.sks */; };
 		CE5B25EC1DD02ACE00A0AB64 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B25EB1DD02ACE00A0AB64 /* GameScene.swift */; };
@@ -50,13 +52,15 @@
 		62220EB31DD23FF200FBAF50 /* HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
 		623211B81DD2832C0087AE07 /* SnowboardingGamePrototype.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = SnowboardingGamePrototype.entitlements; sourceTree = "<group>"; };
 		623211B91DD283AB0087AE07 /* Save.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Save.swift; sourceTree = "<group>"; };
+		623BA55F1DD8A8720014B50A /* Difficulty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
+		623BA5611DD8A8BA0014B50A /* TextureCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextureCache.swift; sourceTree = "<group>"; };
+		623BA5621DD8A8BA0014B50A /* ThrusterParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ThrusterParticle.sks; sourceTree = "<group>"; };
 		629AE0A51DD16BC2008292F9 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		629AE0A71DD1711D008292F9 /* Counter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
 		629AE0A91DD17288008292F9 /* InputHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputHandler.swift; sourceTree = "<group>"; };
 		629AE0AB1DD172FE008292F9 /* Asteroid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Asteroid.swift; sourceTree = "<group>"; };
 		62ECB12E1DD5E127002B4308 /* ExplosionParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ExplosionParticle.sks; sourceTree = "<group>"; };
 		62F97BB71DD0DF6A00CD8C4F /* Screens */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Screens; sourceTree = SOURCE_ROOT; };
-		A1B9BB591DD5EF8A00F661E7 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		CE5B25E21DD02ACE00A0AB64 /* SnowboardingGamePrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnowboardingGamePrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5B25E51DD02ACE00A0AB64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5B25E71DD02ACE00A0AB64 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -124,6 +128,8 @@
 		CE5B25E41DD02ACE00A0AB64 /* SnowboardingGamePrototype */ = {
 			isa = PBXGroup;
 			children = (
+				623BA5611DD8A8BA0014B50A /* TextureCache.swift */,
+				623BA5621DD8A8BA0014B50A /* ThrusterParticle.sks */,
 				62ECB12E1DD5E127002B4308 /* ExplosionParticle.sks */,
 				CE5B25E51DD02ACE00A0AB64 /* AppDelegate.swift */,
 				CE5B25F21DD02ACE00A0AB64 /* Assets.xcassets */,
@@ -133,10 +139,10 @@
 				CE677B821DD3CF390002E466 /* Powerup.swift */,
 				CE5B25EB1DD02ACE00A0AB64 /* GameScene.swift */,
 				623211B91DD283AB0087AE07 /* Save.swift */,
+				623BA55F1DD8A8720014B50A /* Difficulty.swift */,
 				CE8244311DD3E2CC0050E422 /* CollisionHandler.swift */,
 				CE5B25ED1DD02ACE00A0AB64 /* GameViewController.swift */,
 				62220EB31DD23FF200FBAF50 /* HUD.swift */,
-				A1B9BB591DD5EF8A00F661E7 /* Cache.swift */,
 				CEEEC8F11DD37F74007F8470 /* LaserBeam.swift */,
 				CE5B25F71DD02ACE00A0AB64 /* Info.plist */,
 				629AE0A91DD17288008292F9 /* InputHandler.swift */,
@@ -234,7 +240,7 @@
 				TargetAttributes = {
 					CE5B25E11DD02ACE00A0AB64 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = SB9YX4B3N4;
+						DevelopmentTeam = EM2LKXB8R4;
 						ProvisioningStyle = Automatic;
 					};
 					CE5B25FB1DD02ACE00A0AB64 = {
@@ -276,6 +282,7 @@
 			files = (
 				CE5B25F11DD02ACE00A0AB64 /* Main.storyboard in Resources */,
 				CE5B25E81DD02ACE00A0AB64 /* GameScene.sks in Resources */,
+				623BA5641DD8A8BA0014B50A /* ThrusterParticle.sks in Resources */,
 				CE5B25F31DD02ACE00A0AB64 /* Assets.xcassets in Resources */,
 				62F97BB81DD0DF6A00CD8C4F /* Screens in Resources */,
 				62ECB12F1DD5E127002B4308 /* ExplosionParticle.sks in Resources */,
@@ -303,19 +310,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				623BA5631DD8A8BA0014B50A /* TextureCache.swift in Sources */,
 				CE8244321DD3E2CC0050E422 /* CollisionHandler.swift in Sources */,
 				CE5B25EC1DD02ACE00A0AB64 /* GameScene.swift in Sources */,
 				629AE0A81DD1711D008292F9 /* Counter.swift in Sources */,
 				CE677B831DD3CF390002E466 /* Powerup.swift in Sources */,
 				623211BA1DD283AB0087AE07 /* Save.swift in Sources */,
 				CE5B25EE1DD02ACE00A0AB64 /* GameViewController.swift in Sources */,
-				A1B9BB5A1DD5EF8A00F661E7 /* Cache.swift in Sources */,
 				629AE0AC1DD172FE008292F9 /* Asteroid.swift in Sources */,
 				CEEEC8F21DD37F74007F8470 /* LaserBeam.swift in Sources */,
 				629AE0A61DD16BC2008292F9 /* Player.swift in Sources */,
 				62220EB41DD23FF200FBAF50 /* HUD.swift in Sources */,
 				CE5B25E61DD02ACE00A0AB64 /* AppDelegate.swift in Sources */,
 				629AE0AA1DD17288008292F9 /* InputHandler.swift in Sources */,
+				623BA5601DD8A8720014B50A /* Difficulty.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,7 +468,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = SB9YX4B3N4;
+				DEVELOPMENT_TEAM = EM2LKXB8R4;
 				INFOPLIST_FILE = SnowboardingGamePrototype/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -475,7 +483,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = SB9YX4B3N4;
+				DEVELOPMENT_TEAM = EM2LKXB8R4;
 				INFOPLIST_FILE = SnowboardingGamePrototype/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
