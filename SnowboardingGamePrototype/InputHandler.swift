@@ -11,42 +11,46 @@ import SpriteKit
 
 extension GameScene {
     
+    /* * * * * * * * * * * * * * * * * * * * *
+     *  ON - TOUCH
+     * * * * * * * * * * * * * * * * * * * * */
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch: AnyObject in touches {
             let location = touch.location(in: self)
             let node     = self.atPoint(location)
             
             if (node.name == "PauseButton") || (node.name == "PauseLabel") {
-                if (!isPaused) {
-                    blurScene()
-                    isPaused = true
+                if (playing) {
+                    if (!isPaused) {
+                        blurScene()
+                        isPaused = true
+                    }
+                        
+                    else {
+                        unblurScene()
+                        isPaused = false
+                    }
+                    
+                    hud.update(state: isPaused, score: player.getScore())
                 }
-                
-                else {
-                    unblurScene()
-                    isPaused = false
-                }
-                
-                hud.update(state: isPaused, score: player.getScore())
             }
             
             else {
-                if !isPaused && playing {
-                    addChild(player.fireLaser())
-                }
+                if !isPaused && playing { addChild(player.fireLaser()) }
                 
                 if isPaused {
-                    unblurScene()
                     isPaused = false
+                    unblurScene()
                 }
                 
-                if (!playing) {
-                    resetGame()
-                }
+                if (!playing) { resetGame() }
             }
         }
     }
     
+    /* * * * * * * * * * * * * * * * * * * * *
+     *  ON - MOTION
+     * * * * * * * * * * * * * * * * * * * * */
     func processUserMotion(forUpdate currentTime: CFTimeInterval) {
         if let ship = childNode(withName: player.getName()) as? SKSpriteNode {
             if let data = motionManager.accelerometerData {
