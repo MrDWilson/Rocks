@@ -12,142 +12,154 @@ import GameplayKit
 import AudioToolbox
 import CoreMotion
 
-// git test
-//  as if theres no fucking ++ or -- operator in swift 3...
-//  as if an if statement doesn't compile without braces...
 class GameScene: SKScene, SKPhysicsContactDelegate {
-    var lastYieldTimeInterval = TimeInterval()
-    var lastUpdateInterval    = TimeInterval()
+
+    /* * * * * * * * * * * * * * * * * * * * *
+     *  GamePlay Aspects
+     * * * * * * * * * * * * * * * * * * * * */
+    var motionManager   = CMMotionManager()
+    var difficulty      = Difficulty.Easy
+    var asteroids       = [Asteroid]()
+    var powerups        = [Powerup]()
+    var player          = Player()
+    var hud             = HUD()
     
-    let pauseBlur: SKEffectNode = SKEffectNode()
-    let player: Player          = Player()
-    let hud: HUD                = HUD()
-    var playing: Bool           = true
+    // Graphics Stuff
+    var worldTextureCache   = TextureCache()
+    var pauseBlur           = SKEffectNode()
     
-    let save = Save()
+    // saver
+    var playing = true
+    var saver = Save()
     
-    //Accelerometer
-    let motionManager = CMMotionManager()
-    
-    //Cache
-    let textureCache = Cache()
-    
-    
-    // On-Start
+    /* * * * * * * * * * * * * * * * * * * * *
+     *  ENTRY POINT
+     * * * * * * * * * * * * * * * * * * * * */
     override func didMove(to view: SKView) {
-        //Stop screen dimming
-        UIApplication.shared.isIdleTimerDisabled = true
         
+        // set up physics stuff
         physicsWorld.gravity = CGVector (dx: 0.0, dy: 0.0)
         physicsWorld.contactDelegate = self
-        
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+        
+        //Stop screen dimming
+        UIApplication.shared.isIdleTimerDisabled = true
         
         //Accelerometer start updating
         motionManager.startAccelerometerUpdates()
         
-        // spawn a player, build a hud
-        addChild(player.spawn(x: Int(self.size.width / 2), y: 160))
+        // make some asteroids and powerups
+        for _ in 0...difficulty.rawValue { asteroids.append(Asteroid()) }
+        for _ in 0...difficulty.rawValue { powerups.append(Powerup()) }
+        
+        asteroids.forEach {
+            $0.setXConfine(con: Int(self.size.width))
+            $0.setYConfine(con: Int(self.size.height))
+        }
+        powerups.forEach  {
+            $0.setXConfine(con: Int(self.size.width))
+            $0.setYConfine(con: Int(self.size.height))
+        }
+        
+        // spawn player and HUD
+        addChild(player.spawn(x: Int(self.size.width / 2), y: 228))
         addChild(hud.initialise(width:Int(self.size.width), height: Int(self.size.height), player: player))
         
+        // spawn asteroids and powerups
+        asteroids.forEach { addChild($0.spawn(textureCache: worldTextureCache)) }
+        powerups.forEach  { addChild($0.spawn(textureCache: worldTextureCache)) }
+        
         // set up blur filter
-        pauseBlur.filter = CIFilter(name: "CIGaussianBlur", withInputParameters: ["inputRadius": 10.0])
+        pauseBlur.filter = CIFilter(name: "CIGaussianBlur", withInputParameters: ["inputRadius": 5.5])
         addChild(pauseBlur)
     }
     
-    // On-Update
+    /* * * * * * * * * * * * * * * * * * * * *
+     *  ON-UPDATE
+     * * * * * * * * * * * * * * * * * * * * */
     override func update(_ currentTime: TimeInterval) {
+        // check/set difficulty
+        if (player.getScore() > 5000) { difficulty = .Medium }
+        if (player.getScore() > 15000) { difficulty = .Hard }
         
-        // if not paused, spawn asteroids and move the player
         if (!isPaused) {
-            var timeSinceLastUpdate = currentTime - lastUpdateInterval
-            lastUpdateInterval = currentTime
             
-            if (timeSinceLastUpdate > 2) {
-                timeSinceLastUpdate = 1/60
-                lastUpdateInterval = currentTime
+            // get input
+            processUserMotion(forUpdate: currentTime)
+            
+            // update game actors
+            asteroids.forEach { $0.update() }
+            powerups.forEach { $0.update() }
+            player.update()
+            
+            // ensure correct astroid count
+            if (difficulty == .Medium) {
+                if (asteroids.count == Difficulty.Easy.rawValue) {
+                    while (asteroids.count < Difficulty.Medium.rawValue) {
+                        asteroids.append(Asteroid())
+                        addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
+                    }
+                }
             }
             
-            updateWithLast(lastUpdate: timeSinceLastUpdate)
-            
-            player.update()
+            if (difficulty == .Hard) {
+                if (asteroids.count == Difficulty.Medium.rawValue) {
+                    while (asteroids.count < Difficulty.Hard.rawValue) {
+                        asteroids.append(Asteroid())
+                        addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
+                    }
+                }
+            }
         }
         
         // always update HUD
         hud.update(state: isPaused, score: player.getScore())
-        
-        // apply blur if appropriate
-        if (!playing) {
-            blurScene()
-        }
-        
-        // always update movement
-        processUserMotion(forUpdate: currentTime)
+
     }
     
-    // On-Update delegate I
-    func updateWithLast (lastUpdate: CFTimeInterval) {
-        lastYieldTimeInterval += lastUpdate
-        if (lastYieldTimeInterval > 0.6) {
-            lastYieldTimeInterval = 0
-            
-            // 10 points for every asteroid on screen (this should maybe depend on siae of asteroid)
-            if (playing) {
-                player.give(points: 10)
-            }
-            
-            let asteroid = Asteroid()
-            
-            addChild ( asteroid.spawn(
-                x: Int(arc4random_uniform(UInt32(self.size.width))),
-                y: Int(self.size.height + 50),
-                texture: textureCache)
-            )
-            
-            // maybe spawn a powerup
-            let ting = Int(arc4random_uniform(100))
-            if (ting < 33) {
-                let powerup = Powerup()
-                
-                addChild ( powerup.spawn(
-                    x: Int(arc4random_uniform(UInt32(self.size.width))),
-                    y: Int(self.size.height + 50),
-                    texture: textureCache)
-                )
-            }
-        }
-    }
-    
+    /* * * * * * * * * * * * * * * * * * * * *
+     *  RESTART
+     * * * * * * * * * * * * * * * * * * * * */
     func resetGame () {
-        unblurScene()
+        // reset player and HUD
+        player.resetAt(x: Int(self.size.width / 2), y: 160)
         hud.reset()
-        player.moveTo(x: Int(self.size.width / 2), y: 160)
         
-        // remove asteroids
-        for child in children {
-            if (child.name == "asteroid") ||
-                (child.name == "HealthPickup") ||
-                (child.name == "AmmoPickup") ||
-                (child.name == "PointsPickup") {
-                child.removeFromParent()
-            }
+        // remove scene blur
+        unblurScene()
+
+        // reset difficulty
+        difficulty = .Easy
+        while (asteroids.count > difficulty.rawValue) {
+            asteroids.last?.destroyed()
+            asteroids.last?.culled()
+            asteroids.removeLast()
         }
         
         playing  = true
         isPaused = false
         
+        //  reset all asteroids and powerups
+        asteroids.forEach { $0.destroyed() }
+        powerups.forEach  { $0.collected() }
     }
     
+    /* * * * * * * * * * * * * * * * * * * * *
+     *  BLUR / UNBLUR FUNCTIONS
+     * * * * * * * * * * * * * * * * * * * * */
     func blurScene () {
         // blur scene
         children.forEach {
             // DONT BLUR LASERS - LOOKS COOL
-            if ($0.name == String("asteroid")) ||
-                ($0.name == String("PlayerOne")) ||
-                ($0.name == String("HealthPickup")) ||
-                ($0.name == String("AmmoPickup")) ||
-                ($0.name == String("PointsPickup")) ||
-                ($0.name == String("explosion")){
+            if ($0.name == String("asteroid"))          ||
+               ($0.name == String("player"))            ||
+               ($0.name == String("HealthPickup"))      ||
+               ($0.name == String("AmmoPickup"))        ||
+               ($0.name == String("PointsPickup_25"))   ||
+               ($0.name == String("PointsPickup_50"))   ||
+               ($0.name == String("PointsPickup_100"))  ||
+               ($0.name == String("explosion"))         ||
+               ($0.name == String("ShipPart")) {
                 $0.removeFromParent()
                 pauseBlur.addChild($0)
             }
@@ -155,8 +167,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func unblurScene () {
-        // unblur scene
-        pauseBlur.children.forEach { $0.removeFromParent(); addChild($0) }
+        pauseBlur.children.forEach {
+            $0.removeFromParent()
+            addChild($0)
+        }
     }
-    
 }
