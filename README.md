@@ -1,4 +1,4 @@
-# Rocks Version 1.0
+# Rocks Beta Version 1.0
 
 ## Overview
 A simple space game, allowing you to navigate, avoid and destroy astroids.
