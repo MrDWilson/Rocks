@@ -10,8 +10,9 @@
 import SpriteKit
 
 extension GameScene {
-    
     class HUD {
+        
+        // everything sits in once container
         private let HUDContainer       = SKNode()
         
         // pause button
@@ -23,27 +24,33 @@ extension GameScene {
         private let helpImageOne       = SKSpriteNode()
         private let helpImageTwo       = SKSpriteNode()
         private let helpImageThree     = SKSpriteNode()
+        private let helpImageFour      = SKSpriteNode()
+        private let helpImageFive      = SKSpriteNode()
         private let helpLabelOne       = SKLabelNode()
         private let helpLabelTwo       = SKLabelNode()
         private let helpLabelThree     = SKLabelNode()
+        private let helpLabelFour      = SKLabelNode()
+        private let helpLabelFive      = SKLabelNode()
         
-        // in-game ui
+        // in-game UI
         private let healthBarNode      = SKLabelNode(fontNamed: "Arial")
         private let ammoBarNode        = SKLabelNode(fontNamed: "Arial")
         private let thisScoreLabelNode = SKLabelNode(fontNamed: "Arial")
         private let bestScoreLabelNode = SKLabelNode(fontNamed: "Arial")
+        private var bestScore = 0
         
         // game over screen
         private let deathLabelNode     = SKLabelNode(fontNamed: "Arial")
         private let finalScoreNode     = SKLabelNode(fontNamed: "Arial")
         private let highScoreNode      = SKLabelNode (fontNamed: "Arial")
         private var over               = false
-
         
         // hold reference to player
         private var player: Player!
         
-        
+         /* * * * * * * * * * * * * * * * * * * * *
+          *  CONSTRUCT HUD
+          * * * * * * * * * * * * * * * * * * * * */
         func initialise (width: Int, height: Int, player: Player) -> SKNode {
             self.player = player
         
@@ -69,7 +76,7 @@ extension GameScene {
             
             // best score
             bestScoreLabelNode.name                     = String("Label")
-            bestScoreLabelNode.text                     = String("27543") // previous best icloud score should be visible in game
+            bestScoreLabelNode.text                     = String(String(describing: bestScore)) // previous best icloud score should be visible in game
             bestScoreLabelNode.fontSize                 = 20
             bestScoreLabelNode.horizontalAlignmentMode  = .left
             bestScoreLabelNode.position                 = CGPoint(x:6, y:28)
@@ -103,7 +110,7 @@ extension GameScene {
             HUDContainer.addChild(finalScoreNode)
             
             highScoreNode.name                          = String("Label")
-            highScoreNode.text                          = String ("HIGH SCORE: [iCloud score]")
+            highScoreNode.text                          = String ("[iCloud score]")
             highScoreNode.fontSize                      = 24
             highScoreNode.horizontalAlignmentMode       = .center
             highScoreNode.fontColor                     = UIColor.clear
@@ -129,37 +136,57 @@ extension GameScene {
             helpImageOne.position                       = CGPoint(x: width / 3, y: height / 2 - 36)
             helpImageOne.size                           = CGSize(width: 24, height: 24)
             helpImageTwo.texture                        = SKTexture(imageNamed: String("AmmoPickup"))
-            helpImageTwo.position                       = CGPoint(x: width / 3, y: height / 2 - 60)
+            helpImageTwo.position                       = CGPoint(x: width / 3, y: height / 2 - 76)
             helpImageTwo.size                           = CGSize(width: 24, height: 24)
-            helpImageThree.texture                      = SKTexture(imageNamed: String("PointsPickup"))
-            helpImageThree.position                     = CGPoint(x: width / 3, y: height / 2 - 84)
+            helpImageThree.texture                      = SKTexture(imageNamed: String("PointsPickup_1"))
+            helpImageThree.position                     = CGPoint(x: width / 3, y: height / 2 - 116)
             helpImageThree.size                         = CGSize(width: 24, height: 24)
+            helpImageFour.texture                       = SKTexture(imageNamed: String("PointsPickup_2"))
+            helpImageFour.position                      = CGPoint(x: width / 3, y: height / 2 - 156)
+            helpImageFour.size                          = CGSize(width: 24, height: 24)
+            helpImageFive.texture                       = SKTexture(imageNamed: String("PointsPickup_3"))
+            helpImageFive.position                      = CGPoint(x: width / 3, y: height / 2 - 196)
+            helpImageFive.size                          = CGSize(width: 24, height: 24)
             
             HUDContainer.addChild(helpImageOne)
             HUDContainer.addChild(helpImageTwo)
             HUDContainer.addChild(helpImageThree)
+            HUDContainer.addChild(helpImageFour)
+            HUDContainer.addChild(helpImageFive)
             
-            helpImageOne.run(SKAction.colorize(with: UIColor.red, colorBlendFactor: 1.0, duration: 0))
-            helpImageTwo.run(SKAction.colorize(with: UIColor.cyan, colorBlendFactor: 1.0, duration: 0))
-            helpImageThree.run(SKAction.colorize(with: UIColor.white, colorBlendFactor: 1.0, duration: 0))
+            helpImageOne.run   (SKAction.colorize(with: UIColor.red,        colorBlendFactor: 1.0, duration: 0))
+            helpImageTwo.run   (SKAction.colorize(with: UIColor.cyan,       colorBlendFactor: 1.0, duration: 0))
+            helpImageThree.run (SKAction.colorize(with: UIColor.gray,       colorBlendFactor: 1.0, duration: 0))
+            helpImageFour.run  (SKAction.colorize(with: UIColor.lightGray,  colorBlendFactor: 1.0, duration: 0))
+            helpImageFive.run  (SKAction.colorize(with: UIColor.white,      colorBlendFactor: 1.0, duration: 0))
             
             helpImageOne.run(SKAction.removeFromParent())
             helpImageTwo.run(SKAction.removeFromParent())
             helpImageThree.run(SKAction.removeFromParent())
+            helpImageFour.run(SKAction.removeFromParent())
+            helpImageFive.run(SKAction.removeFromParent())
             
-            helpLabelOne.text                           = String("health")
-            helpLabelOne.position                       = CGPoint(x: (width / 3) + 46, y : height / 2 - 44)
+            helpLabelOne.text                           = String("-  health")
+            helpLabelOne.position                       = CGPoint(x: (width / 3) + 42, y : height / 2 - 46)
             helpLabelOne.horizontalAlignmentMode        = .left
-            helpLabelTwo.text                           = String("ammo")
-            helpLabelTwo.position                       = CGPoint(x: (width / 3) + 46, y : height / 2 - 70)
+            helpLabelTwo.text                           = String("-  ammo")
+            helpLabelTwo.position                       = CGPoint(x: (width / 3) + 42, y : height / 2 - 86)
             helpLabelTwo.horizontalAlignmentMode        = .left
-            helpLabelThree.text                         = String("points")
-            helpLabelThree.position                     = CGPoint(x: (width / 3) + 46, y : height / 2 - 94)
+            helpLabelThree.text                         = String("-  25 points")
+            helpLabelThree.position                     = CGPoint(x: (width / 3) + 42, y : height / 2 - 126)
             helpLabelThree.horizontalAlignmentMode      = .left
+            helpLabelFour.text                          = String("-  50 points")
+            helpLabelFour.position                      = CGPoint(x: (width / 3) + 42, y : height / 2 - 166)
+            helpLabelFour.horizontalAlignmentMode       = .left
+            helpLabelFive.text                          = String("-  100 points")
+            helpLabelFive.position                      = CGPoint(x: (width / 3) + 42, y : height / 2 - 206)
+            helpLabelFive.horizontalAlignmentMode       = .left
             
             HUDContainer.addChild(helpLabelOne)
             HUDContainer.addChild(helpLabelTwo)
             HUDContainer.addChild(helpLabelThree)
+            HUDContainer.addChild(helpLabelFour)
+            HUDContainer.addChild(helpLabelFive)
             
             // pause alert
             pauseAlertNode.name                         = String("Label")
@@ -175,17 +202,14 @@ extension GameScene {
             return HUDContainer
         }
         
-        func gameEnded () {
-            over = true
-        }
-        
-        func reset () {
-//          score.reset()
-            over = false
-        }
-        
+        /* * * * * * * * * * * * * * * * * * * * *
+         *  UPDATE HUD
+         * * * * * * * * * * * * * * * * * * * * */
         func update (state: Bool, score: Int) {
+            
             // update score label
+            if (score > bestScore) { bestScore = score }
+            bestScoreLabelNode.text = String(bestScore)
             thisScoreLabelNode.text = String(score)
             
             // update health and ammo bars
@@ -197,16 +221,20 @@ extension GameScene {
             if (state) {
                 if (!over) {
                     pauseAlertNode.fontColor = UIColor.white
-                    pauseLabelNode.text      = "resume"
+                    pauseLabelNode.text      = "tap to resume"
                     pauseLabelNode.fontSize  = 28
                     
                     helpLabelOne.fontColor   = UIColor.white
                     helpLabelTwo.fontColor   = UIColor.white
                     helpLabelThree.fontColor = UIColor.white
+                    helpLabelFour.fontColor  = UIColor.white
+                    helpLabelFive.fontColor  = UIColor.white
                     
                     HUDContainer.addChild (helpImageOne)
                     HUDContainer.addChild (helpImageTwo)
                     HUDContainer.addChild (helpImageThree)
+                    HUDContainer.addChild (helpImageFour)
+                    HUDContainer.addChild (helpImageFive)
                 
                 }
             }
@@ -219,19 +247,24 @@ extension GameScene {
                 helpLabelOne.fontColor   = UIColor.clear
                 helpLabelTwo.fontColor   = UIColor.clear
                 helpLabelThree.fontColor = UIColor.clear
+                helpLabelFour.fontColor  = UIColor.clear
+                helpLabelFive.fontColor  = UIColor.clear
                 
                 helpImageOne.run    (SKAction.removeFromParent())
                 helpImageTwo.run    (SKAction.removeFromParent())
                 helpImageThree.run  (SKAction.removeFromParent())
+                helpImageFour.run   (SKAction.removeFromParent())
+                helpImageFive.run   (SKAction.removeFromParent())
             }
             
             // update game over label
             if (over) {
                 // show death screen
                 deathLabelNode.fontColor = UIColor.white
-                finalScoreNode.text      = String("SCORE: \(score)")
-                finalScoreNode.fontColor = UIColor.white
-                highScoreNode.fontColor  = UIColor.white
+                finalScoreNode.text      = String(score)
+                finalScoreNode.fontColor = UIColor.lightGray
+                highScoreNode.text       = String(bestScore)
+                highScoreNode.fontColor  = UIColor.gray
                 
                 // hide everything else
                 bestScoreLabelNode.fontColor = UIColor.clear
@@ -239,6 +272,7 @@ extension GameScene {
                 pauseLabelNode.fontColor     = UIColor.clear
                 healthBarNode.fontColor      = UIColor.clear
                 ammoBarNode.fontColor        = UIColor.clear
+                
             }
                 
             else {
@@ -255,5 +289,19 @@ extension GameScene {
                 ammoBarNode.fontColor        = UIColor.cyan
             }
         }
+    
+        
+        func gameEnded () {
+            over = true
+        }
+        
+        func reset () {
+            //          score.reset()
+            over = false
+        }
+        
+        func flashAmmoBar   () { ammoBarNode.fontColor = UIColor.white }
+        func flashHealthBar () { healthBarNode.fontColor = UIColor.white }
+        func flashScore     () { thisScoreLabelNode.fontColor = UIColor.white }
     }
 }
