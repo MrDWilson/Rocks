@@ -34,7 +34,9 @@ extension GameScene {
         
         // in-game UI
         private let healthBarNode      = SKLabelNode(fontNamed: "Arial")
+        private let healthBarLabel     = SKLabelNode(fontNamed: "Arial")
         private let ammoBarNode        = SKLabelNode(fontNamed: "Arial")
+        private let ammoBarLabel       = SKLabelNode(fontNamed: "Arial")
         private let thisScoreLabelNode = SKLabelNode(fontNamed: "Arial")
         private let bestScoreLabelNode = SKLabelNode(fontNamed: "Arial")
         private var bestScore = 0
@@ -63,6 +65,14 @@ extension GameScene {
             healthBarNode.position                = CGPoint(x: width-10, y: height-24)
             healthBarNode.fontColor               = UIColor.red
             HUDContainer.addChild(healthBarNode)
+           
+            healthBarLabel.name                            = String("Label")
+            healthBarLabel.text                            = String("health")
+            healthBarLabel.fontSize                        = 18
+            healthBarLabel.horizontalAlignmentMode         = .right
+            healthBarLabel.position                        = CGPoint(x: width-10, y: height-42)
+            healthBarLabel.fontColor                       = UIColor.gray
+            HUDContainer.addChild(healthBarLabel)
             
             // ammo bar
             ammoBarNode.name                            = String("Label")
@@ -73,6 +83,14 @@ extension GameScene {
             ammoBarNode.position                        = CGPoint(x: 10, y: height-24)
             ammoBarNode.fontColor                       = UIColor.cyan
             HUDContainer.addChild(ammoBarNode)
+            
+            ammoBarLabel.name                            = String("Label")
+            ammoBarLabel.text                            = String("ammo")
+            ammoBarLabel.fontSize                        = 18
+            ammoBarLabel.horizontalAlignmentMode         = .left
+            ammoBarLabel.position                        = CGPoint(x: 10, y: height-42)
+            ammoBarLabel.fontColor                       = UIColor.gray
+            HUDContainer.addChild(ammoBarLabel)
             
             // best score
             bestScoreLabelNode.name                     = String("Label")
@@ -271,7 +289,9 @@ extension GameScene {
                 thisScoreLabelNode.fontColor = UIColor.clear
                 pauseLabelNode.fontColor     = UIColor.clear
                 healthBarNode.fontColor      = UIColor.clear
+                healthBarLabel.fontColor     = UIColor.clear
                 ammoBarNode.fontColor        = UIColor.clear
+                ammoBarLabel.fontColor       = UIColor.clear
                 
             }
                 
@@ -286,7 +306,9 @@ extension GameScene {
                 thisScoreLabelNode.fontColor = UIColor.lightGray
                 pauseLabelNode.fontColor     = UIColor.lightGray
                 healthBarNode.fontColor      = UIColor.red
+                healthBarLabel.fontColor     = UIColor.gray
                 ammoBarNode.fontColor        = UIColor.cyan
+                ammoBarLabel.fontColor       = UIColor.gray
             }
         }
     
