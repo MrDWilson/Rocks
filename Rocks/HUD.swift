@@ -11,6 +11,8 @@ import SpriteKit
 
 extension GameScene {
     class HUD {
+        // util
+        private let numberMachine = NumberFormatter()
         
         // everything sits in once container
         private let HUDContainer       = SKNode()
@@ -56,6 +58,8 @@ extension GameScene {
         func initialise (width: Int, height: Int, player: Player) -> SKNode {
             self.player = player
         
+            numberMachine.numberStyle = .decimal
+            
             // health bar
             healthBarNode.name                    = String("Label")
             healthBarNode.text                    = String("")
@@ -227,8 +231,8 @@ extension GameScene {
             
             // update score label
             if (score > bestScore) { bestScore = score }
-            bestScoreLabelNode.text = String(bestScore)
-            thisScoreLabelNode.text = String(score)
+            bestScoreLabelNode.text = numberMachine.string(from: NSNumber(value: bestScore))
+            thisScoreLabelNode.text = numberMachine.string(from: NSNumber(value: bestScore))
             
             // update health and ammo bars
             healthBarNode.text = String("")
