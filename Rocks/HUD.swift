@@ -283,9 +283,9 @@ extension GameScene {
             if (over) {
                 // show death screen
                 deathLabelNode.fontColor = UIColor.white
-                finalScoreNode.text      = String(score)
+                finalScoreNode.text      =  numberMachine.string(from: NSNumber(value: score))
                 finalScoreNode.fontColor = UIColor.lightGray
-                highScoreNode.text       = String(bestScore)
+                highScoreNode.text       =  numberMachine.string(from: NSNumber(value: bestScore))
                 highScoreNode.fontColor  = UIColor.gray
                 
                 // hide everything else
