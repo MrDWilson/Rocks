@@ -37,6 +37,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
      *  ENTRY POINT
      * * * * * * * * * * * * * * * * * * * * */
     override func didMove(to view: SKView) {
+    
+        view.shouldCullNonVisibleNodes = true
         
         // set up physics stuff
         physicsWorld.gravity = CGVector (dx: 0.0, dy: 0.0)
@@ -84,33 +86,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // check/set difficulty
         if (player.getScore() > 5000) { difficulty = .Medium }
         if (player.getScore() > 15000) { difficulty = .Hard }
-        
-        if (!isPaused) {
+
+        // get input
+        processUserMotion(forUpdate: currentTime)
             
-            // get input
-            processUserMotion(forUpdate: currentTime)
+        // update game actors
+        asteroids.forEach { $0.update() }
+        powerups.forEach { $0.update() }
+        player.update()
             
-            // update game actors
-            asteroids.forEach { $0.update() }
-            powerups.forEach { $0.update() }
-            player.update()
-            
-            // ensure correct astroid count
-            if (difficulty == .Medium) {
-                if (asteroids.count == Difficulty.Easy.rawValue) {
-                    while (asteroids.count < Difficulty.Medium.rawValue) {
-                        asteroids.append(Asteroid())
-                        clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
-                    }
+        // ensure correct astroid count
+        if (difficulty == .Medium) {
+            if (asteroids.count == Difficulty.Easy.rawValue) {
+                while (asteroids.count < Difficulty.Medium.rawValue) {
+                    asteroids.append(Asteroid())
+                    clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
                 }
             }
+        }
             
-            if (difficulty == .Hard) {
-                if (asteroids.count == Difficulty.Medium.rawValue) {
-                    while (asteroids.count < Difficulty.Hard.rawValue) {
-                        asteroids.append(Asteroid())
-                        clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
-                    }
+        if (difficulty == .Hard) {
+            if (asteroids.count == Difficulty.Medium.rawValue) {
+                while (asteroids.count < Difficulty.Hard.rawValue) {
+                    asteroids.append(Asteroid())
+                    clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
                 }
             }
         }

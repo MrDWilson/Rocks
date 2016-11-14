@@ -160,11 +160,11 @@ extension GameScene {
             helpImageFour.run  (SKAction.colorize(with: UIColor.lightGray,  colorBlendFactor: 1.0, duration: 0))
             helpImageFive.run  (SKAction.colorize(with: UIColor.white,      colorBlendFactor: 1.0, duration: 0))
             
-            helpImageOne.run(SKAction.removeFromParent())
-            helpImageTwo.run(SKAction.removeFromParent())
-            helpImageThree.run(SKAction.removeFromParent())
-            helpImageFour.run(SKAction.removeFromParent())
-            helpImageFive.run(SKAction.removeFromParent())
+            helpImageOne.alpha = 0.0
+            helpImageTwo.alpha = 0.0
+            helpImageThree.alpha = 0.0
+            helpImageFour.alpha = 0.0
+            helpImageFive.alpha = 0.0
             
             helpLabelOne.text                           = String("-  health")
             helpLabelOne.position                       = CGPoint(x: (width / 3) + 42, y : height / 2 - 46)
@@ -230,11 +230,11 @@ extension GameScene {
                     helpLabelFour.fontColor  = UIColor.white
                     helpLabelFive.fontColor  = UIColor.white
                     
-                    HUDContainer.addChild (helpImageOne)
-                    HUDContainer.addChild (helpImageTwo)
-                    HUDContainer.addChild (helpImageThree)
-                    HUDContainer.addChild (helpImageFour)
-                    HUDContainer.addChild (helpImageFive)
+                    helpImageOne.alpha = 1.0
+                    helpImageTwo.alpha = 1.0
+                    helpImageThree.alpha = 1.0
+                    helpImageFour.alpha = 1.0
+                    helpImageFive.alpha = 1.0
                 
                 }
             }
@@ -250,11 +250,11 @@ extension GameScene {
                 helpLabelFour.fontColor  = UIColor.clear
                 helpLabelFive.fontColor  = UIColor.clear
                 
-                helpImageOne.run    (SKAction.removeFromParent())
-                helpImageTwo.run    (SKAction.removeFromParent())
-                helpImageThree.run  (SKAction.removeFromParent())
-                helpImageFour.run   (SKAction.removeFromParent())
-                helpImageFive.run   (SKAction.removeFromParent())
+                helpImageOne.alpha = 0.0
+                helpImageTwo.alpha = 0.0
+                helpImageThree.alpha = 0.0
+                helpImageFour.alpha = 0.0
+                helpImageFive.alpha = 0.0
             }
             
             // update game over label

@@ -27,14 +27,10 @@ extension GameScene {
         
         // LASER HITS ASTEROID
         if (contact.bodyA.node?.name == "laserbeam" && contact.bodyB.node?.name == "asteroid" ) {
-            contact.bodyA.node?.run(SKAction.removeFromParent())
-            
             player.give(points: 25)
             hud.flashScore()
         }
         if (contact.bodyA.node?.name == "asteroid" && contact.bodyB.node?.name == "laserbeam" ) {
-            contact.bodyB.node?.run(SKAction.removeFromParent())
-            
             player.give(points: 25)
             hud.flashScore()
         }

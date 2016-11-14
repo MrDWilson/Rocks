@@ -63,7 +63,7 @@ extension GameScene {
             
             sprite.physicsBody?.allContactedBodies().forEach {
                 if ($0.node?.name == "laserbeam") {
-                    reuse()
+                    destroyed()
                 }
             }
         }
@@ -90,6 +90,16 @@ extension GameScene {
             // reuse
             sprite.position.x = CGFloat(arc4random_uniform(UInt32(xConfine)))
             sprite.position.y = CGFloat(yConfine + Int(arc4random_uniform(200)))
+            
+            /*
+            // FRAME STUTTERS WHEN DESTROYED BY LASER
+            sprite.physicsBody                     = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
+            sprite.physicsBody?.isDynamic          = true
+            sprite.physicsBody?.categoryBitMask    = asteroidCollisionCat
+            sprite.physicsBody?.contactTestBitMask = playerCollisionCat
+            sprite.physicsBody?.collisionBitMask   = playerCollisionCat
+            sprite.physicsBody!.mass               = CGFloat(size)
+            */
             
         }
     }

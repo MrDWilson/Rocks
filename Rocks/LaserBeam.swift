@@ -34,6 +34,12 @@ extension GameScene {
         func update () {
             sprite.position.x += path.dx
             sprite.position.y += path.dy
+            
+            sprite.physicsBody?.allContactedBodies().forEach {
+                if ($0.node?.name == "asteroid") {
+                    cull ()
+                }
+            }
         }
         
         func getPosition () -> CGVector {
