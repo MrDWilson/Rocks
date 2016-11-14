@@ -232,7 +232,7 @@ extension GameScene {
             // update score label
             if (score > bestScore) { bestScore = score }
             bestScoreLabelNode.text = numberMachine.string(from: NSNumber(value: bestScore))
-            thisScoreLabelNode.text = numberMachine.string(from: NSNumber(value: bestScore))
+            thisScoreLabelNode.text = numberMachine.string(from: NSNumber(value: score))
             
             // update health and ammo bars
             healthBarNode.text = String("")
