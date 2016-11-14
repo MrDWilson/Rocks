@@ -51,6 +51,7 @@ extension GameScene {
         func resetAt (x: Int, y: Int) {
             exploding = false
             restingY  = y
+
             
             // reassemble pieces
 
@@ -77,7 +78,7 @@ extension GameScene {
             sprite.size.height = 42                     // reset size after adding sprite
             sprite.position    = CGPoint(x: x, y: y)    // reset position
             //sprite.zRotation   = 0                      // Reset orientation
-            sprite.physicsBody!.allowsRotation = false  // Stop spinning
+            sprite.isHidden = false
             
             colourChangeArray.removeAll()
             sprite.run(SKAction.colorize(with: UIColor.clear, colorBlendFactor: 0, duration: 0.1))
@@ -293,8 +294,7 @@ extension GameScene {
                  * BREAK TO PIECES
                  */
                 // turn normal sprite (kind of) invisible
-                sprite.size.width = 1
-                sprite.size.height = 1
+                sprite.isHidden = true
                 
                 // show the pieces
                 resetFragmentedPieces()

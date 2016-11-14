@@ -26,7 +26,7 @@ class GameViewController: UIViewController {
                 view.presentScene(scene)
             }
             
-            view.ignoresSiblingOrder = true
+            view.isAsynchronous = true
             
             view.showsFPS = true
            // view.showsNodeCount = true

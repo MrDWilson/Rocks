@@ -10,13 +10,19 @@
 import SpriteKit
 
 extension GameScene {
+
     class Asteroid {
         private let sprite  = SKSpriteNode(color: UIColor.brown, size: CGSize(width: 10, height: 10))
         private var size    = 2 + Int(arc4random_uniform(8))
-    
-        private let velocity:CGVector = CGVector(dx: 0, dy: 0 - (2 + Int(arc4random_uniform(6))))
+        private let velocity = CGVector(dx: 0, dy: 0 - (2 + Int(arc4random_uniform(6))))
+        
+        private let textureStates = [SKTexture]()
+        private let physicsStates = [SKPhysicsBody]()
+        
         private var xConfine:Int      = 1080
         private var yConfine:Int      = 1920 // 6 plus default
+        
+        private let stateCache = NSCache<SKTexture, SKPhysicsBody>()
         
         private var textureCache: TextureCache!
         
@@ -38,12 +44,13 @@ extension GameScene {
             sprite.texture = textureCache.getCached(key: String("Asteroid_" + String(describing: ting)))
             
             // Give physics components
-            sprite.physicsBody                     = SKPhysicsBody(circleOfRadius: sprite.size.width / 2)
+            sprite.physicsBody                     = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
             sprite.physicsBody?.isDynamic          = true
             sprite.physicsBody?.categoryBitMask    = asteroidCollisionCat
             sprite.physicsBody?.contactTestBitMask = playerCollisionCat
             sprite.physicsBody?.collisionBitMask   = playerCollisionCat
             sprite.physicsBody!.mass               = CGFloat(size)
+            sprite.physicsBody?.allowsRotation     = true
             
             // move to back or render queue
             sprite.zPosition = -1
@@ -80,27 +87,15 @@ extension GameScene {
         
         private func reuse () {
         
-            // randomise size
+            // randomise appearence
             size          = 2 + Int(arc4random_uniform(8))
             sprite.xScale = CGFloat(size)
             sprite.yScale = CGFloat(size)
-            
-            // randomise appearence
-            let ting         = 1 + Int(arc4random_uniform(4))
-            sprite.texture   = textureCache.getCached(key: String("Asteroid_" + String(describing: ting)))
             sprite.zRotation = CGFloat (arc4random_uniform(360))
             
             // reuse
             sprite.position.x = CGFloat(arc4random_uniform(UInt32(xConfine)))
             sprite.position.y = CGFloat(yConfine + Int(arc4random_uniform(200)))
-            
-            // FRAME STUTTERS WHEN DESTROYED BY LASER
-            sprite.physicsBody                     = SKPhysicsBody(circleOfRadius: sprite.size.width / 2)
-            sprite.physicsBody?.isDynamic          = true
-            sprite.physicsBody?.categoryBitMask    = asteroidCollisionCat
-            sprite.physicsBody?.contactTestBitMask = playerCollisionCat
-            sprite.physicsBody?.collisionBitMask   = playerCollisionCat
-            sprite.physicsBody!.mass               = CGFloat(size)
 
         }
     }
