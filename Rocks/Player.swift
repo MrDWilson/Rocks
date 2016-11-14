@@ -24,7 +24,7 @@ extension GameScene {
         private let dstSprite_BackBody  = SKSpriteNode ()
         private var backBodyVelocity    = CGVector     (dx: -1, dy: 4)
         private let explosionEffect     = SKEmitterNode(fileNamed: "ExplosionParticle.sks")
-        private let thrusterEffect      = SKEmitterNode(fileNamed: "ThrusterParticle.sks")
+        private let thrusterEffect      = SKEmitterNode(fileNamed: "ThrusterParticle_" + String(describing: (1 + arc4random_uniform(5))) + ".sks")
         private var colourChangeArray   = [SKAction]()
         
         // the admin
@@ -150,7 +150,7 @@ extension GameScene {
             // Give Name, Position
             sprite.name                                         = name
             sprite.position                                     = CGPoint(x: x , y: y)
-            sprite.texture                                      = SKTexture(imageNamed: "Ship") // add spaceship texture to sprite
+            sprite.texture                                      = SKTexture(imageNamed: "Ship_1") // add spaceship texture to sprite
             sprite.size.width                                   = 42
             sprite.size.height                                  = 42
             

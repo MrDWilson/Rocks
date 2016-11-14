@@ -44,7 +44,7 @@ extension GameScene {
             if (player.getHealth() == 0) {
                 // bzzz
                 if(!player.isExploding()) {
-                    //AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+                    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                 }
                 
                 player.spin()     // player node should be stationary,

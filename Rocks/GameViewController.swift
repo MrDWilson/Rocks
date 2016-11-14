@@ -26,12 +26,12 @@ class GameViewController: UIViewController {
                 view.presentScene(scene)
             }
             
-            view.isAsynchronous = true
+            //view.isAsynchronous = true
             
             view.showsFPS = true
-           // view.showsNodeCount = true
-           // view.showsDrawCount = true
-            view.showsPhysics = true
+            view.showsNodeCount = true
+            view.showsDrawCount = true
+           // view.showsPhysics = true
             
             
         }

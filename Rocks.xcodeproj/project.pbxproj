@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62750FEC1DDA580F00358E4A /* ThrusterParticle_1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62750FEA1DDA580F00358E4A /* ThrusterParticle_1.sks */; };
+		62750FED1DDA580F00358E4A /* ThrusterParticle_2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62750FEB1DDA580F00358E4A /* ThrusterParticle_2.sks */; };
+		62750FF11DDA5B8C00358E4A /* ThrusterParticle_4.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62750FEE1DDA5B8C00358E4A /* ThrusterParticle_4.sks */; };
+		62750FF21DDA5B8C00358E4A /* ThrusterParticle_5.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62750FEF1DDA5B8C00358E4A /* ThrusterParticle_5.sks */; };
+		62750FF31DDA5B8C00358E4A /* ThrusterParticle_6.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62750FF01DDA5B8C00358E4A /* ThrusterParticle_6.sks */; };
 		62798A681DD8AAEF001F1DA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62798A531DD8AAEF001F1DA8 /* AppDelegate.swift */; };
 		62798A691DD8AAEF001F1DA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62798A541DD8AAEF001F1DA8 /* Assets.xcassets */; };
 		62798A6A1DD8AAEF001F1DA8 /* Asteroid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62798A551DD8AAEF001F1DA8 /* Asteroid.swift */; };
@@ -24,7 +29,7 @@
 		62798A771DD8AAEF001F1DA8 /* Powerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62798A621DD8AAEF001F1DA8 /* Powerup.swift */; };
 		62798A781DD8AAEF001F1DA8 /* Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62798A641DD8AAEF001F1DA8 /* Save.swift */; };
 		62798A791DD8AAEF001F1DA8 /* TextureCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62798A651DD8AAEF001F1DA8 /* TextureCache.swift */; };
-		62798A7A1DD8AAEF001F1DA8 /* ThrusterParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62798A661DD8AAEF001F1DA8 /* ThrusterParticle.sks */; };
+		62798A7A1DD8AAEF001F1DA8 /* ThrusterParticle_3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62798A661DD8AAEF001F1DA8 /* ThrusterParticle_3.sks */; };
 		6294E0C51DD8AD5200191D1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6294E0C31DD8AD5200191D1A /* Main.storyboard */; };
 		6294E0C61DD8AD5200191D1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6294E0C41DD8AD5200191D1A /* LaunchScreen.storyboard */; };
 		CE5B26011DD02ACE00A0AB64 /* RocksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B26001DD02ACE00A0AB64 /* RocksTests.swift */; };
@@ -49,6 +54,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		62750FEA1DDA580F00358E4A /* ThrusterParticle_1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = ThrusterParticle_1.sks; path = Rocks/ThrusterParticle_1.sks; sourceTree = SOURCE_ROOT; };
+		62750FEB1DDA580F00358E4A /* ThrusterParticle_2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = ThrusterParticle_2.sks; path = Rocks/ThrusterParticle_2.sks; sourceTree = SOURCE_ROOT; };
+		62750FEE1DDA5B8C00358E4A /* ThrusterParticle_4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = ThrusterParticle_4.sks; path = Rocks/ThrusterParticle_4.sks; sourceTree = SOURCE_ROOT; };
+		62750FEF1DDA5B8C00358E4A /* ThrusterParticle_5.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = ThrusterParticle_5.sks; path = Rocks/ThrusterParticle_5.sks; sourceTree = SOURCE_ROOT; };
+		62750FF01DDA5B8C00358E4A /* ThrusterParticle_6.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = ThrusterParticle_6.sks; path = Rocks/ThrusterParticle_6.sks; sourceTree = SOURCE_ROOT; };
 		62798A521DD8AAEF001F1DA8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Rocks/Info.plist; sourceTree = SOURCE_ROOT; };
 		62798A531DD8AAEF001F1DA8 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Rocks/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		62798A541DD8AAEF001F1DA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Rocks/Assets.xcassets; sourceTree = SOURCE_ROOT; };
@@ -68,7 +78,7 @@
 		62798A631DD8AAEF001F1DA8 /* Rocks.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = Rocks.entitlements; path = Rocks/Rocks.entitlements; sourceTree = SOURCE_ROOT; };
 		62798A641DD8AAEF001F1DA8 /* Save.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Save.swift; path = Rocks/Save.swift; sourceTree = SOURCE_ROOT; };
 		62798A651DD8AAEF001F1DA8 /* TextureCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextureCache.swift; path = Rocks/TextureCache.swift; sourceTree = SOURCE_ROOT; };
-		62798A661DD8AAEF001F1DA8 /* ThrusterParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = ThrusterParticle.sks; path = Rocks/ThrusterParticle.sks; sourceTree = SOURCE_ROOT; };
+		62798A661DD8AAEF001F1DA8 /* ThrusterParticle_3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = ThrusterParticle_3.sks; path = Rocks/ThrusterParticle_3.sks; sourceTree = SOURCE_ROOT; };
 		6294E0C31DD8AD5200191D1A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Rocks/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		6294E0C41DD8AD5200191D1A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Rocks/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		62F97BB71DD0DF6A00CD8C4F /* Screens */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Screens; sourceTree = SOURCE_ROOT; };
@@ -150,7 +160,12 @@
 				62798A631DD8AAEF001F1DA8 /* Rocks.entitlements */,
 				62798A641DD8AAEF001F1DA8 /* Save.swift */,
 				62798A651DD8AAEF001F1DA8 /* TextureCache.swift */,
-				62798A661DD8AAEF001F1DA8 /* ThrusterParticle.sks */,
+				62750FEA1DDA580F00358E4A /* ThrusterParticle_1.sks */,
+				62750FEB1DDA580F00358E4A /* ThrusterParticle_2.sks */,
+				62798A661DD8AAEF001F1DA8 /* ThrusterParticle_3.sks */,
+				62750FEE1DDA5B8C00358E4A /* ThrusterParticle_4.sks */,
+				62750FEF1DDA5B8C00358E4A /* ThrusterParticle_5.sks */,
+				62750FF01DDA5B8C00358E4A /* ThrusterParticle_6.sks */,
 				62F97BB71DD0DF6A00CD8C4F /* Screens */,
 			);
 			name = Rocks;
@@ -286,11 +301,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62798A7A1DD8AAEF001F1DA8 /* ThrusterParticle.sks in Resources */,
+				62750FF21DDA5B8C00358E4A /* ThrusterParticle_5.sks in Resources */,
+				62798A7A1DD8AAEF001F1DA8 /* ThrusterParticle_3.sks in Resources */,
 				6294E0C51DD8AD5200191D1A /* Main.storyboard in Resources */,
 				62798A691DD8AAEF001F1DA8 /* Assets.xcassets in Resources */,
+				62750FF11DDA5B8C00358E4A /* ThrusterParticle_4.sks in Resources */,
 				6294E0C61DD8AD5200191D1A /* LaunchScreen.storyboard in Resources */,
 				62798A701DD8AAEF001F1DA8 /* GameScene.sks in Resources */,
+				62750FEC1DDA580F00358E4A /* ThrusterParticle_1.sks in Resources */,
+				62750FF31DDA5B8C00358E4A /* ThrusterParticle_6.sks in Resources */,
+				62750FED1DDA580F00358E4A /* ThrusterParticle_2.sks in Resources */,
 				62798A6F1DD8AAEF001F1DA8 /* ExplosionParticle.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,6 +483,7 @@
 		CE5B26111DD02ACE00A0AB64 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -480,6 +501,7 @@
 		CE5B26121DD02ACE00A0AB64 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
