@@ -65,7 +65,7 @@ extension GameScene {
             sprite.position.y += velocity.dy
             
             // works absolutely fine
-            if (sprite.position.y < 0 - sprite.size.height) {
+            if (sprite.position.y < 0 - (sprite.size.height * 2)) {
                 reuse()
             }
             
