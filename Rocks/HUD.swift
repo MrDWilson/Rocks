@@ -34,7 +34,9 @@ extension GameScene {
         
         // in-game UI
         private let healthBarNode      = SKLabelNode(fontNamed: "Arial")
+        private let healthBarLabel     = SKLabelNode(fontNamed: "Arial")
         private let ammoBarNode        = SKLabelNode(fontNamed: "Arial")
+        private let ammoBarLabel       = SKLabelNode(fontNamed: "Arial")
         private let thisScoreLabelNode = SKLabelNode(fontNamed: "Arial")
         private let bestScoreLabelNode = SKLabelNode(fontNamed: "Arial")
         private var bestScore = 0
@@ -69,6 +71,14 @@ extension GameScene {
             healthBarNode.fontColor               = UIColor.red
             HUDContainer.addChild(healthBarNode)
             
+            healthBarLabel.name                            = String("Label")
+            healthBarLabel.text                            = String("health")
+            healthBarLabel.fontSize                        = 18
+            healthBarLabel.horizontalAlignmentMode         = .right
+            healthBarLabel.position                        = CGPoint(x: width-10, y: height-42)
+            healthBarLabel.fontColor                       = UIColor.gray
+            HUDContainer.addChild(healthBarLabel)
+            
             // ammo bar
             ammoBarNode.name                            = String("Label")
             ammoBarNode.text                            = String("")
@@ -78,6 +88,14 @@ extension GameScene {
             ammoBarNode.position                        = CGPoint(x: 10, y: height-24)
             ammoBarNode.fontColor                       = UIColor.cyan
             HUDContainer.addChild(ammoBarNode)
+            
+            ammoBarLabel.name                            = String("Label")
+            ammoBarLabel.text                            = String("ammo")
+            ammoBarLabel.fontSize                        = 18
+            ammoBarLabel.horizontalAlignmentMode         = .left
+            ammoBarLabel.position                        = CGPoint(x: 10, y: height-42)
+            ammoBarLabel.fontColor                       = UIColor.gray
+            HUDContainer.addChild(ammoBarLabel)
             
             // best score
             bestScoreLabelNode.name                     = String("Label")
@@ -124,7 +142,7 @@ extension GameScene {
             
             // make pause button
             pauseButtonNode.position                    = CGPoint(x: width/2, y: 6)
-            pauseButtonNode.size                        = CGSize(width: width, height: 225)
+            pauseButtonNode.size                        = CGSize(width: width/4, height: 100)
             pauseButtonNode.name                        = "PauseButton"
             HUDContainer.addChild(pauseButtonNode)
             
@@ -165,11 +183,12 @@ extension GameScene {
             helpImageFour.run  (SKAction.colorize(with: UIColor.lightGray,  colorBlendFactor: 1.0, duration: 0))
             helpImageFive.run  (SKAction.colorize(with: UIColor.white,      colorBlendFactor: 1.0, duration: 0))
             
-            helpImageOne.run(SKAction.removeFromParent())
-            helpImageTwo.run(SKAction.removeFromParent())
-            helpImageThree.run(SKAction.removeFromParent())
-            helpImageFour.run(SKAction.removeFromParent())
-            helpImageFive.run(SKAction.removeFromParent())
+            
+            helpImageOne.alpha = 0.0
+            helpImageTwo.alpha = 0.0
+            helpImageThree.alpha = 0.0
+            helpImageFour.alpha = 0.0
+            helpImageFive.alpha = 0.0
             
             helpLabelOne.text                           = String("-  health")
             helpLabelOne.position                       = CGPoint(x: (width / 3) + 42, y : height / 2 - 46)
@@ -235,11 +254,11 @@ extension GameScene {
                     helpLabelFour.fontColor  = UIColor.white
                     helpLabelFive.fontColor  = UIColor.white
                     
-                    HUDContainer.addChild (helpImageOne)
-                    HUDContainer.addChild (helpImageTwo)
-                    HUDContainer.addChild (helpImageThree)
-                    HUDContainer.addChild (helpImageFour)
-                    HUDContainer.addChild (helpImageFive)
+                    helpImageOne.alpha = 1.0
+                    helpImageTwo.alpha = 1.0
+                    helpImageThree.alpha = 1.0
+                    helpImageFour.alpha = 1.0
+                    helpImageFive.alpha = 1.0
                 
                 }
             }
@@ -255,11 +274,11 @@ extension GameScene {
                 helpLabelFour.fontColor  = UIColor.clear
                 helpLabelFive.fontColor  = UIColor.clear
                 
-                helpImageOne.run    (SKAction.removeFromParent())
-                helpImageTwo.run    (SKAction.removeFromParent())
-                helpImageThree.run  (SKAction.removeFromParent())
-                helpImageFour.run   (SKAction.removeFromParent())
-                helpImageFive.run   (SKAction.removeFromParent())
+                helpImageOne.alpha = 0.0
+                helpImageTwo.alpha = 0.0
+                helpImageThree.alpha = 0.0
+                helpImageFour.alpha = 0.0
+                helpImageFive.alpha = 0.0
             }
             
             // update game over label
@@ -272,11 +291,14 @@ extension GameScene {
                 highScoreNode.fontColor  = UIColor.gray
                 
                 // hide everything else
+                // hide everything else
                 bestScoreLabelNode.fontColor = UIColor.clear
                 thisScoreLabelNode.fontColor = UIColor.clear
                 pauseLabelNode.fontColor     = UIColor.clear
                 healthBarNode.fontColor      = UIColor.clear
+                healthBarLabel.fontColor     = UIColor.clear
                 ammoBarNode.fontColor        = UIColor.clear
+                ammoBarLabel.fontColor       = UIColor.clear
                 
             }
                 
@@ -291,7 +313,9 @@ extension GameScene {
                 thisScoreLabelNode.fontColor = UIColor.lightGray
                 pauseLabelNode.fontColor     = UIColor.lightGray
                 healthBarNode.fontColor      = UIColor.red
+                healthBarLabel.fontColor     = UIColor.gray
                 ammoBarNode.fontColor        = UIColor.cyan
+                ammoBarLabel.fontColor       = UIColor.gray
             }
         }
     
