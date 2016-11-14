@@ -38,7 +38,7 @@ extension GameScene {
             sprite.texture = textureCache.getCached(key: String("Asteroid_" + String(describing: ting)))
             
             // Give physics components
-            sprite.physicsBody                     = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
+            sprite.physicsBody                     = SKPhysicsBody(circleOfRadius: sprite.size.width / 2)
             sprite.physicsBody?.isDynamic          = true
             sprite.physicsBody?.categoryBitMask    = asteroidCollisionCat
             sprite.physicsBody?.contactTestBitMask = playerCollisionCat
@@ -57,10 +57,12 @@ extension GameScene {
             sprite.position.x += velocity.dx
             sprite.position.y += velocity.dy
             
+            // works absolutely fine
             if (sprite.position.y < 0 - sprite.size.height) {
                 reuse()
             }
             
+            // frame drop
             sprite.physicsBody?.allContactedBodies().forEach {
                 if ($0.node?.name == "laserbeam") {
                     destroyed()
@@ -77,6 +79,7 @@ extension GameScene {
         }
         
         private func reuse () {
+        
             // randomise size
             size          = 2 + Int(arc4random_uniform(8))
             sprite.xScale = CGFloat(size)
@@ -91,16 +94,14 @@ extension GameScene {
             sprite.position.x = CGFloat(arc4random_uniform(UInt32(xConfine)))
             sprite.position.y = CGFloat(yConfine + Int(arc4random_uniform(200)))
             
-            /*
             // FRAME STUTTERS WHEN DESTROYED BY LASER
-            sprite.physicsBody                     = SKPhysicsBody(texture: sprite.texture!, size: sprite.size)
+            sprite.physicsBody                     = SKPhysicsBody(circleOfRadius: sprite.size.width / 2)
             sprite.physicsBody?.isDynamic          = true
             sprite.physicsBody?.categoryBitMask    = asteroidCollisionCat
             sprite.physicsBody?.contactTestBitMask = playerCollisionCat
             sprite.physicsBody?.collisionBitMask   = playerCollisionCat
             sprite.physicsBody!.mass               = CGFloat(size)
-            */
-            
+
         }
     }
 }

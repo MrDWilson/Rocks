@@ -27,10 +27,12 @@ extension GameScene {
         
         // LASER HITS ASTEROID
         if (contact.bodyA.node?.name == "laserbeam" && contact.bodyB.node?.name == "asteroid" ) {
+           // contact.bodyA.node?.removeFromParent()
             player.give(points: 25)
             hud.flashScore()
         }
         if (contact.bodyA.node?.name == "asteroid" && contact.bodyB.node?.name == "laserbeam" ) {
+           // contact.bodyB.node?.removeFromParent()
             player.give(points: 25)
             hud.flashScore()
         }
@@ -42,7 +44,7 @@ extension GameScene {
             if (player.getHealth() == 0) {
                 // bzzz
                 if(!player.isExploding()) {
-                    AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+                    //AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                 }
                 
                 player.spin()     // player node should be stationary,
@@ -51,7 +53,7 @@ extension GameScene {
                 
                 hud.gameEnded()
                 hud.update(state: isPaused, score: player.getScore()) // HUD needs to be updated before a pause
-                playing  = false
+                playing = false
                 
                 //blur()
                 
