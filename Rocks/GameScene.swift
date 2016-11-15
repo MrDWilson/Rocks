@@ -87,19 +87,45 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
      * * * * * * * * * * * * * * * * * * * * */
     override func update(_ currentTime: TimeInterval) {
         userInterface.update(state: state)
-
+        
         switch (state) {
             case .MainMenu:
+            
                 updateMainMenu()
+                
                 break
-            case .Running:
+            case .Customise:
+                
+                player.update()
+            
+                break
+            case .Leaderboard:
+                
+                
+            
+                break
+            case .Options:
+                
+                
+                
+                break
+            case .About:
+            
+                break
+            case .InGame:
+                
                 updateRunning(currentTime: currentTime)
+                
                 break
             case .Paused:
+                
                 updatePaused()
+                
                 break
             case .GameOver:
+                
                 updateGameOver(currentTime: currentTime)
+                
                 break
         }
     }

@@ -13,10 +13,17 @@ extension GameScene {
     class MainMenu: SKNode {
         private let title = SKLabelNode()
         
-        private let customise   = SKLabelNode()
-        private let leaderboard = SKLabelNode()
-        private let options     = SKLabelNode()
-        private let about       = SKLabelNode()
+        private let customiseLabel   = SKLabelNode()
+        private let customiseButton  = SKSpriteNode()
+        
+        private let leaderboardLabel  = SKLabelNode()
+        private let leaderboardButton = SKSpriteNode()
+        
+        private let optionsLabel   = SKLabelNode()
+        private let optionsButton  = SKSpriteNode()
+        
+        private let aboutLabel   = SKLabelNode()
+        private let aboutButton    = SKSpriteNode()
         
         private let player: Player!
         
@@ -37,34 +44,57 @@ extension GameScene {
             title.position = CGPoint(x: w / 2, y: Int(Double(screenHeight) * 0.82))
             addChild(title)
             
-            customise.text = String("customise ship")
-            customise.fontSize = 28
-            customise.horizontalAlignmentMode = .center
-            customise.fontColor = UIColor.lightGray
-            customise.position = CGPoint(x: w / 2, y: Int(Double(screenHeight) * 0.35))
-            addChild(customise)
+            customiseLabel.text = String("customise ship")
+            customiseLabel.fontSize = 28
+            customiseLabel.horizontalAlignmentMode = .center
+            customiseLabel.fontColor = UIColor.lightGray
+            customiseLabel.position = CGPoint(x: w / 2, y: Int(Double(screenHeight) * 0.35))
+            addChild(customiseLabel)
             
-            leaderboard.text = String("leaderboard")
-            leaderboard.fontSize = 28
-            leaderboard.horizontalAlignmentMode = .center
-            leaderboard.fontColor = UIColor.lightGray
-            leaderboard.position = CGPoint(x: w / 2, y: Int(Double(screenHeight) * 0.27))
-            addChild(leaderboard)
+            customiseButton.name = String("customiseButton")
+            customiseButton.size = CGSize(width: w * 2, height: 42)
+            customiseButton.color = UIColor.clear
+            customiseButton.position = CGPoint(x: 0, y: Int(Double(screenHeight) * 0.35))
+            addChild(customiseButton)
             
-            options.text = String("options")
-            options.fontSize = 28
-            options.horizontalAlignmentMode = .center
-            options.fontColor = UIColor.lightGray
-            options.position = CGPoint(x: w / 2, y: Int(Double(screenHeight) * 0.19))
+            leaderboardLabel.text = String("leaderboard")
+            leaderboardLabel.fontSize = 28
+            leaderboardLabel.horizontalAlignmentMode = .center
+            leaderboardLabel.fontColor = UIColor.lightGray
+            leaderboardLabel.position = CGPoint(x: w / 2, y: Int(Double(screenHeight) * 0.27))
+            addChild(leaderboardLabel)
             
-            addChild(options)
+            leaderboardButton.name = String("leaderboardButton")
+            leaderboardButton.size = CGSize(width: w * 2, height: 42)
+            leaderboardButton.color = UIColor.clear
+            leaderboardButton.position = CGPoint(x: 0, y: Int(Double(screenHeight) * 0.27))
+            addChild(leaderboardButton)
             
-            about.text = String("about")
-            about.fontSize = 28
-            about.horizontalAlignmentMode = .center
-            about.fontColor = UIColor.lightGray
-            about.position = CGPoint(x: w / 2, y: Int(Double(screenHeight) * 0.11))
-            addChild(about)
+            optionsLabel.text = String("options")
+            optionsLabel.fontSize = 28
+            optionsLabel.horizontalAlignmentMode = .center
+            optionsLabel.fontColor = UIColor.lightGray
+            optionsLabel.position = CGPoint(x: w / 2, y: Int(Double(screenHeight) * 0.19))
+            addChild(optionsLabel)
+            
+            optionsButton.name = String("optionsButton")
+            optionsButton.size = CGSize(width: w * 2, height: 42)
+            optionsButton.color = UIColor.clear
+            optionsButton.position = CGPoint(x: 0, y: Int(Double(screenHeight) * 0.19))
+            addChild(optionsButton)
+            
+            aboutLabel.text = String("about")
+            aboutLabel.fontSize = 28
+            aboutLabel.horizontalAlignmentMode = .center
+            aboutLabel.fontColor = UIColor.lightGray
+            aboutLabel.position = CGPoint(x: w / 2, y: Int(Double(screenHeight) * 0.11))
+            addChild(aboutLabel)
+            
+            aboutButton.name = String("aboutButton")
+            aboutButton.size = CGSize(width: w * 2, height: 42)
+            aboutButton.color = UIColor.clear
+            aboutButton.position = CGPoint(x: 0, y: Int(Double(screenHeight) * 0.11))
+            addChild(aboutButton)
 
         }
         

@@ -27,6 +27,7 @@ extension GameScene {
             
             sprite.position.x = origin.dx
             sprite.position.y = origin.dy
+            sprite.zPosition = -3
             
             return sprite
         }

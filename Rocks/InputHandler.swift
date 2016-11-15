@@ -23,23 +23,47 @@ extension GameScene {
             // switch on game state
             switch (state) {
                 case .MainMenu:
-                    state = .Running
+                    if (node.name == "customiseButton") {
+                        state = .Customise
+                        player.grow()
+                    } else if (node.name == "leaderboardButton") {
+                        state = .Leaderboard
+                    } else if (node.name == "optionsButton") {
+                        state = .Options
+                    } else if (node.name == "aboutButton") {
+                        state = .About
+                    } else {
+                        state = .InGame
+                    }
                     break
-                case .Running:
+                case .Customise:
+                    state = .MainMenu
+                    player.shrink()
+                    break
+                case .Leaderboard:
+                    state = .MainMenu
+                    break
+                case .Options:
+                    state = .MainMenu
+                    break
+                case .About:
+                    state = .MainMenu
+                    break
+                case .InGame:
                     if (node.name == "PauseButton") {
                         state = .Paused
                         userInterface.update(state: state) // always update UI before pausing Subsystem
                         blur()
                         isPaused = true
                     }
-                    
+                        
                     else {
                         player.fireLaser()
                     }
                     
                     break
                 case .Paused:
-                    state = .Running
+                    state = .InGame
                     isPaused = false
                     unblur()
                     break
@@ -47,9 +71,9 @@ extension GameScene {
                     state = .MainMenu
                     resetGame()
                     break
-                }
             }
         }
+    }
     
     /* * * * * * * * * * * * * * * * * * * * *
      *  ON - MOTION

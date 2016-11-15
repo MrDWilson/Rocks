@@ -27,6 +27,26 @@ extension GameScene {
         func flashAmmoBar   () { gameHUD.flashAmmoBar() }
         func flashHealthBar () { gameHUD.flashHealthBar() }
         
+        func showCustomiseMenu () {
+            mainMenu.isHidden = true
+            print("Customise")
+        }
+        
+        func showLeaderboard () {
+            mainMenu.isHidden = true
+            print("Leaderboard")
+        }
+        
+        func showOptions () {
+            mainMenu.isHidden = true
+            print("Options")
+        }
+        
+        func showAbout () {
+            mainMenu.isHidden = true
+            print("About")
+        }
+        
         init (width: Int, height: Int, player: Player, highScore: Int) {
             self.player = player
             self.screenWidth = width
@@ -66,12 +86,30 @@ extension GameScene {
                     mainMenu.isHidden = false
                     mainMenu.update()
                     break
-                case .Running:
+                case .Customise:
+                    // animate player
+                    player.move(to: CGPoint(x: screenWidth / 2, y: Int(Double(screenHeight) * 0.82)))
+                    
+                    showCustomiseMenu()
+                    break
+                case .Leaderboard:
+                    showLeaderboard()
+                    break
+                case .Options:
+                    showOptions()
+                    break
+                case .About:
+                    showAbout()
+                    break
+                case .InGame:
                     mainMenu.isHidden = true
                     pauseMenu.isHidden = true
+                    
+                    // animate player
                     if (Int(player.getPosition().y) < (Int(screenHeight / 4) + 24)) {
                         gameHUD.isHidden = false
                     }
+                    
                     gameHUD.update()
                     break
                 case .Paused:

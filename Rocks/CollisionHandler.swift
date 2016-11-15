@@ -41,7 +41,7 @@ extension GameScene {
         if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "asteroid" ) ||
            (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == "asteroid" ) {
             
-            if (player.getHealth() == 1) && (state == .Running) {
+            if (player.getHealth() == 1) && (state == .InGame) {
                 state = .GameOver
                 
                 // bzzz
@@ -85,7 +85,7 @@ extension GameScene {
             contact.bodyB.applyImpulse(contact.contactNormal, at: contact.contactPoint)
         }
         
-        if (state == .Running) {
+        if (state == .InGame) {
             // PLAYER HITS HEALTH PICKUP
             if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "HealthPickup" ) {
                 player.pickupHealth()

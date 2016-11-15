@@ -49,6 +49,16 @@ extension GameScene {
         func moveLeft    () { velocity.dx -= 10 }
         func move        (to: CGPoint) { sprite.position = to }
         
+        func grow () {
+            sprite.xScale = 1.8
+            sprite.yScale = 1.8
+        }
+        
+        func shrink () {
+            sprite.xScale = 1.0
+            sprite.yScale = 1.0
+        }
+        
         func resetAt (x: Int, y: Int) {
             exploding = false
             restingY  = y
@@ -80,8 +90,8 @@ extension GameScene {
             sprite.addChild(thrusterEffect!)
             
             // move, reset rotation
-            sprite.size.width  = 42                     // reset size after adding sprite
-            sprite.size.height = 42                     // reset size after adding sprite
+            sprite.xScale = 1.0
+            sprite.yScale = 1.0
             sprite.position    = CGPoint(x: x, y: y)    // reset position
             //sprite.zRotation   = 0                      // Reset orientation
             sprite.isHidden = false

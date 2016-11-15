@@ -9,9 +9,13 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 extension GameScene {
     enum GameState : Int {
-        case MainMenu = 0
-        case Running  = 1
-        case Paused   = 2
-        case GameOver = 3
+        case MainMenu    = 0
+        case Customise   = 1
+        case Leaderboard = 2
+        case Options     = 3
+        case About       = 4
+        case InGame      = 5
+        case Paused      = 6
+        case GameOver    = 7
     }
 }
