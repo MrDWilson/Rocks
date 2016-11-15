@@ -24,7 +24,7 @@ extension GameScene {
         private let dstSprite_BackBody  = SKSpriteNode ()
         private var backBodyVelocity    = CGVector     (dx: -1, dy: 4)
         private let explosionEffect     = SKEmitterNode(fileNamed: "ExplosionParticle.sks")
-        private let thrusterEffect      = SKEmitterNode(fileNamed: "ThrusterParticle_" + String(describing: (1 + arc4random_uniform(5))) + ".sks")
+        private var thrusterEffect      = SKEmitterNode(fileNamed: "ThrusterParticle_" + String(describing: (1 + arc4random_uniform(7))) + ".sks")
         private var colourChangeArray   = [SKAction]()
         
         // the admin
@@ -54,7 +54,7 @@ extension GameScene {
 
             
             // reassemble pieces
-
+            
             
             dstSprite_LeftWing.removeFromParent  ()
             dstSprite_RightWing.removeFromParent ()
@@ -66,12 +66,17 @@ extension GameScene {
             // kill explosion and start thrust
             explosionEffect?.removeFromParent ()          // delete particle effec
             explosionEffect?.resetSimulation  ()
-        
-            sprite.addChild(thrusterEffect!)
             
             // reset health and ammo
             health = HEALTH_MAX
             ammo   = AMMO_MAX
+            
+            colourChangeArray.removeAll()
+            sprite.run(SKAction.colorize(with: UIColor.clear, colorBlendFactor: 0, duration: 0.1))
+            
+            // randomise thruster (CACHE THESE?)
+            thrusterEffect = SKEmitterNode(fileNamed: "ThrusterParticle_" + String(describing: (1 + arc4random_uniform(7))) + ".sks")
+            sprite.addChild(thrusterEffect!)
             
             // move, reset rotation
             sprite.size.width  = 42                     // reset size after adding sprite
@@ -79,9 +84,6 @@ extension GameScene {
             sprite.position    = CGPoint(x: x, y: y)    // reset position
             //sprite.zRotation   = 0                      // Reset orientation
             sprite.isHidden = false
-            
-            colourChangeArray.removeAll()
-            sprite.run(SKAction.colorize(with: UIColor.clear, colorBlendFactor: 0, duration: 0.1))
             
             score.reset()
         }
@@ -259,11 +261,11 @@ extension GameScene {
         
         func takeDamage () {
             if colourChangeArray.isEmpty {
-                colourChangeArray.append(SKAction.colorize(with: UIColor.red, colorBlendFactor: 0.5, duration: 0.1))
+                colourChangeArray.append(SKAction.colorize(with: UIColor.red, colorBlendFactor: 0.75, duration: 0.1))
                 colourChangeArray.append(SKAction.wait(forDuration: 0.1))
                 colourChangeArray.append(SKAction.colorize(with: UIColor.clear, colorBlendFactor: 0, duration: 0.1))
                 colourChangeArray.append(SKAction.wait(forDuration: 0.1))
-                colourChangeArray.append(SKAction.colorize(with: UIColor.red, colorBlendFactor: 0.5, duration: 0.1))
+                colourChangeArray.append(SKAction.colorize(with: UIColor.red, colorBlendFactor: 0.75, duration: 0.1))
                 colourChangeArray.append(SKAction.wait(forDuration: 0.1))
                 colourChangeArray.append(SKAction.colorize(with: UIColor.clear, colorBlendFactor: 0, duration: 0.1))
                 sprite.run(SKAction.sequence(colourChangeArray))
@@ -324,10 +326,6 @@ extension GameScene {
                 laser.cull()
                 lasers.remove(laser)
             }
-        }
-        
-        func spin() {
-            //sprite.physicsBody!.allowsRotation = true
         }
         
         //Check if we have been initially hit for vibration

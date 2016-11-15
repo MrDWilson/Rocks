@@ -12,6 +12,12 @@
 		62750FF11DDA5B8C00358E4A /* ThrusterParticle_4.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62750FEE1DDA5B8C00358E4A /* ThrusterParticle_4.sks */; };
 		62750FF21DDA5B8C00358E4A /* ThrusterParticle_5.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62750FEF1DDA5B8C00358E4A /* ThrusterParticle_5.sks */; };
 		62750FF31DDA5B8C00358E4A /* ThrusterParticle_6.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62750FF01DDA5B8C00358E4A /* ThrusterParticle_6.sks */; };
+		62750FF71DDA6AE900358E4A /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62750FF61DDA6AE900358E4A /* GameState.swift */; };
+		62750FF91DDA6ED500358E4A /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62750FF81DDA6ED500358E4A /* MainMenu.swift */; };
+		62750FFB1DDA6EDF00358E4A /* GameHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62750FFA1DDA6EDF00358E4A /* GameHUD.swift */; };
+		62750FFD1DDA6EE600358E4A /* PauseMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62750FFC1DDA6EE600358E4A /* PauseMenu.swift */; };
+		62750FFF1DDA719200358E4A /* GameOverScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62750FFE1DDA719200358E4A /* GameOverScreen.swift */; };
+		627510011DDA8D9D00358E4A /* ThrusterParticle_7.sks in Resources */ = {isa = PBXBuildFile; fileRef = 627510001DDA8D9D00358E4A /* ThrusterParticle_7.sks */; };
 		62798A681DD8AAEF001F1DA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62798A531DD8AAEF001F1DA8 /* AppDelegate.swift */; };
 		62798A691DD8AAEF001F1DA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62798A541DD8AAEF001F1DA8 /* Assets.xcassets */; };
 		62798A6A1DD8AAEF001F1DA8 /* Asteroid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62798A551DD8AAEF001F1DA8 /* Asteroid.swift */; };
@@ -22,7 +28,7 @@
 		62798A701DD8AAEF001F1DA8 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62798A5B1DD8AAEF001F1DA8 /* GameScene.sks */; };
 		62798A711DD8AAEF001F1DA8 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62798A5C1DD8AAEF001F1DA8 /* GameScene.swift */; };
 		62798A721DD8AAEF001F1DA8 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62798A5D1DD8AAEF001F1DA8 /* GameViewController.swift */; };
-		62798A731DD8AAEF001F1DA8 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62798A5E1DD8AAEF001F1DA8 /* HUD.swift */; };
+		62798A731DD8AAEF001F1DA8 /* UserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62798A5E1DD8AAEF001F1DA8 /* UserInterface.swift */; };
 		62798A741DD8AAEF001F1DA8 /* InputHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62798A5F1DD8AAEF001F1DA8 /* InputHandler.swift */; };
 		62798A751DD8AAEF001F1DA8 /* LaserBeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62798A601DD8AAEF001F1DA8 /* LaserBeam.swift */; };
 		62798A761DD8AAEF001F1DA8 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62798A611DD8AAEF001F1DA8 /* Player.swift */; };
@@ -59,6 +65,12 @@
 		62750FEE1DDA5B8C00358E4A /* ThrusterParticle_4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = ThrusterParticle_4.sks; path = Rocks/ThrusterParticle_4.sks; sourceTree = SOURCE_ROOT; };
 		62750FEF1DDA5B8C00358E4A /* ThrusterParticle_5.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = ThrusterParticle_5.sks; path = Rocks/ThrusterParticle_5.sks; sourceTree = SOURCE_ROOT; };
 		62750FF01DDA5B8C00358E4A /* ThrusterParticle_6.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = ThrusterParticle_6.sks; path = Rocks/ThrusterParticle_6.sks; sourceTree = SOURCE_ROOT; };
+		62750FF61DDA6AE900358E4A /* GameState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameState.swift; path = Rocks/GameState.swift; sourceTree = SOURCE_ROOT; };
+		62750FF81DDA6ED500358E4A /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainMenu.swift; path = Rocks/MainMenu.swift; sourceTree = SOURCE_ROOT; };
+		62750FFA1DDA6EDF00358E4A /* GameHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameHUD.swift; path = Rocks/GameHUD.swift; sourceTree = SOURCE_ROOT; };
+		62750FFC1DDA6EE600358E4A /* PauseMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PauseMenu.swift; path = Rocks/PauseMenu.swift; sourceTree = SOURCE_ROOT; };
+		62750FFE1DDA719200358E4A /* GameOverScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameOverScreen.swift; path = Rocks/GameOverScreen.swift; sourceTree = SOURCE_ROOT; };
+		627510001DDA8D9D00358E4A /* ThrusterParticle_7.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = ThrusterParticle_7.sks; path = Rocks/ThrusterParticle_7.sks; sourceTree = SOURCE_ROOT; };
 		62798A521DD8AAEF001F1DA8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Rocks/Info.plist; sourceTree = SOURCE_ROOT; };
 		62798A531DD8AAEF001F1DA8 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Rocks/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		62798A541DD8AAEF001F1DA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Rocks/Assets.xcassets; sourceTree = SOURCE_ROOT; };
@@ -70,7 +82,7 @@
 		62798A5B1DD8AAEF001F1DA8 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = GameScene.sks; path = Rocks/GameScene.sks; sourceTree = SOURCE_ROOT; };
 		62798A5C1DD8AAEF001F1DA8 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameScene.swift; path = Rocks/GameScene.swift; sourceTree = SOURCE_ROOT; };
 		62798A5D1DD8AAEF001F1DA8 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = Rocks/GameViewController.swift; sourceTree = SOURCE_ROOT; };
-		62798A5E1DD8AAEF001F1DA8 /* HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HUD.swift; path = Rocks/HUD.swift; sourceTree = SOURCE_ROOT; };
+		62798A5E1DD8AAEF001F1DA8 /* UserInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInterface.swift; path = Rocks/UserInterface.swift; sourceTree = SOURCE_ROOT; };
 		62798A5F1DD8AAEF001F1DA8 /* InputHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InputHandler.swift; path = Rocks/InputHandler.swift; sourceTree = SOURCE_ROOT; };
 		62798A601DD8AAEF001F1DA8 /* LaserBeam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LaserBeam.swift; path = Rocks/LaserBeam.swift; sourceTree = SOURCE_ROOT; };
 		62798A611DD8AAEF001F1DA8 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = Rocks/Player.swift; sourceTree = SOURCE_ROOT; };
@@ -148,11 +160,16 @@
 				62798A571DD8AAEF001F1DA8 /* CollisionHandler.swift */,
 				62798A581DD8AAEF001F1DA8 /* Counter.swift */,
 				62798A591DD8AAEF001F1DA8 /* Difficulty.swift */,
+				62750FF61DDA6AE900358E4A /* GameState.swift */,
 				62798A5A1DD8AAEF001F1DA8 /* ExplosionParticle.sks */,
 				62798A5B1DD8AAEF001F1DA8 /* GameScene.sks */,
 				62798A5C1DD8AAEF001F1DA8 /* GameScene.swift */,
 				62798A5D1DD8AAEF001F1DA8 /* GameViewController.swift */,
-				62798A5E1DD8AAEF001F1DA8 /* HUD.swift */,
+				62798A5E1DD8AAEF001F1DA8 /* UserInterface.swift */,
+				62750FFE1DDA719200358E4A /* GameOverScreen.swift */,
+				62750FF81DDA6ED500358E4A /* MainMenu.swift */,
+				62750FFA1DDA6EDF00358E4A /* GameHUD.swift */,
+				62750FFC1DDA6EE600358E4A /* PauseMenu.swift */,
 				62798A5F1DD8AAEF001F1DA8 /* InputHandler.swift */,
 				62798A601DD8AAEF001F1DA8 /* LaserBeam.swift */,
 				62798A611DD8AAEF001F1DA8 /* Player.swift */,
@@ -166,6 +183,7 @@
 				62750FEE1DDA5B8C00358E4A /* ThrusterParticle_4.sks */,
 				62750FEF1DDA5B8C00358E4A /* ThrusterParticle_5.sks */,
 				62750FF01DDA5B8C00358E4A /* ThrusterParticle_6.sks */,
+				627510001DDA8D9D00358E4A /* ThrusterParticle_7.sks */,
 				62F97BB71DD0DF6A00CD8C4F /* Screens */,
 			);
 			name = Rocks;
@@ -301,6 +319,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				627510011DDA8D9D00358E4A /* ThrusterParticle_7.sks in Resources */,
 				62750FF21DDA5B8C00358E4A /* ThrusterParticle_5.sks in Resources */,
 				62798A7A1DD8AAEF001F1DA8 /* ThrusterParticle_3.sks in Resources */,
 				6294E0C51DD8AD5200191D1A /* Main.storyboard in Resources */,
@@ -339,15 +358,20 @@
 				62798A791DD8AAEF001F1DA8 /* TextureCache.swift in Sources */,
 				62798A761DD8AAEF001F1DA8 /* Player.swift in Sources */,
 				62798A721DD8AAEF001F1DA8 /* GameViewController.swift in Sources */,
+				62750FF91DDA6ED500358E4A /* MainMenu.swift in Sources */,
 				62798A771DD8AAEF001F1DA8 /* Powerup.swift in Sources */,
+				62750FFD1DDA6EE600358E4A /* PauseMenu.swift in Sources */,
 				62798A741DD8AAEF001F1DA8 /* InputHandler.swift in Sources */,
 				62798A711DD8AAEF001F1DA8 /* GameScene.swift in Sources */,
 				62798A6D1DD8AAEF001F1DA8 /* Counter.swift in Sources */,
 				62798A751DD8AAEF001F1DA8 /* LaserBeam.swift in Sources */,
 				62798A6A1DD8AAEF001F1DA8 /* Asteroid.swift in Sources */,
 				62798A6E1DD8AAEF001F1DA8 /* Difficulty.swift in Sources */,
+				62750FFF1DDA719200358E4A /* GameOverScreen.swift in Sources */,
 				62798A781DD8AAEF001F1DA8 /* Save.swift in Sources */,
-				62798A731DD8AAEF001F1DA8 /* HUD.swift in Sources */,
+				62750FFB1DDA6EDF00358E4A /* GameHUD.swift in Sources */,
+				62798A731DD8AAEF001F1DA8 /* UserInterface.swift in Sources */,
+				62750FF71DDA6AE900358E4A /* GameState.swift in Sources */,
 				62798A6C1DD8AAEF001F1DA8 /* CollisionHandler.swift in Sources */,
 				62798A681DD8AAEF001F1DA8 /* AppDelegate.swift in Sources */,
 			);

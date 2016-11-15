@@ -29,40 +29,35 @@ extension GameScene {
         if (contact.bodyA.node?.name == "laserbeam" && contact.bodyB.node?.name == "asteroid" ) {
            // contact.bodyA.node?.removeFromParent()
             player.give(points: 25)
-            hud.flashScore()
+            userInterface.flashScore()
         }
         if (contact.bodyA.node?.name == "asteroid" && contact.bodyB.node?.name == "laserbeam" ) {
            // contact.bodyB.node?.removeFromParent()
             player.give(points: 25)
-            hud.flashScore()
+            userInterface.flashScore()
         }
         
         // PLAYER HITS ASTEROID
         if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "asteroid" ) ||
            (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == "asteroid" ) {
-            ///*
-            if (player.getHealth() == 0) {
+            
+            if (player.getHealth() == 1) && (state == .Running) {
+                state = .GameOver
+                
                 // bzzz
                 if(!player.isExploding()) {
                     AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                 }
                 
-                player.spin()     // player node should be stationary,
                 player.explode()
                 player.clearLasers()
-                
-                hud.gameEnded()
-                hud.update(state: isPaused, score: player.getScore()) // HUD needs to be updated before a pause
-                playing = false
-                
-                //blur()
-                
+                userInterface.update(state: state)
+
                 // save high scores
                 if(player.getScore() > saver.getHighScore()) {
                     saver.setHighScore(x: player.getScore())
                     saver.saveToiCloud()
                 }
-            
             }
            
             else {
@@ -90,49 +85,49 @@ extension GameScene {
             contact.bodyB.applyImpulse(contact.contactNormal, at: contact.contactPoint)
         }
         
-        if (playing) {
+        if (state == .Running) {
             // PLAYER HITS HEALTH PICKUP
             if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "HealthPickup" ) {
                 player.pickupHealth()
-                hud.flashHealthBar()
+                userInterface.flashHealthBar()
             }
             if (contact.bodyA.node?.name == "HealthPickup" && contact.bodyB.node?.name == "player" ) {
                 player.pickupHealth()
-                hud.flashHealthBar()
+                userInterface.flashHealthBar()
             }
             // PLAYER HITS AMMO PICKUP
             if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "AmmoPickup" ) {
                 player.pickupAmmo()
-                hud.flashAmmoBar()
+                userInterface.flashAmmoBar()
             }
             if (contact.bodyA.node?.name == "AmmoPickup" && contact.bodyB.node?.name == "player" ) {
                 player.pickupAmmo()
-                hud.flashAmmoBar()
+                userInterface.flashAmmoBar()
             }
             // PLAYER HITS POINTS PICKUP
             if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "PointsPickup_25" ) {
                 player.give(points: 25)
-                hud.flashScore()
+                userInterface.flashScore()
             }
             if (contact.bodyA.node?.name == "PointsPickup_25" && contact.bodyB.node?.name == "player" ) {
                 player.give(points: 25)
-                hud.flashScore()
+                userInterface.flashScore()
             }
             if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "PointsPickup_50" ) {
                 player.give(points: 25)
-                hud.flashScore()
+                userInterface.flashScore()
             }
             if (contact.bodyA.node?.name == "PointsPickup_50" && contact.bodyB.node?.name == "player" ) {
                 player.give(points: 50)
-                hud.flashScore()
+                userInterface.flashScore()
             }
             if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "PointsPickup_100" ) {
                 player.give(points: 100)
-                hud.flashScore()
+                userInterface.flashScore()
             }
             if (contact.bodyA.node?.name == "PointsPickup_100" && contact.bodyB.node?.name == "player" ) {
                 player.give(points: 100)
-                hud.flashScore()
+                userInterface.flashScore()
             }
         }
     }

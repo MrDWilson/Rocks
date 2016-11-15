@@ -16,37 +16,40 @@ extension GameScene {
      * * * * * * * * * * * * * * * * * * * * */
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch: AnyObject in touches {
-            let location = touch.location(in: self)
-            let node     = self.atPoint(location)
             
-            if (node.name == "PauseButton") || (node.name == "PauseLabel") {
-                if (playing) {
-                    if (!isPaused) {
-                        //blur()
+            // get touched node
+            let node = self.atPoint(touch.location(in: self))
+            
+            // switch on game state
+            switch (state) {
+                case .MainMenu:
+                    state = .Running
+                    break
+                case .Running:
+                    if (node.name == "PauseButton") {
+                        state = .Paused
+                        userInterface.update(state: state) // always update UI before pausing Subsystem
+                        blur()
                         isPaused = true
                     }
-                        
+                    
                     else {
-                        //unblur()
-                        isPaused = false
+                        player.fireLaser()
                     }
                     
-                    hud.update(state: isPaused, score: player.getScore())
-                }
-            }
-            
-            else {
-                if !isPaused && playing { player.fireLaser() }
-                
-                if isPaused {
+                    break
+                case .Paused:
+                    state = .Running
                     isPaused = false
-                    //unblur()
+                    unblur()
+                    break
+                case .GameOver:
+                    state = .MainMenu
+                    resetGame()
+                    break
                 }
-                
-                if (!playing) { resetGame() }
             }
         }
-    }
     
     /* * * * * * * * * * * * * * * * * * * * *
      *  ON - MOTION
