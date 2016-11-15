@@ -12,6 +12,9 @@ import SpriteKit
 extension GameScene {
     class UserInterface: SKNode {
         private var mainMenu: MainMenu!
+        
+        private var leaderboard: LeaderboardFrontEnd!
+        
         private var gameHUD: GameHUD!
         private var pauseMenu: PauseMenu!
         private var gameOver: GameOverScreen!
@@ -55,6 +58,9 @@ extension GameScene {
             super.init()
             
             mainMenu  = MainMenu(w: width, h: height, p: player)
+            
+            leaderboard = LeaderboardFrontEnd(w: width, h: height, p: player)
+            
             gameHUD   = GameHUD(w: width, h: height, p: player)
             pauseMenu = PauseMenu(w: width, h: height, p: player)
             gameOver  = GameOverScreen(w: width, h: height, p: player)
