@@ -16,6 +16,11 @@ extension GameScene {
         private var pauseMenu: PauseMenu!
         private var gameOver: GameOverScreen!
         
+        private let player: Player!
+        
+        private let screenWidth: Int!
+        private let screenHeight: Int!
+        
         private var highScore: Int!
         
         func flashScore     () { gameHUD.flashScore() }
@@ -23,6 +28,10 @@ extension GameScene {
         func flashHealthBar () { gameHUD.flashHealthBar() }
         
         init (width: Int, height: Int, player: Player, highScore: Int) {
+            self.player = player
+            self.screenWidth = width
+            self.screenHeight = height
+            
             super.init()
             
             mainMenu  = MainMenu(w: width, h: height, p: player)
@@ -60,7 +69,9 @@ extension GameScene {
                 case .Running:
                     mainMenu.isHidden = true
                     pauseMenu.isHidden = true
-                    gameHUD.isHidden = false
+                    if (Int(player.getPosition().y) < (Int(screenHeight / 4) + 24)) {
+                        gameHUD.isHidden = false
+                    }
                     gameHUD.update()
                     break
                 case .Paused:
