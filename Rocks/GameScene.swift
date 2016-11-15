@@ -68,7 +68,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         // spawn player and HUD
-        clearScene.addChild(player.spawn(x: Int(self.size.width / 2), y: 228))
+        clearScene.addChild(player.spawn(x: Int(self.size.width / 2), y: Int(self.size.height / 4)))
         addChild(userInterface)
         
         // spawn asteroids and powerups
@@ -163,7 +163,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
      * * * * * * * * * * * * * * * * * * * * */
     func resetGame () {
         // reset player and HUD
-        player.resetAt(x: Int(self.size.width / 2), y: 160)
+        player.resetAt(x: Int(self.size.width / 2), y: Int(self.size.height / 4))
 
         difficulty = .Easy
         while (asteroids.count > difficulty.rawValue) {

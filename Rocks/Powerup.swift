@@ -77,7 +77,7 @@ extension GameScene {
             
             // Give position
             sprite.position.x = CGFloat(arc4random_uniform(UInt32(xConfine)))
-            sprite.position.y = CGFloat(yConfine + Int(arc4random_uniform(1024)))
+            sprite.position.y = CGFloat(yConfine + 1000 + Int(arc4random_uniform(1024)))
             
             sprite.size.width = 20
             sprite.size.height = 20
@@ -126,7 +126,7 @@ extension GameScene {
             
             // reuse
             sprite.position.x = CGFloat(arc4random_uniform(UInt32(xConfine)))
-            sprite.position.y = CGFloat(yConfine + Int(arc4random_uniform(200)))
+            sprite.position.y = CGFloat(yConfine + 1000 + Int(arc4random_uniform(1024)))
         }
     }
 }

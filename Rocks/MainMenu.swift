@@ -13,16 +13,20 @@ extension GameScene {
     class MainMenu: SKNode {
         private let title = SKLabelNode()
         
-        private let nextSpriteLabel = SKLabelNode()
-        private let prevSpriteLabel = SKLabelNode()
-        
-        private let nextThrusterLabel = SKLabelNode()
-        private let prevThrusterLabel = SKLabelNode()
+        private let customise   = SKLabelNode()
+        private let leaderboard = SKLabelNode()
+        private let options     = SKLabelNode()
+        private let about       = SKLabelNode()
         
         private let player: Player!
         
+        private let screenWidth: Int!
+        private let screenHeight: Int!
+        
         init (w: Int, h: Int, p: Player) {
             player = p
+            screenWidth = w
+            screenHeight = h
             
             super.init()
             
@@ -30,36 +34,38 @@ extension GameScene {
             title.fontSize = 100
             title.horizontalAlignmentMode = .center
             title.fontColor = UIColor.white
-            title.position = CGPoint(x: w / 2, y: h - 200)
+            title.position = CGPoint(x: w / 2, y: Int(Double(screenHeight) * 0.82))
             addChild(title)
             
-            nextSpriteLabel.text = String(">")
-            nextSpriteLabel.fontSize = 24
-            nextSpriteLabel.horizontalAlignmentMode = .right
-            nextSpriteLabel.fontColor = UIColor.white
-
-            //addChild(nextSpriteLabel)
+            customise.text = String("customise ship")
+            customise.fontSize = 28
+            customise.horizontalAlignmentMode = .center
+            customise.fontColor = UIColor.lightGray
+            customise.position = CGPoint(x: w / 2, y: Int(Double(screenHeight) * 0.35))
+            addChild(customise)
             
-            prevSpriteLabel.text = String("<")
-            prevSpriteLabel.fontSize = 24
-            prevSpriteLabel.horizontalAlignmentMode = .left
-            prevSpriteLabel.fontColor = UIColor.white
-
-            //addChild(prevSpriteLabel)
+            leaderboard.text = String("leaderboard")
+            leaderboard.fontSize = 28
+            leaderboard.horizontalAlignmentMode = .center
+            leaderboard.fontColor = UIColor.lightGray
+            leaderboard.position = CGPoint(x: w / 2, y: Int(Double(screenHeight) * 0.27))
+            addChild(leaderboard)
             
-            nextThrusterLabel.text = String(">")
-            nextThrusterLabel.fontSize = 24
-            nextThrusterLabel.horizontalAlignmentMode = .right
-            nextThrusterLabel.fontColor = UIColor.white
-
-            //addChild(nextThrusterLabel)
+            options.text = String("options")
+            options.fontSize = 28
+            options.horizontalAlignmentMode = .center
+            options.fontColor = UIColor.lightGray
+            options.position = CGPoint(x: w / 2, y: Int(Double(screenHeight) * 0.19))
             
-            prevThrusterLabel.text = String("<")
-            prevThrusterLabel.fontSize = 24
-            prevThrusterLabel.horizontalAlignmentMode = .left
-            prevThrusterLabel.fontColor = UIColor.white
+            addChild(options)
+            
+            about.text = String("about")
+            about.fontSize = 28
+            about.horizontalAlignmentMode = .center
+            about.fontColor = UIColor.lightGray
+            about.position = CGPoint(x: w / 2, y: Int(Double(screenHeight) * 0.11))
+            addChild(about)
 
-            //addChild(prevThrusterLabel)
         }
         
         // :(
@@ -68,10 +74,7 @@ extension GameScene {
         }
         
         func update () {
-            nextSpriteLabel.position = CGPoint(x: player.getPosition().x + 60, y: player.getPosition().y)
-            prevSpriteLabel.position = CGPoint(x: player.getPosition().x - 60, y: player.getPosition().y )
-            nextThrusterLabel.position = CGPoint(x: player.getPosition().x + 60, y: player.getPosition().y - 40)
-            prevThrusterLabel.position = CGPoint(x: player.getPosition().x - 60, y: player.getPosition().y - 40)
+            player.move(to: CGPoint(x: screenWidth / 2, y: Int(Double(screenHeight) * 0.58)))
         }
     }
 }

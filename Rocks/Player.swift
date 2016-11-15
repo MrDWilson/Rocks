@@ -47,6 +47,7 @@ extension GameScene {
         
         func moveRight   () { velocity.dx += 10 }
         func moveLeft    () { velocity.dx -= 10 }
+        func move        (to: CGPoint) { sprite.position = to }
         
         func resetAt (x: Int, y: Int) {
             exploding = false

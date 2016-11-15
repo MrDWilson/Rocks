@@ -41,7 +41,7 @@ extension GameScene {
             
             // pause button
             pauseButtonNode.position                    = CGPoint(x: w/2, y: 6)
-            pauseButtonNode.size                        = CGSize(width: w, height: 225)
+            pauseButtonNode.size                        = CGSize(width: w/4, height: 100)
             pauseButtonNode.name                        = "PauseButton"
             addChild(pauseButtonNode)
             

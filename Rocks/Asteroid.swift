@@ -37,7 +37,7 @@ extension GameScene {
             sprite.xScale     = CGFloat(size)
             sprite.yScale     = CGFloat(size)
             sprite.position.x = CGFloat(arc4random_uniform(UInt32(xConfine - Int(sprite.size.width))))
-            sprite.position.y = CGFloat(yConfine + Int(sprite.size.height) + Int(arc4random_uniform(1024)))
+            sprite.position.y = CGFloat(yConfine + 1000 + Int(arc4random_uniform(1024)))
             
             // Give graphics
             let ting = 1 + Int(arc4random_uniform(4))
@@ -95,7 +95,7 @@ extension GameScene {
             
             // reuse
             sprite.position.x = CGFloat(arc4random_uniform(UInt32(xConfine)))
-            sprite.position.y = CGFloat(yConfine +  Int(sprite.size.height) + Int(arc4random_uniform(1024)))
+            sprite.position.y = CGFloat(yConfine +  1000 + Int(arc4random_uniform(1024)))
 
         }
     }
