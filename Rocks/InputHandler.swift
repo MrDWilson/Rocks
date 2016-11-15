@@ -20,6 +20,8 @@ extension GameScene {
             // get touched node
             let node = self.atPoint(touch.location(in: self))
             
+
+            
             // switch on game state
             switch (state) {
                 case .MainMenu:
@@ -32,22 +34,34 @@ extension GameScene {
                         state = .Options
                     } else if (node.name == "aboutButton") {
                         state = .About
-                    } else {
+                    } else if (touch.location(in: self).y > self.size.height / 2) {
                         state = .InGame
                     }
                     break
                 case .Customise:
-                    state = .MainMenu
+                    if (node.name == "back") {
+                        state = .MainMenu
+                        userInterface.back()
+                    }
                     player.shrink()
                     break
                 case .Leaderboard:
-                    state = .MainMenu
+                    if (node.name == "back") {
+                        state = .MainMenu
+                        userInterface.back()
+                    }
                     break
                 case .Options:
-                    state = .MainMenu
+                    if (node.name == "back") {
+                        state = .MainMenu
+                        userInterface.back()
+                    }
                     break
                 case .About:
-                    state = .MainMenu
+                    if (node.name == "back") {
+                        state = .MainMenu
+                        userInterface.back()
+                    }
                     break
                 case .InGame:
                     if (node.name == "PauseButton") {

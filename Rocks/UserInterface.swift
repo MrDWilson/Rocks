@@ -13,6 +13,11 @@ extension GameScene {
     class UserInterface: SKNode {
         private var mainMenu: MainMenu!
         
+        private var mainMenu_customise: CustomiseScreen!
+        private var mainMenu_leaderboard: LeaderboardFrontEnd!
+        private var mainMenu_options: OptionsScreen!
+        private var mainMenu_about: AboutScreen!
+        
         private var leaderboard: LeaderboardFrontEnd!
         
         private var gameHUD: GameHUD!
@@ -32,22 +37,29 @@ extension GameScene {
         
         func showCustomiseMenu () {
             mainMenu.isHidden = true
-            print("Customise")
+            mainMenu_customise.isHidden = false
         }
         
         func showLeaderboard () {
             mainMenu.isHidden = true
-            print("Leaderboard")
+            mainMenu_leaderboard.isHidden = false
         }
         
         func showOptions () {
             mainMenu.isHidden = true
-            print("Options")
+            mainMenu_options.isHidden = false
         }
         
         func showAbout () {
             mainMenu.isHidden = true
-            print("About")
+            mainMenu_about.isHidden = false
+        }
+        
+        func back () {
+            mainMenu_customise.isHidden = true
+            mainMenu_leaderboard.isHidden = true
+            mainMenu_options.isHidden = true
+            mainMenu_about.isHidden = true
         }
         
         init (width: Int, height: Int, player: Player, highScore: Int) {
@@ -57,9 +69,11 @@ extension GameScene {
             
             super.init()
             
-            mainMenu  = MainMenu(w: width, h: height, p: player)
-            
-            leaderboard = LeaderboardFrontEnd(w: width, h: height, p: player)
+            mainMenu             = MainMenu(w: width, h: height, p: player)
+            mainMenu_customise   = CustomiseScreen(w: width, h: height, p: player)
+            mainMenu_leaderboard = LeaderboardFrontEnd(w: width, h: height, p: player)
+            mainMenu_options     = OptionsScreen(w: width, h: height, p: player)
+            mainMenu_about       = AboutScreen(w: width, h: height, p:player)
             
             gameHUD   = GameHUD(w: width, h: height, p: player)
             pauseMenu = PauseMenu(w: width, h: height, p: player)
@@ -69,8 +83,17 @@ extension GameScene {
             addChild(gameHUD)
             addChild(pauseMenu)
             addChild(gameOver)
-            
+            addChild(mainMenu_customise)
+            addChild(mainMenu_leaderboard)
+            addChild(mainMenu_options)
+            addChild(mainMenu_about)
+
             mainMenu.isHidden  = true
+            mainMenu_customise.isHidden = true
+            mainMenu_leaderboard.isHidden = true
+            mainMenu_options.isHidden = true
+            mainMenu_about.isHidden = true
+            
             gameHUD.isHidden   = true
             pauseMenu.isHidden = true
             gameOver.isHidden  = true
