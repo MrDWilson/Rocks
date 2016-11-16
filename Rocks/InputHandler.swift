@@ -20,82 +20,82 @@ extension GameScene {
             // get touched node
             let node = self.atPoint(touch.location(in: self))
             
-
+            
             
             // switch on game state
             switch (state) {
-                case .MainMenu:
-                    player.setRestingY(y: Int((Double(self.size.width) * 0.25)))
-                    if (node.name == "customiseButton") {
-                        state = .Customise
-                    } else if (node.name == "leaderboardButton") {
-                        state = .Leaderboard
-                    } else if (node.name == "optionsButton") {
-                        state = .Options
-                    } else if (node.name == "aboutButton") {
-                        state = .About
-                    } else if (touch.location(in: self).y > self.size.height / 2) {
-                        backdrop.forEach { $0.speedUp() }
-                        state = .InGame
-                    }
-                    break
-                case .Customise:
-                    if (node.name == "back") {
-                        state = .MainMenu
-                        userInterface.back()
-                    }
-                    break
-                case .Leaderboard:
-                    if (node.name == "back") {
-                        state = .MainMenu
-                        userInterface.back()
-                    }
-                    break
-                case .Options:
-                    if (node.name == "back") {
-                        state = .MainMenu
-                        userInterface.back()
-                    }
-                    
-                    if (node.name == "sound") {
-                        sound = !sound
-                        userInterface.toggleSound()
-                    }
-                    
-                    if (node.name == "vibration") {
-                        vibrate = !vibrate
-                        userInterface.toggleVibrate()
-                    }
-                    break
-                case .About:
-                    if (node.name == "back") {
-                        state = .MainMenu
-                        userInterface.back()
-                    }
-                    break
-                case .InGame:
-                    if (node.name == "PauseButton") {
-                        state = .Paused
-                        userInterface.update(state: state) // always update UI before pausing Subsystem
-                        blur()
-                        isPaused = true
-                    }
-                        
-                    else {
-                        player.fireLaser()
-                    }
-                    
-                    break
-                case .Paused:
+            case .MainMenu:
+                player.setRestingY(y: Int((Double(self.size.width) * 0.25)))
+                if (node.name == "customiseButton") {
+                    state = .Customise
+                } else if (node.name == "leaderboardButton") {
+                    state = .Leaderboard
+                } else if (node.name == "optionsButton") {
+                    state = .Options
+                } else if (node.name == "aboutButton") {
+                    state = .About
+                } else if (touch.location(in: self).y > self.size.height / 2) {
+                    backdrop.forEach { $0.speedUp() }
                     state = .InGame
-                    isPaused = false
-                    unblur()
-                    break
-                case .GameOver:
+                }
+                break
+            case .Customise:
+                if (node.name == "PLACEHOLDER") {
+                    // for when this has buttons
+                } else {
                     state = .MainMenu
-                    resetGame()
-                    backdrop.forEach { $0.slowDown() }
-                    break
+                    userInterface.back()
+                }
+                break
+            case .Leaderboard:
+                if (node.name == "ship") {
+                    state = .MainMenu
+                    userInterface.back()
+                } else {
+                    state = .MainMenu
+                    userInterface.back()
+                }
+                break
+            case .Options:
+                
+                if (node.name == "sound") {
+                    sound = !sound
+                    userInterface.toggleSound()
+                } else if (node.name == "vibration") {
+                    vibrate = !vibrate
+                    userInterface.toggleVibrate()
+                } else {
+                    state = .MainMenu
+                    userInterface.back()
+                }
+                break
+            case .About:
+                state = .MainMenu
+                userInterface.back()
+                break
+            case .InGame:
+                if (node.name == "PauseButton") {
+                    state = .Paused
+                    userInterface.update(state: state) // always update UI before pausing Subsystem
+                    blur()
+                    isPaused = true
+                }
+                    
+                else {
+                    player.fireLaser()
+                }
+                
+                break
+            case .Paused:
+                state = .InGame
+                isPaused = false
+                unblur()
+                break
+            case .GameOver:
+                state = .MainMenu
+                resetGame()
+                backdrop.forEach { $0.slowDown() }
+                break
             }
         }
     }

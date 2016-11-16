@@ -17,7 +17,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let blurScene = SKEffectNode()
     
     var state = GameState.MainMenu
-
+    
     /* * * * * * * * * * * * * * * * * * * * *
      *  GamePlay Aspects
      * * * * * * * * * * * * * * * * * * * * */
@@ -36,8 +36,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var playing = true
     var saver = Save()
     
-    var leaderboard = LeaderboardBackEnd()
-    
     // preferences
     var sound = true
     var vibrate = true
@@ -47,7 +45,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
      * * * * * * * * * * * * * * * * * * * * */
     override func didMove(to view: SKView) {
         userInterface = UserInterface(width: Int(self.size.width), height: Int(self.size.height), player: player, highScore: saver.getHighScore())
-    
+        
         view.shouldCullNonVisibleNodes = true
         
         // set up physics stuff
@@ -76,7 +74,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         // spawn player and HUD
-        clearScene.addChild(player.spawn(x: Int(self.size.width / 2), y: Int(self.size.height * CGFloat(0.58))))
+        clearScene.addChild(player.spawn(x: Int(CGFloat(self.size.width / 2)), y: Int(self.size.height * CGFloat(0.58))))
         addChild(userInterface)
         
         // spawn asteroids, powerups and stars
@@ -99,50 +97,50 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backdrop.forEach { $0.update() }
         
         switch (state) {
-            case .MainMenu:
+        case .MainMenu:
             
-                player.scaleTo(x: 1.0, y: 1.0)
-                player.setRestingY(y: Int(self.size.height * CGFloat(0.58)))
-                updateMainMenu()
-                
-                break
-            case .Customise:
-                
-                player.scaleTo(x: 3.5, y: 3.5)
-                player.setRestingY(y: Int(self.size.height * CGFloat(0.58)))
-                player.update()
+            player.scaleTo(x: 1.0, y: 1.0)
+            player.setRestingY(y: Int(self.size.height * CGFloat(0.58)))
+            updateMainMenu()
             
-                break
-            case .Leaderboard:
-                
+            break
+        case .Customise:
             
-                break
-            case .Options:
-                
-                
-                
-                break
-            case .About:
+            player.scaleTo(x: 3.5, y: 3.5)
+            player.setRestingY(y: Int(self.size.height * CGFloat(0.58)))
+            player.update()
             
-                player.setRestingY(y: Int(self.size.height * CGFloat(0.7)))
-                player.update()
+            break
+        case .Leaderboard:
             
-                break
-            case .InGame:
-                
-                updateRunning(currentTime: currentTime)
-                
-                break
-            case .Paused:
-                
-                updatePaused()
-                
-                break
-            case .GameOver:
-                
-                updateGameOver(currentTime: currentTime)
-                
-                break
+            
+            break
+        case .Options:
+            
+            
+            
+            break
+        case .About:
+            
+            player.setRestingY(y: Int(self.size.height * CGFloat(0.7)))
+            player.update()
+            
+            break
+        case .InGame:
+            
+            updateRunning(currentTime: currentTime)
+            
+            break
+        case .Paused:
+            
+            updatePaused()
+            
+            break
+        case .GameOver:
+            
+            updateGameOver(currentTime: currentTime)
+            
+            break
         }
     }
     
@@ -164,12 +162,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
             }
         }
-    
+        
         /*
-        // check/set difficulty
-        if (player.getScore() > 5000) { difficulty = .Medium; backdrop.forEach { $0.speedUp() } }
-        if (player.getScore() > 15000) { difficulty = .Hard }
-        */
+         // check/set difficulty
+         if (player.getScore() > 5000) { difficulty = .Medium; backdrop.forEach { $0.speedUp() } }
+         if (player.getScore() > 15000) { difficulty = .Hard }
+         */
         
         // get input
         processUserMotion(forUpdate: currentTime)
@@ -180,25 +178,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.update()
         
         /*
-        // ensure correct astroid count
-        if (difficulty == .Medium) {
-            if (asteroids.count == Difficulty.Easy.rawValue) {
-                while (asteroids.count < Difficulty.Medium.rawValue) {
-                    asteroids.append(Asteroid())
-                    clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
-                }
-            }
-        }
-        
-        if (difficulty == .Hard) {
-            if (asteroids.count == Difficulty.Medium.rawValue) {
-                while (asteroids.count < Difficulty.Hard.rawValue) {
-                    asteroids.append(Asteroid())
-                    clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
-                }
-            }
-        }
-        */
+         // ensure correct astroid count
+         if (difficulty == .Medium) {
+         if (asteroids.count == Difficulty.Easy.rawValue) {
+         while (asteroids.count < Difficulty.Medium.rawValue) {
+         asteroids.append(Asteroid())
+         clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
+         }
+         }
+         }
+         
+         if (difficulty == .Hard) {
+         if (asteroids.count == Difficulty.Medium.rawValue) {
+         while (asteroids.count < Difficulty.Hard.rawValue) {
+         asteroids.append(Asteroid())
+         clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
+         }
+         }
+         }
+         */
     }
     
     func updatePaused () {
@@ -212,16 +210,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.update()
         
         /*
-        // broken slo-mo
-        if (currentTime.remainder(dividingBy: 64) < 5) {
-            // update game actors
-            // putting these in the if statement makes tem
-            // stop. Investigate
-            asteroids.forEach { $0.update() }
-            powerups.forEach { $0.update() }
-            player.update()
-        }
-        */
+         // broken slo-mo
+         if (currentTime.remainder(dividingBy: 64) < 5) {
+         // update game actors
+         // putting these in the if statement makes tem
+         // stop. Investigate
+         asteroids.forEach { $0.update() }
+         powerups.forEach { $0.update() }
+         player.update()
+         }
+         */
     }
     
     /* * * * * * * * * * * * * * * * * * * * *
@@ -230,14 +228,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func resetGame () {
         // reset player and HUD
         player.resetAt(x: Int(self.size.width * CGFloat(0.5)), y: Int(self.size.height * CGFloat(0.58)))
-
+        
         difficulty = .Easy
         while (asteroids.count > difficulty.rawValue) {
             asteroids.last?.destroyed()
             asteroids.last?.culled()
             asteroids.removeLast()
         }
-    
+        
         isPaused = false
         
         //  reset all asteroids and powerups

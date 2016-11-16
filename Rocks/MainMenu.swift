@@ -95,7 +95,7 @@ extension GameScene {
             aboutButton.color = UIColor.clear
             aboutButton.position = CGPoint(x: 0, y: Int(Double(screenHeight) * 0.11))
             addChild(aboutButton)
-
+            
         }
         
         // :(
@@ -104,7 +104,7 @@ extension GameScene {
         }
         
         func update () {
-        
+            
         }
     }
 }

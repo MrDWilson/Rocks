@@ -62,12 +62,12 @@ extension GameScene {
             backLabel.text = String("back")
             backLabel.horizontalAlignmentMode = .left
             backLabel.position = CGPoint(x: 10, y: h - 50)
-            addChild(backLabel)
+            //addChild(backLabel)
             
             
             backButton.name = String("back")
             backButton.position = CGPoint(x: 10, y: h - 10)
-            addChild(backButton)
+            //addChild(backButton)
             
         }
         

@@ -40,6 +40,7 @@
 		6294E0C61DD8AD5200191D1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6294E0C41DD8AD5200191D1A /* LaunchScreen.storyboard */; };
 		CE5B26011DD02ACE00A0AB64 /* RocksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B26001DD02ACE00A0AB64 /* RocksTests.swift */; };
 		CE5B260C1DD02ACE00A0AB64 /* RocksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B260B1DD02ACE00A0AB64 /* RocksUITests.swift */; };
+		CEA114921DDD192300E47335 /* Ship.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA114911DDD192300E47335 /* Ship.swift */; };
 		CEAA9B2D1DDB8B9F00203FD1 /* LeaderboardFrontEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA9B2C1DDB8B9F00203FD1 /* LeaderboardFrontEnd.swift */; };
 		CEAA9B2F1DDB8BAE00203FD1 /* LeaderboardBackEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA9B2E1DDB8BAE00203FD1 /* LeaderboardBackEnd.swift */; };
 		CEAA9B311DDB8FD600203FD1 /* CustomiseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA9B301DDB8FD600203FD1 /* CustomiseScreen.swift */; };
@@ -107,6 +108,7 @@
 		CE5B26071DD02ACE00A0AB64 /* RocksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RocksUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5B260B1DD02ACE00A0AB64 /* RocksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocksUITests.swift; sourceTree = "<group>"; };
 		CE5B260D1DD02ACE00A0AB64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEA114911DDD192300E47335 /* Ship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ship.swift; path = Rocks/Ship.swift; sourceTree = SOURCE_ROOT; };
 		CEAA9B2C1DDB8B9F00203FD1 /* LeaderboardFrontEnd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeaderboardFrontEnd.swift; path = Rocks/LeaderboardFrontEnd.swift; sourceTree = SOURCE_ROOT; };
 		CEAA9B2E1DDB8BAE00203FD1 /* LeaderboardBackEnd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeaderboardBackEnd.swift; path = Rocks/LeaderboardBackEnd.swift; sourceTree = SOURCE_ROOT; };
 		CEAA9B301DDB8FD600203FD1 /* CustomiseScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomiseScreen.swift; path = Rocks/CustomiseScreen.swift; sourceTree = SOURCE_ROOT; };
@@ -171,37 +173,38 @@
 		CE5B25E41DD02ACE00A0AB64 /* Rocks */ = {
 			isa = PBXGroup;
 			children = (
-				6294E0C31DD8AD5200191D1A /* Main.storyboard */,
-				6294E0C41DD8AD5200191D1A /* LaunchScreen.storyboard */,
-				62798A521DD8AAEF001F1DA8 /* Info.plist */,
+				CEAA9B321DDB900C00203FD1 /* AboutScreen.swift */,
 				62798A531DD8AAEF001F1DA8 /* AppDelegate.swift */,
 				62798A541DD8AAEF001F1DA8 /* Assets.xcassets */,
 				62798A551DD8AAEF001F1DA8 /* Asteroid.swift */,
-				CEAA9B361DDBCF9900203FD1 /* Stars.swift */,
 				62798A571DD8AAEF001F1DA8 /* CollisionHandler.swift */,
 				62798A581DD8AAEF001F1DA8 /* Counter.swift */,
+				CEAA9B301DDB8FD600203FD1 /* CustomiseScreen.swift */,
 				62798A591DD8AAEF001F1DA8 /* Difficulty.swift */,
-				62750FF61DDA6AE900358E4A /* GameState.swift */,
 				62798A5A1DD8AAEF001F1DA8 /* ExplosionParticle.sks */,
+				62750FFA1DDA6EDF00358E4A /* GameHUD.swift */,
+				62750FFE1DDA719200358E4A /* GameOverScreen.swift */,
 				62798A5B1DD8AAEF001F1DA8 /* GameScene.sks */,
 				62798A5C1DD8AAEF001F1DA8 /* GameScene.swift */,
+				62750FF61DDA6AE900358E4A /* GameState.swift */,
 				62798A5D1DD8AAEF001F1DA8 /* GameViewController.swift */,
-				62798A5E1DD8AAEF001F1DA8 /* UserInterface.swift */,
-				CEAA9B321DDB900C00203FD1 /* AboutScreen.swift */,
-				62750FFE1DDA719200358E4A /* GameOverScreen.swift */,
-				CEAA9B341DDB905C00203FD1 /* OptionsScreen.swift */,
-				CEAA9B2C1DDB8B9F00203FD1 /* LeaderboardFrontEnd.swift */,
-				CEAA9B2E1DDB8BAE00203FD1 /* LeaderboardBackEnd.swift */,
-				CEAA9B301DDB8FD600203FD1 /* CustomiseScreen.swift */,
-				62750FF81DDA6ED500358E4A /* MainMenu.swift */,
-				62750FFA1DDA6EDF00358E4A /* GameHUD.swift */,
-				62750FFC1DDA6EE600358E4A /* PauseMenu.swift */,
+				62798A521DD8AAEF001F1DA8 /* Info.plist */,
 				62798A5F1DD8AAEF001F1DA8 /* InputHandler.swift */,
 				62798A601DD8AAEF001F1DA8 /* LaserBeam.swift */,
+				6294E0C41DD8AD5200191D1A /* LaunchScreen.storyboard */,
+				CEAA9B2E1DDB8BAE00203FD1 /* LeaderboardBackEnd.swift */,
+				CEAA9B2C1DDB8B9F00203FD1 /* LeaderboardFrontEnd.swift */,
+				6294E0C31DD8AD5200191D1A /* Main.storyboard */,
+				62750FF81DDA6ED500358E4A /* MainMenu.swift */,
+				CEAA9B341DDB905C00203FD1 /* OptionsScreen.swift */,
+				62750FFC1DDA6EE600358E4A /* PauseMenu.swift */,
 				62798A611DD8AAEF001F1DA8 /* Player.swift */,
 				62798A621DD8AAEF001F1DA8 /* Powerup.swift */,
 				62798A631DD8AAEF001F1DA8 /* Rocks.entitlements */,
 				62798A641DD8AAEF001F1DA8 /* Save.swift */,
+				CEA114911DDD192300E47335 /* Ship.swift */,
+				62F97BB71DD0DF6A00CD8C4F /* Screens */,
+				CEAA9B361DDBCF9900203FD1 /* Stars.swift */,
 				62798A651DD8AAEF001F1DA8 /* TextureCache.swift */,
 				62750FEA1DDA580F00358E4A /* ThrusterParticle_1.sks */,
 				62750FEB1DDA580F00358E4A /* ThrusterParticle_2.sks */,
@@ -210,7 +213,7 @@
 				62750FEF1DDA5B8C00358E4A /* ThrusterParticle_5.sks */,
 				62750FF01DDA5B8C00358E4A /* ThrusterParticle_6.sks */,
 				627510001DDA8D9D00358E4A /* ThrusterParticle_7.sks */,
-				62F97BB71DD0DF6A00CD8C4F /* Screens */,
+				62798A5E1DD8AAEF001F1DA8 /* UserInterface.swift */,
 			);
 			name = Rocks;
 			path = SnowboardingGamePrototype;
@@ -304,7 +307,7 @@
 				TargetAttributes = {
 					CE5B25E11DD02ACE00A0AB64 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = SB9YX4B3N4;
+						DevelopmentTeam = EM2LKXB8R4;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -391,6 +394,7 @@
 				62798A761DD8AAEF001F1DA8 /* Player.swift in Sources */,
 				62798A721DD8AAEF001F1DA8 /* GameViewController.swift in Sources */,
 				62750FF91DDA6ED500358E4A /* MainMenu.swift in Sources */,
+				CEA114921DDD192300E47335 /* Ship.swift in Sources */,
 				62798A771DD8AAEF001F1DA8 /* Powerup.swift in Sources */,
 				62750FFD1DDA6EE600358E4A /* PauseMenu.swift in Sources */,
 				CEAA9B311DDB8FD600203FD1 /* CustomiseScreen.swift in Sources */,
@@ -548,11 +552,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = SB9YX4B3N4;
+				DEVELOPMENT_TEAM = EM2LKXB8R4;
 				INFOPLIST_FILE = Rocks/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Danny.Rocks";
+				PRODUCT_BUNDLE_IDENTIFIER = RyanDanny.Rocks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -566,11 +570,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = SB9YX4B3N4;
+				DEVELOPMENT_TEAM = EM2LKXB8R4;
 				INFOPLIST_FILE = Rocks/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Danny.Rocks";
+				PRODUCT_BUNDLE_IDENTIFIER = RyanDanny.Rocks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

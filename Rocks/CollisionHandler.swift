@@ -17,55 +17,49 @@ let powerupCollisionCat:    UInt32 = 0x03
 
 extension GameScene {
     
-//    Saver test - leaderboard
-    
     // On-Collision
     func didBegin(_ contact: SKPhysicsContact) {
         
         if (contact.bodyA.node?.name == "asteroid" && contact.bodyB.node?.name == "asteroid" ) {
-          //  contact.bodyA.applyForce(CGVector(dx: 10, dy: 10))
-          //  contact.bodyB.applyForce(CGVector(dx: -10, dy: 10))
+            //  contact.bodyA.applyForce(CGVector(dx: 10, dy: 10))
+            //  contact.bodyB.applyForce(CGVector(dx: -10, dy: 10))
         }
         
         // LASER HITS ASTEROID
         if (contact.bodyA.node?.name == "laserbeam" && contact.bodyB.node?.name == "asteroid" ) {
-           // contact.bodyA.node?.removeFromParent()
+            // contact.bodyA.node?.removeFromParent()
             player.give(points: 25)
             userInterface.flashScore()
         }
         if (contact.bodyA.node?.name == "asteroid" && contact.bodyB.node?.name == "laserbeam" ) {
-           // contact.bodyB.node?.removeFromParent()
+            // contact.bodyB.node?.removeFromParent()
             player.give(points: 25)
             userInterface.flashScore()
         }
         
         // PLAYER HITS ASTEROID
         if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "asteroid" ) ||
-           (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == "asteroid" ) {
+            (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == "asteroid" ) {
             
             if (player.getHealth() == 1) && (state == .InGame) {
                 state = .GameOver
                 
                 // bzzz
-                if(!player.isExploding() && vibrate) {
+                if (player.isExploding() && vibrate) {
                     AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                 }
                 
                 player.explode()
                 player.clearLasers()
                 userInterface.update(state: state)
-
+                
                 // save high scores
                 if(player.getScore() > saver.getHighScore()) {
                     saver.setHighScore(x: player.getScore())
                     saver.saveToiCloud()
-                    //High score saves to leaderboard
-                    leaderboard.updateScore(score: player.getScore())
-                    leaderboard.loads()
-                    print(leaderboard.getEntries().count)
                 }
             }
-           
+                
             else {
                 var normalReverse = contact.contactNormal
                 
@@ -77,13 +71,13 @@ extension GameScene {
                 } else {
                     contact.bodyB.applyImpulse(contact.contactNormal, at: contact.contactPoint)
                 }
-            
+                
                 player.takeDamage()
-            }    
+            }
             //*/
         }
         
-        // SHIP PART HITS ASTEROID 
+        // SHIP PART HITS ASTEROID
         if (contact.bodyA.node?.name == "ShipPart" && contact.bodyB.node?.name == "asteroid" ) {
             contact.bodyA.applyImpulse(contact.contactNormal, at: contact.contactPoint)
         }
