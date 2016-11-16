@@ -33,7 +33,7 @@ extension GameScene {
             }
         }
         
-        func loads() -> GKLeaderboard {
+        func loads() /*-> GKLeaderboard*/ {
             let leaderboard = GKLeaderboard()
             leaderboard.playerScope = .global
             leaderboard.timeScope = .allTime
@@ -48,7 +48,7 @@ extension GameScene {
                 }
             }
             
-            return leaderboard
+//            return leaderboard
         }
     }
 }
