@@ -52,7 +52,7 @@ extension GameScene {
             addChild(customiseLabel)
             
             customiseButton.name = String("customiseButton")
-            customiseButton.size = CGSize(width: w * 2, height: 42)
+            customiseButton.size = CGSize(width: w * 2, height: 52)
             customiseButton.color = UIColor.clear
             customiseButton.position = CGPoint(x: 0, y: Int(Double(screenHeight) * 0.35))
             addChild(customiseButton)
@@ -65,7 +65,7 @@ extension GameScene {
             addChild(leaderboardLabel)
             
             leaderboardButton.name = String("leaderboardButton")
-            leaderboardButton.size = CGSize(width: w * 2, height: 42)
+            leaderboardButton.size = CGSize(width: w * 2, height: 52)
             leaderboardButton.color = UIColor.clear
             leaderboardButton.position = CGPoint(x: 0, y: Int(Double(screenHeight) * 0.27))
             addChild(leaderboardButton)
@@ -78,7 +78,7 @@ extension GameScene {
             addChild(optionsLabel)
             
             optionsButton.name = String("optionsButton")
-            optionsButton.size = CGSize(width: w * 2, height: 42)
+            optionsButton.size = CGSize(width: w * 2, height: 52)
             optionsButton.color = UIColor.clear
             optionsButton.position = CGPoint(x: 0, y: Int(Double(screenHeight) * 0.19))
             addChild(optionsButton)
@@ -91,7 +91,7 @@ extension GameScene {
             addChild(aboutLabel)
             
             aboutButton.name = String("aboutButton")
-            aboutButton.size = CGSize(width: w * 2, height: 42)
+            aboutButton.size = CGSize(width: w * 2, height: 52)
             aboutButton.color = UIColor.clear
             aboutButton.position = CGPoint(x: 0, y: Int(Double(screenHeight) * 0.11))
             addChild(aboutButton)
@@ -104,7 +104,7 @@ extension GameScene {
         }
         
         func update () {
-            player.move(to: CGPoint(x: screenWidth / 2, y: Int(Double(screenHeight) * 0.58)))
+        
         }
     }
 }

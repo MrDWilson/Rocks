@@ -37,7 +37,7 @@ extension GameScene {
             sprite.xScale     = CGFloat(size)
             sprite.yScale     = CGFloat(size)
             sprite.position.x = CGFloat(arc4random_uniform(UInt32(xConfine - Int(sprite.size.width))))
-            sprite.position.y = CGFloat(yConfine + 1000 + Int(arc4random_uniform(1024)))
+            sprite.position.y = CGFloat(yConfine + 800 + Int(arc4random_uniform(750)))
             
             // Give graphics
             let ting = 1 + Int(arc4random_uniform(4))
@@ -64,12 +64,10 @@ extension GameScene {
             sprite.position.x += velocity.dx
             sprite.position.y += velocity.dy
             
-            // works absolutely fine
             if (sprite.position.y < 0 - (sprite.size.height * 2)) {
                 reuse()
             }
             
-            // frame drop
             sprite.physicsBody?.allContactedBodies().forEach {
                 if ($0.node?.name == "laserbeam") {
                     destroyed()
@@ -95,7 +93,7 @@ extension GameScene {
             
             // reuse
             sprite.position.x = CGFloat(arc4random_uniform(UInt32(xConfine)))
-            sprite.position.y = CGFloat(yConfine +  1000 + Int(arc4random_uniform(1024)))
+            sprite.position.y = CGFloat(yConfine +  800 + Int(arc4random_uniform(750)))
 
         }
     }

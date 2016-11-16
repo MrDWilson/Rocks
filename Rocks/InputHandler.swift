@@ -20,34 +20,58 @@ extension GameScene {
             // get touched node
             let node = self.atPoint(touch.location(in: self))
             
+
+            
             // switch on game state
             switch (state) {
                 case .MainMenu:
+                    player.setRestingY(y: Int((Double(self.size.width) * 0.25)))
                     if (node.name == "customiseButton") {
                         state = .Customise
-                        player.grow()
                     } else if (node.name == "leaderboardButton") {
                         state = .Leaderboard
                     } else if (node.name == "optionsButton") {
                         state = .Options
                     } else if (node.name == "aboutButton") {
                         state = .About
-                    } else {
+                    } else if (touch.location(in: self).y > self.size.height / 2) {
+                        backdrop.forEach { $0.speedUp() }
                         state = .InGame
                     }
                     break
                 case .Customise:
-                    state = .MainMenu
-                    player.shrink()
+                    if (node.name == "back") {
+                        state = .MainMenu
+                        userInterface.back()
+                    }
                     break
                 case .Leaderboard:
-                    state = .MainMenu
+                    if (node.name == "back") {
+                        state = .MainMenu
+                        userInterface.back()
+                    }
                     break
                 case .Options:
-                    state = .MainMenu
+                    if (node.name == "back") {
+                        state = .MainMenu
+                        userInterface.back()
+                    }
+                    
+                    if (node.name == "sound") {
+                        sound = !sound
+                        userInterface.toggleSound()
+                    }
+                    
+                    if (node.name == "vibration") {
+                        vibrate = !vibrate
+                        userInterface.toggleVibrate()
+                    }
                     break
                 case .About:
-                    state = .MainMenu
+                    if (node.name == "back") {
+                        state = .MainMenu
+                        userInterface.back()
+                    }
                     break
                 case .InGame:
                     if (node.name == "PauseButton") {
@@ -70,6 +94,7 @@ extension GameScene {
                 case .GameOver:
                     state = .MainMenu
                     resetGame()
+                    backdrop.forEach { $0.slowDown() }
                     break
             }
         }
