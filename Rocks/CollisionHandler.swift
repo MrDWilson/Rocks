@@ -59,6 +59,7 @@ extension GameScene {
                 if(player.getScore() > saver.getHighScore()) {
                     saver.setHighScore(x: player.getScore())
                     saver.saveToiCloud()
+                    //High score saves to leaderboard
                     leaderboard.updateScore(score: player.getScore())
                     leaderboard.loads()
                 }

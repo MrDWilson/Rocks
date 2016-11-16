@@ -14,10 +14,7 @@ import GameKit
 
 class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     
-    var score: Int = 0 // Stores the score
-    var leaderboard = GKLeaderboard()
     var gcEnabled = Bool() // Stores if the user has Game Center enabled
-    var gcDefaultLeaderBoard = String() // Stores the default leaderboardID
 
     override func viewDidLoad() {
         
@@ -84,16 +81,6 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
             } else if (localPlayer.isAuthenticated) {
                 // 2 Player is already euthenticated & logged in, load game center
                 self.gcEnabled = true
-                
-                // Get the default leaderboard ID
-                localPlayer.loadDefaultLeaderboardIdentifier(completionHandler: { (leaderboardIdentifer: String?, error: Error?) -> Void in
-                    if error != nil {
-                        print(error as Any)
-                    } else {
-                        self.gcDefaultLeaderBoard = leaderboardIdentifer!
-                    }
-                })
-                
                 
             } else {
                 // 3 Game center is not enabled on the users device
