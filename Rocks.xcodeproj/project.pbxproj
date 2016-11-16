@@ -45,6 +45,7 @@
 		CEAA9B311DDB8FD600203FD1 /* CustomiseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA9B301DDB8FD600203FD1 /* CustomiseScreen.swift */; };
 		CEAA9B331DDB900C00203FD1 /* AboutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA9B321DDB900C00203FD1 /* AboutScreen.swift */; };
 		CEAA9B351DDB905C00203FD1 /* OptionsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA9B341DDB905C00203FD1 /* OptionsScreen.swift */; };
+		CEAA9B371DDBCF9900203FD1 /* Stars.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA9B361DDBCF9900203FD1 /* Stars.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 		CEAA9B301DDB8FD600203FD1 /* CustomiseScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomiseScreen.swift; path = Rocks/CustomiseScreen.swift; sourceTree = SOURCE_ROOT; };
 		CEAA9B321DDB900C00203FD1 /* AboutScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutScreen.swift; path = Rocks/AboutScreen.swift; sourceTree = SOURCE_ROOT; };
 		CEAA9B341DDB905C00203FD1 /* OptionsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OptionsScreen.swift; path = Rocks/OptionsScreen.swift; sourceTree = SOURCE_ROOT; };
+		CEAA9B361DDBCF9900203FD1 /* Stars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stars.swift; path = Rocks/Stars.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 				62798A531DD8AAEF001F1DA8 /* AppDelegate.swift */,
 				62798A541DD8AAEF001F1DA8 /* Assets.xcassets */,
 				62798A551DD8AAEF001F1DA8 /* Asteroid.swift */,
+				CEAA9B361DDBCF9900203FD1 /* Stars.swift */,
 				62798A571DD8AAEF001F1DA8 /* CollisionHandler.swift */,
 				62798A581DD8AAEF001F1DA8 /* Counter.swift */,
 				62798A591DD8AAEF001F1DA8 /* Difficulty.swift */,
@@ -371,6 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62798A791DD8AAEF001F1DA8 /* TextureCache.swift in Sources */,
+				CEAA9B371DDBCF9900203FD1 /* Stars.swift in Sources */,
 				62798A761DD8AAEF001F1DA8 /* Player.swift in Sources */,
 				62798A721DD8AAEF001F1DA8 /* GameViewController.swift in Sources */,
 				62750FF91DDA6ED500358E4A /* MainMenu.swift in Sources */,

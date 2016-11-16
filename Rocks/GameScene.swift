@@ -29,11 +29,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var player          = Player()
     
     // Graphics Stuff
-    var worldTextureCache   = TextureCache()
+    var worldTextureCache = TextureCache()
+    var backdrop          = [Stars]()
     
     // saver
     var playing = true
     var saver = Save()
+    
+    // preferences
+    var sound = true
+    var vibrate = true
     
     /* * * * * * * * * * * * * * * * * * * * *
      *  ENTRY POINT
@@ -57,6 +62,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // make some asteroids and powerups
         for _ in 0...difficulty.rawValue { asteroids.append(Asteroid()) }
         for _ in 0...difficulty.rawValue { powerups.append(Powerup()) }
+        for _ in 0...400 {backdrop.append(Stars())}
         
         asteroids.forEach {
             $0.setXConfine(con: Int(self.size.width))
@@ -68,12 +74,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         // spawn player and HUD
-        clearScene.addChild(player.spawn(x: Int(self.size.width / 2), y: Int(self.size.height / 4)))
+        clearScene.addChild(player.spawn(x: Int(self.size.width / 2), y: Int(self.size.height * CGFloat(0.58))))
         addChild(userInterface)
         
-        // spawn asteroids and powerups
+        // spawn asteroids, powerups and stars
         asteroids.forEach { clearScene.addChild($0.spawn(textureCache: worldTextureCache)) }
         powerups.forEach  { clearScene.addChild($0.spawn(textureCache: worldTextureCache)) }
+        backdrop.forEach  { clearScene.addChild($0.spawn())}
         
         // set up blur filter
         blurScene.filter = CIFilter(name: "CIGaussianBlur", withInputParameters: ["inputRadius": 5.5])
@@ -87,20 +94,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
      * * * * * * * * * * * * * * * * * * * * */
     override func update(_ currentTime: TimeInterval) {
         userInterface.update(state: state)
+        backdrop.forEach { $0.update() }
         
         switch (state) {
             case .MainMenu:
             
+                player.scaleTo(x: 1.0, y: 1.0)
+                player.setRestingY(y: Int(self.size.height * CGFloat(0.58)))
                 updateMainMenu()
                 
                 break
             case .Customise:
                 
+                player.scaleTo(x: 3.5, y: 3.5)
+                player.setRestingY(y: Int(self.size.height * CGFloat(0.58)))
                 player.update()
             
                 break
             case .Leaderboard:
-                
                 
             
                 break
@@ -110,6 +121,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 break
             case .About:
+            
+                player.setRestingY(y: Int(self.size.height * CGFloat(0.7)))
+                player.update()
             
                 break
             case .InGame:
@@ -135,9 +149,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func updateRunning (currentTime: TimeInterval) {
+        //
+        player.setRestingY(y: Int(self.size.height * CGFloat(0.32)))
+        
+        if (player.getScore() % 5000 == 0) && player.getScore() > 0 {
+            backdrop.forEach { $0.speedUp() }
+            asteroids.append(Asteroid())
+            clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
+            
+            if (player.getScore() > 40000) {
+                asteroids.append(Asteroid())
+                clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
+            }
+        }
+    
+        /*
         // check/set difficulty
-        if (player.getScore() > 5000) { difficulty = .Medium }
+        if (player.getScore() > 5000) { difficulty = .Medium; backdrop.forEach { $0.speedUp() } }
         if (player.getScore() > 15000) { difficulty = .Hard }
+        */
         
         // get input
         processUserMotion(forUpdate: currentTime)
@@ -147,6 +177,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         powerups.forEach { $0.update() }
         player.update()
         
+        /*
         // ensure correct astroid count
         if (difficulty == .Medium) {
             if (asteroids.count == Difficulty.Easy.rawValue) {
@@ -165,6 +196,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
         }
+        */
     }
     
     func updatePaused () {
@@ -173,15 +205,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func updateGameOver (currentTime: TimeInterval) {
         
-        // putting these in the if statement makes tem
-        // stop. Investigate
         asteroids.forEach { $0.update() }
         powerups.forEach { $0.update() }
+        player.update()
         
-        if (currentTime.remainder(dividingBy: 24) == 0) {
+        /*
+        // broken slo-mo
+        if (currentTime.remainder(dividingBy: 64) < 5) {
             // update game actors
+            // putting these in the if statement makes tem
+            // stop. Investigate
+            asteroids.forEach { $0.update() }
+            powerups.forEach { $0.update() }
             player.update()
         }
+        */
     }
     
     /* * * * * * * * * * * * * * * * * * * * *
@@ -189,7 +227,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
      * * * * * * * * * * * * * * * * * * * * */
     func resetGame () {
         // reset player and HUD
-        player.resetAt(x: Int(self.size.width / 2), y: Int(self.size.height / 4))
+        player.resetAt(x: Int(self.size.width * CGFloat(0.5)), y: Int(self.size.height * CGFloat(0.58)))
 
         difficulty = .Easy
         while (asteroids.count > difficulty.rawValue) {

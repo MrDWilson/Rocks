@@ -62,6 +62,14 @@ extension GameScene {
             mainMenu_about.isHidden = true
         }
         
+        func toggleSound () {
+            mainMenu_options.toggleSound()
+        }
+        
+        func toggleVibrate () {
+            mainMenu_options.toggleVibrate()
+        }
+        
         init (width: Int, height: Int, player: Player, highScore: Int) {
             self.player = player
             self.screenWidth = width
@@ -116,9 +124,7 @@ extension GameScene {
                     mainMenu.update()
                     break
                 case .Customise:
-                    // animate player
-                    player.move(to: CGPoint(x: screenWidth / 2, y: Int(Double(screenHeight) * 0.82)))
-                    
+
                     showCustomiseMenu()
                     break
                 case .Leaderboard:
@@ -135,7 +141,7 @@ extension GameScene {
                     pauseMenu.isHidden = true
                     
                     // animate player
-                    if (Int(player.getPosition().y) < (Int(screenHeight / 4) + 24)) {
+                    if (Int(player.getPosition().y) < Int(CGFloat(screenHeight) * 0.34)) {
                         gameHUD.isHidden = false
                     }
                     

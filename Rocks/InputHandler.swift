@@ -25,9 +25,9 @@ extension GameScene {
             // switch on game state
             switch (state) {
                 case .MainMenu:
+                    player.setRestingY(y: Int((Double(self.size.width) * 0.25)))
                     if (node.name == "customiseButton") {
                         state = .Customise
-                        player.grow()
                     } else if (node.name == "leaderboardButton") {
                         state = .Leaderboard
                     } else if (node.name == "optionsButton") {
@@ -35,6 +35,7 @@ extension GameScene {
                     } else if (node.name == "aboutButton") {
                         state = .About
                     } else if (touch.location(in: self).y > self.size.height / 2) {
+                        backdrop.forEach { $0.speedUp() }
                         state = .InGame
                     }
                     break
@@ -43,7 +44,6 @@ extension GameScene {
                         state = .MainMenu
                         userInterface.back()
                     }
-                    player.shrink()
                     break
                 case .Leaderboard:
                     if (node.name == "back") {
@@ -55,6 +55,16 @@ extension GameScene {
                     if (node.name == "back") {
                         state = .MainMenu
                         userInterface.back()
+                    }
+                    
+                    if (node.name == "sound") {
+                        sound = !sound
+                        userInterface.toggleSound()
+                    }
+                    
+                    if (node.name == "vibration") {
+                        vibrate = !vibrate
+                        userInterface.toggleVibrate()
                     }
                     break
                 case .About:
@@ -84,6 +94,7 @@ extension GameScene {
                 case .GameOver:
                     state = .MainMenu
                     resetGame()
+                    backdrop.forEach { $0.slowDown() }
                     break
             }
         }

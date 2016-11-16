@@ -104,7 +104,7 @@ extension GameScene {
         }
         
         func update () {
-            player.move(to: CGPoint(x: screenWidth / 2, y: Int(Double(screenHeight) * 0.58)))
+        
         }
     }
 }

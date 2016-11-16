@@ -39,6 +39,8 @@ extension GameScene {
         private var exploding           = false
         private var restingY            = 100
         
+        private var targetScale = CGVector(dx: 1, dy: 1)
+        
         func getName     () -> String  { return name! }
         func getPosition () -> CGPoint { return sprite.position }
         func getHealth   () -> Int     { return health }
@@ -47,11 +49,12 @@ extension GameScene {
         
         func moveRight   () { velocity.dx += 10 }
         func moveLeft    () { velocity.dx -= 10 }
+        func moveUp      () { velocity.dy += 5 }
+        func setRestingY (y: Int) { restingY = y }
         func move        (to: CGPoint) { sprite.position = to }
         
-        func grow () {
-            sprite.xScale = 1.8
-            sprite.yScale = 1.8
+        func scaleTo (x: CGFloat, y: CGFloat) {
+            targetScale = CGVector(dx: x, dy: y)
         }
         
         func shrink () {
@@ -201,11 +204,19 @@ extension GameScene {
             
             // compensate for vertical drift
             if (!exploding) {
+            
+                // move
                 if (sprite.position.y < CGFloat(restingY - 10)) {
-                    velocity.dy += 0.0075 * (sprite.position.y + CGFloat(restingY))
+                    velocity.dy += 0.0025 * (sprite.position.y + CGFloat(restingY))
                 } else if (sprite.position.y > CGFloat(restingY + 10)) {
-                    velocity.dy -= 0.0075 * (sprite.position.y - CGFloat(restingY))
+                    velocity.dy -= 0.0025 * (sprite.position.y + CGFloat(restingY))
                 }
+                
+                // scale
+                if (sprite.xScale < targetScale.dx) { sprite.xScale += 0.02 }
+                if (sprite.yScale < targetScale.dy) { sprite.yScale += 0.02 }
+                if (sprite.xScale > targetScale.dx) { sprite.xScale -= 0.02 }
+                if (sprite.yScale > targetScale.dy) { sprite.yScale -= 0.02 }
             }
             
             // apply velocity

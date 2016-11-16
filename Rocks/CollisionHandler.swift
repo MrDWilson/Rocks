@@ -45,7 +45,7 @@ extension GameScene {
                 state = .GameOver
                 
                 // bzzz
-                if(!player.isExploding()) {
+                if(!player.isExploding() && vibrate) {
                     AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                 }
                 
