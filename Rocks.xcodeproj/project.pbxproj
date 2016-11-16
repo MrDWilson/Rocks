@@ -38,7 +38,6 @@
 		62798A7A1DD8AAEF001F1DA8 /* ThrusterParticle_3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62798A661DD8AAEF001F1DA8 /* ThrusterParticle_3.sks */; };
 		6294E0C51DD8AD5200191D1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6294E0C31DD8AD5200191D1A /* Main.storyboard */; };
 		6294E0C61DD8AD5200191D1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6294E0C41DD8AD5200191D1A /* LaunchScreen.storyboard */; };
-		A13F953A1DDB94DB00244A27 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A13F95391DDB94DB00244A27 /* GameKit.framework */; };
 		CE5B26011DD02ACE00A0AB64 /* RocksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B26001DD02ACE00A0AB64 /* RocksTests.swift */; };
 		CE5B260C1DD02ACE00A0AB64 /* RocksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B260B1DD02ACE00A0AB64 /* RocksUITests.swift */; };
 		CEAA9B2D1DDB8B9F00203FD1 /* LeaderboardFrontEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA9B2C1DDB8B9F00203FD1 /* LeaderboardFrontEnd.swift */; };
@@ -101,7 +100,6 @@
 		6294E0C31DD8AD5200191D1A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Rocks/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		6294E0C41DD8AD5200191D1A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Rocks/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		62F97BB71DD0DF6A00CD8C4F /* Screens */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Screens; sourceTree = SOURCE_ROOT; };
-		A13F95391DDB94DB00244A27 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		CE5B25E21DD02ACE00A0AB64 /* Rocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5B25FC1DD02ACE00A0AB64 /* RocksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RocksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5B26001DD02ACE00A0AB64 /* RocksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocksTests.swift; sourceTree = "<group>"; };
@@ -122,7 +120,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A13F953A1DDB94DB00244A27 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,7 +143,6 @@
 		A13F95381DDB94DB00244A27 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A13F95391DDB94DB00244A27 /* GameKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -313,7 +309,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};

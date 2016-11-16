@@ -62,6 +62,7 @@ extension GameScene {
                     //High score saves to leaderboard
                     leaderboard.updateScore(score: player.getScore())
                     leaderboard.loads()
+                    print(leaderboard.getEntries().count)
                 }
             }
            
