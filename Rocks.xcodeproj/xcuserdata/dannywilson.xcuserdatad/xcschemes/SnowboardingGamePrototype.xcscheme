@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CE5B25E11DD02ACE00A0AB64"
-            BuildableName = "SnowboardingGamePrototype.app"
-            BlueprintName = "SnowboardingGamePrototype"
-            ReferencedContainer = "container:SnowboardingGamePrototype.xcodeproj">
+            BuildableName = "Rocks.app"
+            BlueprintName = "Rocks"
+            ReferencedContainer = "container:Rocks.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CE5B25E11DD02ACE00A0AB64"
-            BuildableName = "SnowboardingGamePrototype.app"
-            BlueprintName = "SnowboardingGamePrototype"
-            ReferencedContainer = "container:SnowboardingGamePrototype.xcodeproj">
+            BuildableName = "Rocks.app"
+            BlueprintName = "Rocks"
+            ReferencedContainer = "container:Rocks.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
