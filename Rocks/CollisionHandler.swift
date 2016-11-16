@@ -17,6 +17,8 @@ let powerupCollisionCat:    UInt32 = 0x03
 
 extension GameScene {
     
+//    Saver test - leaderboard
+    
     // On-Collision
     func didBegin(_ contact: SKPhysicsContact) {
         
@@ -57,6 +59,8 @@ extension GameScene {
                 if(player.getScore() > saver.getHighScore()) {
                     saver.setHighScore(x: player.getScore())
                     saver.saveToiCloud()
+                    leaderboard.updateScore(score: player.getScore())
+                    leaderboard.loads()
                 }
             }
            

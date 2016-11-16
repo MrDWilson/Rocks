@@ -36,6 +36,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var playing = true
     var saver = Save()
     
+    var leaderboard = LeaderboardBackEnd()
+    
     // preferences
     var sound = true
     var vibrate = true

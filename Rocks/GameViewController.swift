@@ -15,19 +15,16 @@ import GameKit
 class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     
     var score: Int = 0 // Stores the score
-    
     var leaderboard = GKLeaderboard()
-    
-    
     var gcEnabled = Bool() // Stores if the user has Game Center enabled
     var gcDefaultLeaderBoard = String() // Stores the default leaderboardID
 
     override func viewDidLoad() {
         
+//        User is authenitcated when the view loads
         self.authenticateLocalPlayer()
         
         super.viewDidLoad()
-        
         
         
         if let view = self.view as! SKView? {
@@ -46,16 +43,36 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
            // view.showsNodeCount = true
            // view.showsDrawCount = true
            // view.showsPhysics = true
-        
-           //updateScore(score: 64)
-            loadScore()
             
         }
     }
     
-    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
-        gameCenterViewController.dismiss(animated: true, completion: nil)
+    override var shouldAutorotate: Bool {
+        return true
     }
+
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            return .portrait
+        } else {
+            return .all
+        }
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Release any cached data, images, etc that aren't in use.
+    }
+
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    /*
+    *  This function is used to authenicate the player, pops up logged in message if
+    *  they are already logged in, presents log in screen if not, and bypasses if they
+    *  have game center disabled.
+    */
     
     func authenticateLocalPlayer() {
         let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
@@ -88,88 +105,10 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         }
         
     }
-
-    override var shouldAutorotate: Bool {
-        return true
-    }
-
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .portrait
-        } else {
-            return .all
-        }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
-    }
-
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
     
-    
-    
-    func go() {
-        let leaderboardID = "LeaderboardID"
-        let sScore = GKScore(leaderboardIdentifier: leaderboardID)
-        sScore.value = Int64(100)
-        print(100)
-    
-        GKScore.report([sScore], withCompletionHandler: { (error: Error?) -> Void in
-        if error != nil {
-            print(error!.localizedDescription)
-        } else {
-            print("Score submitted")
-    
-            }
-        })
-    }
-    /*
-    
-    
-    
-    func doSomething() {
-        print(leaderboard.localPlayerScore?.player?.alias as Any)
-    }_*/
-    
-    func updateScore(score : Int) {
-        
-        if(GKLocalPlayer.localPlayer().isAuthenticated) {
-            
-            let scoreReporter = GKScore(leaderboardIdentifier: "high_score_leaderboard")
-            
-            scoreReporter.value = Int64(score)
-            
-            let scoreArray : [GKScore] = [scoreReporter]
-            
-            GKScore.report(scoreArray, withCompletionHandler: nil)
-        }
-        
-    }
-    
-    func loadScore(){
-        
-        let leaderBoardRequest = GKLeaderboard()
-        
-        leaderBoardRequest.identifier = "high_score_leaderboard"
-        leaderBoardRequest.playerScope = GKLeaderboardPlayerScope.global
-        leaderBoardRequest.timeScope = GKLeaderboardTimeScope.allTime;
-        
-        leaderBoardRequest.loadScores { (scores, error) -> Void in
-            if (error != nil) {
-                print("Error: \(error!.localizedDescription)")
-            } else if (scores != nil) {
-                let localPlayerScore = leaderBoardRequest.localPlayerScore
-                print("Local player's score: \(localPlayerScore?.value)")
-                print("High score: \(leaderBoardRequest.scores?.first)")
-                print("All scores: \(scores)")
-            }
-            
-        }
-        
+//    This is a function which has to be implemented 
+    func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        gameCenterViewController.dismiss(animated: true, completion: nil)
     }
     
 }

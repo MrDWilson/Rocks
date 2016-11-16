@@ -17,6 +17,9 @@ extension GameScene {
         private let pauseButtonNode    = SKSpriteNode()
         private let pauseLabelNode     = SKLabelNode()
         
+        // leaderboard test
+//        private let leaderboard        = LeaderboardBackEnd()
+        
         // in-game UI
         private let healthBarNode      = SKLabelNode(fontNamed: "Arial")
         private let healthBarLabel     = SKLabelNode(fontNamed: "Arial")
