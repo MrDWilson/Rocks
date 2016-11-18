@@ -15,6 +15,7 @@ let asteroidCollisionCat:   UInt32 = 0x01
 let laserbeamCollisionCat:  UInt32 = 0x02
 let powerupCollisionCat:    UInt32 = 0x03
 
+
 extension GameScene {
     
     // On-Collision
@@ -53,10 +54,16 @@ extension GameScene {
                 player.clearLasers()
                 userInterface.update(state: state)
                 
+                print(saver.getHighScore())
+                print(player.getScore())
+                
                 // save high scores
                 if(player.getScore() > saver.getHighScore()) {
                     saver.setHighScore(x: player.getScore())
+                    
                 }
+                leaderboard.updateScore(score: player.getScore())
+                print(leaderboard.getEntries().count)
             }
                 
             else {

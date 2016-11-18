@@ -33,7 +33,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
                 // Present the scene
                 view.presentScene(scene)
             }
-            
+             
             //view.isAsynchronous = true
             
             view.showsFPS = true
@@ -78,9 +78,11 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
             if((ViewController) != nil) {
                 // 1 Show login if player is not logged in
                 self.present(ViewController!, animated: true, completion: nil)
+                print("log in please")
             } else if (localPlayer.isAuthenticated) {
                 // 2 Player is already euthenticated & logged in, load game center
                 self.gcEnabled = true
+                print("authorised")
                 
             } else {
                 // 3 Game center is not enabled on the users device

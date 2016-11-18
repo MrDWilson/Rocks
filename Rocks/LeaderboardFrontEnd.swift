@@ -67,6 +67,7 @@ extension GameScene {
         
         init (w: Int, h: Int, p: Player) {
             backend = LeaderboardBackEnd()
+            backend.loads()
             
             super.init()
             

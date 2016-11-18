@@ -43,6 +43,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // input
     var touches = NSMutableArray()
     
+    // leaderboard
+    var leaderboard = LeaderboardBackEnd()
+
+    
     /* * * * * * * * * * * * * * * * * * * * *
      *  ENTRY POINT
      * * * * * * * * * * * * * * * * * * * * */

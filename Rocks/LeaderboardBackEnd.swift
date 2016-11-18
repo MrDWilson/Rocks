@@ -21,10 +21,9 @@ extension GameScene {
         
         
         func updateScore(score : Int) {
-            
             if(GKLocalPlayer.localPlayer().isAuthenticated) {
                 
-                let scoreReporter = GKScore(leaderboardIdentifier: "highScore")
+                let scoreReporter = GKScore(leaderboardIdentifier: "TestOne")
                 
                 scoreReporter.value = Int64(score)
                 
@@ -44,7 +43,7 @@ extension GameScene {
             let leaderboard = GKLeaderboard()
             leaderboard.playerScope = .global
             leaderboard.timeScope = .allTime
-            leaderboard.identifier = "highScore"
+            leaderboard.identifier = "TestOne"
             leaderboard.range = NSRange(location: 1, length: 10)
             
             leaderboard.loadScores { scores, error in
@@ -55,6 +54,7 @@ extension GameScene {
         
         func getEntries() -> [GKScore] {
             loads()
+            print(leaderboardScores.count)
             return leaderboardScores
         }
     }
