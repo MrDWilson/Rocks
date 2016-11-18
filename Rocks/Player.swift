@@ -11,8 +11,8 @@ import SpriteKit
 
 extension GameScene {
     class Player {
-        
-        private var ship = Ship(bID: 1, tID: (1 + Int(arc4random_uniform(7))), cID: UIColor.black)
+       
+         private var ship = Ship(bID: 1, tID: (1 + Int(arc4random_uniform(7))), cID: UIColor.darkGray)
         
         // the admin
         private var velocity     = CGVector(dx: 0, dy: 0)
@@ -33,8 +33,8 @@ extension GameScene {
         func getAmmo     () -> Int     { return ammo }
         func getScore    () -> Int     { return score.getCount() }
         
-        func moveRight   () { velocity.dx += 10 }
-        func moveLeft    () { velocity.dx -= 10 }
+        func moveRight   () { velocity.dx += 5 }
+        func moveLeft    () { velocity.dx -= 5 }
         func moveUp      () { velocity.dy += 5 }
         func setRestingY (y: Int) { restingY = y }
         func move        (to: CGPoint) { ship.position = to }
@@ -65,14 +65,26 @@ extension GameScene {
         
         func spawn (x: Int, y: Int) -> SKNode {
             restingY = y
-            
+
             ship.position = CGPoint(x: x, y: y)
+            
+            // Give physics
+            ship.physicsBody                                  = SKPhysicsBody(rectangleOf: ship.size)
+            ship.physicsBody?.isDynamic                       = true
+            ship.physicsBody?.categoryBitMask                 = playerCollisionCat
+            ship.physicsBody?.contactTestBitMask              = asteroidCollisionCat
+            ship.physicsBody?.collisionBitMask                = asteroidCollisionCat
+            ship.physicsBody!.affectedByGravity               = false
+            ship.physicsBody!.mass                            = 0.02
+            ship.physicsBody!.allowsRotation                  = false
+            ship.physicsBody!.usesPreciseCollisionDetection   = true
+            ship.physicsBody!.linearDamping                   = 3
             
             return ship
         }
         
         func update () {
-            
+
             // move
             if (ship.position.y < CGFloat(restingY - 10)) {
                 velocity.dy += 0.0025 * (ship.position.y + CGFloat(restingY))
@@ -104,17 +116,9 @@ extension GameScene {
             else if (health > HEALTH_MAX - 10) { health = HEALTH_MAX }
         }
         
-        func pickupAmmo () {
-            ammo = AMMO_MAX
-        }
-        
-        func pickupPoints () {
-            for _ in 1...100 { score.increment() }
-        }
-        
-        func give (points: Int) {
-            for _ in 1...points { score.increment() }
-        }
+        func pickupAmmo   () { ammo = AMMO_MAX }
+        func pickupPoints () { for _ in 1...100 { score.increment() } }
+        func give (points: Int) { for _ in 1...points { score.increment() } }
         
         func takeDamage () {
             if      (health <  2) { health = 0 }
@@ -123,13 +127,9 @@ extension GameScene {
             ship.flash(color: UIColor.red)
         }
         
-        func explode () {
-            ship.explode()
-        }
+        func explode () { ship.explode() }
         
-        func isExploding() -> Bool {
-            return ship.isExploding()
-        }
+        func isExploding() -> Bool { return ship.isExploding() }
         
         func fireLaser () {
             if (ammo > 0) {
