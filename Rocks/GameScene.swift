@@ -51,7 +51,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         sound = saver.getSound()
         vibrate = saver.getVibration()
         
-        userInterface = UserInterface(width: Int(self.size.width), height: Int(self.size.height), player: player, highScore: saver.getHighScore())
+        userInterface = UserInterface (
+            width: Int(self.size.width),
+            height: Int(self.size.height),
+            player: player,
+            highScore: saver.getHighScore(),
+            sound: saver.getSound(),
+            vibrate: saver.getVibration()
+        )
     
         view.shouldCullNonVisibleNodes = true
         

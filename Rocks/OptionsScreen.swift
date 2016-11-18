@@ -37,7 +37,7 @@ extension GameScene {
             else { soundImage.texture = sound_on }
         }
         
-        init (w: Int, h: Int, p: Player) {
+        init (w: Int, h: Int, p: Player, sound: Bool, vibrate: Bool) {
             super.init()
             
             // back button
@@ -51,7 +51,7 @@ extension GameScene {
             //addChild(backButton)
             
             // Vibrate
-            vibrateImage.texture = vibrate_on
+            if (vibrate) {vibrateImage.texture = vibrate_on} else {vibrateImage.texture = vibrate_off}
             vibrateImage.size = CGSize(width: 46, height: 32)
             vibrateImage.position = CGPoint(x: Int(Double(w) * 0.3), y: Int(Double(h) * 0.315))
             addChild(vibrateImage)
@@ -69,7 +69,7 @@ extension GameScene {
             addChild(vibrateButton)
             
             // sound
-            soundImage.texture = sound_on
+            if (sound) {soundImage.texture = sound_on} else {soundImage.texture = sound_off}
             soundImage.size = CGSize(width: 36, height: 32)
             soundImage.position = CGPoint(x: Int(Double(w) * 0.3), y: Int(Double(h) * 0.165))
             addChild(soundImage)

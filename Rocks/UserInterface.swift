@@ -70,7 +70,7 @@ extension GameScene {
             mainMenu_options.toggleVibrate()
         }
         
-        init (width: Int, height: Int, player: Player, highScore: Int) {
+        init (width: Int, height: Int, player: Player, highScore: Int, sound: Bool, vibrate: Bool) {
             self.player = player
             self.screenWidth = width
             self.screenHeight = height
@@ -80,7 +80,7 @@ extension GameScene {
             mainMenu             = MainMenu(w: width, h: height, p: player)
             mainMenu_customise   = CustomiseScreen(w: width, h: height, p: player)
             mainMenu_leaderboard = LeaderboardFrontEnd(w: width, h: height, p: player)
-            mainMenu_options     = OptionsScreen(w: width, h: height, p: player)
+            mainMenu_options     = OptionsScreen(w: width, h: height, p: player, sound: sound, vibrate: vibrate)
             mainMenu_about       = AboutScreen(w: width, h: height, p:player)
             
             gameHUD   = GameHUD(w: width, h: height, p: player)
