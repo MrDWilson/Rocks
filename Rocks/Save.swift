@@ -23,8 +23,8 @@ extension GameScene {
         private let COIN = "coins"
         //Values to be saved
         private var highScore = 0
-        private var vibration = 0
-        private var sound = 0
+        private var vibration = 1
+        private var sound = 1
         private var shipID = 0
         private var colourID = 0
         private var thrusterID = 0

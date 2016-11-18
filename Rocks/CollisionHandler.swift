@@ -56,7 +56,6 @@ extension GameScene {
                 // save high scores
                 if(player.getScore() > saver.getHighScore()) {
                     saver.setHighScore(x: player.getScore())
-                    saver.saveToiCloud()
                 }
             }
                 

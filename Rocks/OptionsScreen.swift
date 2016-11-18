@@ -29,6 +29,7 @@ extension GameScene {
         func toggleVibrate () {
             if (vibrateImage.texture == vibrate_on) { vibrateImage.texture = vibrate_off }
             else { vibrateImage.texture = vibrate_on }
+            
         }
         
         func toggleSound () {

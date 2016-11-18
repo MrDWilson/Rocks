@@ -47,6 +47,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
      *  ENTRY POINT
      * * * * * * * * * * * * * * * * * * * * */
     override func didMove(to view: SKView) {
+        saver.iCloudSetUp() //Load previous save values
+        sound = saver.getSound()
+        vibrate = saver.getVibration()
+        
         userInterface = UserInterface(width: Int(self.size.width), height: Int(self.size.height), player: player, highScore: saver.getHighScore())
     
         view.shouldCullNonVisibleNodes = true
