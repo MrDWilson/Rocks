@@ -59,7 +59,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             width: Int(self.size.width),
             height: Int(self.size.height),
             player: player,
-            highScore: saver.getHighScore(),
+            save: saver,
             sound: saver.getSound(),
             vibrate: saver.getVibration()
         )

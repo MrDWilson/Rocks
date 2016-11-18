@@ -27,15 +27,17 @@ extension GameScene {
         private var bestScore = 0
         
         private var player: Player!
+        private var save:   Save!
         
         func flashAmmoBar   () { ammoBarNode.fontColor = UIColor.white }
         func flashHealthBar () { healthBarNode.fontColor = UIColor.white }
         func flashScore     () { thisScoreLabelNode.fontColor = UIColor.white }
         
-        init (w: Int, h: Int, p: Player) {
+        init (w: Int, h: Int, p: Player, s: Save) {
             super.init()
             
             player = p
+            save = s
             
             numberMachine.numberStyle = .decimal
             
@@ -91,7 +93,7 @@ extension GameScene {
             
             // best score
             bestScoreLabelNode.name                     = String("Label")
-            bestScoreLabelNode.text                     = String(String(describing: bestScore)) // previous best icloud score should be visible in game
+            bestScoreLabelNode.text                     = String(String(describing: save.getHighScore())) // previous best icloud score should be visible in game
             bestScoreLabelNode.fontSize                 = 20
             bestScoreLabelNode.horizontalAlignmentMode  = .left
             bestScoreLabelNode.position                 = CGPoint(x:6, y:28)

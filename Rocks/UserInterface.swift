@@ -70,7 +70,7 @@ extension GameScene {
             mainMenu_options.toggleVibrate()
         }
         
-        init (width: Int, height: Int, player: Player, highScore: Int, sound: Bool, vibrate: Bool) {
+        init (width: Int, height: Int, player: Player, save: Save, sound: Bool, vibrate: Bool) {
             self.player = player
             self.screenWidth = width
             self.screenHeight = height
@@ -83,7 +83,7 @@ extension GameScene {
             mainMenu_options     = OptionsScreen(w: width, h: height, p: player, sound: sound, vibrate: vibrate)
             mainMenu_about       = AboutScreen(w: width, h: height, p:player)
             
-            gameHUD   = GameHUD(w: width, h: height, p: player)
+            gameHUD   = GameHUD(w: width, h: height, p: player, s: save)
             pauseMenu = PauseMenu(w: width, h: height, p: player)
             gameOver  = GameOverScreen(w: width, h: height, p: player)
             
@@ -108,7 +108,7 @@ extension GameScene {
             
             
             self.zPosition = 2
-            self.highScore = highScore
+            self.highScore = save.getHighScore()
         }
         
         /* * * * * * * * * * * * * * * * * * * * *
