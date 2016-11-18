@@ -112,7 +112,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         switch (state) {
             case .MainMenu:
-            
+                player.show()
                 player.scaleTo(x: 1.0, y: 1.0)
                 player.setRestingY(y: Int(self.size.height * CGFloat(0.58)))
                 if (player.getPosition().x > (self.size.width / 2) + 5) {
@@ -133,13 +133,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
                 break
             case .Leaderboard:
-                
-                player.scaleTo(x: 1.5, y: 1.5)
-                player.setRestingY(y: Int(self.size.height * CGFloat(0.90)))
-                if (player.getPosition().x > self.size.width * CGFloat(0.30)) {
-                    player.moveLeft()
-                }
-                player.update()
+                player.hide()
+                //player.scaleTo(x: 1.5, y: 1.5)
+                //player.setRestingY(y: Int(self.size.height * CGFloat(0.90)))
+                //if (player.getPosition().x > self.size.width * CGFloat(0.30)) {
+                //    player.moveLeft()
+                //}
+                //player.update()
                 
                 break
             case .Options:

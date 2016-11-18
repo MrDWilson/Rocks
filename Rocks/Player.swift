@@ -43,6 +43,14 @@ extension GameScene {
             targetScale = CGVector(dx: x, dy: y)
         }
         
+        func hide () {
+            ship.isHidden = true
+        }
+        
+        func show () {
+            ship.isHidden = false
+        }
+        
         func shrink () {
             ship.xScale = 1.0
             ship.yScale = 1.0
