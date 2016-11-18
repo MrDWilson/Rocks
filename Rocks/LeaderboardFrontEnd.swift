@@ -21,34 +21,36 @@ extension GameScene {
         
         init (rank: Int, username: String, score: Int64, ship: Ship, w: CGFloat, h: CGFloat) {
             super.init()
+            let baseline = h - ((CGFloat(rank) * 126))
             
             numberMachine.numberStyle = .decimal
             
             // POSITION
             rankLabel.text = String(describing: rank)
             rankLabel.horizontalAlignmentMode = .center
-            rankLabel.position = CGPoint(x: w * 0.11, y: h - ((CGFloat(rank) * 126) + 0))
-            rankLabel.fontSize = 26
+            rankLabel.position = CGPoint(x: w * 0.11, y: baseline - 16)
+            rankLabel.fontSize = 48
+            rankLabel.fontColor = UIColor.gray
             addChild(rankLabel)
             
             // SHIP
             shipNode = ship
-            shipNode.position = CGPoint(x: w * 0.25, y: h - ((CGFloat(rank) * 126) + 0))
-            shipNode.xScale = 1.5
-            shipNode.yScale = 1.5
+            shipNode.position = CGPoint(x: w * 0.28, y:  baseline + 0)
+            shipNode.xScale = 1.25
+            shipNode.yScale = 1.25
             addChild(shipNode)
             
             // USERNAME
             usernameLabel.text = username
             usernameLabel.horizontalAlignmentMode = .left
-            usernameLabel.position = CGPoint(x: w * 0.38, y: h - ((CGFloat(rank) * 126) + 0))
+            usernameLabel.position = CGPoint(x: w * 0.42, y: baseline + 0)
             usernameLabel.fontSize = 26
             addChild(usernameLabel)
             
             // SCORE
             scoreLabel.text = numberMachine.string(from: NSNumber(value: score))
             scoreLabel.horizontalAlignmentMode = .left
-            scoreLabel.position = CGPoint(x: w * 0.38, y: h - ((CGFloat(rank) * 126) + 32))
+            scoreLabel.position = CGPoint(x: w * 0.42, y: baseline - 32)
             scoreLabel.fontSize = 26
             addChild(scoreLabel)
 

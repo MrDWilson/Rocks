@@ -105,7 +105,7 @@ extension GameScene {
             // Give Particle Effect
             explosionEffect?.name                               = String("explosion")
             explosionEffect?.position                           = CGPoint(x: 0, y: 0)
-            explosionEffect?.numParticlesToEmit                 = 1024
+            explosionEffect?.numParticlesToEmit                 = 64
             explosionEffect?.removeFromParent()
             
             thrusterEffect?.name                                = String("thruster")
@@ -161,7 +161,9 @@ extension GameScene {
             
             // kill thrusters and explpode
             thrusterEffect?.removeFromParent()
-            addChild(explosionEffect!)
+            explosionEffect?.resetSimulation()
+            explosionEffect?.position = position
+            parent?.addChild(explosionEffect!)
             
             /**
              * BREAK TO PIECES
@@ -202,7 +204,7 @@ extension GameScene {
             
             // kill explosion and start thrust
             explosionEffect?.removeFromParent () // delete particle effec
-            explosionEffect?.resetSimulation  ()
+            
             // randomise thruster (CACHE THESE?)
             thrusterEffect = SKEmitterNode(fileNamed: "ThrusterParticle_" + String(describing: (1 + arc4random_uniform(7))) + ".sks")
             addChild(thrusterEffect!)
