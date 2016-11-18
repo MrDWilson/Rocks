@@ -1,5 +1,5 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *  GameScene.swift
+ *  LeaderboardFrontEnd.swift
  *  Space Game
  *
  *  Created by Ryan Needham & Danny Wilson on 07/11/2016.
@@ -8,270 +8,322 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 import SpriteKit
-import GameplayKit
-import AudioToolbox
-import CoreMotion
+import GameKit
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
-    let clearScene = SKNode()
-    let blurScene = SKEffectNode()
-    
-    var state = GameState.MainMenu
-
-    /* * * * * * * * * * * * * * * * * * * * *
-     *  GamePlay Aspects
-     * * * * * * * * * * * * * * * * * * * * */
-    var userInterface:  UserInterface!
-    var motionManager   = CMMotionManager()
-    var difficulty      = Difficulty.Easy
-    var asteroids       = [Asteroid]()
-    var powerups        = [Powerup]()
-    var player          = Player()
-    
-    // Graphics Stuff
-    var worldTextureCache = TextureCache()
-    var backdrop          = [Stars]()
-    
-    // saver
-    var playing = true
-    var saver = Save()
-    
-    // preferences
-    var sound = true
-    var vibrate = true
-    
-    // input
-    var touches = NSMutableArray()
-    
-    /* * * * * * * * * * * * * * * * * * * * *
-     *  ENTRY POINT
-     * * * * * * * * * * * * * * * * * * * * */
-    override func didMove(to view: SKView) {
-        userInterface = UserInterface(width: Int(self.size.width), height: Int(self.size.height), player: player, highScore: saver.getHighScore())
-    
-        view.shouldCullNonVisibleNodes = true
+extension GameScene {
+    class LeaderboardEntry {
+        public var positionLabel = SKLabelNode(fontNamed: "Arial")
+        public var usernameLabel = SKLabelNode(fontNamed: "Arial")
+        public var scoreLabel    = SKLabelNode(fontNamed: "Arial")
+        public var shipNode:     Ship!
         
-        // set up physics stuff
-        physicsWorld.gravity = CGVector (dx: 0.0, dy: 0.0)
-        physicsWorld.contactDelegate = self
-        physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
-        
-        //Stop screen dimming
-        UIApplication.shared.isIdleTimerDisabled = true
-        
-        //Accelerometer start updating
-        motionManager.startAccelerometerUpdates()
-        
-        // make some asteroids and powerups
-        for _ in 0...difficulty.rawValue { asteroids.append(Asteroid()) }
-        for _ in 0...difficulty.rawValue { powerups.append(Powerup()) }
-        for _ in 0...400 {backdrop.append(Stars())}
-        
-        asteroids.forEach {
-            $0.setXConfine(con: Int(self.size.width))
-            $0.setYConfine(con: Int(self.size.height))
-        }
-        powerups.forEach  {
-            $0.setXConfine(con: Int(self.size.width))
-            $0.setYConfine(con: Int(self.size.height))
-        }
-        
-        // spawn player and HUD
-        clearScene.addChild(player.spawn(x: Int(CGFloat(self.size.width / 2)), y: Int(self.size.height * CGFloat(0.58))))
-        addChild(userInterface)
-        
-        // spawn asteroids, powerups and stars
-        asteroids.forEach { clearScene.addChild($0.spawn(textureCache: worldTextureCache)) }
-        powerups.forEach  { clearScene.addChild($0.spawn(textureCache: worldTextureCache)) }
-        backdrop.forEach  { clearScene.addChild($0.spawn())}
-        
-        // set up blur filter
-        blurScene.filter = CIFilter(name: "CIGaussianBlur", withInputParameters: ["inputRadius": 5.5])
-        
-        // show clear scene
-        addChild(clearScene)
-    }
-    
-    /* * * * * * * * * * * * * * * * * * * * *
-     *  ON-UPDATE
-     * * * * * * * * * * * * * * * * * * * * */
-    override func update(_ currentTime: TimeInterval) {
-        userInterface.update(state: state)
-        backdrop.forEach { $0.update() }
-        
-        switch (state) {
-            case .MainMenu:
+        init (position: UInt32, username: String, score: Int, ship: Ship, h: CGFloat, w: CGFloat) {
             
-                player.scaleTo(x: 1.0, y: 1.0)
-                player.setRestingY(y: Int(self.size.height * CGFloat(0.58)))
-                if (player.getPosition().x > (self.size.width / 2) + 5) {
-                    player.moveLeft()
-                }
-                
-                if (player.getPosition().x < (self.size.width / 2) - 5) {
-                    player.moveRight()
-                }
-                updateMainMenu()
-                
-                break
-            case .Customise:
-                
-                player.scaleTo(x: 3.5, y: 3.5)
-                player.setRestingY(y: Int(self.size.height * CGFloat(0.58)))
-                player.update()
+            // POSITION
+            positionLabel.text = String(describing: position)
+            positionLabel.horizontalAlignmentMode = .center
+            positionLabel.position = CGPoint(x: w * 0.08, y: h * 0.90)
+            positionLabel.fontSize = 26
             
-                break
-            case .Leaderboard:
-                
-                player.scaleTo(x: 1.5, y: 1.5)
-                player.setRestingY(y: Int(self.size.height * CGFloat(0.90)))
-                if (player.getPosition().x > self.size.width * CGFloat(0.30)) {
-                    player.moveLeft()
-                }
-                player.update()
-                
-                break
-            case .Options:
-                
-                
-                
-                break
-            case .About:
+            // SHIP
+            shipNode = ship
+            shipNode.position = CGPoint(x: w * 0.25, y: h * 0.90)
+            shipNode.xScale = 1.5
+            shipNode.yScale = 1.5
             
-                player.setRestingY(y: Int(self.size.height * CGFloat(0.7)))
-                player.update()
+            // USERNAME
+            usernameLabel.text = username
+            usernameLabel.horizontalAlignmentMode = .left
+            usernameLabel.position = CGPoint(x: w * 0.38, y: h * 0.90)
+            usernameLabel.fontSize = 26
             
-                break
-            case .InGame:
-                
-                updateRunning(currentTime: currentTime)
-                
-                break
-            case .Paused:
-                
-                updatePaused()
-                
-                break
-            case .GameOver:
-                
-                updateGameOver(currentTime: currentTime)
-                
-                break
+            // SCORE
+            scoreLabel.text = String(describing: score)
+            scoreLabel.horizontalAlignmentMode = .left
+            scoreLabel.position = CGPoint(x: w * 0.38, y: h * 0.86)
+            scoreLabel.fontSize = 26
         }
     }
     
-    func updateMainMenu () {
-        player.update()
-    }
-    
-    func updateRunning (currentTime: TimeInterval) {
-        //
-        player.setRestingY(y: Int(self.size.height * CGFloat(0.32)))
+    class LeaderboardFrontEnd: SKNode {
+        private var backend: LeaderboardBackEnd!
         
-        if (player.getScore() % 5000 == 0) && player.getScore() > 0 {
-            backdrop.forEach { $0.speedUp() }
-            asteroids.append(Asteroid())
-            clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
+        
+         private var backLabel  = SKLabelNode()
+         private var backButton = SKSpriteNode(color: UIColor.clear, size: CGSize(width: 200, height: 100))
+         
+         private var number1Pos = SKLabelNode(fontNamed: "Arial")
+         private var number1Name = SKLabelNode(fontNamed: "Arial")
+         private var number1Score = SKLabelNode()
+         
+         private var dummy1 = Ship(bID: 1, tID: Int(1 + arc4random_uniform(7)), cID: UIColor.white)
+         private var dummy1Pos = SKLabelNode(fontNamed: "Arial")
+         private var dummy1Name = SKLabelNode(fontNamed: "Arial")
+         private var dummy1Score = SKLabelNode()
+         
+         private var dummy2 = Ship(bID: 1, tID: Int(1 + arc4random_uniform(7)), cID: UIColor.black)
+         private var dummy2Pos = SKLabelNode(fontNamed: "Arial")
+         private var dummy2Name = SKLabelNode(fontNamed: "Arial")
+         private var dummy2Score = SKLabelNode()
+         
+         private var dummy3 = Ship(bID: 1, tID: Int(1 + arc4random_uniform(7)), cID: UIColor.magenta)
+         private var dummy3Pos = SKLabelNode(fontNamed: "Arial")
+         private var dummy3Name = SKLabelNode(fontNamed: "Arial")
+         private var dummy3Score = SKLabelNode()
+         
+         private var dummy4 = Ship(bID: 1, tID: Int(1 + arc4random_uniform(7)), cID: UIColor.darkGray)
+         private var dummy4Pos = SKLabelNode(fontNamed: "Arial")
+         private var dummy4Name = SKLabelNode(fontNamed: "Arial")
+         private var dummy4Score = SKLabelNode()
+         
+         private var dummy5 = Ship(bID: 1, tID: Int(1 + arc4random_uniform(7)), cID: UIColor.orange)
+         private var dummy5Pos = SKLabelNode(fontNamed: "Arial")
+         private var dummy5Name = SKLabelNode(fontNamed: "Arial")
+         private var dummy5Score = SKLabelNode()
+         
+         private var dummy6 = Ship(bID: 1, tID: Int(1 + arc4random_uniform(7)), cID: UIColor.white)
+         private var dummy6Pos = SKLabelNode(fontNamed: "Arial")
+         private var dummy6Name = SKLabelNode(fontNamed: "Arial")
+         private var dummy6Score = SKLabelNode()
+         
+         private var dummy7 = Ship(bID: 1, tID: Int(1 + arc4random_uniform(7)), cID: UIColor.red)
+         private var dummy7Pos = SKLabelNode(fontNamed: "Arial")
+         private var dummy7Name = SKLabelNode(fontNamed: "Arial")
+         private var dummy7Score = SKLabelNode()
+         
+         private var dummy8 = Ship(bID: 1, tID: Int(1 + arc4random_uniform(7)), cID: UIColor.green)
+         private var dummy8Pos = SKLabelNode(fontNamed: "Arial")
+         private var dummy8Name = SKLabelNode(fontNamed: "Arial")
+         private var dummy8Score = SKLabelNode()
+         
+         private var entries = [GKScore]()
+         
+         
+        
+        init (w: Int, h: Int, p: Player) {
+            backend = LeaderboardBackEnd()
             
-            if (player.getScore() > 40000) {
-                asteroids.append(Asteroid())
-                clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
-            }
+            super.init()
+            
+            // back button
+            backLabel.text = String("back")
+            backLabel.horizontalAlignmentMode = .left
+            backLabel.position = CGPoint(x: 10, y: h - 50)
+            //addChild(backLabel)
+            
+            backButton.name = String("back")
+            backButton.position = CGPoint(x: 10, y: h - 10)
+            //addChild(backButton)
+            
+            /**
+             *  NOTE - MAKE DYNAMIC SO PLAYER NAMES FIT
+             */
+            
+            number1Pos.text = String("1")
+            number1Pos.horizontalAlignmentMode = .center
+            number1Pos.position = CGPoint(x: CGFloat(w) * 0.08, y: CGFloat(h) * 0.90)
+            number1Pos.fontSize = 26
+            
+            number1Name.text = String("buddy")
+            number1Name.horizontalAlignmentMode = .left
+            number1Name.position = CGPoint(x: CGFloat(w) * 0.38, y: CGFloat(h) * 0.90)
+            number1Name.fontSize = 26
+            
+            number1Score.text = String("1,000,000")
+            number1Score.horizontalAlignmentMode = .left
+            number1Score.position = CGPoint(x: CGFloat(w) * 0.38, y: CGFloat(h) * 0.86)
+            number1Score.fontSize = 26
+            
+            dummy1.position = CGPoint(x: CGFloat(w) * 0.25, y: CGFloat(h) * 0.70)
+            dummy1.xScale = 1.5
+            dummy1.yScale = 1.5
+            
+            dummy1Pos.text = String("2")
+            dummy1Pos.horizontalAlignmentMode = .center
+            dummy1Pos.position = CGPoint(x: CGFloat(w) * 0.08, y: CGFloat(h) * 0.70)
+            dummy1Pos.fontSize = 26
+            
+            dummy1Name.text = String("guy")
+            dummy1Name.horizontalAlignmentMode = .left
+            dummy1Name.position = CGPoint(x: CGFloat(w) * 0.38, y: CGFloat(h) * 0.70)
+            dummy1Name.fontSize = 26
+            
+            dummy1Score.text = String("900,000")
+            dummy1Score.horizontalAlignmentMode = .left
+            dummy1Score.position = CGPoint(x: CGFloat(w) * 0.38, y: CGFloat(h) * 0.66)
+            dummy1Score.fontSize = 26
+            
+            dummy2.position = CGPoint(x: CGFloat(w) * 0.25, y: CGFloat(h) * 0.50)
+            dummy2.xScale = 1.5
+            dummy2.yScale = 1.5
+            
+            dummy2Pos.text = String("3")
+            dummy2Pos.horizontalAlignmentMode = .center
+            dummy2Pos.position = CGPoint(x: CGFloat(w) * 0.08, y: CGFloat(h) * 0.50)
+            dummy2Pos.fontSize = 26
+            
+            dummy2Name.text = String("friend")
+            dummy2Name.horizontalAlignmentMode = .left
+            dummy2Name.position = CGPoint(x: CGFloat(w) * 0.38, y: CGFloat(h) * 0.50)
+            dummy2Name.fontSize = 26
+            
+            dummy2Score.text = String("800,000")
+            dummy2Score.horizontalAlignmentMode = .left
+            dummy2Score.position = CGPoint(x: CGFloat(w) * 0.38, y: CGFloat(h) * 0.46)
+            dummy2Score.fontSize = 26
+            
+            
+            dummy3.position = CGPoint(x: CGFloat(w) * 0.25, y: CGFloat(h) * 0.30)
+            dummy3.xScale = 1.5
+            dummy3.yScale = 1.5
+            
+            dummy3Pos.text = String("4")
+            dummy3Pos.horizontalAlignmentMode = .center
+            dummy3Pos.position = CGPoint(x: CGFloat(w) * 0.08, y: CGFloat(h) * 0.30)
+            dummy3Pos.fontSize = 26
+            
+            dummy3Name.text = String("Daveeed")
+            dummy3Name.horizontalAlignmentMode = .left
+            dummy3Name.position = CGPoint(x: CGFloat(w) * 0.38, y: CGFloat(h) * 0.30)
+            dummy3Name.fontSize = 26
+            
+            dummy3Score.text = String("700,000")
+            dummy3Score.horizontalAlignmentMode = .left
+            dummy3Score.position = CGPoint(x: CGFloat(w) * 0.38, y: CGFloat(h) * 0.26)
+            dummy3Score.fontSize = 26
+            
+            dummy4.position = CGPoint(x: CGFloat(w) * 0.25, y: CGFloat(h) * 0.10)
+            dummy4.xScale = 1.5
+            dummy4.yScale = 1.5
+            
+            dummy4Pos.text = String("5")
+            dummy4Pos.horizontalAlignmentMode = .center
+            dummy4Pos.position = CGPoint(x: CGFloat(w) * 0.08, y: CGFloat(h) * 0.10)
+            dummy4Pos.fontSize = 26
+            
+            dummy4Name.text = String("Aman")
+            dummy4Name.horizontalAlignmentMode = .left
+            dummy4Name.position = CGPoint(x: CGFloat(w) * 0.38, y: CGFloat(h) * 0.10)
+            dummy4Name.fontSize = 26
+            
+            dummy4Score.text = String("600,000")
+            dummy4Score.horizontalAlignmentMode = .left
+            dummy4Score.position = CGPoint(x: CGFloat(w) * 0.38, y: CGFloat(h) * 0.06)
+            dummy4Score.fontSize = 26
+            
+            dummy5.position = CGPoint(x: CGFloat(w) * 0.25, y: CGFloat(h) * -0.10)
+            dummy5.xScale = 1.5
+            dummy5.yScale = 1.5
+            dummy5Pos.text = String("6")
+            dummy5Pos.horizontalAlignmentMode = .center
+            dummy5Pos.position = CGPoint(x: CGFloat(w) * 0.08, y: CGFloat(h) * -0.10)
+            dummy5Pos.fontSize = 16
+            
+            dummy6.position = CGPoint(x: CGFloat(w) * 0.25, y: CGFloat(h) * -0.30)
+            dummy6.xScale = 1.5
+            dummy6.yScale = 1.5
+            dummy6Pos.text = String("7")
+            dummy6Pos.horizontalAlignmentMode = .center
+            dummy6Pos.position = CGPoint(x: CGFloat(w) * 0.08, y: CGFloat(h) * -0.30)
+            dummy6Pos.fontSize = 16
+            
+            dummy7.position = CGPoint(x: CGFloat(w) * 0.25, y: CGFloat(h) * -0.50)
+            dummy7.xScale = 1.5
+            dummy7.yScale = 1.5
+            dummy7Pos.text = String("8")
+            dummy7Pos.horizontalAlignmentMode = .center
+            dummy7Pos.position = CGPoint(x: CGFloat(w) * 0.08, y: CGFloat(h) * -0.50)
+            dummy7Pos.fontSize = 16
+            
+            dummy8.position = CGPoint(x: CGFloat(w) * 0.25, y: CGFloat(h) * -0.70)
+            dummy8.xScale = 1.5
+            dummy8.yScale = 1.5
+            dummy8Pos.text = String("9")
+            dummy8Pos.horizontalAlignmentMode = .center
+            dummy8Pos.position = CGPoint(x: CGFloat(w) * 0.08, y: CGFloat(h) * -0.70)
+            dummy8Pos.fontSize = 16
+            
+            addChild(number1Pos)
+            addChild(number1Name)
+            addChild(number1Score)
+            
+            addChild(dummy1)
+            addChild(dummy1Pos)
+            addChild(dummy1Name)
+            addChild(dummy1Score)
+            
+            addChild(dummy2)
+            addChild(dummy2Pos)
+            addChild(dummy2Name)
+            addChild(dummy2Score)
+            
+            addChild(dummy3)
+            addChild(dummy3Pos)
+            addChild(dummy3Name)
+            addChild(dummy3Score)
+            
+            addChild(dummy4)
+            addChild(dummy4Pos)
+            addChild(dummy4Name)
+            addChild(dummy4Score)
+            
+            addChild(dummy5)
+            addChild(dummy5Pos)
+            addChild(dummy5Name)
+            addChild(dummy5Score)
+            
+            addChild(dummy6)
+            addChild(dummy6Pos)
+            addChild(dummy6Name)
+            
+            addChild(dummy7)
+            addChild(dummy7Pos)
+            addChild(dummy7Name)
+            
+            addChild(dummy8)
+            addChild(dummy8Pos)
+            addChild(dummy8Name)
+            
         }
-    
-        /*
-        // check/set difficulty
-        if (player.getScore() > 5000) { difficulty = .Medium; backdrop.forEach { $0.speedUp() } }
-        if (player.getScore() > 15000) { difficulty = .Hard }
-        */
         
-        // get input
-        processUserMotion(forUpdate: currentTime)
-        
-        // update game actors
-        asteroids.forEach { $0.update() }
-        powerups.forEach { $0.update() }
-        player.update()
-        
-        /*
-        // ensure correct astroid count
-        if (difficulty == .Medium) {
-            if (asteroids.count == Difficulty.Easy.rawValue) {
-                while (asteroids.count < Difficulty.Medium.rawValue) {
-                    asteroids.append(Asteroid())
-                    clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
-                }
-            }
+        required init?(coder aDecoder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
         }
         
-        if (difficulty == .Hard) {
-            if (asteroids.count == Difficulty.Medium.rawValue) {
-                while (asteroids.count < Difficulty.Hard.rawValue) {
-                    asteroids.append(Asteroid())
-                    clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
-                }
-            }
+        func scrollUp () {
+            print("hello")
+            
+            /*
+             
+             dummy1.position.y += 0.001
+             dummy2.position.y += 0.001
+             dummy3.position.y += 0.001
+             dummy4.position.y += 0.001
+             dummy5.position.y += 0.001
+             dummy6.position.y += 0.001
+             dummy7.position.y += 0.001
+             dummy8.position.y += 0.001
+             */
         }
-        */
-    }
-    
-    func updatePaused () {
         
-    }
-    
-    func updateGameOver (currentTime: TimeInterval) {
-        
-        asteroids.forEach { $0.update() }
-        powerups.forEach { $0.update() }
-        player.update()
-        
-        /*
-        // broken slo-mo
-        if (currentTime.remainder(dividingBy: 64) < 5) {
-            // update game actors
-            // putting these in the if statement makes tem
-            // stop. Investigate
-            asteroids.forEach { $0.update() }
-            powerups.forEach { $0.update() }
-            player.update()
+        func scrollDown () {
+            print("hello")
+            
+            /*
+             dummy1.position.y -= 0.001
+             dummy2.position.y -= 0.001
+             dummy3.position.y -= 0.001
+             dummy4.position.y -= 0.001
+             dummy5.position.y -= 0.001
+             dummy6.position.y -= 0.001
+             dummy7.position.y -= 0.001
+             dummy8.position.y -= 0.001
+             
+             */
         }
-        */
-    }
-    
-    /* * * * * * * * * * * * * * * * * * * * *
-     *  RESTART
-     * * * * * * * * * * * * * * * * * * * * */
-    func resetGame () {
-        // reset player and HUD
-        player.resetAt(x: Int(self.size.width * CGFloat(0.5)), y: Int(self.size.height * CGFloat(0.58)))
-
-        difficulty = .Easy
-        while (asteroids.count > difficulty.rawValue) {
-            asteroids.last?.destroyed()
-            asteroids.last?.culled()
-            asteroids.removeLast()
-        }
-    
-        isPaused = false
         
-        //  reset all asteroids and powerups
-        asteroids.forEach { $0.destroyed() }
-        powerups.forEach  { $0.collected() }
-    }
-    
-    /* * * * * * * * * * * * * * * * * * * * *
-     *  BLUR / UNBLUR FUNCTIONS
-     * * * * * * * * * * * * * * * * * * * * */
-    func blur () {
-        clearScene.removeFromParent()
-        blurScene.addChild(clearScene)
-        blurScene.removeFromParent()
-        addChild(blurScene)
-    }
-    
-    func unblur () {
-        clearScene.removeFromParent()
-        addChild(clearScene)
-        blurScene.removeFromParent()
+        func update () {
+            
+        }
     }
 }
