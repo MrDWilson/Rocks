@@ -113,8 +113,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         switch (state) {
             case .MainMenu:
                 player.show()
-                player.scaleTo(x: 1.0, y: 1.0)
-                player.setRestingY(y: Int(self.size.height * CGFloat(0.58)))
+                player.scaleTo(x: 1.6, y: 1.6)
+                player.setRestingY(y: Int(self.size.height * CGFloat(0.64)))
                 if (player.getPosition().x > (self.size.width / 2) + 5) {
                     player.moveLeft()
                 }
@@ -155,6 +155,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 break
             case .InGame:
                 
+                player.scaleTo(x: 1.0, y: 1.0)
                 updateRunning(currentTime: currentTime)
                 
                 break
