@@ -68,11 +68,10 @@ extension GameScene {
                     break
                 default:
                     break
-                if (type == PowerupType.AmmoPickup) {
-                    sprite.run(SKAction.colorize(with: playerLaserColour, colorBlendFactor: 1, duration: 0))
-                }
-                
-                
+            }
+            
+            if (type == PowerupType.AmmoPickup) {
+                sprite.run(SKAction.colorize(with: playerLaserColour, colorBlendFactor: 1, duration: 0))
             }
         }
         
