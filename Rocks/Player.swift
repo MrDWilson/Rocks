@@ -16,9 +16,9 @@ extension GameScene {
          My Ship
         ********/
         private var ship = Ship (
-            bID: 2,
+            bID: 1,
             tID: 4,
-            cID: Ship.ShipColour.orange.rawValue
+            cID: Ship.ShipColour.darkGray.rawValue
         )
   
         /*********
