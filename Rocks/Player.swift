@@ -64,6 +64,9 @@ extension GameScene {
         func setRestingY (y: Int) { restingY = y }
         func move        (to: CGPoint) { ship.position = to }
         
+        func nextLaserColour () {  }
+        func prevLaserColour () {  }
+        
         func scaleTo (x: CGFloat, y: CGFloat) {
             targetScale = CGVector(dx: x, dy: y)
         }

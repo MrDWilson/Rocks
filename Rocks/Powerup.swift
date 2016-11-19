@@ -23,6 +23,7 @@ extension GameScene {
         private let velocity:CGVector = CGVector(dx: 0, dy: 0 - 4)
         private var xConfine:Int      = 1080
         private var yConfine:Int      = 1920 // 6 plus default
+        private var playerLaserColour: UIColor!
         
         private var textureCache: TextureCache!
         
@@ -67,16 +68,21 @@ extension GameScene {
                     break
                 default:
                     break
+                if (type == PowerupType.AmmoPickup) {
+                    sprite.run(SKAction.colorize(with: playerLaserColour, colorBlendFactor: 1, duration: 0))
+                }
+                
+                
             }
         }
         
         func spawn (textureCache: TextureCache, player: Player) -> SKSpriteNode {
             self.textureCache = textureCache
             
+            playerLaserColour = player.getLaserColour()
+            
             generateType()
-            if (type == PowerupType.AmmoPickup) {
-                sprite.run(SKAction.colorize(with: player.getLaserColour(), colorBlendFactor: 1, duration: 0))
-            }
+
             
             
             // Give position
