@@ -264,13 +264,13 @@ extension GameScene {
         
         func flash(color: UIColor) {
             if colourChangeArray.isEmpty {
-                colourChangeArray.append(SKAction.colorize(with: colorID.toUIColor, colorBlendFactor: 0.75, duration: 0.1))
+                colourChangeArray.append(SKAction.colorize(with: color, colorBlendFactor: 0.75, duration: 0.1))
                 colourChangeArray.append(SKAction.wait(forDuration: 0.1))
-                colourChangeArray.append(SKAction.colorize(with: colorID.toUIColor, colorBlendFactor: 0.85, duration: 0.1))
+                colourChangeArray.append(SKAction.colorize(with: colorID.toUIColor, colorBlendFactor: 1, duration: 0.1))
                 colourChangeArray.append(SKAction.wait(forDuration: 0.1))
-                colourChangeArray.append(SKAction.colorize(with: colorID.toUIColor, colorBlendFactor: 0.75, duration: 0.1))
+                colourChangeArray.append(SKAction.colorize(with: color, colorBlendFactor: 0.75, duration: 0.1))
                 colourChangeArray.append(SKAction.wait(forDuration: 0.1))
-                colourChangeArray.append(SKAction.colorize(with: colorID.toUIColor, colorBlendFactor: 0.85, duration: 0.1))
+                colourChangeArray.append(SKAction.colorize(with: colorID.toUIColor, colorBlendFactor: 1, duration: 0.1))
                 run(SKAction.sequence(colourChangeArray))
             }
         }
