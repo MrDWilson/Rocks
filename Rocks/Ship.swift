@@ -37,6 +37,24 @@ extension GameScene {
             case purple    = 10
             case brown     = 11
             case COLOUR_BOUNDRY = 12
+            
+            var toUIColor: UIColor {
+                switch (self) {
+                case .lightGray: return UIColor.lightGray
+                case .white:     return UIColor.white
+                case .gray:      return UIColor.gray
+                case .red:       return UIColor.red
+                case .green:     return UIColor.green
+                case .blue:      return UIColor.blue
+                case .cyan:      return UIColor.cyan
+                case .yellow:    return UIColor.yellow
+                case .magenta:   return UIColor.magenta
+                case .orange:    return UIColor.orange
+                case .purple:    return UIColor.purple
+                case .brown:     return UIColor.brown
+                default:         return UIColor.white
+                }
+            }
         }
 
         // admin
@@ -170,94 +188,12 @@ extension GameScene {
         }
     
         func colourize () {
-            switch (colorID.rawValue) {
-            case ShipColour.lightGray.rawValue:
-                run           (SKAction.colorize(with: .lightGray, colorBlendFactor: 0.85, duration: 0))
-                leftWing.run  (SKAction.colorize(with: .lightGray, colorBlendFactor: 0.85, duration: 0))
-                rightWing.run (SKAction.colorize(with: .lightGray, colorBlendFactor: 0.85, duration: 0))
-                frontBody.run (SKAction.colorize(with: .lightGray, colorBlendFactor: 0.85, duration: 0))
-                backBody.run  (SKAction.colorize(with: .lightGray, colorBlendFactor: 0.85, duration: 0))
-                break
-            case ShipColour.white.rawValue:
-                run           (SKAction.colorize(with: .white, colorBlendFactor: 0.85, duration: 0))
-                leftWing.run  (SKAction.colorize(with: .white, colorBlendFactor: 0.85, duration: 0))
-                rightWing.run (SKAction.colorize(with: .white, colorBlendFactor: 0.85, duration: 0))
-                frontBody.run (SKAction.colorize(with: .white, colorBlendFactor: 0.85, duration: 0))
-                backBody.run  (SKAction.colorize(with: .white, colorBlendFactor: 0.85, duration: 0))
-                break
-            case ShipColour.gray.rawValue:
-                run           (SKAction.colorize(with: .gray, colorBlendFactor: 0.85, duration: 0))
-                leftWing.run  (SKAction.colorize(with: .gray, colorBlendFactor: 0.85, duration: 0))
-                rightWing.run (SKAction.colorize(with: .gray, colorBlendFactor: 0.85, duration: 0))
-                frontBody.run (SKAction.colorize(with: .gray, colorBlendFactor: 0.85, duration: 0))
-                backBody.run  (SKAction.colorize(with: .gray, colorBlendFactor: 0.85, duration: 0))
-                break
-            case ShipColour.red.rawValue:
-                run           (SKAction.colorize(with: .red, colorBlendFactor: 0.85, duration: 0))
-                leftWing.run  (SKAction.colorize(with: .red, colorBlendFactor: 0.85, duration: 0))
-                rightWing.run (SKAction.colorize(with: .red, colorBlendFactor: 0.85, duration: 0))
-                frontBody.run (SKAction.colorize(with: .red, colorBlendFactor: 0.85, duration: 0))
-                backBody.run  (SKAction.colorize(with: .red, colorBlendFactor: 0.85, duration: 0))
-                break
-            case ShipColour.green.rawValue:
-                run           (SKAction.colorize(with: .green, colorBlendFactor: 0.85, duration: 0))
-                leftWing.run  (SKAction.colorize(with: .green, colorBlendFactor: 0.85, duration: 0))
-                rightWing.run (SKAction.colorize(with: .green, colorBlendFactor: 0.85, duration: 0))
-                frontBody.run (SKAction.colorize(with: .green, colorBlendFactor: 0.85, duration: 0))
-                backBody.run  (SKAction.colorize(with: .green, colorBlendFactor: 0.85, duration: 0))
-                break
-            case ShipColour.blue.rawValue:
-                run           (SKAction.colorize(with: .blue, colorBlendFactor: 0.85, duration: 0))
-                leftWing.run  (SKAction.colorize(with: .blue, colorBlendFactor: 0.85, duration: 0))
-                rightWing.run (SKAction.colorize(with: .blue, colorBlendFactor: 0.85, duration: 0))
-                frontBody.run (SKAction.colorize(with: .blue, colorBlendFactor: 0.85, duration: 0))
-                backBody.run  (SKAction.colorize(with: .blue, colorBlendFactor: 0.85, duration: 0))
-                break
-            case ShipColour.cyan.rawValue:
-                run           (SKAction.colorize(with: .cyan, colorBlendFactor: 0.85, duration: 0))
-                leftWing.run  (SKAction.colorize(with: .cyan, colorBlendFactor: 0.85, duration: 0))
-                rightWing.run (SKAction.colorize(with: .cyan, colorBlendFactor: 0.85, duration: 0))
-                frontBody.run (SKAction.colorize(with: .cyan, colorBlendFactor: 0.85, duration: 0))
-                backBody.run  (SKAction.colorize(with: .cyan, colorBlendFactor: 0.85, duration: 0))
-                break
-            case ShipColour.yellow.rawValue:
-                run           (SKAction.colorize(with: .yellow, colorBlendFactor: 0.85, duration: 0))
-                leftWing.run  (SKAction.colorize(with: .yellow, colorBlendFactor: 0.85, duration: 0))
-                rightWing.run (SKAction.colorize(with: .yellow, colorBlendFactor: 0.85, duration: 0))
-                frontBody.run (SKAction.colorize(with: .yellow, colorBlendFactor: 0.85, duration: 0))
-                backBody.run  (SKAction.colorize(with: .yellow, colorBlendFactor: 0.85, duration: 0))
-                break
-            case ShipColour.magenta.rawValue:
-                run           (SKAction.colorize(with: .magenta, colorBlendFactor: 0.85, duration: 0))
-                leftWing.run  (SKAction.colorize(with: .magenta, colorBlendFactor: 0.85, duration: 0))
-                rightWing.run (SKAction.colorize(with: .magenta, colorBlendFactor: 0.85, duration: 0))
-                frontBody.run (SKAction.colorize(with: .magenta, colorBlendFactor: 0.85, duration: 0))
-                backBody.run  (SKAction.colorize(with: .magenta, colorBlendFactor: 0.85, duration: 0))
-                break
-            case ShipColour.orange.rawValue:
-                run           (SKAction.colorize(with: .orange, colorBlendFactor: 0.85, duration: 0))
-                leftWing.run  (SKAction.colorize(with: .orange, colorBlendFactor: 0.85, duration: 0))
-                rightWing.run (SKAction.colorize(with: .orange, colorBlendFactor: 0.85, duration: 0))
-                frontBody.run (SKAction.colorize(with: .orange, colorBlendFactor: 0.85, duration: 0))
-                backBody.run  (SKAction.colorize(with: .orange, colorBlendFactor: 0.85, duration: 0))
-                break
-            case ShipColour.purple.rawValue:
-                run           (SKAction.colorize(with: .purple, colorBlendFactor: 0.85, duration: 0))
-                leftWing.run  (SKAction.colorize(with: .purple, colorBlendFactor: 0.85, duration: 0))
-                rightWing.run (SKAction.colorize(with: .purple, colorBlendFactor: 0.85, duration: 0))
-                frontBody.run (SKAction.colorize(with: .purple, colorBlendFactor: 0.85, duration: 0))
-                backBody.run  (SKAction.colorize(with: .purple, colorBlendFactor: 0.85, duration: 0))
-                break
-            case ShipColour.brown.rawValue:
-                run           (SKAction.colorize(with: .brown, colorBlendFactor: 0.85, duration: 0))
-                leftWing.run  (SKAction.colorize(with: .brown, colorBlendFactor: 0.85, duration: 0))
-                rightWing.run (SKAction.colorize(with: .brown, colorBlendFactor: 0.85, duration: 0))
-                frontBody.run (SKAction.colorize(with: .brown, colorBlendFactor: 0.85, duration: 0))
-                backBody.run  (SKAction.colorize(with: .brown, colorBlendFactor: 0.85, duration: 0))
-                break
-            default:
-                break
-            }
+            run           (SKAction.colorize(with: colorID.toUIColor, colorBlendFactor: 0.85, duration: 0))
+            leftWing.run  (SKAction.colorize(with: colorID.toUIColor, colorBlendFactor: 0.85, duration: 0))
+            rightWing.run (SKAction.colorize(with: colorID.toUIColor, colorBlendFactor: 0.85, duration: 0))
+            frontBody.run (SKAction.colorize(with: colorID.toUIColor, colorBlendFactor: 0.85, duration: 0))
+            backBody.run  (SKAction.colorize(with: colorID.toUIColor, colorBlendFactor: 0.85, duration: 0))
+
         }
         
         func refreshThruster () {
@@ -327,24 +263,22 @@ extension GameScene {
         }
         
         func flash(color: UIColor) {
-            /*
             if colourChangeArray.isEmpty {
-                colourChangeArray.append(SKAction.colorize(with: color, colorBlendFactor: 0.75, duration: 0.1))
+                colourChangeArray.append(SKAction.colorize(with: colorID.toUIColor, colorBlendFactor: 0.75, duration: 0.1))
                 colourChangeArray.append(SKAction.wait(forDuration: 0.1))
-                colourChangeArray.append(SKAction.colorize(with: colorID, colorBlendFactor: 0.85, duration: 0.1))
+                colourChangeArray.append(SKAction.colorize(with: colorID.toUIColor, colorBlendFactor: 0.85, duration: 0.1))
                 colourChangeArray.append(SKAction.wait(forDuration: 0.1))
-                colourChangeArray.append(SKAction.colorize(with: color, colorBlendFactor: 0.75, duration: 0.1))
+                colourChangeArray.append(SKAction.colorize(with: colorID.toUIColor, colorBlendFactor: 0.75, duration: 0.1))
                 colourChangeArray.append(SKAction.wait(forDuration: 0.1))
-                colourChangeArray.append(SKAction.colorize(with: colorID, colorBlendFactor: 0.85, duration: 0.1))
+                colourChangeArray.append(SKAction.colorize(with: colorID.toUIColor, colorBlendFactor: 0.85, duration: 0.1))
                 run(SKAction.sequence(colourChangeArray))
             }
-            */
         }
         
         func nextColour () {
             colorID = ShipColour(rawValue: (colorID.rawValue + 1) % Int(ShipColour.COLOUR_BOUNDRY.rawValue))
             if (colorID.rawValue == 0) {
-                bodyID = ((bodyID + 1) % 3)
+                bodyID = ((bodyID + 1) % 4)
                 refreshBody()
             }
             colourize()
@@ -358,7 +292,11 @@ extension GameScene {
             }
             
             if (colorID.rawValue == 0) {
-                bodyID = ((bodyID + 1) % 3)
+                if (bodyID == 0) {
+                    bodyID = 3
+                } else {
+                    bodyID = bodyID - 1
+                }
                 refreshBody()
             }
             

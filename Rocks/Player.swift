@@ -39,9 +39,13 @@ extension GameScene {
         private var health       = 25
         private let HEALTH_MAX   = 25
         private var restingY     = 100
+        private var laserColour  = UIColor.magenta
         private var name = "player"
         
+        private var firing = false
+        
         private var targetScale = CGVector(dx: 1, dy: 1)
+        
         
         func getName     () -> String  { return name }
         func getPosition () -> CGPoint { return ship.position }
@@ -49,6 +53,10 @@ extension GameScene {
         func getAmmo     () -> Int     { return ammo }
         func getScore    () -> Int     { return score.getCount() }
         func getShip     () -> Ship    { return ship }
+        func getLaserColour () -> UIColor {return laserColour}
+        
+        func startAutoFire () { firing = true  }
+        func stopAutoFire  () { firing = false }
         
         func moveRight   () { velocity.dx += 5 }
         func moveLeft    () { velocity.dx -= 5 }
@@ -110,7 +118,12 @@ extension GameScene {
             return ship
         }
         
-        func update () {
+        func update (currentTime: TimeInterval) {
+        
+            // auto-fire
+            if firing && (currentTime.remainder(dividingBy: 16) < 8) {
+                fireLaser()
+            }
 
             // move
             if (ship.position.y < CGFloat(restingY - 10)) {
@@ -163,7 +176,7 @@ extension GameScene {
                 let beam = LaserBeam()
                 lasers.add(beam)
                 ammo -= 1
-                ship.parent?.addChild(beam.fire(o: CGVector(dx: ship.position.x, dy: ship.position.y)))
+                ship.parent?.addChild(beam.fire(o: CGVector(dx: ship.position.x, dy: ship.position.y), colour: laserColour))
             }
         }
         

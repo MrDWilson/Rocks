@@ -70,10 +70,14 @@ extension GameScene {
             }
         }
         
-        func spawn (textureCache: TextureCache) -> SKSpriteNode {
+        func spawn (textureCache: TextureCache, player: Player) -> SKSpriteNode {
             self.textureCache = textureCache
             
             generateType()
+            if (type == PowerupType.AmmoPickup) {
+                sprite.run(SKAction.colorize(with: player.getLaserColour(), colorBlendFactor: 1, duration: 0))
+            }
+            
             
             // Give position
             sprite.position.x = CGFloat(arc4random_uniform(UInt32(xConfine)))

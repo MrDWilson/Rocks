@@ -78,7 +78,7 @@ extension GameScene {
             ammoBarNode.fontSize                        = 24
             ammoBarNode.horizontalAlignmentMode         = .left
             ammoBarNode.position                        = CGPoint(x: 10, y: h-24)
-            ammoBarNode.fontColor                       = UIColor.cyan
+            ammoBarNode.fontColor                       = player.getLaserColour()
             addChild(ammoBarNode)
             
             ammoBarLabel.name                            = String("Label")
@@ -126,7 +126,7 @@ extension GameScene {
             for i in 0...player.getHealth() { if (i > 0) {healthBarNode.text?.append("I")} }
             for i in 0...player.getAmmo() { if (i > 0) {ammoBarNode.text?.append("I")} }
             
-            ammoBarNode.fontColor = UIColor.cyan
+            ammoBarNode.fontColor = player.getLaserColour()
             healthBarNode.fontColor = UIColor.red
             thisScoreLabelNode.fontColor = UIColor.gray
         }

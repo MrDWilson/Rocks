@@ -11,12 +11,13 @@ import SpriteKit
 
 extension GameScene {
     class LaserBeam {
-        private let sprite = SKSpriteNode (color: UIColor.cyan , size: CGSize(width: 0.5, height: 10))
+        private let sprite = SKSpriteNode (color: UIColor.cyan , size: CGSize(width: 1, height: 10))
         private var origin = CGVector     (dx: 0, dy: 0)
         private var path   = CGVector     (dx: 0, dy: 10)
 
-        func fire (o: CGVector) -> SKSpriteNode {
+        func fire (o: CGVector, colour: UIColor) -> SKSpriteNode {
             sprite.name                            = "laserbeam"
+            sprite.color                           = colour
             sprite.physicsBody                     = SKPhysicsBody(rectangleOf: sprite.size)
             sprite.physicsBody?.categoryBitMask    = laserbeamCollisionCat
             sprite.physicsBody?.contactTestBitMask = asteroidCollisionCat

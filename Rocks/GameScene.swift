@@ -93,7 +93,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // spawn asteroids, powerups and stars
         asteroids.forEach { clearScene.addChild($0.spawn(textureCache: worldTextureCache)) }
-        powerups.forEach  { clearScene.addChild($0.spawn(textureCache: worldTextureCache)) }
+        powerups.forEach  { clearScene.addChild($0.spawn(textureCache: worldTextureCache, player: player)) }
         backdrop.forEach  { clearScene.addChild($0.spawn())}
         
         // set up blur filter
@@ -122,14 +122,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if (player.getPosition().x < (self.size.width / 2) - 5) {
                     player.moveRight()
                 }
-                updateMainMenu()
+                updateMainMenu(currentTime: currentTime)
                 
                 break
             case .Customise:
                 
                 player.scaleTo(x: 3.5, y: 3.5)
                 player.setRestingY(y: Int(self.size.height * CGFloat(0.58)))
-                player.update()
+                player.update(currentTime: currentTime)
             
                 break
             case .Leaderboard:
@@ -150,7 +150,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             case .About:
             
                 player.setRestingY(y: Int(self.size.height * CGFloat(0.7)))
-                player.update()
+                player.update(currentTime: currentTime)
             
                 break
             case .InGame:
@@ -172,8 +172,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func updateMainMenu () {
-        player.update()
+    func updateMainMenu (currentTime: TimeInterval) {
+        player.update(currentTime: currentTime)
     }
     
     func updateRunning (currentTime: TimeInterval) {
@@ -203,7 +203,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // update game actors
         asteroids.forEach { $0.update() }
         powerups.forEach { $0.update() }
-        player.update()
+        player.update(currentTime: currentTime)
         
         /*
         // ensure correct astroid count
@@ -235,7 +235,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         asteroids.forEach { $0.update() }
         powerups.forEach { $0.update() }
-        player.update()
+        player.update(currentTime: currentTime)
         
         /*
         // broken slo-mo

@@ -91,6 +91,7 @@ extension GameScene {
                     
                 else {
                     player.fireLaser()
+                    //player.startAutoFire()
                 }
                 
                 break
@@ -106,6 +107,10 @@ extension GameScene {
                 break
             }
         }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        player.stopAutoFire()
     }
     
     /* * * * * * * * * * * * * * * * * * * * *
