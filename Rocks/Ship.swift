@@ -10,7 +10,6 @@
 import SpriteKit
 
 extension GameScene {
-
     class Ship: SKSpriteNode {
         private let leftWing          = SKSpriteNode ()
         private var leftWingVelocity  = CGVector     (dx: -4, dy: 1)
@@ -21,21 +20,38 @@ extension GameScene {
         private let backBody          = SKSpriteNode ()
         private var backBodyVelocity  = CGVector     (dx: -1, dy: 4)
         private let explosionEffect   = SKEmitterNode(fileNamed: "ExplosionParticle.sks")
-        private var thrusterEffect    = SKEmitterNode(fileNamed: "ThrusterParticle_" + String(describing: (1 + arc4random_uniform(7))) + ".sks")
+        private var thrusterEffect    = SKEmitterNode(fileNamed: "ThrusterParticle_1.sks")
         private var colourChangeArray = [SKAction]()
+
+        enum ShipColour: Int {
+            case lightGray = 0
+            case white     = 1
+            case gray      = 2
+            case red       = 3
+            case green     = 4
+            case blue      = 5
+            case cyan      = 6
+            case yellow    = 7
+            case magenta   = 8
+            case orange    = 9
+            case purple    = 10
+            case brown     = 11
+            case COLOUR_BOUNDRY = 12
+        }
 
         // admin
         private var bodyID:     Int!
         private var thrusterID: Int!
-        private var colorID:    UIColor!
+        private var colorID:    ShipColour!
         private var exploding   = false
 
-        init (bID: Int, tID: Int, cID: UIColor) {
-            super.init(texture: SKTexture(imageNamed: "Ship_" + String(describing: bID)), color: cID, size: CGSize(width: 24, height: 24))
+
+        init (bID: Int, tID: Int, cID: Int) {
+            super.init(texture: SKTexture(imageNamed: "Ship_" + String(describing: bID)), color: UIColor.white, size: CGSize(width: 24, height: 24))
             
             bodyID = bID
             thrusterID = tID
-            colorID = cID
+            colorID = ShipColour(rawValue: cID)
             
             /* * * * * * * * * * * *
              *  Destruction Stuff
@@ -98,7 +114,7 @@ extension GameScene {
             // Give Name, Position
             name                                         = "player"
             position                                     = CGPoint(x: 0 , y: 0)
-            texture                                      = SKTexture(imageNamed: "Ship_1") // add spaceship texture to sprite
+         //   texture                                      = SKTexture(imageNamed: "Ship_1") // add spaceship texture to sprite
             size.width                                   = 42
             size.height                                  = 42
             
@@ -108,16 +124,13 @@ extension GameScene {
             explosionEffect?.numParticlesToEmit                 = 64
             explosionEffect?.removeFromParent()
             
+            thrusterEffect = SKEmitterNode(fileNamed: "ThrusterParticle_" + String(describing: Int(thrusterID)) + ".sks")
             thrusterEffect?.name                                = String("thruster")
             thrusterEffect?.position                            = CGPoint(x: 0, y: -1)
             thrusterEffect?.removeFromParent()
             addChild(thrusterEffect!)
             
-            run(SKAction.colorize(with: colorID, colorBlendFactor: 0.85, duration: 0))
-            leftWing.run(SKAction.colorize(with: colorID, colorBlendFactor: 0.85, duration: 0))
-            rightWing.run(SKAction.colorize(with: colorID, colorBlendFactor: 0.85, duration: 0))
-            frontBody.run(SKAction.colorize(with: colorID, colorBlendFactor: 0.85, duration: 0))
-            backBody.run(SKAction.colorize(with: colorID, colorBlendFactor: 0.85, duration: 0))
+            colourize()
 
         }
         
@@ -156,6 +169,107 @@ extension GameScene {
             }
         }
     
+        func colourize () {
+            switch (colorID.rawValue) {
+            case ShipColour.lightGray.rawValue:
+                run           (SKAction.colorize(with: .lightGray, colorBlendFactor: 0.85, duration: 0))
+                leftWing.run  (SKAction.colorize(with: .lightGray, colorBlendFactor: 0.85, duration: 0))
+                rightWing.run (SKAction.colorize(with: .lightGray, colorBlendFactor: 0.85, duration: 0))
+                frontBody.run (SKAction.colorize(with: .lightGray, colorBlendFactor: 0.85, duration: 0))
+                backBody.run  (SKAction.colorize(with: .lightGray, colorBlendFactor: 0.85, duration: 0))
+                break
+            case ShipColour.white.rawValue:
+                run           (SKAction.colorize(with: .white, colorBlendFactor: 0.85, duration: 0))
+                leftWing.run  (SKAction.colorize(with: .white, colorBlendFactor: 0.85, duration: 0))
+                rightWing.run (SKAction.colorize(with: .white, colorBlendFactor: 0.85, duration: 0))
+                frontBody.run (SKAction.colorize(with: .white, colorBlendFactor: 0.85, duration: 0))
+                backBody.run  (SKAction.colorize(with: .white, colorBlendFactor: 0.85, duration: 0))
+                break
+            case ShipColour.gray.rawValue:
+                run           (SKAction.colorize(with: .gray, colorBlendFactor: 0.85, duration: 0))
+                leftWing.run  (SKAction.colorize(with: .gray, colorBlendFactor: 0.85, duration: 0))
+                rightWing.run (SKAction.colorize(with: .gray, colorBlendFactor: 0.85, duration: 0))
+                frontBody.run (SKAction.colorize(with: .gray, colorBlendFactor: 0.85, duration: 0))
+                backBody.run  (SKAction.colorize(with: .gray, colorBlendFactor: 0.85, duration: 0))
+                break
+            case ShipColour.red.rawValue:
+                run           (SKAction.colorize(with: .red, colorBlendFactor: 0.85, duration: 0))
+                leftWing.run  (SKAction.colorize(with: .red, colorBlendFactor: 0.85, duration: 0))
+                rightWing.run (SKAction.colorize(with: .red, colorBlendFactor: 0.85, duration: 0))
+                frontBody.run (SKAction.colorize(with: .red, colorBlendFactor: 0.85, duration: 0))
+                backBody.run  (SKAction.colorize(with: .red, colorBlendFactor: 0.85, duration: 0))
+                break
+            case ShipColour.green.rawValue:
+                run           (SKAction.colorize(with: .green, colorBlendFactor: 0.85, duration: 0))
+                leftWing.run  (SKAction.colorize(with: .green, colorBlendFactor: 0.85, duration: 0))
+                rightWing.run (SKAction.colorize(with: .green, colorBlendFactor: 0.85, duration: 0))
+                frontBody.run (SKAction.colorize(with: .green, colorBlendFactor: 0.85, duration: 0))
+                backBody.run  (SKAction.colorize(with: .green, colorBlendFactor: 0.85, duration: 0))
+                break
+            case ShipColour.blue.rawValue:
+                run           (SKAction.colorize(with: .blue, colorBlendFactor: 0.85, duration: 0))
+                leftWing.run  (SKAction.colorize(with: .blue, colorBlendFactor: 0.85, duration: 0))
+                rightWing.run (SKAction.colorize(with: .blue, colorBlendFactor: 0.85, duration: 0))
+                frontBody.run (SKAction.colorize(with: .blue, colorBlendFactor: 0.85, duration: 0))
+                backBody.run  (SKAction.colorize(with: .blue, colorBlendFactor: 0.85, duration: 0))
+                break
+            case ShipColour.cyan.rawValue:
+                run           (SKAction.colorize(with: .cyan, colorBlendFactor: 0.85, duration: 0))
+                leftWing.run  (SKAction.colorize(with: .cyan, colorBlendFactor: 0.85, duration: 0))
+                rightWing.run (SKAction.colorize(with: .cyan, colorBlendFactor: 0.85, duration: 0))
+                frontBody.run (SKAction.colorize(with: .cyan, colorBlendFactor: 0.85, duration: 0))
+                backBody.run  (SKAction.colorize(with: .cyan, colorBlendFactor: 0.85, duration: 0))
+                break
+            case ShipColour.yellow.rawValue:
+                run           (SKAction.colorize(with: .yellow, colorBlendFactor: 0.85, duration: 0))
+                leftWing.run  (SKAction.colorize(with: .yellow, colorBlendFactor: 0.85, duration: 0))
+                rightWing.run (SKAction.colorize(with: .yellow, colorBlendFactor: 0.85, duration: 0))
+                frontBody.run (SKAction.colorize(with: .yellow, colorBlendFactor: 0.85, duration: 0))
+                backBody.run  (SKAction.colorize(with: .yellow, colorBlendFactor: 0.85, duration: 0))
+                break
+            case ShipColour.magenta.rawValue:
+                run           (SKAction.colorize(with: .magenta, colorBlendFactor: 0.85, duration: 0))
+                leftWing.run  (SKAction.colorize(with: .magenta, colorBlendFactor: 0.85, duration: 0))
+                rightWing.run (SKAction.colorize(with: .magenta, colorBlendFactor: 0.85, duration: 0))
+                frontBody.run (SKAction.colorize(with: .magenta, colorBlendFactor: 0.85, duration: 0))
+                backBody.run  (SKAction.colorize(with: .magenta, colorBlendFactor: 0.85, duration: 0))
+                break
+            case ShipColour.orange.rawValue:
+                run           (SKAction.colorize(with: .orange, colorBlendFactor: 0.85, duration: 0))
+                leftWing.run  (SKAction.colorize(with: .orange, colorBlendFactor: 0.85, duration: 0))
+                rightWing.run (SKAction.colorize(with: .orange, colorBlendFactor: 0.85, duration: 0))
+                frontBody.run (SKAction.colorize(with: .orange, colorBlendFactor: 0.85, duration: 0))
+                backBody.run  (SKAction.colorize(with: .orange, colorBlendFactor: 0.85, duration: 0))
+                break
+            case ShipColour.purple.rawValue:
+                run           (SKAction.colorize(with: .purple, colorBlendFactor: 0.85, duration: 0))
+                leftWing.run  (SKAction.colorize(with: .purple, colorBlendFactor: 0.85, duration: 0))
+                rightWing.run (SKAction.colorize(with: .purple, colorBlendFactor: 0.85, duration: 0))
+                frontBody.run (SKAction.colorize(with: .purple, colorBlendFactor: 0.85, duration: 0))
+                backBody.run  (SKAction.colorize(with: .purple, colorBlendFactor: 0.85, duration: 0))
+                break
+            case ShipColour.brown.rawValue:
+                run           (SKAction.colorize(with: .brown, colorBlendFactor: 0.85, duration: 0))
+                leftWing.run  (SKAction.colorize(with: .brown, colorBlendFactor: 0.85, duration: 0))
+                rightWing.run (SKAction.colorize(with: .brown, colorBlendFactor: 0.85, duration: 0))
+                frontBody.run (SKAction.colorize(with: .brown, colorBlendFactor: 0.85, duration: 0))
+                backBody.run  (SKAction.colorize(with: .brown, colorBlendFactor: 0.85, duration: 0))
+                break
+            default:
+                break
+            }
+        }
+        
+        func refreshThruster () {
+            thrusterEffect?.removeFromParent()
+            thrusterEffect = SKEmitterNode(fileNamed: "ThrusterParticle_" + String(thrusterID) + ".sks")
+            addChild(thrusterEffect!)
+        }
+        
+        func refreshBody () {
+            texture = SKTexture(imageNamed: String("Ship_" + String(bodyID)))
+        }
+    
         func explode () {
             exploding = true
             
@@ -192,7 +306,7 @@ extension GameScene {
         
             // remove colour
             colourChangeArray.removeAll()
-            run(SKAction.colorize(with: colorID, colorBlendFactor: 0.85, duration: 0))
+            colourize()
         
             // reassemble pieces
             leftWing.removeFromParent  ()
@@ -206,13 +320,14 @@ extension GameScene {
             explosionEffect?.removeFromParent () // delete particle effec
             
             // randomise thruster (CACHE THESE?)
-            thrusterEffect = SKEmitterNode(fileNamed: "ThrusterParticle_" + String(describing: (1 + arc4random_uniform(7))) + ".sks")
+            //thrusterEffect = SKEmitterNode(fileNamed: "ThrusterParticle_" + thrusterID + ".sks")
             addChild(thrusterEffect!)
     
             isHidden = false
         }
         
         func flash(color: UIColor) {
+            /*
             if colourChangeArray.isEmpty {
                 colourChangeArray.append(SKAction.colorize(with: color, colorBlendFactor: 0.75, duration: 0.1))
                 colourChangeArray.append(SKAction.wait(forDuration: 0.1))
@@ -223,14 +338,46 @@ extension GameScene {
                 colourChangeArray.append(SKAction.colorize(with: colorID, colorBlendFactor: 0.85, duration: 0.1))
                 run(SKAction.sequence(colourChangeArray))
             }
+            */
         }
         
         func nextColour () {
+            colorID = ShipColour(rawValue: (colorID.rawValue + 1) % Int(ShipColour.COLOUR_BOUNDRY.rawValue))
+            if (colorID.rawValue == 0) {
+                bodyID = ((bodyID + 1) % 3)
+                refreshBody()
+            }
+            colourize()
+        }
+        
+        func prevColour () {
+            if (colorID.rawValue == 0) {
+                colorID = ShipColour(rawValue: (ShipColour.COLOUR_BOUNDRY.rawValue - 1))
+            } else {
+                colorID = ShipColour(rawValue: colorID.rawValue - 1)
+            }
             
+            if (colorID.rawValue == 0) {
+                bodyID = ((bodyID + 1) % 3)
+                refreshBody()
+            }
+            
+            colourize()
         }
         
         func nextThruster () {
-            thrusterID = thrusterID + 1 % 7
+            thrusterID = ((thrusterID + 1) % 6)
+            print (thrusterID)
+            refreshThruster()
+        }
+        
+        func prevThruster () {
+            if (thrusterID == 0) {
+                thrusterID = 6
+            } else {
+                thrusterID = thrusterID - 1
+            }
+            refreshThruster()
         }
     
         private func resetFragmentedVelocities () {

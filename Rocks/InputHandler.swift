@@ -40,8 +40,14 @@ extension GameScene {
                 }
                 break
             case .Customise:
-                if (node.name == "PLACEHOLDER") {
-                    // for when this has buttons
+                if (node.name == "NEXT_SHIP") {
+                    player.getShip().nextColour()
+                } else if (node.name == "PREV_SHIP") {
+                    player.getShip().prevColour()
+                } else if (node.name == "NEXT_THRUSTER") {
+                    player.getShip().nextThruster()
+                } else if (node.name == "PREV_THRUSTER") {
+                    player.getShip().prevThruster()
                 } else {
                     state = .MainMenu
                     userInterface.back()

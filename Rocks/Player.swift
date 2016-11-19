@@ -12,7 +12,23 @@ import SpriteKit
 extension GameScene {
     class Player {
        
-         private var ship = Ship(bID: 1, tID: (1 + Int(arc4random_uniform(7))), cID: UIColor.darkGray)
+       /*********
+         My Ship
+        ********/
+        private var ship = Ship (
+            bID: 2,
+            tID: 4,
+            cID: Ship.ShipColour.orange.rawValue
+        )
+  
+        /*********
+            DEFAULT ship
+         ********
+        private var ship = Ship (
+            bID: 1,
+            tID: 4,
+            cID: Int(arc4random_uniform(UInt32(Ship.ShipColour.white.rawValue)))
+        )*/
         
         // the admin
         private var velocity     = CGVector(dx: 0, dy: 0)
@@ -32,6 +48,7 @@ extension GameScene {
         func getHealth   () -> Int     { return health }
         func getAmmo     () -> Int     { return ammo }
         func getScore    () -> Int     { return score.getCount() }
+        func getShip     () -> Ship    { return ship }
         
         func moveRight   () { velocity.dx += 5 }
         func moveLeft    () { velocity.dx -= 5 }
@@ -55,6 +72,8 @@ extension GameScene {
             ship.xScale = 1.0
             ship.yScale = 1.0
         }
+        
+        
         
         func resetAt (x: Int, y: Int) {
             // reset health and ammo

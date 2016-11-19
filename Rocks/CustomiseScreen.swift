@@ -11,14 +11,18 @@ import SpriteKit
 
 extension GameScene {
     class CustomiseScreen: SKNode {
-        private var backLabel  = SKLabelNode()
-        private var backButton = SKSpriteNode(color: UIColor.clear, size: CGSize(width: 200, height: 100))
         
-        private var nextShipColour = SKSpriteNode()
-        private let prevShipColour = SKSpriteNode()
+        private var nextShipTexture = SKSpriteNode()
+        private let nextShipButton  = SKSpriteNode(color: UIColor.clear, size: CGSize(width: 128, height: 128))
         
-        private var nextThrusterColour = SKSpriteNode()
-        private var prevThrusterColour = SKSpriteNode()
+        private let prevShipTexture = SKSpriteNode()
+        private let prevShipButton  = SKSpriteNode(color: UIColor.clear, size: CGSize(width: 128, height: 128))
+        
+        private var nextThrusterTexture = SKSpriteNode()
+        private let nextThrusterButton  = SKSpriteNode(color: UIColor.clear, size: CGSize(width: 128, height: 128))
+        
+        private var prevThrusterTexture = SKSpriteNode()
+        private let prevThrusterButton  = SKSpriteNode(color: UIColor.clear, size: CGSize(width: 128, height: 128))
         
         private let nextImage = SKTexture(imageNamed: "next")
         private let prevImage = SKTexture(imageNamed: "previous")
@@ -26,43 +30,51 @@ extension GameScene {
         init (w: Int, h: Int, p: Player) {
             super.init()
             
-            // back
-            backLabel.text = String("back")
-            backLabel.horizontalAlignmentMode = .left
-            backLabel.position = CGPoint(x: 10, y: h - 50)
-            //addChild(backLabel)
+            // NEXT SHIP
+            nextShipTexture.texture = nextImage
+            nextShipTexture.name = "NEXT_SHIP"
+            nextShipTexture.size.width = 64
+            nextShipTexture.size.height = 64
+            nextShipTexture.position = CGPoint(x: w - 100, y: Int(Double(h) * 0.58))
+            addChild(nextShipTexture)
+            nextShipButton.name = "NEXT_SHIP"
+            nextShipButton.position   = CGPoint(x:Int(Double(w) * 0.75), y: Int(Double(h) * 0.58))
+            addChild(nextShipButton)
             
+            // PREV SHIP
+            prevShipTexture.texture = prevImage
+            prevShipTexture.name = "PREV_SHIP"
+            prevShipTexture.size.width = 64
+            prevShipTexture.size.height = 64
+            prevShipTexture.position = CGPoint(x: 100, y: Int(Double(h) * 0.58))
+            addChild(prevShipTexture)
+            prevShipButton.name = "PREV_SHIP"
+            prevShipButton.position   = CGPoint(x:Int(Double(w) * 0.25), y: Int(Double(h) * 0.58))
+            addChild(prevShipButton)
             
-            backButton.name = String("back")
-            backButton.position = CGPoint(x: 10, y: h - 10)
-            //addChild(backButton)
+            // NEXT THRUSTER
+            nextThrusterTexture.texture = nextImage
+            nextThrusterTexture.name = "NEXT_THRUSTER"
+            nextThrusterTexture.size.width = 64
+            nextThrusterTexture.size.height = 64
+            nextThrusterTexture.position = CGPoint(x: w - 138, y: Int(Double(h) * 0.40))
+            addChild(nextThrusterTexture)
+            nextThrusterButton.name = "NEXT_THRUSTER"
+            nextThrusterButton.position   = CGPoint(x:Int(Double(w) * 0.65), y: Int(Double(h) * 0.40))
+            addChild(nextThrusterButton)
             
-            // change ship color
-            nextShipColour.texture = nextImage
-            nextShipColour.size.width = 64
-            nextShipColour.size.height = 64
-            nextShipColour.position = CGPoint(x: w - 100, y: Int(Double(h) * 0.58))
-            addChild(nextShipColour)
+            // PREV THRUSTER
+            prevThrusterTexture.texture = prevImage
+            prevThrusterTexture.name = "PREV_THRUSTER"
+            prevThrusterTexture.size.width = 64
+            prevThrusterTexture.size.height = 64
+            prevThrusterTexture.position = CGPoint(x: 138, y: Int(Double(h) * 0.40))
+            addChild(prevThrusterTexture)
+            prevThrusterButton.name = "PREV_THRUSTER"
+            prevThrusterButton.position   = CGPoint(x:Int(Double(w) * 0.35), y: Int(Double(h) * 0.40))
+            addChild(prevThrusterButton)
             
-            prevShipColour.texture = prevImage
-            prevShipColour.size.width = 64
-            prevShipColour.size.height = 64
-            prevShipColour.position = CGPoint(x: 100, y: Int(Double(h) * 0.58))
-            addChild(prevShipColour)
-            
-            nextThrusterColour.texture = nextImage
-            nextThrusterColour.size.width = 64
-            nextThrusterColour.size.height = 64
-            nextThrusterColour.position = CGPoint(x: w - 148, y: Int(Double(h) * 0.40))
-            addChild(nextThrusterColour)
-            
-            prevThrusterColour.texture = prevImage
-            prevThrusterColour.size.width = 64
-            prevThrusterColour.size.height = 64
-            prevThrusterColour.position = CGPoint(x: 138, y: Int(Double(h) * 0.40))
-            addChild(prevThrusterColour)
-            
-            // change thruster
+            zPosition = 3
         }
         
         required init?(coder aDecoder: NSCoder) {
@@ -70,7 +82,7 @@ extension GameScene {
         }
         
         func update () {
-            
+
         }
     }
 }

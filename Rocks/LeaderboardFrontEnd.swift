@@ -78,7 +78,7 @@ extension GameScene {
                         rank:     $0.rank,
                         username: $0.player!.displayName!,
                         score:    $0.value,
-                        ship:     Ship(bID: 1, tID: (1 + Int(arc4random_uniform(7))), cID: UIColor.darkGray), // THIS NEEDS USER SHIP COMPATABILITY
+                        ship:     Ship(bID: 1, tID: (1 + Int(arc4random_uniform(7))), cID: Int(arc4random_uniform(UInt32(Ship.ShipColour.COLOUR_BOUNDRY.rawValue)))), // THIS NEEDS USER SHIP COMPATABILITY
                         w:        CGFloat(w),
                         h:        CGFloat(h)
                     )
@@ -92,7 +92,7 @@ extension GameScene {
                 rank: 1,
                 username: String("myman"),
                 score: 1000000,
-                ship: Ship(bID: 1, tID: (1 + Int(arc4random_uniform(7))), cID: UIColor.darkGray),
+                ship: Ship(bID: (Int(arc4random_uniform(3))), tID: (1 + Int(arc4random_uniform(6))), cID: Int(arc4random_uniform(UInt32(Ship.ShipColour.COLOUR_BOUNDRY.rawValue)))),
                 w: CGFloat(w),
                 h: CGFloat(h)
             ))
@@ -101,7 +101,7 @@ extension GameScene {
                 rank: 2,
                 username: String("yourman"),
                 score: 900000,
-                ship: Ship(bID: 1, tID: (1 + Int(arc4random_uniform(7))), cID: UIColor.darkGray),
+                ship: Ship(bID: (Int(arc4random_uniform(3))), tID: (1 + Int(arc4random_uniform(6))), cID: Int(arc4random_uniform(UInt32(Ship.ShipColour.COLOUR_BOUNDRY.rawValue)))),
                 w: CGFloat(w),
                 h: CGFloat(h)
             ))
@@ -110,7 +110,7 @@ extension GameScene {
                 rank: 3,
                 username: String("hisman"),
                 score: 800000,
-                ship: Ship(bID: 1, tID: (1 + Int(arc4random_uniform(7))), cID: UIColor.darkGray),
+                ship: Ship(bID: (Int(arc4random_uniform(3))), tID: (1 + Int(arc4random_uniform(6))), cID: Int(arc4random_uniform(UInt32(Ship.ShipColour.COLOUR_BOUNDRY.rawValue)))),
                 w: CGFloat(w),
                 h: CGFloat(h)
             ))
@@ -119,7 +119,7 @@ extension GameScene {
                 rank: 4,
                 username: String("herman"),
                 score: 700000,
-                ship: Ship(bID: 1, tID: (1 + Int(arc4random_uniform(7))), cID: UIColor.darkGray),
+                ship: Ship(bID: (Int(arc4random_uniform(3))), tID: (1 + Int(arc4random_uniform(6))), cID: Int(arc4random_uniform(UInt32(Ship.ShipColour.COLOUR_BOUNDRY.rawValue)))),
                 w: CGFloat(w),
                 h: CGFloat(h)
             ))
@@ -128,7 +128,7 @@ extension GameScene {
                 rank: 5,
                 username: String("someman"),
                 score: 600000,
-                ship: Ship(bID: 1, tID: (1 + Int(arc4random_uniform(7))), cID: UIColor.darkGray),
+                ship: Ship(bID: (Int(arc4random_uniform(3))), tID: (1 + Int(arc4random_uniform(6))), cID: Int(arc4random_uniform(UInt32(Ship.ShipColour.COLOUR_BOUNDRY.rawValue)))),
                 w: CGFloat(w),
                 h: CGFloat(h)
             ))
