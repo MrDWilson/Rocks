@@ -28,11 +28,33 @@ extension GameScene {
         // LASER HITS ASTEROID
         if (contact.bodyA.node?.name == "laserbeam" && contact.bodyB.node?.name == "asteroid" ) {
             // contact.bodyA.node?.removeFromParent()
+            var ghost = SKLabelNode()
+            var action = [SKAction]()
+            ghost.text = String(describing: 25)
+            ghost.position = contact.contactPoint
+            ghost.fontSize = 20
+            action.append(SKAction.move(by: CGVector(dx: 0, dy: -100), duration: 2))
+            action.append(SKAction.removeFromParent())
+            ghost.run(SKAction.sequence(action))
+            
+            addChild(ghost)
+            
             player.give(points: 25)
             userInterface.flashScore()
         }
         if (contact.bodyA.node?.name == "asteroid" && contact.bodyB.node?.name == "laserbeam" ) {
             // contact.bodyB.node?.removeFromParent()
+            var ghost = SKLabelNode()
+            var action = [SKAction]()
+            
+            ghost.text = String(describing: 25)
+            ghost.position = contact.contactPoint
+            ghost.fontSize = 20
+            action.append(SKAction.move(by: CGVector(dx: 0, dy: -100), duration: 2))
+            action.append(SKAction.removeFromParent())
+            ghost.run(SKAction.sequence(action))
+            addChild(ghost)
+            
             player.give(points: 25)
             userInterface.flashScore()
         }
@@ -52,6 +74,22 @@ extension GameScene {
                 player.explode()
                 player.clearLasers()
                 userInterface.update(state: state)
+                
+                // REMOVE FOR COMMERCIAL RELEASE
+                var ghost = SKLabelNode()
+                var action = [SKAction]()
+                
+                ghost.text = String("fuck you")
+                ghost.position = contact.contactPoint
+                ghost.fontSize = 20
+                action.append(SKAction.move(by: CGVector(dx: 0, dy: -100), duration: 2))
+                action.append(SKAction.removeFromParent())
+                ghost.run(SKAction.sequence(action))
+                addChild(ghost)
+                // REMOVE FOR COMMERCIAL RELEASE
+                
+                player.give(points: 25)
+                userInterface.flashScore()
                 
                 // save high scores
                 if(player.getScore() > saver.getHighScore()) {

@@ -11,7 +11,7 @@ import SpriteKit
 
 extension GameScene {
     class LaserBeam {
-        private let sprite = SKSpriteNode (color: UIColor.cyan , size: CGSize(width: 1, height: 10))
+        private let sprite = SKSpriteNode (color: UIColor.cyan , size: CGSize(width: 1.25, height: 10))
         private var origin = CGVector     (dx: 0, dy: 0)
         private var path   = CGVector     (dx: 0, dy: 10)
 

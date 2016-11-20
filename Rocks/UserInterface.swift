@@ -126,6 +126,7 @@ extension GameScene {
                 case .Customise:
 
                     showCustomiseMenu()
+                    mainMenu_customise.update()
                     break
                 case .Leaderboard:
                     showLeaderboard()

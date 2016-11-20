@@ -16,9 +16,9 @@ extension GameScene {
          My Ship
         ********/
         private var ship = Ship (
-            bID: 1,
+            bID: 2,
             tID: 4,
-            cID: Ship.ShipColour.gray.rawValue
+            cID: REColour.brown.rawValue
         )
   
         /*********
@@ -39,7 +39,7 @@ extension GameScene {
         private var health       = 25
         private let HEALTH_MAX   = 25
         private var restingY     = 100
-        private var laserColour  = UIColor.magenta
+        private var laserColour  = REColour.magenta
         private var name = "player"
         
         private var firing = false
@@ -53,7 +53,7 @@ extension GameScene {
         func getAmmo     () -> Int     { return ammo }
         func getScore    () -> Int     { return score.getCount() }
         func getShip     () -> Ship    { return ship }
-        func getLaserColour () -> UIColor {return laserColour}
+        func getLaserColour () -> UIColor {return laserColour.toUIColor}
         
         func startAutoFire () { firing = true  }
         func stopAutoFire  () { firing = false }
@@ -64,8 +64,8 @@ extension GameScene {
         func setRestingY (y: Int) { restingY = y }
         func move        (to: CGPoint) { ship.position = to }
         
-        func nextLaserColour () {  }
-        func prevLaserColour () {  }
+        func nextLaserColour () { laserColour = laserColour.nextColour }
+        func prevLaserColour () { laserColour = laserColour.nextColour }
         
         func scaleTo (x: CGFloat, y: CGFloat) {
             targetScale = CGVector(dx: x, dy: y)
@@ -179,7 +179,7 @@ extension GameScene {
                 let beam = LaserBeam()
                 lasers.add(beam)
                 ammo -= 1
-                ship.parent?.addChild(beam.fire(o: CGVector(dx: ship.position.x, dy: ship.position.y), colour: laserColour))
+                ship.parent?.addChild(beam.fire(o: CGVector(dx: ship.position.x, dy: ship.position.y), colour: laserColour.toUIColor))
             }
         }
         

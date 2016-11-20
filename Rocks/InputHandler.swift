@@ -48,6 +48,10 @@ extension GameScene {
                     player.getShip().nextThruster()
                 } else if (node.name == "PREV_THRUSTER") {
                     player.getShip().prevThruster()
+                } else if (node.name == "NEXT_LASER") {
+                    player.nextLaserColour()
+                } else if (node.name == "PREV_LASER") {
+                    player.prevLaserColour()
                 } else {
                     state = .MainMenu
                     userInterface.back()

@@ -17,6 +17,8 @@ extension GameScene {
         private var size    = 2 + Int(arc4random_uniform(8))
         private let velocity = CGVector(dx: 0, dy: 0 - (2 + Int(arc4random_uniform(6))))
         
+        private let explosionEffect   = SKEmitterNode(fileNamed: "ExplosionParticle.sks")
+        
         private var xConfine:Int      = 1080
         private var yConfine:Int      = 1920 // 6 plus default
         
@@ -55,9 +57,9 @@ extension GameScene {
             sprite.zRotation = CGFloat (arc4random_uniform(360))
             
             // ghost
-            ghost.text = String("100")
-            ghost.fontColor = UIColor.purple
-            ghost.fontSize = 100
+            explosionEffect?.position = CGPoint(x: 0, y: 0)
+            explosionEffect?.numParticlesToEmit = 100
+            explosionEffect?.removeFromParent()
             
             // add to scene
             return sprite
@@ -79,6 +81,9 @@ extension GameScene {
         }
         
         func destroyed () {
+            sprite.parent?.addChild(explosionEffect!)
+            explosionEffect?.resetSimulation()
+            explosionEffect?.position = CGPoint(x: xConfine - 100, y: yConfine - 100)
             reuse()
         }
         
@@ -98,7 +103,7 @@ extension GameScene {
             // reuse
             sprite.position.x = CGFloat(arc4random_uniform(UInt32(xConfine)))
             sprite.position.y = CGFloat(yConfine +  800 + Int(arc4random_uniform(750)))
-            
+            explosionEffect?.removeFromParent()
         }
     }
 }

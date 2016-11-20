@@ -23,44 +23,10 @@ extension GameScene {
         private var thrusterEffect    = SKEmitterNode(fileNamed: "ThrusterParticle_1.sks")
         private var colourChangeArray = [SKAction]()
 
-        enum ShipColour: Int {
-            case lightGray = 0
-            case white     = 1
-            case gray      = 2
-            case red       = 3
-            case green     = 4
-            case blue      = 5
-            case cyan      = 6
-            case yellow    = 7
-            case magenta   = 8
-            case orange    = 9
-            case purple    = 10
-            case brown     = 11
-            case COLOUR_BOUNDRY = 12
-            
-            var toUIColor: UIColor {
-                switch (self) {
-                case .lightGray: return UIColor.lightGray
-                case .white:     return UIColor.white
-                case .gray:      return UIColor.gray
-                case .red:       return UIColor.red
-                case .green:     return UIColor.green
-                case .blue:      return UIColor.blue
-                case .cyan:      return UIColor.cyan
-                case .yellow:    return UIColor.yellow
-                case .magenta:   return UIColor.magenta
-                case .orange:    return UIColor.orange
-                case .purple:    return UIColor.purple
-                case .brown:     return UIColor.brown
-                default:         return UIColor.white
-                }
-            }
-        }
-
         // admin
         private var bodyID:     Int!
         private var thrusterID: Int!
-        private var colorID:    ShipColour!
+        private var colorID:    REColour!
         private var exploding   = false
 
 
@@ -69,15 +35,25 @@ extension GameScene {
             
             bodyID = bID
             thrusterID = tID
-            colorID = ShipColour(rawValue: cID)
+            colorID = REColour(rawValue: cID)
+            
+            /* * * * * * * * * * * *
+             *  Gameplay stuff
+             * * * * * * * * * * * */
+            // Give Name, Position
+            name                                         = "player"
+            position                                     = CGPoint(x: 0 , y: 0)
+            //   texture                                      = SKTexture(imageNamed: "Ship_1") // add spaceship texture to sprite
+            size.width                                   = 42
+            size.height                                  = 42
             
             /* * * * * * * * * * * *
              *  Destruction Stuff
              * * * * * * * * * * * */
             leftWing.name                             = "ShipPart"
-            leftWing.texture                          = SKTexture(imageNamed: "Ship_leftWing")
-            leftWing.size.width                       = 12
-            leftWing.size.height                      = 40
+            leftWing.texture                          = SKTexture(imageNamed: "Ship_" + String(describing: bID) + "_leftWing")
+            leftWing.size.width                       = size.width / 2
+            leftWing.size.height                      = size.height / 1.15
             leftWing.position                         = CGPoint(x: -14, y: 0)
             leftWing.physicsBody                      = SKPhysicsBody(rectangleOf: leftWing.size)
             leftWing.physicsBody?.isDynamic           = true
@@ -88,9 +64,9 @@ extension GameScene {
             leftWing.physicsBody?.mass                = 0.12
             
             rightWing.name                            = "ShipPart"
-            rightWing.texture                         = SKTexture(imageNamed: "Ship_rightWing")
-            rightWing.size.width                      = 12
-            rightWing.size.height                     = 40
+            rightWing.texture                         = SKTexture(imageNamed: "Ship_" + String(describing: bID) + "_rightWing")
+            rightWing.size.width                      = size.width / 2
+            rightWing.size.height                     = size.height / 1.15
             rightWing.position                        = CGPoint(x: 14, y: 0)
             rightWing.physicsBody                     = SKPhysicsBody(rectangleOf: rightWing.size)
             rightWing.physicsBody?.isDynamic          = true
@@ -101,9 +77,9 @@ extension GameScene {
             rightWing.physicsBody?.mass               = 0.08
             
             frontBody.name                            = "ShipPart"
-            frontBody.texture                         = SKTexture(imageNamed: "Ship_bodyFront")
-            frontBody.size.width                      = 10
-            frontBody.size.height                     = 14
+            frontBody.texture                         = SKTexture(imageNamed: "Ship_" + String(describing: bID) + "_bodyFront")
+            frontBody.size.width                      = size.width / 2
+            frontBody.size.height                     = size.height / 1.25
             frontBody.position                        = CGPoint(x: 0, y: 12)
             frontBody.physicsBody                     = SKPhysicsBody(rectangleOf: frontBody.size)
             frontBody.physicsBody?.isDynamic          = true
@@ -114,9 +90,9 @@ extension GameScene {
             frontBody.physicsBody?.mass               = 0.2
             
             backBody.name                             = "ShipPart"
-            backBody.texture                          = SKTexture(imageNamed: "Ship_bodyBack")
-            backBody.size.width                       = 20
-            backBody.size.height                      = 20
+            backBody.texture                          = SKTexture(imageNamed: "Ship_" + String(describing: bID) + "_bodyBack")
+            backBody.size.width                       = size.width / 2.25
+            backBody.size.height                      = size.height / 2.25
             backBody.position                         = CGPoint(x: 0, y: -8)
             backBody.physicsBody                      = SKPhysicsBody(rectangleOf: backBody.size)
             backBody.physicsBody?.isDynamic           = true
@@ -126,21 +102,14 @@ extension GameScene {
             backBody.physicsBody!.allowsRotation      = true
             backBody.physicsBody?.mass                = 0.2
             
-            /* * * * * * * * * * * *
-             *  Gameplay stuff
-             * * * * * * * * * * * */
-            // Give Name, Position
-            name                                         = "player"
-            position                                     = CGPoint(x: 0 , y: 0)
-         //   texture                                      = SKTexture(imageNamed: "Ship_1") // add spaceship texture to sprite
-            size.width                                   = 42
-            size.height                                  = 42
+
             
             // Give Particle Effect
             explosionEffect?.name                               = String("explosion")
             explosionEffect?.position                           = CGPoint(x: 0, y: 0)
             explosionEffect?.numParticlesToEmit                 = 64
             explosionEffect?.removeFromParent()
+            explosionEffect?.resetSimulation()
             
             thrusterEffect = SKEmitterNode(fileNamed: "ThrusterParticle_" + String(describing: Int(thrusterID)) + ".sks")
             thrusterEffect?.name                                = String("thruster")
@@ -192,7 +161,7 @@ extension GameScene {
             leftWing.run  (SKAction.colorize(with: colorID.toUIColor, colorBlendFactor: 0.85, duration: 0))
             rightWing.run (SKAction.colorize(with: colorID.toUIColor, colorBlendFactor: 0.85, duration: 0))
             frontBody.run (SKAction.colorize(with: colorID.toUIColor, colorBlendFactor: 0.85, duration: 0))
-            backBody.run  (SKAction.colorize(with: colorID.toUIColor, colorBlendFactor: 0.85, duration: 0))
+            //backBody.run  (SKAction.colorize(with: colorID.toUIColor, colorBlendFactor: 0.85, duration: 0))
 
         }
         
@@ -204,6 +173,10 @@ extension GameScene {
         
         func refreshBody () {
             texture = SKTexture(imageNamed: String("Ship_" + String(bodyID)))
+            leftWing.texture = SKTexture(imageNamed: "Ship_" + String(describing: Int(bodyID)) + "_leftWing")
+            rightWing.texture = SKTexture(imageNamed: "Ship_" + String(describing: Int(bodyID)) + "_rightWing")
+            frontBody.texture = SKTexture(imageNamed: "Ship_" + String(describing: Int(bodyID)) + "_bodyFront")
+            backBody.texture = SKTexture(imageNamed: "Ship_" + String(describing: Int(bodyID)) + "_bodyBack")
         }
     
         func explode () {
@@ -276,7 +249,8 @@ extension GameScene {
         }
         
         func nextColour () {
-            colorID = ShipColour(rawValue: (colorID.rawValue + 1) % Int(ShipColour.COLOUR_BOUNDRY.rawValue))
+            colorID = colorID.nextColour
+            
             if (colorID.rawValue == 0) {
                 bodyID = ((bodyID + 1) % 4)
                 refreshBody()
@@ -285,11 +259,7 @@ extension GameScene {
         }
         
         func prevColour () {
-            if (colorID.rawValue == 0) {
-                colorID = ShipColour(rawValue: (ShipColour.COLOUR_BOUNDRY.rawValue - 1))
-            } else {
-                colorID = ShipColour(rawValue: colorID.rawValue - 1)
-            }
+            colorID = colorID.prevColour
             
             if (colorID.rawValue == 0) {
                 if (bodyID == 0) {
