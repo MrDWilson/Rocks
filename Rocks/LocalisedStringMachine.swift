@@ -15,40 +15,29 @@ extension GameScene {
     }
 
     class LocalisedStringMachine {
-        private var english  = [String]()
-        private var japanese = [String]()
+        private static var english: [String] = [
+            "Rocks", "customise ship", "leaderboard",
+            "options", "vibraation", "sound", "language",
+            "about", "version", "authors", "ammo", "health"
+        ]
         
-        private var language = Language.english
+        private static var japanese: [String] = [
+            "Rocks", "船をカスタマイズする", "リーダーボード",
+            "オプション", "振動", "音", "言語", "約", "バージョン",
+            "著者", "弾薬", "健康"
+        ]
         
-        init () {
-            english.append("Rocks")
-            english.append("customise ship")
-            english.append("leaderboard")
-            english.append("options")
-            english.append("vibraation")
-            english.append("sound")
-            english.append("language")
-            english.append("about")
-            english.append("version")
-            english.append("authors")
-            
-            japanese.append("Rocks")
-            japanese.append("船をカスタマイズする")
-            japanese.append("リーダーボード")
-            japanese.append("オプション")
-            japanese.append("振動")
-            japanese.append("音")
-            japanese.append("言語")
-            japanese.append("約")
-            japanese.append("バージョン")
-            japanese.append("著者")
-        }
+        private static var language = Language.english
         
-        func getString(stringID: Int) -> String {
+        static func getString(stringID: Int) -> String {
             switch (language) {
                 case .english:  return english  [stringID]
                 case .japanese: return japanese [stringID]
             }
+        }
+        
+        static func changeLanguage (lan: Language) {
+            self.language = lan
         }
     }
 }
