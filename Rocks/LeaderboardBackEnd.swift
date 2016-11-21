@@ -78,9 +78,11 @@ extension GameScene {
         }
         
         //Returns the leaderboard score
-        func getEntries() -> [GKScore] {
+        func getEntries(completion: ((Bool) -> ())?) -> [GKScore] {
             //Makes sure scores are up to date
             loads()
+            //Allows loading to commence
+            completion?(true)
             //Returns the current score
             return leaderboardScores
         }

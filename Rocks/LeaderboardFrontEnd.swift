@@ -71,7 +71,13 @@ extension GameScene {
             super.init()
             
             // Real Entries1
-            entries = backend.getEntries()
+            entries = backend.getEntries(completion: { success in
+                if success {
+                    //This is where the UI generation method will be called
+                } else {
+                    print("Failed to lead leaderboards front end")
+                }
+            })
             entries.forEach {
                 addChild (
                     LeaderboardEntry (
