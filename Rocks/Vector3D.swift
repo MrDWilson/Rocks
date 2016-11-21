@@ -23,9 +23,9 @@ extension GameScene {
         //For the leaderboard ship viewing
         init (context: Int) {
             var stringVersion = String(context)
-            let xString  = "\(stringVersion.characters.popFirst())\(stringVersion.characters.popFirst())"
-            let yString  = "\(stringVersion.characters.popFirst())\(stringVersion.characters.popFirst())"
-            let zString  = "\(stringVersion.characters.popFirst())\(stringVersion.characters.popFirst())"
+            let xString  = "\(stringVersion.characters.popFirst()!)\(stringVersion.characters.popFirst()!)"
+            let yString  = "\(stringVersion.characters.popFirst()!)\(stringVersion.characters.popFirst()!)"
+            let zString  = "\(stringVersion.characters.popFirst()!)\(stringVersion.characters.popFirst()!)"
             self.x       = CGFloat(Int(xString)!)
             self.y       = CGFloat(Int(yString)!)
             self.z       = CGFloat(Int(zString)!)
@@ -41,6 +41,11 @@ extension GameScene {
             self.x = self.x - other.x
             self.y = self.y - other.y
             self.z = self.z - other.z
+        }
+        
+        //Testing functionality
+        func testPrint() -> () {
+            return print("x: \(self.x!), y: \(self.y!), z: \(self.z!)")
         }
     }
 }
