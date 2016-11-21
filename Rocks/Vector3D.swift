@@ -44,8 +44,28 @@ extension GameScene {
         }
         
         //Testing functionality
-        func testPrint() -> () {
-            return print("x: \(self.x!), y: \(self.y!), z: \(self.z!)")
+        func toString() -> String {
+            return "x: \(self.x!), y: \(self.y!), z: \(self.z!)"
+        }
+        
+        //Get functions
+        
+        func getX() -> Int {
+            return Int(x)
+        }
+        
+        func getY() -> Int {
+            return Int(y)
+        }
+        
+        func getZ() -> Int {
+            return Int(z)
+        }
+        
+        //Function to allow easy saving of ship to iCloud (potentially) and leaderboard
+        func getAsOne() -> Int {
+            let string = "\(self.x!)\(self.y!)\(self.z!)"
+            return Int(string)!
         }
     }
 }
