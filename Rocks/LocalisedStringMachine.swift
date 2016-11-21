@@ -32,7 +32,7 @@ extension GameScene {
             english.append("version")
             english.append("authors")
             
-            japanese.append("岩")
+            japanese.append("Rocks")
             japanese.append("船をカスタマイズする")
             japanese.append("リーダーボード")
             japanese.append("オプション")
@@ -46,8 +46,8 @@ extension GameScene {
         
         func getString(stringID: Int) -> String {
             switch (language) {
-                case .english:  return english[stringID]
-                case .japanese: return japanese[stringID]
+                case .english:  return english  [stringID]
+                case .japanese: return japanese [stringID]
             }
         }
     }
