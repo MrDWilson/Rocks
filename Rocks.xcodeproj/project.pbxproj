@@ -38,6 +38,7 @@
 		62798A7A1DD8AAEF001F1DA8 /* ThrusterParticle_2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62798A661DD8AAEF001F1DA8 /* ThrusterParticle_2.sks */; };
 		6294E0C51DD8AD5200191D1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6294E0C31DD8AD5200191D1A /* Main.storyboard */; };
 		6294E0C61DD8AD5200191D1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6294E0C41DD8AD5200191D1A /* LaunchScreen.storyboard */; };
+		CE0084471DE309F9006DE43A /* LocalisedStringMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0084461DE309F9006DE43A /* LocalisedStringMachine.swift */; };
 		CE5B26011DD02ACE00A0AB64 /* RocksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B26001DD02ACE00A0AB64 /* RocksTests.swift */; };
 		CE5B260C1DD02ACE00A0AB64 /* RocksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B260B1DD02ACE00A0AB64 /* RocksUITests.swift */; };
 		CE621EDE1DE106300005360F /* REColour.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE621EDD1DE106300005360F /* REColour.swift */; };
@@ -102,6 +103,7 @@
 		6294E0C31DD8AD5200191D1A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Rocks/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		6294E0C41DD8AD5200191D1A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Rocks/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		62F97BB71DD0DF6A00CD8C4F /* Screens */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Screens; sourceTree = SOURCE_ROOT; };
+		CE0084461DE309F9006DE43A /* LocalisedStringMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalisedStringMachine.swift; path = Rocks/LocalisedStringMachine.swift; sourceTree = SOURCE_ROOT; };
 		CE5B25E21DD02ACE00A0AB64 /* Rocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5B25FC1DD02ACE00A0AB64 /* RocksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RocksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5B26001DD02ACE00A0AB64 /* RocksTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocksTests.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				CE621EDD1DE106300005360F /* REColour.swift */,
 				62798A5A1DD8AAEF001F1DA8 /* ExplosionParticle.sks */,
 				62750FFA1DDA6EDF00358E4A /* GameHUD.swift */,
+				CE0084461DE309F9006DE43A /* LocalisedStringMachine.swift */,
 				62750FFE1DDA719200358E4A /* GameOverScreen.swift */,
 				62798A5B1DD8AAEF001F1DA8 /* GameScene.sks */,
 				62798A5C1DD8AAEF001F1DA8 /* GameScene.swift */,
@@ -406,6 +409,7 @@
 				CEAA9B311DDB8FD600203FD1 /* CustomiseScreen.swift in Sources */,
 				62798A741DD8AAEF001F1DA8 /* InputHandler.swift in Sources */,
 				62798A711DD8AAEF001F1DA8 /* GameScene.swift in Sources */,
+				CE0084471DE309F9006DE43A /* LocalisedStringMachine.swift in Sources */,
 				62798A6D1DD8AAEF001F1DA8 /* Counter.swift in Sources */,
 				CEAA9B351DDB905C00203FD1 /* OptionsScreen.swift in Sources */,
 				CEAA9B2D1DDB8B9F00203FD1 /* LeaderboardFrontEnd.swift in Sources */,
@@ -563,7 +567,7 @@
 				INFOPLIST_FILE = Rocks/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Ryaanny.Rock;
+				PRODUCT_BUNDLE_IDENTIFIER = Ryaann.Rock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -581,7 +585,7 @@
 				INFOPLIST_FILE = Rocks/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Ryaanny.Rock;
+				PRODUCT_BUNDLE_IDENTIFIER = Ryaann.Rock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
