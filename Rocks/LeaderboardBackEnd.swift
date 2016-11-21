@@ -85,7 +85,9 @@ extension GameScene {
         
         //This is used to load the leaderboard, and tell front end when it is finished
         func loadLeaderboard(completion: ((Bool) -> ())?) {
+            //Loading the leaderboard
             retreiveFromServer()
+            //Tell front end we are done
             completion?(true)
         }
     }

@@ -72,7 +72,7 @@ extension GameScene {
             
             // Real Entries (only loads when the leaderboard is loaded from server
             // Also:: do this snipped of code every time the leaderboard needs to be
-            // reloaded. E.g. when the leaderboard button is pressed (maybe only when 
+            // reloaded. E.g. when the leaderboard button is pressed (maybe only when
             // the leaderboard button is pressed?)
             backend.loadLeaderboard(completion: { success in
                 if success {
