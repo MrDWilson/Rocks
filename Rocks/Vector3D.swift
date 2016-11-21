@@ -20,6 +20,17 @@ extension GameScene {
             self.z = z
         }
         
+        //For the leaderboard ship viewing
+        init (context: Int) {
+            var stringVersion = String(context)
+            let xString  = "\(stringVersion.characters.popFirst())\(stringVersion.characters.popFirst())"
+            let yString  = "\(stringVersion.characters.popFirst())\(stringVersion.characters.popFirst())"
+            let zString  = "\(stringVersion.characters.popFirst())\(stringVersion.characters.popFirst())"
+            self.x       = CGFloat(Int(xString)!)
+            self.y       = CGFloat(Int(yString)!)
+            self.z       = CGFloat(Int(zString)!)
+        }
+        
         func add (other: Vector3D) {
             self.x = self.x + other.x
             self.y = self.y + other.y
