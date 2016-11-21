@@ -14,7 +14,7 @@ extension GameScene {
     class LeaderboardBackEnd: UIViewController, GKGameCenterControllerDelegate {
         
         //Variable for storing the current leaderboard score
-        var leaderboardScores = [GKScore]()
+        private var leaderboardScores = [GKScore]()
         
         //Required implemented function
         func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
@@ -51,8 +51,8 @@ extension GameScene {
             }
         }
         
-        //Function to load leaderboard TODO: Rename this bastard
-        func loads() {
+        //Function to load leaderboard
+        private func retreiveFromServer() {
             let leaderboard = GKLeaderboard() //Initialise leaderboard
             leaderboard.playerScope = .global //Set players to global (instead of friends)
             leaderboard.timeScope = .allTime //Set time limit of all time
@@ -78,13 +78,15 @@ extension GameScene {
         }
         
         //Returns the leaderboard score
-        func getEntries(completion: ((Bool) -> ())?) -> [GKScore] {
-            //Makes sure scores are up to date
-            loads()
-            //Allows loading to commence
-            completion?(true)
+        func getEntries() -> [GKScore] {
             //Returns the current score
             return leaderboardScores
+        }
+        
+        //This is used to load the leaderboard, and tell front end when it is finished
+        func loadLeaderboard(completion: ((Bool) -> ())?) {
+            retreiveFromServer()
+            completion?(true)
         }
     }
 }

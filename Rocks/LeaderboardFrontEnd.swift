@@ -66,18 +66,24 @@ extension GameScene {
         private var entries: [GKScore]!
         
         init (w: Int, h: Int, p: Player) {
-            backend = LeaderboardBackEnd()
+            backend = LeaderboardBackEnd() //MIGHT NEED TO MOVE TO CLASS DECLERATION
             
             super.init()
             
-            // Real Entries1
-            entries = backend.getEntries(completion: { success in
+            // Real Entries (only loads when the leaderboard is loaded from server
+            // Also:: do this snipped of code every time the leaderboard needs to be
+            // reloaded. E.g. when the leaderboard button is pressed (maybe only when 
+            // the leaderboard button is pressed?)
+            backend.loadLeaderboard(completion: { success in
                 if success {
-                    //This is where the UI generation method will be called
+                    //This is where the UI generation method will be called 
+                    //In said function, get entries will have to be called again
+                    //as I have restructured how back end works
                 } else {
                     print("Failed to lead leaderboards front end")
                 }
             })
+            
             entries.forEach {
                 addChild (
                     LeaderboardEntry (
