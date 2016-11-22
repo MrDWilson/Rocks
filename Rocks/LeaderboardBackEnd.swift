@@ -28,7 +28,7 @@ extension GameScene {
             if(GKLocalPlayer.localPlayer().isAuthenticated) {
                 
                 //Declare reported assigned with the required leaderboardID
-                let scoreReporter = GKScore(leaderboardIdentifier: "highScore")
+                let scoreReporter = GKScore(leaderboardIdentifier: "TestOne")
                 
                 //Set the value as the players score
                 scoreReporter.value = Int64(score)
@@ -52,11 +52,11 @@ extension GameScene {
         }
         
         //Function to load leaderboard
-        private func retreiveFromServer() {
+        private func retreiveFromServer(completion: ((Bool) -> ())?) {
             let leaderboard = GKLeaderboard() //Initialise leaderboard
             leaderboard.playerScope = .global //Set players to global (instead of friends)
             leaderboard.timeScope = .allTime //Set time limit of all time
-            leaderboard.identifier = "highScore" //Set leaderboard ID
+            leaderboard.identifier = "TestOne" //Set leaderboard ID
             //leaderboard.range = NSRange(location: 1, length: 10) //Maximum limit of users
             
             //Load the socore
@@ -73,6 +73,7 @@ extension GameScene {
                     if(self.leaderboardScores == scores!) {print("Scores loaded successfully")}
                     //Also for testing purposes
                     print("\(scores?.count)")
+                    completion?(true)
                 }
             }
         }
@@ -86,9 +87,13 @@ extension GameScene {
         //This is used to load the leaderboard, and tell front end when it is finished
         func loadLeaderboard(completion: ((Bool) -> ())?) {
             //Loading the leaderboard
-            retreiveFromServer()
-            //Tell front end we are done
-            completion?(true)
+            retreiveFromServer(completion: { success in
+                if success {
+                    //Tell front end we are done
+                    completion?(true)
+                } else { print("Fuck you") }
+                
+            })
         }
     }
 }

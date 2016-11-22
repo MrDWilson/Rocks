@@ -79,71 +79,58 @@ extension GameScene {
                     //This is where the UI generation method will be called 
                     //In said function, get entries will have to be called again
                     //as I have restructured how back end works
+                    self.generateUI(w: w, h: h)
                 } else {
                     print("Failed to lead leaderboards front end")
                 }
             })
             
-            entries.forEach {
-                addChild (
-                    LeaderboardEntry (
-                        rank:     $0.rank,
-                        username: $0.player!.displayName!,
-                        score:    $0.value,
-                        ship:     Ship(bID: 1, tID: (1 + Int(arc4random_uniform(7))), cID: Int(arc4random_uniform(UInt32(REColour.COLOUR_BOUNDRY.rawValue)))), // THIS NEEDS USER SHIP COMPATABILITY
-                        w:        CGFloat(w),
-                        h:        CGFloat(h)
-                    )
-                )
-                
-                print("Entry Added")
-            }
             
             // Dummy Entries (COMMENT OUT WHEN LIVE)
-            addChild(LeaderboardEntry(
-                rank: 1,
-                username: String("myman"),
-                score: 1000000,
-                ship: Ship(bID: (Int(arc4random_uniform(3))), tID: (1 + Int(arc4random_uniform(6))), cID: Int(arc4random_uniform(UInt32(REColour.COLOUR_BOUNDRY.rawValue)))),
-                w: CGFloat(w),
-                h: CGFloat(h)
-            ))
-            
-            addChild(LeaderboardEntry(
-                rank: 2,
-                username: String("yourman"),
-                score: 900000,
-                ship: Ship(bID: (Int(arc4random_uniform(3))), tID: (1 + Int(arc4random_uniform(6))), cID: Int(arc4random_uniform(UInt32(REColour.COLOUR_BOUNDRY.rawValue)))),
-                w: CGFloat(w),
-                h: CGFloat(h)
-            ))
-            
-            addChild(LeaderboardEntry(
-                rank: 3,
-                username: String("hisman"),
-                score: 800000,
-                ship: Ship(bID: (Int(arc4random_uniform(3))), tID: (1 + Int(arc4random_uniform(6))), cID: Int(arc4random_uniform(UInt32(REColour.COLOUR_BOUNDRY.rawValue)))),
-                w: CGFloat(w),
-                h: CGFloat(h)
-            ))
-            
-            addChild(LeaderboardEntry(
-                rank: 4,
-                username: String("herman"),
-                score: 700000,
-                ship: Ship(bID: (Int(arc4random_uniform(3))), tID: (1 + Int(arc4random_uniform(6))), cID: Int(arc4random_uniform(UInt32(REColour.COLOUR_BOUNDRY.rawValue)))),
-                w: CGFloat(w),
-                h: CGFloat(h)
-            ))
-            
-            addChild(LeaderboardEntry(
-                rank: 5,
-                username: String("someman"),
-                score: 600000,
-                ship: Ship(bID: (Int(arc4random_uniform(3))), tID: (1 + Int(arc4random_uniform(6))), cID: Int(arc4random_uniform(UInt32(REColour.COLOUR_BOUNDRY.rawValue)))),
-                w: CGFloat(w),
-                h: CGFloat(h)
-            ))
+//            addChild(LeaderboardEntry(
+//                rank: 1,
+//                username: String("myman"),
+//                score: 1000000,
+//                ship: Ship(bID: (Int(arc4random_uniform(3))), tID: (1 + Int(arc4random_uniform(6))), cID: Int(arc4random_uniform(UInt32(REColour.COLOUR_BOUNDRY.rawValue)))),
+//                w: CGFloat(w),
+//                h: CGFloat(h)
+//            ))
+//            
+//            addChild(LeaderboardEntry(
+//                rank: 2,
+//                username: String("yourman"),
+//                score: 900000,
+//                ship: Ship(bID: (Int(arc4random_uniform(3))), tID: (1 + Int(arc4random_uniform(6))), cID: Int(arc4random_uniform(UInt32(REColour.COLOUR_BOUNDRY.rawValue)))),
+//                w: CGFloat(w),
+//                h: CGFloat(h)
+//            ))
+//            
+//            addChild(LeaderboardEntry(
+//                rank: 3,
+//                username: String("hisman"),
+//                score: 800000,
+//                ship: Ship(bID: (Int(arc4random_uniform(3))), tID: (1 + Int(arc4random_uniform(6))), cID: Int(arc4random_uniform(UInt32(REColour.COLOUR_BOUNDRY.rawValue)))),
+//                w: CGFloat(w),
+//                h: CGFloat(h)
+//            ))
+//            
+//            addChild(LeaderboardEntry(
+//                rank: 4,
+//                username: String("herman"),
+//                score: 700000,
+//                ship: Ship(bID: (Int(arc4random_uniform(3))), tID: (1 + Int(arc4random_uniform(6))), cID: Int(arc4random_uniform(UInt32(REColour.COLOUR_BOUNDRY.rawValue)))),
+//                w: CGFloat(w),
+//                h: CGFloat(h)
+//            ))
+//            
+//            addChild(LeaderboardEntry(
+//                rank: 5,
+//                username: String("someman"),
+//                score: 600000,
+//                ship: Ship(bID: (Int(arc4random_uniform(3))), tID: (1 + Int(arc4random_uniform(6))), cID: Int(arc4random_uniform(UInt32(REColour.COLOUR_BOUNDRY.rawValue)))),
+//                w: CGFloat(w),
+//                h: CGFloat(h)
+//            ))
             
         }
         
@@ -161,6 +148,28 @@ extension GameScene {
         
         func update () {
             
+        }
+        
+        func generateUI(w: Int, h: Int) {
+            
+            print("This best be called I swear I will 1v1 wreck you swift")
+            
+            entries = backend.getEntries()
+            
+            entries.forEach {
+                addChild (
+                    LeaderboardEntry (
+                        rank:     $0.rank,
+                        username: $0.player!.alias!,
+                        score:    $0.value,
+                        ship:     Ship(bID: 1, tID: (1 + Int(arc4random_uniform(7))), cID: Int(arc4random_uniform(UInt32(REColour.COLOUR_BOUNDRY.rawValue)))), // THIS NEEDS USER SHIP COMPATABILITY
+                        w:        CGFloat(w),
+                        h:        CGFloat(h)
+                    )
+                )
+                
+                print("Entry Added")
+            }
         }
     }
 }

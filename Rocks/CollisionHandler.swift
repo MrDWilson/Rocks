@@ -97,6 +97,8 @@ extension GameScene {
                 if(player.getScore() > saver.getHighScore()) {
                     saver.setHighScore(x: player.getScore())
                 }
+                
+                leaderboard.updateScore(score: player.getScore())
             }
                 
             else {
