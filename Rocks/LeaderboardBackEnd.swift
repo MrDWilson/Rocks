@@ -16,6 +16,8 @@ extension GameScene {
         //Variable for storing the current leaderboard score
         private var leaderboardScores = [GKScore]()
         
+        Boolean firstTime = true
+        
         //Required implemented function
         func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
             gameCenterViewController.dismiss(animated: true, completion: nil)
@@ -53,6 +55,12 @@ extension GameScene {
         
         //Function to load leaderboard
         private func retreiveFromServer(completion: ((Bool) -> ())?) {
+            
+            if firstTime {
+                updateScore(score: 0)
+                firstTime = false
+            }
+            
             let leaderboard = GKLeaderboard() //Initialise leaderboard
             leaderboard.playerScope = .global //Set players to global (instead of friends)
             leaderboard.timeScope = .allTime //Set time limit of all time
@@ -78,6 +86,12 @@ extension GameScene {
             }
         }
         
+        func getPlayer() {
+            let leaderboard = GKLeaderboard
+        }
+        
+        
+        
         //Returns the leaderboard score
         func getEntries() -> [GKScore] {
             //Returns the current score
@@ -94,6 +108,10 @@ extension GameScene {
                 } else { print("Fuck you") }
                 
             })
+        }
+        
+        func getCurrentPlayer() {
+            
         }
     }
 }
