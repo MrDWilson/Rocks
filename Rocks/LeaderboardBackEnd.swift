@@ -22,7 +22,7 @@ extension GameScene {
         }
         
         //Updating the score
-        func updateScore(score : Int) {
+        func updateScore(score : Int/*, shipVector: Vector3D*/) {
             
             //If the player is logged in
             if(GKLocalPlayer.localPlayer().isAuthenticated) {
@@ -34,7 +34,7 @@ extension GameScene {
                 scoreReporter.value = Int64(score)
                 
                 //Set the context (ship/colour, laser colour and thruster)
-                //scoreReporter.context(testVector.getAsOne())
+                //scoreReporter.context(shipVector.getAsOne())
                 
                 //Report the score to the leaderboard
                 GKScore.report([scoreReporter], withCompletionHandler: ( { (error: Error?) -> Void in

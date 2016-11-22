@@ -157,6 +157,7 @@ extension GameScene {
             entries = backend.getEntries()
             
             entries.forEach {
+                //let shipVector = Vector3D($0.context)
                 addChild (
                     LeaderboardEntry (
                         rank:     $0.rank,
@@ -167,6 +168,14 @@ extension GameScene {
                         h:        CGFloat(h)
                     )
                 )
+                
+                    /*LeaderboardEntry (
+                        rank:     $0.rank,
+                        username: $0.player!.alias!,
+                        score:    $0.value,
+                        ship:     Ship(bID: shipVector.getX(), tID: shipVector.getY(), cID:
+                            shipVector.getZ())
+                )*/
                 
                 print("Entry Added")
             }
