@@ -6,6 +6,7 @@
 //  Copyright © 2016 Ryan Needham. All rights reserved.
 //
 import Foundation
+import SpriteKit
 
 extension GameScene {
     
@@ -58,6 +59,12 @@ extension GameScene {
         }
         
         private func saveThrusterID() {
+            save(x: thrusterID, y: THRST)
+        }
+        
+        private func saveShip() {
+            save(x: shipID, y: SHP)
+            save(x: colourID, y: CLR)
             save(x: thrusterID, y: THRST)
         }
         
@@ -121,6 +128,10 @@ extension GameScene {
             return thrusterID
         }
         
+        func getShip() -> Vector3D {
+            return Vector3D(x: CGFloat(shipID), y: CGFloat(colourID), z: CGFloat(thrusterID))
+        }
+        
         func getCoins() -> Int {
             return coins
         }
@@ -154,6 +165,13 @@ extension GameScene {
         func setThrusterID(x: Int) {
             thrusterID = x
             saveThrusterID()
+        }
+        
+        func setShip(ship: Vector3D) {
+            shipID = ship.getX()
+            colourID = ship.getY()
+            thrusterID = ship.getZ()
+            saveShip()
         }
         
         func addCoins(x: Int) {
