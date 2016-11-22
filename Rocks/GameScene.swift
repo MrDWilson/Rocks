@@ -182,23 +182,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func updateRunning (currentTime: TimeInterval) {
         //
         player.setRestingY(y: Int(self.size.height * CGFloat(0.32)))
-        
-        if (player.getScore() % 5000 == 0) && player.getScore() > 0 {
-            backdrop.forEach { $0.speedUp() }
-            asteroids.append(Asteroid())
-            clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
-            
-            if (player.getScore() > 40000) {
-                asteroids.append(Asteroid())
-                clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
-            }
-        }
-    
-        /*
+
         // check/set difficulty
         if (player.getScore() > 5000) { difficulty = .Medium; backdrop.forEach { $0.speedUp() } }
         if (player.getScore() > 15000) { difficulty = .Hard }
-        */
         
         // get input
         processUserMotion(forUpdate: currentTime)
@@ -208,13 +195,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         powerups.forEach { $0.update() }
         player.update(currentTime: currentTime)
         
-        /*
         // ensure correct astroid count
         if (difficulty == .Medium) {
             if (asteroids.count == Difficulty.Easy.rawValue) {
                 while (asteroids.count < Difficulty.Medium.rawValue) {
                     asteroids.append(Asteroid())
                     clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
+                    backdrop.forEach { $0.speedUp() }
                 }
             }
         }
@@ -224,10 +211,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 while (asteroids.count < Difficulty.Hard.rawValue) {
                     asteroids.append(Asteroid())
                     clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
+                    backdrop.forEach { $0.speedUp() }
+                    backdrop.forEach { $0.speedUp() }
                 }
             }
         }
-        */
     }
     
     func updatePaused () {
