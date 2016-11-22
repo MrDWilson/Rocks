@@ -2,12 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Ship_leftWingL.png",
+      "filename" : "Ship_0_leftWing.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Ship_leftWingXL.png",
       "scale" : "2x"
     },
     {

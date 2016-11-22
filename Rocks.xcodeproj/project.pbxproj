@@ -19,7 +19,6 @@
 		62750FFF1DDA719200358E4A /* GameOverScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62750FFE1DDA719200358E4A /* GameOverScreen.swift */; };
 		627510011DDA8D9D00358E4A /* ThrusterParticle_6.sks in Resources */ = {isa = PBXBuildFile; fileRef = 627510001DDA8D9D00358E4A /* ThrusterParticle_6.sks */; };
 		62798A681DD8AAEF001F1DA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62798A531DD8AAEF001F1DA8 /* AppDelegate.swift */; };
-		62798A691DD8AAEF001F1DA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62798A541DD8AAEF001F1DA8 /* Assets.xcassets */; };
 		62798A6A1DD8AAEF001F1DA8 /* Asteroid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62798A551DD8AAEF001F1DA8 /* Asteroid.swift */; };
 		62798A6C1DD8AAEF001F1DA8 /* CollisionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62798A571DD8AAEF001F1DA8 /* CollisionHandler.swift */; };
 		62798A6D1DD8AAEF001F1DA8 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62798A581DD8AAEF001F1DA8 /* Counter.swift */; };
@@ -40,6 +39,7 @@
 		6294E0C61DD8AD5200191D1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6294E0C41DD8AD5200191D1A /* LaunchScreen.storyboard */; };
 		A19596481DE374D7007AA057 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A19596471DE374D7007AA057 /* GameKit.framework */; };
 		CE0084471DE309F9006DE43A /* LocalisedStringMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0084461DE309F9006DE43A /* LocalisedStringMachine.swift */; };
+		CE0938001DE4D172003815BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0937FF1DE4D172003815BB /* Assets.xcassets */; };
 		CE507A131DE3446D0019CD0D /* Vector3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE507A121DE3446D0019CD0D /* Vector3D.swift */; };
 		CE5B26011DD02ACE00A0AB64 /* RocksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B26001DD02ACE00A0AB64 /* RocksTests.swift */; };
 		CE5B260C1DD02ACE00A0AB64 /* RocksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B260B1DD02ACE00A0AB64 /* RocksUITests.swift */; };
@@ -84,7 +84,6 @@
 		627510001DDA8D9D00358E4A /* ThrusterParticle_6.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = ThrusterParticle_6.sks; path = Rocks/ThrusterParticle_6.sks; sourceTree = SOURCE_ROOT; };
 		62798A521DD8AAEF001F1DA8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Rocks/Info.plist; sourceTree = SOURCE_ROOT; };
 		62798A531DD8AAEF001F1DA8 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Rocks/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
-		62798A541DD8AAEF001F1DA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Rocks/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		62798A551DD8AAEF001F1DA8 /* Asteroid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Asteroid.swift; path = Rocks/Asteroid.swift; sourceTree = SOURCE_ROOT; };
 		62798A571DD8AAEF001F1DA8 /* CollisionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollisionHandler.swift; path = Rocks/CollisionHandler.swift; sourceTree = SOURCE_ROOT; };
 		62798A581DD8AAEF001F1DA8 /* Counter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Counter.swift; path = Rocks/Counter.swift; sourceTree = SOURCE_ROOT; };
@@ -107,6 +106,7 @@
 		62F97BB71DD0DF6A00CD8C4F /* Screens */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Screens; sourceTree = SOURCE_ROOT; };
 		A19596471DE374D7007AA057 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		CE0084461DE309F9006DE43A /* LocalisedStringMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalisedStringMachine.swift; path = Rocks/LocalisedStringMachine.swift; sourceTree = SOURCE_ROOT; };
+		CE0937FF1DE4D172003815BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Rocks/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		CE507A121DE3446D0019CD0D /* Vector3D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vector3D.swift; path = Rocks/Vector3D.swift; sourceTree = SOURCE_ROOT; };
 		CE5B25E21DD02ACE00A0AB64 /* Rocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5B25FC1DD02ACE00A0AB64 /* RocksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RocksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,10 +185,10 @@
 			children = (
 				CEAA9B321DDB900C00203FD1 /* AboutScreen.swift */,
 				62798A531DD8AAEF001F1DA8 /* AppDelegate.swift */,
-				62798A541DD8AAEF001F1DA8 /* Assets.xcassets */,
 				62798A551DD8AAEF001F1DA8 /* Asteroid.swift */,
 				62798A571DD8AAEF001F1DA8 /* CollisionHandler.swift */,
 				62798A581DD8AAEF001F1DA8 /* Counter.swift */,
+				CE0937FF1DE4D172003815BB /* Assets.xcassets */,
 				CEAA9B301DDB8FD600203FD1 /* CustomiseScreen.swift */,
 				62798A591DD8AAEF001F1DA8 /* Difficulty.swift */,
 				CE621EDD1DE106300005360F /* REColour.swift */,
@@ -373,13 +373,13 @@
 				62750FF21DDA5B8C00358E4A /* ThrusterParticle_4.sks in Resources */,
 				62798A7A1DD8AAEF001F1DA8 /* ThrusterParticle_2.sks in Resources */,
 				6294E0C51DD8AD5200191D1A /* Main.storyboard in Resources */,
-				62798A691DD8AAEF001F1DA8 /* Assets.xcassets in Resources */,
 				62750FF11DDA5B8C00358E4A /* ThrusterParticle_3.sks in Resources */,
 				6294E0C61DD8AD5200191D1A /* LaunchScreen.storyboard in Resources */,
 				62798A701DD8AAEF001F1DA8 /* GameScene.sks in Resources */,
 				62750FEC1DDA580F00358E4A /* ThrusterParticle_0.sks in Resources */,
 				62750FF31DDA5B8C00358E4A /* ThrusterParticle_5.sks in Resources */,
 				62750FED1DDA580F00358E4A /* ThrusterParticle_1.sks in Resources */,
+				CE0938001DE4D172003815BB /* Assets.xcassets in Resources */,
 				62798A6F1DD8AAEF001F1DA8 /* ExplosionParticle.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
