@@ -23,6 +23,7 @@ extension GameScene {
         //For the leaderboard ship viewing
         init (context: UInt64) {
             var stringVersion = String(context)
+            print(String(context))
             let xString  = "01"//"\(stringVersion.characters.popFirst()!)\(stringVersion.characters.popFirst()!)"
             let yString  = "01"//"\(stringVersion.characters.popFirst()!)\(stringVersion.characters.popFirst()!)"
             let zString  = "01"//"\(stringVersion.characters.popFirst()!)\(stringVersion.characters.popFirst()!)"
@@ -65,6 +66,7 @@ extension GameScene {
         //Function to allow easy saving of ship to iCloud (potentially) and leaderboard
         func getAsOne() -> Int {
             let string = "\(self.x!)\(self.y!)\(self.z!)"
+            print("Get As One: " + string)
             return Int(string)!
         }
     }
