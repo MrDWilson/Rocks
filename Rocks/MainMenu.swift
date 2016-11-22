@@ -37,14 +37,14 @@ extension GameScene {
             
             super.init()
             
-            title.text = String("Rocks")
+            title.text = LocalisedStringMachine.getString(stringID: 0)
             title.fontSize = 100
             title.horizontalAlignmentMode = .center
             title.fontColor = UIColor.white
             title.position = CGPoint(x: w / 2, y: Int(Double(screenHeight) * 0.82))
             addChild(title)
             
-            customiseLabel.text = String("customise ship")
+            customiseLabel.text = LocalisedStringMachine.getString(stringID: 1)
             customiseLabel.fontSize = 28
             customiseLabel.horizontalAlignmentMode = .center
             customiseLabel.fontColor = UIColor.lightGray
@@ -57,7 +57,7 @@ extension GameScene {
             customiseButton.position = CGPoint(x: 0, y: Int(Double(screenHeight) * 0.35))
             addChild(customiseButton)
             
-            leaderboardLabel.text = String("leaderboard")
+            leaderboardLabel.text = LocalisedStringMachine.getString(stringID: 2)
             leaderboardLabel.fontSize = 28
             leaderboardLabel.horizontalAlignmentMode = .center
             leaderboardLabel.fontColor = UIColor.lightGray
@@ -70,7 +70,7 @@ extension GameScene {
             leaderboardButton.position = CGPoint(x: 0, y: Int(Double(screenHeight) * 0.27))
             addChild(leaderboardButton)
             
-            optionsLabel.text = String("options")
+            optionsLabel.text = LocalisedStringMachine.getString(stringID: 3)
             optionsLabel.fontSize = 28
             optionsLabel.horizontalAlignmentMode = .center
             optionsLabel.fontColor = UIColor.lightGray
@@ -83,7 +83,7 @@ extension GameScene {
             optionsButton.position = CGPoint(x: 0, y: Int(Double(screenHeight) * 0.19))
             addChild(optionsButton)
             
-            aboutLabel.text = String("about")
+            aboutLabel.text = LocalisedStringMachine.getString(stringID: 7)
             aboutLabel.fontSize = 28
             aboutLabel.horizontalAlignmentMode = .center
             aboutLabel.fontColor = UIColor.lightGray
