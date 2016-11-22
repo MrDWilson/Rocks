@@ -179,11 +179,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func updateRunning (currentTime: TimeInterval) {
+        backdrop.forEach { $0.setSpeed(s: -4) }
+        
         //
         player.setRestingY(y: Int(self.size.height * CGFloat(0.32)))
 
         // check/set difficulty
-        if (player.getScore() > 5000) { difficulty = .Medium; backdrop.forEach { $0.speedUp() } }
+        if (player.getScore() > 5000) { difficulty = .Medium }
         if (player.getScore() > 15000) { difficulty = .Hard }
         
         // get input
@@ -200,7 +202,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 while (asteroids.count < Difficulty.Medium.rawValue) {
                     asteroids.append(Asteroid())
                     clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
-                    backdrop.forEach { $0.speedUp() }
+                    backdrop.forEach { $0.setSpeed(s: -8) }
                 }
             }
         }
@@ -210,8 +212,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 while (asteroids.count < Difficulty.Hard.rawValue) {
                     asteroids.append(Asteroid())
                     clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
-                    backdrop.forEach { $0.speedUp() }
-                    backdrop.forEach { $0.speedUp() }
+                    backdrop.forEach { $0.setSpeed(s: -14) }
                 }
             }
         }
@@ -253,6 +254,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             asteroids.last?.culled()
             asteroids.removeLast()
         }
+        backdrop.forEach {$0.setSpeed(s: -1)}
     
         isPaused = false
         

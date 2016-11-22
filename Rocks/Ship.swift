@@ -27,7 +27,6 @@ extension GameScene {
         private var colorID:    REColour!
         private var exploding   = false
 
-
         init (bID: Int, tID: Int, cID: Int) {
             super.init(texture: SKTexture(imageNamed: "Ship_" + String(describing: bID)), color: UIColor.white, size: CGSize(width: 24, height: 24))
             

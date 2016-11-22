@@ -131,7 +131,7 @@ extension GameScene {
         }
         
         static func getShip() -> Vector3D {
-            return Vector3D(x: CGFloat(shipID), y: CGFloat(colourID), z: CGFloat(thrusterID))
+            return Vector3D(x: shipID, y: thrusterID, z: colourID)
         }
         
         static func getCoins() -> Int {
@@ -179,8 +179,8 @@ extension GameScene {
         
         static func setShip(ship: Vector3D) {
             shipID = ship.getX()
-            colourID = ship.getY()
-            thrusterID = ship.getZ()
+            thrusterID = ship.getY()
+            colourID = ship.getZ()
             saveShip()
         }
         

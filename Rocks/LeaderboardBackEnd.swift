@@ -25,7 +25,7 @@ extension GameScene {
         }
         
         //Updating the score
-        func updateScore(score : Int/*, shipVector: Vector3D*/) {
+        func updateScore(score : Int, shipVector: Vector3D) {
             
             //If the player is logged in
             if(GKLocalPlayer.localPlayer().isAuthenticated) {
@@ -37,7 +37,7 @@ extension GameScene {
                 scoreReporter.value = Int64(score)
                 
                 //Set the context (ship/colour, laser colour and thruster)
-                //scoreReporter.context(shipVector.getAsOne())
+                scoreReporter.context = UInt64(shipVector.getAsOne())
                 
                 //Report the score to the leaderboard
                 GKScore.report([scoreReporter], withCompletionHandler: ( { (error: Error?) -> Void in
@@ -64,7 +64,7 @@ extension GameScene {
             //leaderboard.range = NSRange(location: 1, length: 10) //Maximum limit of users
             let firstTime = Save.getFirstTime()
             if firstTime {
-                updateScore(score: 0)
+                updateScore(score: 0, shipVector: Vector3D(x: 01, y: 01, z: 01))
                 Save.setFirstTime()
             }
             
@@ -96,7 +96,7 @@ extension GameScene {
             //leaderboard.range = NSRange(location: 1, length: 10) //Maximum limit of users
             let firstTime = Save.getFirstTime()
             if firstTime {
-                updateScore(score: 0)
+                updateScore(score: 0, shipVector: Vector3D(x: 01, y: 01, z: 01))
                 Save.setFirstTime()
             }
             

@@ -15,11 +15,7 @@ extension GameScene {
        /*********
          My Ship
         ********/
-        private var ship = Ship (
-            bID: 2,
-            tID: 4,
-            cID: REColour.brown.rawValue
-        )
+
   
         /*********
             DEFAULT ship
@@ -41,6 +37,11 @@ extension GameScene {
         private var restingY     = 100
         private var laserColour  = REColour.magenta
         private var name = "player"
+        private var bodyID: Int!
+        private var thrusterID: Int!
+        private var colourID: Int!
+        
+        private var ship: Ship!
         
         private var firing = false
         
@@ -54,6 +55,18 @@ extension GameScene {
         func getScore    () -> Int     { return score.getCount() }
         func getShip     () -> Ship    { return ship }
         func getLaserColour () -> UIColor {return laserColour.toUIColor}
+        
+        init () {
+            bodyID = Save.getShipID()
+            thrusterID = Save.getThrusterID()
+            colourID = Save.getColourID()
+            
+            ship = Ship(
+                bID: bodyID,
+                tID: thrusterID,
+                cID: colourID
+            )
+        }
         
         func startAutoFire () { firing = true  }
         func stopAutoFire  () { firing = false }
@@ -84,7 +97,9 @@ extension GameScene {
             ship.yScale = 1.0
         }
         
-        
+        func serializeShip () -> Vector3D {
+            return Vector3D(x: bodyID, y: thrusterID, z: colourID)
+        }
         
         func resetAt (x: Int, y: Int) {
             // reset health and ammo

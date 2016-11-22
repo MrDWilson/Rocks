@@ -59,6 +59,13 @@ extension GameScene {
         required init?(coder aDecoder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
+        
+        func setY (y: CGFloat) {
+            rankLabel.position.y = y - 16
+            usernameLabel.position.y = y
+            scoreLabel.position.y = y - 32
+            shipNode.position.y = y
+        }
     }
     
     class LeaderboardFrontEnd: SKNode {
@@ -159,8 +166,8 @@ extension GameScene {
             player = backend.getPlayer()
             
             entries.forEach {
-                let shipVec = Vector3D(context: Int($0.context))
-                if ($0.rank < 5) {
+                let shipVec = Vector3D(context: $0.context)
+                if ($0.rank < 5) && ($0.rank > 0) {
                     addChild (
                         LeaderboardEntry (
                             rank:     $0.rank,
@@ -174,18 +181,17 @@ extension GameScene {
                 }
             }
             
-            let shipVec = Vector3D(context: Int(player.context))
-            addChild (
-                LeaderboardEntry (
-                    rank:     player.rank,
-                    username: String("You"),
-                    score:    player.value,
-                    ship:     Ship(bID: shipVec.getX(), tID: shipVec.getY(), cID: shipVec.getZ()), // THIS NEEDS USER SHIP COMPATABILITY
-                    w:        CGFloat(w),
-                    h:        CGFloat(h)
-                )
+            let shipVec = Vector3D(context: player.context)
+            let currentPlayer = LeaderboardEntry(
+                rank:     player.rank,
+                username: String("You"),
+                score:    player.value,
+                ship:     Ship(bID: shipVec.getX(), tID: shipVec.getY(), cID: shipVec.getZ()), // THIS NEEDS USER SHIP COMPATABILITY
+                w:        CGFloat(w),
+                h:        CGFloat(h)
             )
-            
+            currentPlayer.setY(y: 64)
+            addChild (currentPlayer)
         }
     }
 }

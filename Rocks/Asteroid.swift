@@ -14,7 +14,7 @@ extension GameScene {
     class Asteroid {
         private let sprite  = SKSpriteNode(color: UIColor.brown, size: CGSize(width: 10, height: 10))
         private let ghost   = SKLabelNode()
-        private var size    = 2 + Int(arc4random_uniform(8))
+        private var size    = 2 + Int(arc4random_uniform(24))
         private let velocity = CGVector(dx: 0, dy: 0 - (2 + Int(arc4random_uniform(6))))
         
         private let explosionEffect   = SKEmitterNode(fileNamed: "ExplosionParticle.sks")
@@ -95,7 +95,7 @@ extension GameScene {
             
             
             // randomise appearence
-            size          = 2 + Int(arc4random_uniform(8))
+            size          = 2 + Int(arc4random_uniform(24))
             sprite.xScale = CGFloat(size)
             sprite.yScale = CGFloat(size)
             sprite.zRotation = CGFloat (arc4random_uniform(360))

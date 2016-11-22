@@ -13,7 +13,7 @@ extension GameScene {
     
     class Stars {
         private let sprite  = SKSpriteNode(color: UIColor.white, size: CGSize(width: 2, height: 2))
-        private var velocity = CGVector(dx: 0, dy: -0.75)
+        private var velocity = CGVector(dx: 0, dy: -1)
         
         private var xConfine:Int      = 1080
         private var yConfine:Int      = 1920 // 6 plus default
@@ -57,12 +57,8 @@ extension GameScene {
             }
         }
         
-        func speedUp () {
-            velocity.dy -= 2
-        }
-        
-        func slowDown () {
-            velocity.dy += 2
+        func setSpeed (s: Int) {
+            velocity.dy = CGFloat(s)
         }
         
         func destroyed () {

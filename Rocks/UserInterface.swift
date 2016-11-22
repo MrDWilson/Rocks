@@ -60,6 +60,8 @@ extension GameScene {
             mainMenu_leaderboard.isHidden = true
             mainMenu_options.isHidden = true
             mainMenu_about.isHidden = true
+
+            Save.setShip(ship: player.serializeShip())
         }
         
         func toggleSound () {

@@ -10,25 +10,25 @@ import SpriteKit
 
 extension GameScene {
     class Vector3D {
-        public var x: CGFloat!
-        public var y: CGFloat!
-        public var z: CGFloat!
+        public var x: Int!
+        public var y: Int!
+        public var z: Int!
         
-        init (x: CGFloat, y: CGFloat, z: CGFloat) {
+        init (x: Int, y: Int, z: Int) {
             self.x = x
             self.y = y
             self.z = z
         }
         
         //For the leaderboard ship viewing
-        init (context: Int) {
+        init (context: UInt64) {
             var stringVersion = String(context)
-            let xString  = "\(stringVersion.characters.popFirst()!)\(stringVersion.characters.popFirst()!)"
-            let yString  = "\(stringVersion.characters.popFirst()!)\(stringVersion.characters.popFirst()!)"
-            let zString  = "\(stringVersion.characters.popFirst()!)\(stringVersion.characters.popFirst()!)"
-            self.x       = CGFloat(Int(xString)!)
-            self.y       = CGFloat(Int(yString)!)
-            self.z       = CGFloat(Int(zString)!)
+            let xString  = "01"//"\(stringVersion.characters.popFirst()!)\(stringVersion.characters.popFirst()!)"
+            let yString  = "01"//"\(stringVersion.characters.popFirst()!)\(stringVersion.characters.popFirst()!)"
+            let zString  = "01"//"\(stringVersion.characters.popFirst()!)\(stringVersion.characters.popFirst()!)"
+            self.x       = Int(xString)!
+            self.y       = Int(yString)!
+            self.z       = Int(zString)!
         }
         
         func add (other: Vector3D) {

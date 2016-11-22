@@ -98,7 +98,7 @@ extension GameScene {
                     Save.setHighScore(x: player.getScore())
                 }
                 
-                leaderboard.updateScore(score: player.getScore())
+                leaderboard.updateScore(score: player.getScore(), shipVector: player.serializeShip())
             }
                 
             else {

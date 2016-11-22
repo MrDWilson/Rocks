@@ -35,7 +35,6 @@ extension GameScene {
                 } else if (node.name == "aboutButton") {
                     state = .About
                 } else if (touch.location(in: self).y > self.size.height / 2) {
-                    backdrop.forEach { $0.speedUp() }
                     state = .InGame
                 }
                 break
@@ -107,7 +106,6 @@ extension GameScene {
             case .GameOver:
                 state = .MainMenu
                 resetGame()
-                backdrop.forEach { $0.slowDown() }
                 break
             }
         }
