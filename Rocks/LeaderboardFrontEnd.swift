@@ -156,7 +156,7 @@ extension GameScene {
             print("This best be called I swear I will 1v1 wreck you swift")
             
             entries = backend.getEntries()
-            player = backend.getPlayer()
+           // player = backend.getPlayer()
             
             entries.forEach {
                 //let shipVector = Vector3D($0.context)
@@ -176,8 +176,8 @@ extension GameScene {
             
             /*addChild (
                 LeaderboardEntry (
-                    rank:     entries[0].,
-                    username: $0.player!.alias!,
+                    rank:     player.rank,
+                    username: player!.alias!,
                     score:    $0.value,
                     ship:     Ship(bID: 1, tID: (1 + Int(arc4random_uniform(7))), cID: Int(arc4random_uniform(UInt32(REColour.COLOUR_BOUNDRY.rawValue)))), // THIS NEEDS USER SHIP COMPATABILITY
                     w:        CGFloat(w),
