@@ -173,8 +173,8 @@ extension GameScene {
                     )
                 }
             }
-            
-            /*addChild (
+            /*
+            addChild (
                 LeaderboardEntry (
                     rank:     player.rank,
                     username: player!.alias!,
@@ -183,7 +183,8 @@ extension GameScene {
                     w:        CGFloat(w),
                     h:        CGFloat(h)
                 )
-            )*/
+            )
+            */
         }
     }
 }
