@@ -93,6 +93,14 @@ extension GameScene {
                 }
             })
             
+            /*backend.loadPlayer(completion: { success in
+                if success{
+                    //Do something
+                } else {
+                    print("error loading local player")
+                }
+            })*/
+            
             
             // Dummy Entries (COMMENT OUT WHEN LIVE)
 //            addChild(LeaderboardEntry(

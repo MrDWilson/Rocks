@@ -31,13 +31,15 @@ extension GameScene {
             if(GKLocalPlayer.localPlayer().isAuthenticated) {
                 
                 //Declare reported assigned with the required leaderboardID
-                let scoreReporter = GKScore(leaderboardIdentifier: "HighScoreBeta3")
+                let scoreReporter = GKScore(leaderboardIdentifier: "TestOne")
                 
                 //Set the value as the players score
                 scoreReporter.value = Int64(score)
                 
                 //Set the context (ship/colour, laser colour and thruster)
                 scoreReporter.context = UInt64(shipVector.getAsOne())
+                
+                print(shipVector.getAsOne())
                 
                 //Report the score to the leaderboard
                 GKScore.report([scoreReporter], withCompletionHandler: ( { (error: Error?) -> Void in
@@ -60,7 +62,7 @@ extension GameScene {
             let leaderboard = GKLeaderboard() //Initialise leaderboard
             leaderboard.playerScope = .global //Set players to global (instead of friends)
             leaderboard.timeScope = .allTime //Set time limit of all time
-            leaderboard.identifier = "HighScoreBeta3" //Set leaderboard ID
+            leaderboard.identifier = "TestOne" //Set leaderboard ID
             //leaderboard.range = NSRange(location: 1, length: 10) //Maximum limit of users
             let firstTime = Save.getFirstTime()
             if firstTime {
@@ -92,9 +94,9 @@ extension GameScene {
             let leaderboard = GKLeaderboard() //Initialise leaderboard
             leaderboard.playerScope = .global //Set players to global (instead of friends)
             leaderboard.timeScope = .allTime //Set time limit of all time
-            leaderboard.identifier = "HighScoreBeta3" //Set leaderboard ID
+            leaderboard.identifier = "TestOne" //Set leaderboard ID
             //leaderboard.range = NSRange(location: 1, length: 10) //Maximum limit of users
-            let firstTime = Save.getFirstTime()
+            let firstTime = true
             if firstTime {
                 updateScore(score: 0, shipVector: Vector3D(x: 01, y: 01, z: 01))
                 Save.setFirstTime()

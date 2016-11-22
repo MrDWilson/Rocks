@@ -99,6 +99,7 @@ extension GameScene {
                 }
                 
                 leaderboard.updateScore(score: player.getScore(), shipVector: player.serializeShip())
+                print(player.serializeShip().getAsOne())
             }
                 
             else {

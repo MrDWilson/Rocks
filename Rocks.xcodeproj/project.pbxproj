@@ -574,7 +574,7 @@
 				CODE_SIGN_ENTITLEMENTS = Rocks/Rocks.entitlements;
 				DEVELOPMENT_TEAM = SB9YX4B3N4;
 				INFOPLIST_FILE = Rocks/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Danny.Rocks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -593,7 +593,7 @@
 				CODE_SIGN_ENTITLEMENTS = Rocks/Rocks.entitlements;
 				DEVELOPMENT_TEAM = SB9YX4B3N4;
 				INFOPLIST_FILE = Rocks/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Danny.Rocks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
