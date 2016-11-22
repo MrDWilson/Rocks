@@ -13,11 +13,13 @@ extension GameScene {
         case english
         case japanese
     }
-
+    
     class LocalisedStringMachine {
+        private static var language = Language.english
+        
         private static var english: [String] = [
             "Rocks", "customise ship", "leaderboard",
-            "options", "vibraation", "sound", "language",
+            "options", "vibra1tion", "sound", "language",
             "about", "version", "authors", "ammo", "health"
         ]
         
@@ -27,12 +29,10 @@ extension GameScene {
             "著者", "弾薬", "健康"
         ]
         
-        private static var language = Language.english
-        
         static func getString(stringID: Int) -> String {
             switch (language) {
-                case .english:  return english  [stringID]
-                case .japanese: return japanese [stringID]
+            case .english:  return english  [stringID]
+            case .japanese: return japanese [stringID]
             }
         }
         
