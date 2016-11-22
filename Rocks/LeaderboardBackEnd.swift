@@ -16,7 +16,8 @@ extension GameScene {
         //Variable for storing the current leaderboard score
         private var leaderboardScores = [GKScore]()
         
-        Boolean firstTime = true
+        //Variable for current player
+        private var playerScore = GKScore()
         
         //Required implemented function
         func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
@@ -56,16 +57,16 @@ extension GameScene {
         //Function to load leaderboard
         private func retreiveFromServer(completion: ((Bool) -> ())?) {
             
-            if firstTime {
-                updateScore(score: 0)
-                firstTime = false
-            }
-            
             let leaderboard = GKLeaderboard() //Initialise leaderboard
             leaderboard.playerScope = .global //Set players to global (instead of friends)
             leaderboard.timeScope = .allTime //Set time limit of all time
             leaderboard.identifier = "TestOne" //Set leaderboard ID
             //leaderboard.range = NSRange(location: 1, length: 10) //Maximum limit of users
+            let firstTime = Save.getFirstTime()
+            if firstTime {
+                updateScore(score: 0)
+                Save.setFirstTime()
+            }
             
             //Load the socore
             leaderboard.loadScores {
@@ -86,11 +87,43 @@ extension GameScene {
             }
         }
         
-        func getPlayer() {
-            let leaderboard = GKLeaderboard
+        //Function to load leaderboard
+        private func loadCurrentPlayer(completion: ((Bool) -> ())?) {
+            let leaderboard = GKLeaderboard() //Initialise leaderboard
+            leaderboard.playerScope = .global //Set players to global (instead of friends)
+            leaderboard.timeScope = .allTime //Set time limit of all time
+            leaderboard.identifier = "TestOne" //Set leaderboard ID
+            //leaderboard.range = NSRange(location: 1, length: 10) //Maximum limit of users
+            let firstTime = Save.getFirstTime()
+            if firstTime {
+                updateScore(score: 0)
+                Save.setFirstTime()
+            }
+            
+            //Load the socore
+            leaderboard.loadScores {
+                (scores, error) -> Void in
+                //If there is an error
+                if error != nil {
+                    //Handle error
+                    print("Score loading error: \(error)")
+                } else {
+                    //Set own leaderboard list to the online one
+                    self.playerScore = leaderboard.localPlayerScore!
+                    //For testing purposes
+                    if(self.leaderboardScores == scores!) {print("Scores loaded successfully")}
+                    //Also for testing purposes
+                    print("\(scores?.count)")
+                    completion?(true)
+                }
+            }
         }
         
         
+        func getPlayer() -> GKScore {
+            //Return the current score
+            return playerScore
+        }
         
         //Returns the leaderboard score
         func getEntries() -> [GKScore] {
@@ -110,8 +143,14 @@ extension GameScene {
             })
         }
         
-        func getCurrentPlayer() {
-            
+        func loadPlayer(completion: ((Bool) -> ())?) {
+            //Loading player
+            loadCurrentPlayer(completion: { success in
+                if success {
+                    //Tell front end we are done
+                    completion?(true)
+                } else { print("Fuck you") }
+            })
         }
     }
 }

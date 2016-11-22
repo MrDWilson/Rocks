@@ -94,8 +94,8 @@ extension GameScene {
                 userInterface.flashScore()
                 
                 // save high scores
-                if(player.getScore() > saver.getHighScore()) {
-                    saver.setHighScore(x: player.getScore())
+                if(player.getScore() > Save.getHighScore()) {
+                    Save.setHighScore(x: player.getScore())
                 }
                 
                 leaderboard.updateScore(score: player.getScore())

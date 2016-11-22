@@ -34,7 +34,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // saver
     var playing = true
-    var saver = Save()
     
     // preferences
     var sound = true
@@ -50,17 +49,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
      *  ENTRY POINT
      * * * * * * * * * * * * * * * * * * * * */
     override func didMove(to view: SKView) {
-        saver.iCloudSetUp() //Load previous save values
-        sound = saver.getSound()
-        vibrate = saver.getVibration()
+        Save.iCloudSetUp() //Load previous save values
+        sound = Save.getSound()
+        vibrate = Save.getVibration()
         
         userInterface = UserInterface (
             width: Int(self.size.width),
             height: Int(self.size.height),
             player: player,
-            highScore: saver.getHighScore(),
-            sound: saver.getSound(),
-            vibrate: saver.getVibration()
+            highScore: Save.getHighScore(),
+            sound: Save.getSound(),
+            vibrate: Save.getVibration()
         )
     
         view.shouldCullNonVisibleNodes = true
