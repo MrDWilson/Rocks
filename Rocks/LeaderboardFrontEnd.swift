@@ -159,14 +159,14 @@ extension GameScene {
             player = backend.getPlayer()
             
             entries.forEach {
-                //let shipVector = Vector3D($0.context)
+                let shipVec = Vector3D(context: Int($0.context))
                 if ($0.rank < 5) {
                     addChild (
                         LeaderboardEntry (
                             rank:     $0.rank,
                             username: $0.player!.alias!,
                             score:    $0.value,
-                            ship:     Ship(bID: 1, tID: (1 + Int(arc4random_uniform(7))), cID: Int(arc4random_uniform(UInt32(REColour.COLOUR_BOUNDRY.rawValue)))), // THIS NEEDS USER SHIP COMPATABILITY
+                            ship:     Ship(bID: shipVec.getX(), tID: shipVec.getY(), cID: shipVec.getZ()), // THIS NEEDS USER SHIP COMPATABILITY
                             w:        CGFloat(w),
                             h:        CGFloat(h)
                         )
@@ -174,12 +174,13 @@ extension GameScene {
                 }
             }
             
+            let shipVec = Vector3D(context: Int(player.context))
             addChild (
                 LeaderboardEntry (
                     rank:     player.rank,
                     username: String("You"),
                     score:    player.value,
-                    ship:     Ship(bID: 1, tID: (1 + Int(arc4random_uniform(7))), cID: Int(arc4random_uniform(UInt32(REColour.COLOUR_BOUNDRY.rawValue)))), // THIS NEEDS USER SHIP COMPATABILITY
+                    ship:     Ship(bID: shipVec.getX(), tID: shipVec.getY(), cID: shipVec.getZ()), // THIS NEEDS USER SHIP COMPATABILITY
                     w:        CGFloat(w),
                     h:        CGFloat(h)
                 )

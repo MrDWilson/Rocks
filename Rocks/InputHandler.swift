@@ -71,11 +71,11 @@ extension GameScene {
                 if (node.name == "sound") {
                     sound = !sound
                     userInterface.toggleSound()
-                    saver.changeSound()
+                    Save.changeSound()
                 } else if (node.name == "vibration") {
                     vibrate = !vibrate
                     userInterface.toggleVibrate()
-                    saver.changeVibration()
+                    Save.changeVibration()
                 } else {
                     state = .MainMenu
                     userInterface.back()
