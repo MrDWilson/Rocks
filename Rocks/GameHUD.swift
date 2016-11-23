@@ -64,7 +64,7 @@ extension GameScene {
             addChild(healthBarNode)
             
             healthBarLabel.name                            = String("Label")
-            healthBarLabel.text                            = String("health")
+            healthBarLabel.text                            = LocalisedStringMachine.getString(string: "health")
             healthBarLabel.fontSize                        = 18
             healthBarLabel.horizontalAlignmentMode         = .right
             healthBarLabel.position                        = CGPoint(x: w-10, y: h-42)
@@ -82,7 +82,7 @@ extension GameScene {
             addChild(ammoBarNode)
             
             ammoBarLabel.name                            = String("Label")
-            ammoBarLabel.text                            = String("ammo")
+            ammoBarLabel.text                            = LocalisedStringMachine.getString(string: "ammo")
             ammoBarLabel.fontSize                        = 18
             ammoBarLabel.horizontalAlignmentMode         = .left
             ammoBarLabel.position                        = CGPoint(x: 10, y: h-42)

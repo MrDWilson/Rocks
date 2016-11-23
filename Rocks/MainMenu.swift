@@ -37,14 +37,16 @@ extension GameScene {
             
             super.init()
             
-            title.text = LocalisedStringMachine.getString(stringID: 0)
+            LocalisedStringMachine.changeLanguage(lan: .japanese)
+            
+            title.text = LocalisedStringMachine.getString(string: "Rocks")
             title.fontSize = 100
             title.horizontalAlignmentMode = .center
             title.fontColor = UIColor.white
             title.position = CGPoint(x: w / 2, y: Int(Double(screenHeight) * 0.82))
             addChild(title)
             
-            customiseLabel.text = LocalisedStringMachine.getString(stringID: 1)
+            customiseLabel.text = LocalisedStringMachine.getString(string: "customise ship")
             customiseLabel.fontSize = 28
             customiseLabel.horizontalAlignmentMode = .center
             customiseLabel.fontColor = UIColor.lightGray
@@ -57,7 +59,7 @@ extension GameScene {
             customiseButton.position = CGPoint(x: 0, y: Int(Double(screenHeight) * 0.35))
             addChild(customiseButton)
             
-            leaderboardLabel.text = LocalisedStringMachine.getString(stringID: 2)
+            leaderboardLabel.text = LocalisedStringMachine.getString(string: "leaderboard")
             leaderboardLabel.fontSize = 28
             leaderboardLabel.horizontalAlignmentMode = .center
             leaderboardLabel.fontColor = UIColor.lightGray
@@ -70,7 +72,7 @@ extension GameScene {
             leaderboardButton.position = CGPoint(x: 0, y: Int(Double(screenHeight) * 0.27))
             addChild(leaderboardButton)
             
-            optionsLabel.text = LocalisedStringMachine.getString(stringID: 3)
+            optionsLabel.text = LocalisedStringMachine.getString(string: "options")
             optionsLabel.fontSize = 28
             optionsLabel.horizontalAlignmentMode = .center
             optionsLabel.fontColor = UIColor.lightGray
@@ -83,7 +85,7 @@ extension GameScene {
             optionsButton.position = CGPoint(x: 0, y: Int(Double(screenHeight) * 0.19))
             addChild(optionsButton)
             
-            aboutLabel.text = LocalisedStringMachine.getString(stringID: 7)
+            aboutLabel.text = LocalisedStringMachine.getString(string: "about")
             aboutLabel.fontSize = 28
             aboutLabel.horizontalAlignmentMode = .center
             aboutLabel.fontColor = UIColor.lightGray
