@@ -98,7 +98,7 @@ extension GameScene {
         }
         
         func serializeShip () -> Vector3D {
-            return Vector3D(x: bodyID, y: thrusterID, z: colourID)
+            return ship.serialize()
         }
         
         func resetAt (x: Int, y: Int) {

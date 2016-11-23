@@ -105,6 +105,14 @@ extension GameScene {
         
         required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented")}
     
+        func serialize () -> Vector3D {
+            print("x: " + String(describing: bodyID))
+            print("y: " + String(describing: thrusterID))
+            print("z: " + String(describing: colorID.rawValue))
+        
+            return Vector3D(x: bodyID, y: thrusterID, z: colorID.rawValue)
+        }
+    
         func update () {
     
             // pieces dispursal

@@ -103,6 +103,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // show clear scene
         addChild(clearScene)
+        
+        player.serializeShip()
     }
     
     /* * * * * * * * * * * * * * * * * * * * *
