@@ -57,15 +57,7 @@ extension GameScene {
         func getLaserColour () -> UIColor {return laserColour.toUIColor}
         
         init () {
-            bodyID = Save.getShipID()
-            thrusterID = Save.getThrusterID()
-            colourID = Save.getColourID()
-            
-            ship = Ship(
-                bID: bodyID,
-                tID: thrusterID,
-                cID: colourID
-            )
+
         }
         
         func startAutoFire () { firing = true  }
@@ -99,6 +91,19 @@ extension GameScene {
         
         func serializeShip () -> Vector3D {
             return ship.serialize()
+        }
+        
+        func buildShip () {
+            bodyID = Save.getShipID()
+            thrusterID = Save.getThrusterID()
+            colourID = Save.getColourID()
+            print("\(bodyID)\(thrusterID)\(colourID)")
+            ship = Ship(
+                bID: bodyID,
+                tID: thrusterID,
+                cID: colourID
+            )
+
         }
         
         func resetAt (x: Int, y: Int) {

@@ -182,6 +182,7 @@ extension GameScene {
             thrusterID = ship.getY()
             colourID = ship.getZ()
             saveShip()
+            print("\(ship.getAsOne())")
         }
         
         static func addCoins(x: Int) {

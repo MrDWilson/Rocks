@@ -31,13 +31,13 @@ extension GameScene {
             if(GKLocalPlayer.localPlayer().isAuthenticated) {
                 
                 //Declare reported assigned with the required leaderboardID
-                let scoreReporter = GKScore(leaderboardIdentifier: "TestOne")
+                let scoreReporter = GKScore(leaderboardIdentifier: "newLeaderboard")
                 
                 //Set the value as the players score
                 scoreReporter.value = Int64(score)
                 
                 //Set the context (ship/colour, laser colour and thruster)
-                scoreReporter.context = UInt64(shipVector.getAsOne())
+                scoreReporter.context = UInt64(shipVector.parseForLeaderboard())
                 
                 print(shipVector.getAsOne())
                 
@@ -61,8 +61,8 @@ extension GameScene {
             
             let leaderboard = GKLeaderboard() //Initialise leaderboard
             leaderboard.playerScope = .global //Set players to global (instead of friends)
-            leaderboard.timeScope = .allTime //Set time limit of all time
-            leaderboard.identifier = "TestOne" //Set leaderboard ID
+            //leaderboard.timeScope = .allTime //Set time limit of all time
+            leaderboard.identifier = "newLeaderboard" //Set leaderboard ID
             //leaderboard.range = NSRange(location: 1, length: 10) //Maximum limit of users
             let firstTime = Save.getFirstTime()
             if firstTime {
@@ -77,7 +77,7 @@ extension GameScene {
                 if error != nil {
                     //Handle error
                     print("Score loading error: \(error)")
-                } else {
+                } else if scores != nil {
                     //Set own leaderboard list to the online one
                     self.leaderboardScores = scores!
                     //For testing purposes
@@ -93,10 +93,10 @@ extension GameScene {
         private func loadCurrentPlayer(completion: ((Bool) -> ())?) {
             let leaderboard = GKLeaderboard() //Initialise leaderboard
             leaderboard.playerScope = .global //Set players to global (instead of friends)
-            leaderboard.timeScope = .allTime //Set time limit of all time
-            leaderboard.identifier = "TestOne" //Set leaderboard ID
+            //leaderboard.timeScope = .allTime //Set time limit of all time
+            leaderboard.identifier = "newLeaderboard" //Set leaderboard ID
             //leaderboard.range = NSRange(location: 1, length: 10) //Maximum limit of users
-            let firstTime = true
+            let firstTime = Save.getFirstTime()
             if firstTime {
                 updateScore(score: 0, shipVector: Vector3D(x: 01, y: 01, z: 01))
                 Save.setFirstTime()
@@ -109,7 +109,7 @@ extension GameScene {
                 if error != nil {
                     //Handle error
                     print("Score loading error: \(error)")
-                } else {
+                } else if leaderboard.localPlayerScore != nil {
                     //Set own leaderboard list to the online one
                     self.playerScore = leaderboard.localPlayerScore!
                     //For testing purposes

@@ -28,10 +28,10 @@ extension GameScene {
         private var exploding   = false
 
         init (bID: Int, tID: Int, cID: Int) {
-            super.init(texture: SKTexture(imageNamed: "Ship_" + String(describing: 11)), color: UIColor.white, size: CGSize(width: 24, height: 24))
+            super.init(texture: SKTexture(imageNamed: "Ship_" + String(describing: bID)), color: UIColor.white, size: CGSize(width: 24, height: 24))
             
-            bodyID = 11
-            thrusterID = 1
+            bodyID = bID
+            thrusterID = tID
             colorID = REColour(rawValue: cID)
             
             /* * * * * * * * * * * *
@@ -48,7 +48,7 @@ extension GameScene {
              *  Destruction Stuff
              * * * * * * * * * * * */
             leftWing.name                             = "ShipPart"
-            leftWing.texture                          = SKTexture(imageNamed: "Ship_" + String(describing: bodyID) + "_leftWing")
+            leftWing.texture                          = SKTexture(imageNamed: "Ship_" + String(describing: Int(bodyID)) + "_leftWing")
             leftWing.size.width                       = size.width / 2
             leftWing.size.height                      = size.height / 1.15
             leftWing.position                         = CGPoint(x: -14, y: 0)
@@ -61,7 +61,7 @@ extension GameScene {
             leftWing.physicsBody?.mass                = 0.12
             
             rightWing.name                            = "ShipPart"
-            rightWing.texture                         = SKTexture(imageNamed: "Ship_" + String(describing: bodyID) + "_rightWing")
+            rightWing.texture                         = SKTexture(imageNamed: "Ship_" + String(describing: Int(bodyID)) + "_rightWing")
             rightWing.size.width                      = size.width / 2
             rightWing.size.height                     = size.height / 1.15
             rightWing.position                        = CGPoint(x: 14, y: 0)
@@ -74,7 +74,7 @@ extension GameScene {
             rightWing.physicsBody?.mass               = 0.08
             
             body.name                            = "ShipPart"
-            body.texture                         = SKTexture(imageNamed: "Ship_" + String(describing: bodyID) + "_body")
+            body.texture                         = SKTexture(imageNamed: "Ship_" + String(describing: Int(bodyID)) + "_body")
             body.size.width                      = size.width / 2
             body.size.height                     = size.height / 1.25
             body.position                        = CGPoint(x: 0, y: 12)
@@ -106,9 +106,9 @@ extension GameScene {
         required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented")}
     
         func serialize () -> Vector3D {
-            print("x: " + String(describing: bodyID))
-            print("y: " + String(describing: thrusterID))
-            print("z: " + String(describing: colorID.rawValue))
+            print("x: " + String(describing: Int(bodyID)))
+            print("y: " + String(describing: Int(thrusterID)))
+            print("z: " + String(describing: Int(colorID.rawValue)))
         
             return Vector3D(x: bodyID, y: thrusterID, z: colorID.rawValue)
         }

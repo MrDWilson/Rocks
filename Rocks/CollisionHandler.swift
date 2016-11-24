@@ -97,9 +97,10 @@ extension GameScene {
                 if(player.getScore() > Save.getHighScore()) {
                     Save.setHighScore(x: player.getScore())
                 }
-                
+                //PUT THIS IN THE IF STATEMENT ABOVE ON RELEASE!!!!
                 leaderboard.updateScore(score: player.getScore(), shipVector: player.serializeShip())
                 print(player.serializeShip().getAsOne())
+                print(player.serializeShip().parseForLeaderboard())
             }
                 
             else {

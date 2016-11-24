@@ -10,9 +10,9 @@ import SpriteKit
 
 extension GameScene {
     class Vector3D {
-        public var x: Int!
-        public var y: Int!
-        public var z: Int!
+        public let x: Int!
+        public let y: Int!
+        public let z: Int!
         
         init (x: Int, y: Int, z: Int) {
             self.x = x
@@ -24,24 +24,14 @@ extension GameScene {
         init (context: UInt64) {
             var stringVersion = String(context)
             print(String(context))
-            let xString  = "01"//"\(stringVersion.characters.popFirst()!)\(stringVersion.characters.popFirst()!)"
-            let yString  = "01"//"\(stringVersion.characters.popFirst()!)\(stringVersion.characters.popFirst()!)"
-            let zString  = "01"//"\(stringVersion.characters.popFirst()!)\(stringVersion.characters.popFirst()!)"
-            self.x       = Int(xString)!
-            self.y       = Int(yString)!
-            self.z       = Int(zString)!
-        }
-        
-        func add (other: Vector3D) {
-            self.x = self.x + other.x
-            self.y = self.y + other.y
-            self.z = self.z + other.z
-        }
-        
-        func subtract (other: Vector3D) {
-            self.x = self.x - other.x
-            self.y = self.y - other.y
-            self.z = self.z - other.z
+            var splitter = stringVersion.components(separatedBy: "999")
+            print("This is the splitter: \(splitter)")
+            //let xString  = "01"//"\(stringVersion.characters.popFirst()!)\(stringVersion.characters.popFirst()!)"
+            //let yString  = "01"//"\(stringVersion.characters.popFirst()!)\(stringVersion.characters.popFirst()!)"
+            //let zString  = "01"//"\(stringVersion.characters.popFirst()!)\(stringVersion.characters.popFirst()!)"
+            self.x       = Int(splitter.removeFirst())!
+            self.y       = Int(splitter.removeFirst())!
+            self.z       = Int(splitter.removeFirst())!
         }
         
         //Testing functionality
@@ -67,6 +57,12 @@ extension GameScene {
         func getAsOne() -> Int {
             let string = "\(self.x!)\(self.y!)\(self.z!)"
             print("Get As One: " + string)
+            return Int(string)!
+        }
+        
+        func parseForLeaderboard() -> Int {
+            let string = "\(self.x!)999\(self.y!)999\(self.z!)"
+            print("Parsed: " + string)
             return Int(string)!
         }
     }

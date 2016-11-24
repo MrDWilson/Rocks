@@ -39,7 +39,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
             view.showsFPS = true
            // view.showsNodeCount = true
            // view.showsDrawCount = true
-            view.showsPhysics = true
+            //view.showsPhysics = true
             
         }
     }

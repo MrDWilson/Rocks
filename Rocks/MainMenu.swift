@@ -37,7 +37,7 @@ extension GameScene {
             
             super.init()
             
-            LocalisedStringMachine.changeLanguage(lan: .japanese)
+            LocalisedStringMachine.changeLanguage(lan: .english)
             
             title.text = LocalisedStringMachine.getString(string: "Rocks")
             title.fontSize = 100

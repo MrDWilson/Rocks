@@ -21,7 +21,11 @@ extension GameScene {
         
         init (rank: Int, username: String, score: Int64, ship: Ship, w: CGFloat, h: CGFloat) {
             super.init()
-            let baseline = h - ((CGFloat(rank) * 126))
+            var baseline = h - ((CGFloat(rank) * 126))
+            
+            if (rank == 1) {
+                baseline = h - 48
+            }
             
             numberMachine.numberStyle = .decimal
             
@@ -189,7 +193,7 @@ extension GameScene {
                 }
             }
             
-            let shipVec = Vector3D(context: player.context)
+            /*let shipVec = Vector3D(context: player.context)
             let currentPlayer = LeaderboardEntry(
                 rank:     player.rank,
                 username: String("You"),
@@ -199,7 +203,7 @@ extension GameScene {
                 h:        CGFloat(h)
             )
             currentPlayer.setY(y: 64)
-            addChild (currentPlayer)
+            addChild (currentPlayer)*/
         }
     }
 }

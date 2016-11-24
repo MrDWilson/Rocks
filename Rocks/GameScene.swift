@@ -53,6 +53,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         sound = Save.getSound()
         vibrate = Save.getVibration()
         
+        player.buildShip()
+        
         userInterface = UserInterface (
             width: Int(self.size.width),
             height: Int(self.size.height),
