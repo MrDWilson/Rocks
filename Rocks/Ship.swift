@@ -48,7 +48,7 @@ extension GameScene {
              *  Destruction Stuff
              * * * * * * * * * * * */
             leftWing.name                             = "ShipPart"
-            leftWing.texture                          = SKTexture(imageNamed: "Ship_" + String(describing: bodyID) + "_leftWing")
+            leftWing.texture                          = SKTexture(imageNamed: "Ship_" + String(describing: Int(bodyID)) + "_leftWing")
             leftWing.size.width                       = size.width / 2
             leftWing.size.height                      = size.height / 1.15
             leftWing.position                         = CGPoint(x: -14, y: 0)
@@ -61,7 +61,7 @@ extension GameScene {
             leftWing.physicsBody?.mass                = 0.12
             
             rightWing.name                            = "ShipPart"
-            rightWing.texture                         = SKTexture(imageNamed: "Ship_" + String(describing: bodyID) + "_rightWing")
+            rightWing.texture                         = SKTexture(imageNamed: "Ship_" + String(describing: Int(bodyID)) + "_rightWing")
             rightWing.size.width                      = size.width / 2
             rightWing.size.height                     = size.height / 1.15
             rightWing.position                        = CGPoint(x: 14, y: 0)
@@ -74,7 +74,7 @@ extension GameScene {
             rightWing.physicsBody?.mass               = 0.08
             
             body.name                            = "ShipPart"
-            body.texture                         = SKTexture(imageNamed: "Ship_" + String(describing: bodyID) + "_body")
+            body.texture                         = SKTexture(imageNamed: "Ship_" + String(describing: Int(bodyID)) + "_body")
             body.size.width                      = size.width / 2
             body.size.height                     = size.height / 1.25
             body.position                        = CGPoint(x: 0, y: 12)
