@@ -105,8 +105,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // show clear scene
         addChild(clearScene)
-        
-        player.serializeShip()
     }
     
     /* * * * * * * * * * * * * * * * * * * * *
@@ -189,8 +187,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.setRestingY(y: Int(self.size.height * CGFloat(0.32)))
 
         // check/set difficulty
-        if (player.getScore() > 5000) { difficulty = .Medium }
-        if (player.getScore() > 15000) { difficulty = .Hard }
+        if (player.getScore() > 2000) { difficulty = .Medium }
+        if (player.getScore() > 5000) { difficulty = .Hard }
         
         // get input
         processUserMotion(forUpdate: currentTime)
@@ -204,6 +202,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (difficulty == .Medium) {
             if (asteroids.count == Difficulty.Easy.rawValue) {
                 while (asteroids.count < Difficulty.Medium.rawValue) {
+                    self.backgroundColor = UIColor.init(red: 75, green: 0.0, blue: 0.0, alpha: 1.0)
                     asteroids.append(Asteroid())
                     clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
                     backdrop.forEach { $0.setSpeed(s: -8) }
@@ -214,6 +213,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (difficulty == .Hard) {
             if (asteroids.count == Difficulty.Medium.rawValue) {
                 while (asteroids.count < Difficulty.Hard.rawValue) {
+                    self.backgroundColor = UIColor.init(red: 100, green: 0.0, blue: 0.0, alpha: 1.0)
                     asteroids.append(Asteroid())
                     clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
                     backdrop.forEach { $0.setSpeed(s: -14) }
