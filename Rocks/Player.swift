@@ -11,20 +11,6 @@ import SpriteKit
 
 extension GameScene {
     class Player {
-       
-       /*********
-         My Ship
-        ********/
-
-  
-        /*********
-            DEFAULT ship
-         ********
-        private var ship = Ship (
-            bID: 1,
-            tID: 4,
-            cID: Int(arc4random_uniform(UInt32(Ship.ShipColour.white.rawValue)))
-        )*/
         
         // the admin
         private var velocity     = CGVector(dx: 0, dy: 0)
@@ -35,7 +21,7 @@ extension GameScene {
         private var health       = 25
         private let HEALTH_MAX   = 25
         private var restingY     = 100
-        private var laserColour  = REColour.magenta
+        private var laserColour  = REColour.cyan
         private var name = "player"
         private var bodyID: Int!
         private var thrusterID: Int!
@@ -98,12 +84,32 @@ extension GameScene {
             thrusterID = Save.getThrusterID()
             colourID = Save.getColourID()
             print("\(bodyID)\(thrusterID)\(colourID)")
-            ship = Ship(
-                bID: bodyID,
-                tID: thrusterID,
-                cID: colourID
-            )
-
+            
+            if (true /* laser colour not yet saved*/) {
+                laserColour = .cyan
+            }
+            
+            else {
+                // PULL LASER COLOUR FROM SAVE
+            }
+            
+            // NOT YET SAVED
+            if bodyID == 0 {
+                ship = Ship (
+                    bID: 10,
+                    tID: 4,
+                    cID: 11
+                )
+            }
+                
+                // SAVED SHIP FOUND
+            else {
+                ship = Ship(
+                    bID: bodyID,
+                    tID: thrusterID,
+                    cID: colourID
+                )
+            }
         }
         
         func resetAt (x: Int, y: Int) {
