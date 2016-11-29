@@ -153,6 +153,7 @@ extension GameScene {
             }
         }
         
+        
         //Set methods for all values
         static func setHighScore(x : Int) {
             highScore = x
@@ -208,6 +209,8 @@ extension GameScene {
             } else if firstTime == 1 {
                 firstTime = 0
             }
+            
+            saveFirstTime()
         }
         
         
