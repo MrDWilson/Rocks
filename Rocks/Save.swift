@@ -74,6 +74,10 @@ extension GameScene {
             save(x: coins, y: COIN)
         }
         
+        static private func saveFirstTime() {
+            save(x: firstTime, y: FRST)
+        }
+        
         //Loading the values in when game is opened
         static func iCloudSetUp() {
             if let highScoreSaved = iCloudKeyStore?.longLong(forKey: HS) {
@@ -96,6 +100,9 @@ extension GameScene {
             }
             if let coinsSaved = iCloudKeyStore?.longLong(forKey: COIN) {
                 coins = Int(coinsSaved)
+            }
+            if let firstTimeSaved = iCloudKeyStore?.longLong(forKey: FRST) {
+                firstTime = Int(firstTimeSaved)
             }
         }
         

@@ -74,28 +74,15 @@ extension GameScene {
     
     class LeaderboardFrontEnd: SKNode {
         private var backend: LeaderboardBackEnd!
-        private var entries: [GKScore]!
+        private var removeList = [SKNode]()
+        private var entries = [GKScore]()
         private var player:  GKScore!
         
         init (w: Int, h: Int, p: Player) {
             backend = LeaderboardBackEnd() //MIGHT NEED TO MOVE TO CLASS DECLERATION
             
             super.init()
-            
-            // Real Entries (only loads when the leaderboard is loaded from server
-            // Also:: do this snipped of code every time the leaderboard needs to be
-            // reloaded. E.g. when the leaderboard button is pressed (maybe only when
-            // the leaderboard button is pressed?)
-            backend.loadLeaderboard(completion: { success in
-                if success {
-                    //This is where the UI generation method will be called 
-                    //In said function, get entries will have to be called again
-                    //as I have restructured how back end works
-                    self.generateUI(w: w, h: h)
-                } else {
-                    print("Failed to lead leaderboards front end")
-                }
-            })
+            loadLeaderboard(w: w, h: h)
             
             /*backend.loadPlayer(completion: { success in
                 if success{
@@ -170,26 +157,45 @@ extension GameScene {
             
         }
         
+        func loadLeaderboard (w: Int, h: Int) {
+            // Real Entries (only loads when the leaderboard is loaded from server
+            // Also:: do this snipped of code every time the leaderboard needs to be
+            // reloaded. E.g. when the leaderboard button is pressed (maybe only when
+            // the leaderboard button is pressed?)
+            backend.loadLeaderboard(completion: { success in
+                if success {
+                    //This is where the UI generation method will be called
+                    //In said function, get entries will have to be called again
+                    //as I have restructured how back end works
+                    self.generateUI(w: w, h: h)
+                } else {
+                    print("Failed to lead leaderboards front end")
+                }
+            })
+        }
+        
         func generateUI(w: Int, h: Int) {
             
             print("This best be called I swear I will 1v1 wreck you swift")
-            
+            if (!entries.isEmpty) {entries.removeAll()}
             entries = backend.getEntries()
             player = backend.getPlayer()
             
+            removeList.forEach {$0.removeFromParent()}
+            
             entries.forEach {
                 let shipVec = Vector3D(context: $0.context)
-                if ($0.rank < 5) && ($0.rank > 0) {
-                    addChild (
-                        LeaderboardEntry (
-                            rank:     $0.rank,
-                            username: $0.player!.alias!,
-                            score:    $0.value,
-                            ship:     Ship(bID: shipVec.getX(), tID: shipVec.getY(), cID: shipVec.getZ()), // THIS NEEDS USER SHIP COMPATABILITY
-                            w:        CGFloat(w),
-                            h:        CGFloat(h)
-                        )
-                    )
+                if ($0.rank <= 6) && ($0.rank > 0) {
+                    removeList.append(                        LeaderboardEntry (
+                        rank:     $0.rank,
+                        username: $0.player!.alias!,
+                        score:    $0.value,
+                        ship:     Ship(bID: shipVec.getX(), tID: shipVec.getY(), cID: shipVec.getZ()), // THIS NEEDS USER SHIP COMPATABILITY
+                        w:        CGFloat(w),
+                        h:        CGFloat(h)
+                    ))
+                    
+                    addChild (removeList.last!)
                 }
             }
             

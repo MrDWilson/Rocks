@@ -31,6 +31,8 @@ extension GameScene {
         
         private var highScore: Int!
         
+        private var needsRefresh = true;
+        
         func flashScore     () { gameHUD.flashScore() }
         func flashAmmoBar   () { gameHUD.flashAmmoBar() }
         func flashHealthBar () { gameHUD.flashHealthBar() }
@@ -43,7 +45,14 @@ extension GameScene {
         func showLeaderboard () {
             mainMenu.isHidden = true
             mainMenu_leaderboard.isHidden = false
+            
+            if (needsRefresh) {
+                mainMenu_leaderboard.loadLeaderboard(w: screenWidth, h: screenHeight)
+                needsRefresh = false
+            }
+            
         }
+        
         
         func showOptions () {
             mainMenu.isHidden = true
@@ -60,6 +69,7 @@ extension GameScene {
             mainMenu_leaderboard.isHidden = true
             mainMenu_options.isHidden = true
             mainMenu_about.isHidden = true
+            needsRefresh = true;
 
             Save.setShip(ship: player.serializeShip())
         }

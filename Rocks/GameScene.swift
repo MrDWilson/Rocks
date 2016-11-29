@@ -202,7 +202,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (difficulty == .Medium) {
             if (asteroids.count == Difficulty.Easy.rawValue) {
                 while (asteroids.count < Difficulty.Medium.rawValue) {
-                    self.backgroundColor = UIColor.init(red: 75, green: 0.0, blue: 0.0, alpha: 1.0)
                     asteroids.append(Asteroid())
                     clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
                     backdrop.forEach { $0.setSpeed(s: -8) }
@@ -213,7 +212,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (difficulty == .Hard) {
             if (asteroids.count == Difficulty.Medium.rawValue) {
                 while (asteroids.count < Difficulty.Hard.rawValue) {
-                    self.backgroundColor = UIColor.init(red: 100, green: 0.0, blue: 0.0, alpha: 1.0)
+                    
                     asteroids.append(Asteroid())
                     clearScene.addChild((asteroids.last?.spawn(textureCache: worldTextureCache))!)
                     backdrop.forEach { $0.setSpeed(s: -14) }
