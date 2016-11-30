@@ -231,7 +231,7 @@ extension GameScene {
             colorID = colorID.nextColour
             
             if (colorID.rawValue == 0) {
-                bodyID = 10 + ((bodyID + 1) % 4)
+                bodyID = 10 + ((bodyID + 1) % 3)
                 refreshBody()
             }
             colourize()
@@ -242,7 +242,7 @@ extension GameScene {
             
             if (colorID.rawValue == 0) {
                 if (bodyID == 10) {
-                    bodyID = 13
+                    bodyID = 12
                 } else {
                     bodyID = bodyID - 1
                 }
