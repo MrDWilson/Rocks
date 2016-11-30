@@ -28,7 +28,7 @@ extension GameScene {
         // LASER HITS ASTEROID
         if (contact.bodyA.node?.name == "laserbeam" && contact.bodyB.node?.name == "asteroid" ) {
             // contact.bodyA.node?.removeFromParent()
-            var ghost = SKLabelNode()
+            let ghost = SKLabelNode()
             var action = [SKAction]()
             ghost.text = String(describing: 25)
             ghost.position = contact.contactPoint
@@ -45,7 +45,7 @@ extension GameScene {
         }
         if (contact.bodyA.node?.name == "asteroid" && contact.bodyB.node?.name == "laserbeam" ) {
             // contact.bodyB.node?.removeFromParent()
-            var ghost = SKLabelNode()
+            let ghost = SKLabelNode()
             var action = [SKAction]()
             
             ghost.text = String(describing: 25)
@@ -78,7 +78,7 @@ extension GameScene {
                 userInterface.update(state: state)
                 
                 // REMOVE FOR COMMERCIAL RELEASE
-                var ghost = SKLabelNode()
+                let ghost = SKLabelNode()
                 var action = [SKAction]()
                 
                 ghost.text = String("fuck you")
@@ -151,7 +151,7 @@ extension GameScene {
             if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "PointsPickup_25" ) {
                 player.give(points: 25)
                 userInterface.flashScore()
-                var ghost = SKLabelNode()
+                let ghost = SKLabelNode()
                 var action = [SKAction]()
                 
                 ghost.text = String(describing: 25)
@@ -166,7 +166,7 @@ extension GameScene {
             if (contact.bodyA.node?.name == "PointsPickup_25" && contact.bodyB.node?.name == "player" ) {
                 player.give(points: 25)
                 userInterface.flashScore()
-                var ghost = SKLabelNode()
+                let ghost = SKLabelNode()
                 var action = [SKAction]()
                 
                 ghost.text = String(describing: 25)
@@ -181,7 +181,7 @@ extension GameScene {
             if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "PointsPickup_50" ) {
                 player.give(points: 25)
                 userInterface.flashScore()
-                var ghost = SKLabelNode()
+                let ghost = SKLabelNode()
                 var action = [SKAction]()
                 
                 ghost.text = String(describing: 50)
@@ -196,7 +196,7 @@ extension GameScene {
             if (contact.bodyA.node?.name == "PointsPickup_50" && contact.bodyB.node?.name == "player" ) {
                 player.give(points: 50)
                 userInterface.flashScore()
-                var ghost = SKLabelNode()
+                let ghost = SKLabelNode()
                 var action = [SKAction]()
                 
                 ghost.text = String(describing: 50)
@@ -211,7 +211,7 @@ extension GameScene {
             if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "PointsPickup_100" ) {
                 player.give(points: 100)
                 userInterface.flashScore()
-                var ghost = SKLabelNode()
+                let ghost = SKLabelNode()
                 var action = [SKAction]()
                 
                 ghost.text = String(describing: 100)
@@ -226,7 +226,7 @@ extension GameScene {
             if (contact.bodyA.node?.name == "PointsPickup_100" && contact.bodyB.node?.name == "player" ) {
                 player.give(points: 100)
                 userInterface.flashScore()
-                var ghost = SKLabelNode()
+                let ghost = SKLabelNode()
                 var action = [SKAction]()
                 
                 ghost.text = String(describing: 100)

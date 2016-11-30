@@ -85,12 +85,12 @@ extension GameScene {
             colourID = Save.getColourID()
             print("\(bodyID)\(thrusterID)\(colourID)")
             
-            if (true /* laser colour not yet saved*/) {
+            if (Save.getLaserID().rawValue == 0) {
                 laserColour = .cyan
             }
-            
+                
             else {
-                // PULL LASER COLOUR FROM SAVE
+                laserColour = Save.getLaserID()
             }
             
             // NOT YET SAVED

@@ -22,10 +22,10 @@ extension GameScene {
         
         //For the leaderboard ship viewing
         init (context: UInt64) {
-            var stringVersion = String(context)
-            print(String(context))
+            let stringVersion = String(context)
+            //print(String(context))
             var splitter = stringVersion.components(separatedBy: "999")
-            print("This is the splitter: \(splitter)")
+            //print("This is the splitter: \(splitter)")
             //let xString  = "01"//"\(stringVersion.characters.popFirst()!)\(stringVersion.characters.popFirst()!)"
             //let yString  = "01"//"\(stringVersion.characters.popFirst()!)\(stringVersion.characters.popFirst()!)"
             //let zString  = "01"//"\(stringVersion.characters.popFirst()!)\(stringVersion.characters.popFirst()!)"
@@ -62,7 +62,7 @@ extension GameScene {
         
         func parseForLeaderboard() -> Int {
             let string = "\(self.x!)999\(self.y!)999\(self.z!)"
-            print("Parsed: " + string)
+            //print("Parsed: " + string)
             return Int(string)!
         }
     }

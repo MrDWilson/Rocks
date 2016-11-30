@@ -176,7 +176,6 @@ extension GameScene {
         
         func generateUI(w: Int, h: Int) {
             
-            print("This best be called I swear I will 1v1 wreck you swift")
             if (!entries.isEmpty) {entries.removeAll()}
             entries = backend.getEntries()
             player = backend.getPlayer()

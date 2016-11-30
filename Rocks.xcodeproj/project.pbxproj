@@ -320,7 +320,7 @@
 				TargetAttributes = {
 					CE5B25E11DD02ACE00A0AB64 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = EM2LKXB8R4;
+						DevelopmentTeam = SB9YX4B3N4;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -574,9 +574,9 @@
 				CODE_SIGN_ENTITLEMENTS = Rocks/Rocks.entitlements;
 				DEVELOPMENT_TEAM = SB9YX4B3N4;
 				INFOPLIST_FILE = Rocks/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = RyanDanny.Rocks;
+				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Danny.Rocks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -593,9 +593,9 @@
 				CODE_SIGN_ENTITLEMENTS = Rocks/Rocks.entitlements;
 				DEVELOPMENT_TEAM = SB9YX4B3N4;
 				INFOPLIST_FILE = Rocks/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = RyanDanny.Rocks;
+				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Danny.Rocks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

@@ -33,7 +33,7 @@ extension GameScene {
         private static var thrusterID = 0
         private static var laserID = 0
         private static var coins = 0
-        private static var firstTime = 0
+        private static var firstTime = 1
         
         //Generic save function
         static private func save(x : Int, y : String) {
@@ -113,8 +113,8 @@ extension GameScene {
             }
             if let laserIDSaved = iCloudKeyStore?.longLong(forKey: LSR) {
                 laserID = Int(laserIDSaved)
-                print("\(laserID)")
-                print(laserIDSaved)
+                //print("\(laserID)")
+                //print(laserIDSaved)
             }
         }
         
@@ -212,7 +212,7 @@ extension GameScene {
             thrusterID = ship.getY()
             colourID = ship.getZ()
             saveShip()
-            print("\(ship.getAsOne())")
+            //print("\(ship.getAsOne())")
         }
         
         static func addCoins(x: Int) {

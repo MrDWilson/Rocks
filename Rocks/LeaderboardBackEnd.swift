@@ -31,7 +31,7 @@ extension GameScene {
             if(GKLocalPlayer.localPlayer().isAuthenticated) {
                 
                 //Declare reported assigned with the required leaderboardID
-                let scoreReporter = GKScore(leaderboardIdentifier: "newLeaderboard")
+                let scoreReporter = GKScore(leaderboardIdentifier: "HighScoreBeta3")
                 
                 //Set the value as the players score
                 scoreReporter.value = Int64(score)
@@ -62,7 +62,7 @@ extension GameScene {
             let leaderboard = GKLeaderboard() //Initialise leaderboard
             leaderboard.playerScope = .global //Set players to global (instead of friends)
             //leaderboard.timeScope = .allTime //Set time limit of all time
-            leaderboard.identifier = "newLeaderboard" //Set leaderboard ID
+            leaderboard.identifier = "HighScoreBeta3" //Set leaderboard ID
             //leaderboard.range = NSRange(location: 1, length: 10) //Maximum limit of users
             let firstTime = Save.getFirstTime()
             if firstTime {
@@ -94,7 +94,7 @@ extension GameScene {
             let leaderboard = GKLeaderboard() //Initialise leaderboard
             leaderboard.playerScope = .global //Set players to global (instead of friends)
             //leaderboard.timeScope = .allTime //Set time limit of all time
-            leaderboard.identifier = "newLeaderboard" //Set leaderboard ID
+            leaderboard.identifier = "HighScoreBeta3" //Set leaderboard ID
             //leaderboard.range = NSRange(location: 1, length: 10) //Maximum limit of users
             let firstTime = Save.getFirstTime()
             if firstTime {
@@ -140,7 +140,7 @@ extension GameScene {
                 if success {
                     //Tell front end we are done
                     completion?(true)
-                } else { print("Fuck you") }
+                } else { print("Error retrieving leaderboard scores") }
                 
             })
         }
@@ -151,7 +151,7 @@ extension GameScene {
                 if success {
                     //Tell front end we are done
                     completion?(true)
-                } else { print("Fuck you") }
+                } else { print("Error retrieving player score") }
             })
         }
     }
