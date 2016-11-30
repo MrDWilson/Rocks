@@ -117,7 +117,12 @@ extension GameScene {
         func update () {
             // update score label
             //if (player.getScore() > bestScore) { bestScore = player.getScore() }
-            bestScoreLabelNode.text = numberMachine.string(from: NSNumber(value: Save.getHighScore()))
+            if(player.getScore() > Save.getHighScore()) {
+                bestScoreLabelNode.text = numberMachine.string(from: NSNumber(value: player.getScore()))
+            } else {
+                bestScoreLabelNode.text = numberMachine.string(from: NSNumber(value: Save.getHighScore()))
+
+            }
             thisScoreLabelNode.text = numberMachine.string(from: NSNumber(value: player.getScore()))
             
             // update health and ammo bars
