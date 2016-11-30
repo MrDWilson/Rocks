@@ -81,7 +81,7 @@ extension GameScene {
                 let ghost = SKLabelNode()
                 var action = [SKAction]()
                 
-                ghost.text = String("fuck you")
+                ghost.text = String("Bad luck")
                 ghost.position = contact.contactPoint
                 ghost.fontSize = 20
                 action.append(SKAction.move(by: CGVector(dx: 0, dy: -100), duration: 2))
