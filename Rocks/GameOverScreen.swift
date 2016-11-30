@@ -65,7 +65,7 @@ extension GameScene {
             }
             
             finalScoreNode.text =  numberMachine.string(from: NSNumber(value: player.getScore()))
-            highScoreNode.text  =  numberMachine.string(from: NSNumber(value: highScore))
+            highScoreNode.text  =  numberMachine.string(from: NSNumber(value: Save.getHighScore()))
         }
     }
 }

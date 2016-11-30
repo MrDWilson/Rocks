@@ -91,7 +91,7 @@ extension GameScene {
             
             // best score
             bestScoreLabelNode.name                     = String("Label")
-            bestScoreLabelNode.text                     = String(String(describing: bestScore)) // previous best icloud score should be visible in game
+            bestScoreLabelNode.text                     = String(String(describing: Save.getHighScore())) // previous best icloud score should be visible in game
             bestScoreLabelNode.fontSize                 = 20
             bestScoreLabelNode.horizontalAlignmentMode  = .left
             bestScoreLabelNode.position                 = CGPoint(x:6, y:28)
@@ -116,8 +116,8 @@ extension GameScene {
         
         func update () {
             // update score label
-            if (player.getScore() > bestScore) { bestScore = player.getScore() }
-            bestScoreLabelNode.text = numberMachine.string(from: NSNumber(value: bestScore))
+            //if (player.getScore() > bestScore) { bestScore = player.getScore() }
+            bestScoreLabelNode.text = numberMachine.string(from: NSNumber(value: Save.getHighScore()))
             thisScoreLabelNode.text = numberMachine.string(from: NSNumber(value: player.getScore()))
             
             // update health and ammo bars
