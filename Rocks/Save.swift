@@ -21,6 +21,7 @@ extension GameScene {
         private static let SHP = "shipID"
         private static let CLR = "colourID"
         private static let THRST = "thrusterID"
+        private static let LSR = "laserID"
         private static let COIN = "coins"
         private static let FRST = "firstTime"
         //Values to be saved
@@ -30,6 +31,7 @@ extension GameScene {
         private static var shipID = 0
         private static var colourID = 0
         private static var thrusterID = 0
+        private static var laserID = 0
         private static var coins = 0
         private static var firstTime = 0
         
@@ -64,6 +66,10 @@ extension GameScene {
             save(x: thrusterID, y: THRST)
         }
         
+        static private func saveLaserID() {
+            save(x: laserID, y: LSR)
+        }
+        
         static private func saveShip() {
             save(x: shipID, y: SHP)
             save(x: colourID, y: CLR)
@@ -77,6 +83,7 @@ extension GameScene {
         static private func saveFirstTime() {
             save(x: firstTime, y: FRST)
         }
+        
         
         //Loading the values in when game is opened
         static func iCloudSetUp() {
@@ -103,6 +110,11 @@ extension GameScene {
             }
             if let firstTimeSaved = iCloudKeyStore?.longLong(forKey: FRST) {
                 firstTime = Int(firstTimeSaved)
+            }
+            if let laserIDSaved = iCloudKeyStore?.longLong(forKey: LSR) {
+                laserID = Int(laserIDSaved)
+                print("\(laserID)")
+                print(laserIDSaved)
             }
         }
         
@@ -135,6 +147,11 @@ extension GameScene {
         
         static func getThrusterID() -> Int {
             return thrusterID
+        }
+        
+        static func getLaserID() -> REColour {
+            //print("\(laserID)")
+            return REColour(rawValue: laserID)!
         }
         
         static func getShip() -> Vector3D {
@@ -183,6 +200,11 @@ extension GameScene {
         static func setThrusterID(x: Int) {
             thrusterID = x
             saveThrusterID()
+        }
+        
+        static func setLaserID(x: REColour) {
+            laserID = x.rawValue
+            saveLaserID()
         }
         
         static func setShip(ship: Vector3D) {
