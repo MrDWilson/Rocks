@@ -23,9 +23,13 @@ extension GameScene {
             super.init()
             var baseline = h - ((CGFloat(rank) * 126))
             
-            if (rank == 1) {
-                baseline = h - 48
-            }
+            //if (rank != 1) {
+                baseline = h - (50*CGFloat(rank)*2.1) + 50
+            //}
+            
+            //if (rank == 1) {
+            //    baseline = h - 48
+            //}
             
             numberMachine.numberStyle = .decimal
             
