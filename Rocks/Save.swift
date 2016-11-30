@@ -150,7 +150,6 @@ extension GameScene {
         }
         
         static func getLaserID() -> REColour {
-            //print("\(laserID)")
             return REColour(rawValue: laserID)!
         }
         
