@@ -139,6 +139,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 break
             case .Leaderboard:
                 player.hide()
+                player.scaleTo(x: 1.6, y: 1.6)
+                player.setRestingY(y: Int(self.size.height * CGFloat(0.64)))
                 player.update(currentTime: currentTime)
                 //player.scaleTo(x: 1.5, y: 1.5)
                 //player.setRestingY(y: Int(self.size.height * CGFloat(0.90)))
