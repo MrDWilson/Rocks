@@ -23,7 +23,7 @@ extension GameScene {
         private static let THRST = "thrusterID"
         private static let LSR = "laserID"
         private static let COIN = "coins"
-        private static let FRST = "firstTimeReset" //Change this to new value!
+        private static let FRST = "firstTimeReset" //Change this to new value!:: firstTimeResetBeta3
         //Values to be saved
         private static var highScore = 0
         private static var vibration = 1
