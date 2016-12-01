@@ -21,32 +21,50 @@ extension GameScene {
         
         init (rank: Int, username: String, score: Int64, ship: Ship, w: CGFloat, h: CGFloat) {
             super.init()
-            var baseline = h - ((CGFloat(rank) * 126))
-            
-            //if (rank != 1) {
-                baseline = h - (50*CGFloat(rank)*2.1) + 50
-            //}
-            
-            //if (rank == 1) {
-            //    baseline = h - 48
-            //}
+            var baseline = h - ((CGFloat(rank) * 120))
             
             numberMachine.numberStyle = .decimal
             
-            // POSITION
-            rankLabel.text = String(describing: rank)
-            rankLabel.horizontalAlignmentMode = .center
-            rankLabel.position = CGPoint(x: w * 0.11, y: baseline - 16)
-            rankLabel.fontSize = 48
-            rankLabel.fontColor = UIColor.gray
-            addChild(rankLabel)
+            switch (rank) {
+                case 1: rankLabel.fontColor = UIColor.white; break
+                case 2: rankLabel.fontColor = UIColor.lightGray; break
+                default: rankLabel.fontColor = UIColor.darkGray; break
+            }
             
-            // SHIP
-            shipNode = ship
-            shipNode.position = CGPoint(x: w * 0.28, y:  baseline + 0)
-            shipNode.xScale = 1.25
-            shipNode.yScale = 1.25
-            addChild(shipNode)
+            
+            if(rank == 1) {
+                baseline = h - 80
+                
+                // POSITION
+                rankLabel.text = String(describing: rank)
+                rankLabel.horizontalAlignmentMode = .center
+                rankLabel.position = CGPoint(x: w * 0.10, y: baseline - 22)
+                rankLabel.fontSize = 80 //Needs change
+                addChild(rankLabel)
+                
+                // SHIP
+                shipNode = ship
+                shipNode.position = CGPoint(x: w * 0.28, y:  baseline + 0)
+                shipNode.xScale = 2
+                shipNode.yScale = 2
+                addChild(shipNode)
+            } else {
+                // POSITION
+                rankLabel.text = String(describing: rank)
+                rankLabel.horizontalAlignmentMode = .center
+                rankLabel.position = CGPoint(x: w * 0.11, y: baseline - 16)
+                rankLabel.fontSize = 48
+                addChild(rankLabel)
+                
+                // SHIP
+                shipNode = ship
+                shipNode.position = CGPoint(x: w * 0.28, y:  baseline + 0)
+                shipNode.xScale = 1.25
+                shipNode.yScale = 1.25
+                addChild(shipNode)
+            }
+            
+            
             
             // USERNAME
             usernameLabel.text = username
@@ -83,30 +101,22 @@ extension GameScene {
         private var player:  GKScore!
         
         init (w: Int, h: Int, p: Player) {
-            backend = LeaderboardBackEnd() //MIGHT NEED TO MOVE TO CLASS DECLERATION
+            backend = LeaderboardBackEnd()
             
             super.init()
             loadLeaderboard(w: w, h: h)
             
-            /*backend.loadPlayer(completion: { success in
-                if success{
-                    //Do something
-                } else {
-                    print("error loading local player")
-                }
-            })*/
-            
             
             // Dummy Entries (COMMENT OUT WHEN LIVE)
 //            addChild(LeaderboardEntry(
-//                rank: 1,
+//                rank: 5,
 //                username: String("myman"),
 //                score: 1000000,
-//                ship: Ship(bID: (Int(arc4random_uniform(3))), tID: (1 + Int(arc4random_uniform(6))), cID: Int(arc4random_uniform(UInt32(REColour.COLOUR_BOUNDRY.rawValue)))),
+//                ship: Ship(bID: 10 + (Int(arc4random_uniform(2))), tID: (1 + Int(arc4random_uniform(6))), cID: Int(arc4random_uniform(UInt32(REColour.COLOUR_BOUNDRY.rawValue)))),
 //                w: CGFloat(w),
 //                h: CGFloat(h)
 //            ))
-//            
+//
 //            addChild(LeaderboardEntry(
 //                rank: 2,
 //                username: String("yourman"),
@@ -188,7 +198,7 @@ extension GameScene {
             
             entries.forEach {
                 let shipVec = Vector3D(context: $0.context)
-                if ($0.rank <= 6) && ($0.rank > 0) {
+                if ($0.rank <= 5) && ($0.rank > 0) {
                     removeList.append(                        LeaderboardEntry (
                         rank:     $0.rank,
                         username: $0.player!.alias!,
@@ -200,6 +210,9 @@ extension GameScene {
                     
                     addChild (removeList.last!)
                 }
+//                } else if ($0.rank == 1) {
+//                    //Code for adding a different size
+//                }
             }
             
             /*let shipVec = Vector3D(context: player.context)

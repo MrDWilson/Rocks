@@ -30,6 +30,7 @@ extension GameScene {
                     state = .Customise
                 } else if (node.name == "leaderboardButton") {
                     state = .Leaderboard
+                    player.cullLasers()
                 } else if (node.name == "optionsButton") {
                     state = .Options
                 } else if (node.name == "aboutButton") {
