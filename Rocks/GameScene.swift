@@ -52,7 +52,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Save.iCloudSetUp() //Load previous save values
         sound = Save.getSound()
         vibrate = Save.getVibration()
-        if(Save.getFirstTime()) { Save.resetHighScore(); Save.setFirstTime() }
+        if(Save.getFirstTime()) { Save.resetHighScore(); Save.setFirstTime(); print("Reset") }
         
         player.buildShip()
         

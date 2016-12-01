@@ -23,7 +23,7 @@ extension GameScene {
         private static let THRST = "thrusterID"
         private static let LSR = "laserID"
         private static let COIN = "coins"
-        private static let FRST = "firstTimeReset" //Change this to new value!:: firstTimeResetBeta3
+        private static let FRST = "firstTimeResetBeta3" //Change this to new value!:: firstTimeResetBeta3
         //Values to be saved
         private static var highScore = 0
         private static var vibration = 1
@@ -33,7 +33,7 @@ extension GameScene {
         private static var thrusterID = 0
         private static var laserID = 0
         private static var coins = 0
-        private static var firstTime = 1
+        private static var firstTime = 0
         
         //Generic save function
         static private func save(x : Int, y : String) {
@@ -82,6 +82,7 @@ extension GameScene {
         
         static private func saveFirstTime() {
             save(x: firstTime, y: FRST)
+            print("Saved \(firstTime)")
         }
         
         
@@ -163,9 +164,9 @@ extension GameScene {
         
         static func getFirstTime() -> Bool {
             if firstTime == 0 {
-                return false
-            } else {
                 return true
+            } else {
+                return false
             }
         }
         
@@ -233,8 +234,6 @@ extension GameScene {
             
             saveFirstTime()
         }
-        
-        
         
     }
 }
