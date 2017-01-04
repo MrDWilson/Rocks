@@ -8,6 +8,7 @@
  *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 import SpriteKit
+import AVFoundation
 
 extension GameScene {
     class MainMenu: SKNode {
@@ -29,6 +30,8 @@ extension GameScene {
         
         private let screenWidth: Int!
         private let screenHeight: Int!
+        
+        
         
         init (w: Int, h: Int, p: Player) {
             player = p
@@ -97,6 +100,7 @@ extension GameScene {
             aboutButton.color = UIColor.clear
             aboutButton.position = CGPoint(x: 0, y: Int(Double(screenHeight) * 0.11))
             addChild(aboutButton)
+            
             
         }
         

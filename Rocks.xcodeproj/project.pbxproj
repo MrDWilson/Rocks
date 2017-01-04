@@ -37,9 +37,11 @@
 		62798A7A1DD8AAEF001F1DA8 /* ThrusterParticle_2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62798A661DD8AAEF001F1DA8 /* ThrusterParticle_2.sks */; };
 		6294E0C51DD8AD5200191D1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6294E0C31DD8AD5200191D1A /* Main.storyboard */; };
 		6294E0C61DD8AD5200191D1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6294E0C41DD8AD5200191D1A /* LaunchScreen.storyboard */; };
+		62EF6CB81E1D99CB00008B8B /* background.wav in Resources */ = {isa = PBXBuildFile; fileRef = 62EF6CB71E1D99CB00008B8B /* background.wav */; };
+		62EF6CBA1E1D9A2400008B8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62EF6CB91E1D9A2400008B8B /* Assets.xcassets */; };
+		62FDD3BF1E1D8EB300BE544F /* SoundCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FDD3BE1E1D8EB300BE544F /* SoundCache.swift */; };
 		A10C6BB71DF06F9D0048E0DF /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A10C6BB61DF06F9D0048E0DF /* GameKit.framework */; };
 		CE0084471DE309F9006DE43A /* LocalisedStringMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0084461DE309F9006DE43A /* LocalisedStringMachine.swift */; };
-		CE0938001DE4D172003815BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE0937FF1DE4D172003815BB /* Assets.xcassets */; };
 		CE507A131DE3446D0019CD0D /* Vector3D.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE507A121DE3446D0019CD0D /* Vector3D.swift */; };
 		CE5B26011DD02ACE00A0AB64 /* RocksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B26001DD02ACE00A0AB64 /* RocksTests.swift */; };
 		CE5B260C1DD02ACE00A0AB64 /* RocksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B260B1DD02ACE00A0AB64 /* RocksUITests.swift */; };
@@ -103,10 +105,12 @@
 		62798A661DD8AAEF001F1DA8 /* ThrusterParticle_2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = ThrusterParticle_2.sks; path = Rocks/ThrusterParticle_2.sks; sourceTree = SOURCE_ROOT; };
 		6294E0C31DD8AD5200191D1A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Rocks/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		6294E0C41DD8AD5200191D1A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Rocks/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
+		62EF6CB71E1D99CB00008B8B /* background.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = background.wav; path = Rocks/background.wav; sourceTree = SOURCE_ROOT; };
+		62EF6CB91E1D9A2400008B8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Rocks/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		62F97BB71DD0DF6A00CD8C4F /* Screens */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Screens; sourceTree = SOURCE_ROOT; };
+		62FDD3BE1E1D8EB300BE544F /* SoundCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SoundCache.swift; path = Rocks/SoundCache.swift; sourceTree = SOURCE_ROOT; };
 		A10C6BB61DF06F9D0048E0DF /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		CE0084461DE309F9006DE43A /* LocalisedStringMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalisedStringMachine.swift; path = Rocks/LocalisedStringMachine.swift; sourceTree = SOURCE_ROOT; };
-		CE0937FF1DE4D172003815BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Rocks/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		CE507A121DE3446D0019CD0D /* Vector3D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Vector3D.swift; path = Rocks/Vector3D.swift; sourceTree = SOURCE_ROOT; };
 		CE5B25E21DD02ACE00A0AB64 /* Rocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5B25FC1DD02ACE00A0AB64 /* RocksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RocksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,11 +192,12 @@
 				62798A551DD8AAEF001F1DA8 /* Asteroid.swift */,
 				62798A571DD8AAEF001F1DA8 /* CollisionHandler.swift */,
 				62798A581DD8AAEF001F1DA8 /* Counter.swift */,
-				CE0937FF1DE4D172003815BB /* Assets.xcassets */,
 				CEAA9B301DDB8FD600203FD1 /* CustomiseScreen.swift */,
 				62798A591DD8AAEF001F1DA8 /* Difficulty.swift */,
+				62EF6CB91E1D9A2400008B8B /* Assets.xcassets */,
 				CE621EDD1DE106300005360F /* REColour.swift */,
 				62798A5A1DD8AAEF001F1DA8 /* ExplosionParticle.sks */,
+				62EF6CB71E1D99CB00008B8B /* background.wav */,
 				62750FFA1DDA6EDF00358E4A /* GameHUD.swift */,
 				CE0084461DE309F9006DE43A /* LocalisedStringMachine.swift */,
 				62750FFE1DDA719200358E4A /* GameOverScreen.swift */,
@@ -219,6 +224,7 @@
 				62F97BB71DD0DF6A00CD8C4F /* Screens */,
 				CEAA9B361DDBCF9900203FD1 /* Stars.swift */,
 				62798A651DD8AAEF001F1DA8 /* TextureCache.swift */,
+				62FDD3BE1E1D8EB300BE544F /* SoundCache.swift */,
 				62750FEA1DDA580F00358E4A /* ThrusterParticle_0.sks */,
 				62750FEB1DDA580F00358E4A /* ThrusterParticle_1.sks */,
 				62798A661DD8AAEF001F1DA8 /* ThrusterParticle_2.sks */,
@@ -320,15 +326,12 @@
 				TargetAttributes = {
 					CE5B25E11DD02ACE00A0AB64 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = SB9YX4B3N4;
+						DevelopmentTeam = EM2LKXB8R4;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
-							com.apple.GameCenter = {
-								enabled = 1;
-							};
 							com.apple.iCloud = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -371,15 +374,16 @@
 			files = (
 				627510011DDA8D9D00358E4A /* ThrusterParticle_6.sks in Resources */,
 				62750FF21DDA5B8C00358E4A /* ThrusterParticle_4.sks in Resources */,
+				62EF6CB81E1D99CB00008B8B /* background.wav in Resources */,
 				62798A7A1DD8AAEF001F1DA8 /* ThrusterParticle_2.sks in Resources */,
 				6294E0C51DD8AD5200191D1A /* Main.storyboard in Resources */,
 				62750FF11DDA5B8C00358E4A /* ThrusterParticle_3.sks in Resources */,
+				62EF6CBA1E1D9A2400008B8B /* Assets.xcassets in Resources */,
 				6294E0C61DD8AD5200191D1A /* LaunchScreen.storyboard in Resources */,
 				62798A701DD8AAEF001F1DA8 /* GameScene.sks in Resources */,
 				62750FEC1DDA580F00358E4A /* ThrusterParticle_0.sks in Resources */,
 				62750FF31DDA5B8C00358E4A /* ThrusterParticle_5.sks in Resources */,
 				62750FED1DDA580F00358E4A /* ThrusterParticle_1.sks in Resources */,
-				CE0938001DE4D172003815BB /* Assets.xcassets in Resources */,
 				62798A6F1DD8AAEF001F1DA8 /* ExplosionParticle.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,6 +435,7 @@
 				62750FFB1DDA6EDF00358E4A /* GameHUD.swift in Sources */,
 				62798A731DD8AAEF001F1DA8 /* UserInterface.swift in Sources */,
 				CEAA9B2F1DDB8BAE00203FD1 /* LeaderboardBackEnd.swift in Sources */,
+				62FDD3BF1E1D8EB300BE544F /* SoundCache.swift in Sources */,
 				62750FF71DDA6AE900358E4A /* GameState.swift in Sources */,
 				62798A6C1DD8AAEF001F1DA8 /* CollisionHandler.swift in Sources */,
 				62798A681DD8AAEF001F1DA8 /* AppDelegate.swift in Sources */,
@@ -571,12 +576,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Rocks/Rocks.entitlements;
-				DEVELOPMENT_TEAM = SB9YX4B3N4;
+				DEVELOPMENT_TEAM = EM2LKXB8R4;
 				INFOPLIST_FILE = Rocks/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Danny.Rocks";
+				PRODUCT_BUNDLE_IDENTIFIER = Ryan.RocksRocks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -590,12 +594,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Rocks/Rocks.entitlements;
-				DEVELOPMENT_TEAM = SB9YX4B3N4;
+				DEVELOPMENT_TEAM = EM2LKXB8R4;
 				INFOPLIST_FILE = Rocks/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Danny.Rocks";
+				PRODUCT_BUNDLE_IDENTIFIER = Ryan.RocksRocks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

@@ -45,6 +45,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //Leaderboard
     let leaderboard = LeaderboardBackEnd()
     
+    // audio
+    var menuMusic: SKAudioNode!
+    
     /* * * * * * * * * * * * * * * * * * * * *
      *  ENTRY POINT
      * * * * * * * * * * * * * * * * * * * * */
@@ -106,6 +109,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // show clear scene
         addChild(clearScene)
+        
+        // AUDIO
+        let music = SKAudioNode(fileNamed: "background.wav")
+        addChild(music)
     }
     
     /* * * * * * * * * * * * * * * * * * * * *
