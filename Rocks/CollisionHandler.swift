@@ -28,6 +28,8 @@ extension GameScene {
         // LASER HITS ASTEROID
         if (contact.bodyA.node?.name == "laserbeam" && contact.bodyB.node?.name == "asteroid" ) {
             // contact.bodyA.node?.removeFromParent()
+            
+            // VISUAL FEEDBACK
             let ghost = SKLabelNode()
             var action = [SKAction]()
             ghost.text = String(describing: 25)
@@ -37,17 +39,29 @@ extension GameScene {
             action.append(SKAction.move(to: CGPoint(x: 12, y: 12), duration: 0.2))
             action.append(SKAction.removeFromParent())
             ghost.run(SKAction.sequence(action))
-            
             addChild(ghost)
+            
+            // EXPLOSION FEEDBACK
+            let explosion = SKEmitterNode(fileNamed: "ExplosionParticle.sks")
+            explosion?.position = contact.contactPoint
+            explosion?.numParticlesToEmit = 84
+            addChild(explosion!)
+            
+            // AUDIO FEEDBACK
+            let sound = SKAudioNode(fileNamed: "explosion.wav")
+            sound.autoplayLooped = false
+            addChild(sound)
+            sound.run(SKAction.play())
             
             player.give(points: 25)
             userInterface.flashScore()
         }
         if (contact.bodyA.node?.name == "asteroid" && contact.bodyB.node?.name == "laserbeam" ) {
-            // contact.bodyB.node?.removeFromParent()
+            // contact.bodyA.node?.removeFromParent()
+            
+            // VISUAL FEEDBACK
             let ghost = SKLabelNode()
             var action = [SKAction]()
-            
             ghost.text = String(describing: 25)
             ghost.position = contact.contactPoint
             ghost.fontSize = 20
@@ -56,6 +70,18 @@ extension GameScene {
             action.append(SKAction.removeFromParent())
             ghost.run(SKAction.sequence(action))
             addChild(ghost)
+            
+            // EXPLOSION FEEDBACK
+            let explosion = SKEmitterNode(fileNamed: "ExplosionParticle.sks")
+            explosion?.position = contact.contactPoint
+            explosion?.numParticlesToEmit = 84
+            addChild(explosion!)
+            
+            // AUDIO FEEDBACK
+            let sound = SKAudioNode(fileNamed: "explosion.wav")
+            sound.autoplayLooped = false
+            addChild(sound)
+            sound.run(SKAction.play())
             
             player.give(points: 25)
             userInterface.flashScore()
@@ -77,11 +103,16 @@ extension GameScene {
                 player.clearLasers()
                 userInterface.update(state: state)
                 
+                let sound = SKAudioNode(fileNamed: "explosion.wav")
+                sound.autoplayLooped = false
+                addChild(sound)
+                sound.run(SKAction.play())
+                
                 // REMOVE FOR COMMERCIAL RELEASE
                 let ghost = SKLabelNode()
                 var action = [SKAction]()
                 
-                ghost.text = String("Bad luck")
+                ghost.text = String("u fuked up")
                 ghost.position = contact.contactPoint
                 ghost.fontSize = 20
                 action.append(SKAction.move(by: CGVector(dx: 0, dy: -100), duration: 2))

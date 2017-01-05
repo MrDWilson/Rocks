@@ -53,6 +53,8 @@
 		CEAA9B331DDB900C00203FD1 /* AboutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA9B321DDB900C00203FD1 /* AboutScreen.swift */; };
 		CEAA9B351DDB905C00203FD1 /* OptionsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA9B341DDB905C00203FD1 /* OptionsScreen.swift */; };
 		CEAA9B371DDBCF9900203FD1 /* Stars.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA9B361DDBCF9900203FD1 /* Stars.swift */; };
+		CED84D8D1E1EB58B005A5552 /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = CED84D8B1E1EB58B005A5552 /* explosion.wav */; };
+		CED84D8E1E1EB58B005A5552 /* laser.wav in Resources */ = {isa = PBXBuildFile; fileRef = CED84D8C1E1EB58B005A5552 /* laser.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +129,8 @@
 		CEAA9B321DDB900C00203FD1 /* AboutScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutScreen.swift; path = Rocks/AboutScreen.swift; sourceTree = SOURCE_ROOT; };
 		CEAA9B341DDB905C00203FD1 /* OptionsScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OptionsScreen.swift; path = Rocks/OptionsScreen.swift; sourceTree = SOURCE_ROOT; };
 		CEAA9B361DDBCF9900203FD1 /* Stars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stars.swift; path = Rocks/Stars.swift; sourceTree = SOURCE_ROOT; };
+		CED84D8B1E1EB58B005A5552 /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = explosion.wav; path = Rocks/explosion.wav; sourceTree = SOURCE_ROOT; };
+		CED84D8C1E1EB58B005A5552 /* laser.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = laser.wav; path = Rocks/laser.wav; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +203,8 @@
 				62798A5A1DD8AAEF001F1DA8 /* ExplosionParticle.sks */,
 				62EF6CB71E1D99CB00008B8B /* background.wav */,
 				62750FFA1DDA6EDF00358E4A /* GameHUD.swift */,
+				CED84D8B1E1EB58B005A5552 /* explosion.wav */,
+				CED84D8C1E1EB58B005A5552 /* laser.wav */,
 				CE0084461DE309F9006DE43A /* LocalisedStringMachine.swift */,
 				62750FFE1DDA719200358E4A /* GameOverScreen.swift */,
 				62798A5B1DD8AAEF001F1DA8 /* GameScene.sks */,
@@ -374,8 +380,10 @@
 			files = (
 				627510011DDA8D9D00358E4A /* ThrusterParticle_6.sks in Resources */,
 				62750FF21DDA5B8C00358E4A /* ThrusterParticle_4.sks in Resources */,
+				CED84D8D1E1EB58B005A5552 /* explosion.wav in Resources */,
 				62EF6CB81E1D99CB00008B8B /* background.wav in Resources */,
 				62798A7A1DD8AAEF001F1DA8 /* ThrusterParticle_2.sks in Resources */,
+				CED84D8E1E1EB58B005A5552 /* laser.wav in Resources */,
 				6294E0C51DD8AD5200191D1A /* Main.storyboard in Resources */,
 				62750FF11DDA5B8C00358E4A /* ThrusterParticle_3.sks in Resources */,
 				62EF6CBA1E1D9A2400008B8B /* Assets.xcassets in Resources */,

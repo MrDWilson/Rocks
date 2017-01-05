@@ -33,7 +33,6 @@ extension GameScene {
         
         private var targetScale = CGVector(dx: 1, dy: 1)
         
-        
         func getName     () -> String  { return name }
         func getPosition () -> CGPoint { return ship.position }
         func getHealth   () -> Int     { return health }
@@ -203,9 +202,16 @@ extension GameScene {
         func fireLaser () {
             if (ammo > 0) {
                 let beam = LaserBeam()
+                let sound = SKAudioNode(fileNamed: "laser.wav")
+                
                 lasers.add(beam)
-                ammo -= 1
+                sound.autoplayLooped = false
+                
                 ship.parent?.addChild(beam.fire(o: CGVector(dx: ship.position.x, dy: ship.position.y), colour: laserColour.toUIColor))
+                ship.parent?.addChild(sound)
+                sound.run(SKAction.play())
+                
+                ammo -= 1
             }
         }
         
