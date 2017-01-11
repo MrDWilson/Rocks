@@ -36,8 +36,12 @@ extension GameScene {
             
             let ting = arc4random_uniform(100);
             
-            if (ting > 50) {
-                velocity.dy *= 1.075
+            if (ting < 33) {
+                velocity.dy *= 1.00
+            } else if (ting > 33) && (ting < 66) {
+                velocity.dy *= 1.05
+            } else if (ting > 66) {
+                velocity.dy *= 1.50
             }
             
             // add to scene
@@ -67,8 +71,12 @@ extension GameScene {
             velocity.dy = CGFloat(s)
             
             let ting = arc4random_uniform(100);
-            if (ting > 50) {
-                velocity.dy *= 1.075
+            if (ting < 33) {
+                velocity.dy *= 1.00
+            } else if (ting > 33) && (ting < 66) {
+                velocity.dy *= 1.05
+            } else if (ting > 66) {
+                velocity.dy *= 1.50
             }
         }
         
