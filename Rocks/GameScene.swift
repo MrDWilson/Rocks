@@ -186,7 +186,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func updateRunning (currentTime: TimeInterval) {
-        backdrop.forEach { $0.setSpeed(s: -4) }
         
         //
         player.setRestingY(y: Int(self.size.height * CGFloat(0.32)))

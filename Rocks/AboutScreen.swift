@@ -31,14 +31,14 @@ extension GameScene {
             versionTitle.position = CGPoint(x: w / 2, y: Int(Double(h) * 0.42))
             addChild(versionTitle)
             
-            versionNumber.text = String("Beta 3")
+            versionNumber.text = String("Beta 3.1")
             versionNumber.fontSize = 20
             versionNumber.horizontalAlignmentMode = .center
             versionNumber.fontColor = UIColor.gray
             versionNumber.position = CGPoint(x: w / 2, y: Int(Double(h) * 0.38))
             addChild(versionNumber)
             
-            authorsTitle.text = String("authors")
+            authorsTitle.text = String("programers")
             authorsTitle.fontSize = 42
             authorsTitle.horizontalAlignmentMode = .center
             authorsTitle.fontColor = UIColor.white

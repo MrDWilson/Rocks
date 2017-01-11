@@ -11,88 +11,6 @@ import SpriteKit
 import GameKit
 
 extension GameScene {
-    class LeaderboardEntry: SKNode {
-        private let numberMachine = NumberFormatter()
-    
-        public var rankLabel     = SKLabelNode(fontNamed: "Arial")
-        public var usernameLabel = SKLabelNode(fontNamed: "Arial")
-        public var scoreLabel    = SKLabelNode()
-        public var shipNode:     Ship!
-        
-        init (rank: Int, username: String, score: Int64, ship: Ship, w: CGFloat, h: CGFloat) {
-            super.init()
-            var baseline = h - ((CGFloat(rank) * 120))
-            
-            numberMachine.numberStyle = .decimal
-            
-            switch (rank) {
-                case 1: rankLabel.fontColor = UIColor.white; break
-                case 2: rankLabel.fontColor = UIColor.lightGray; break
-                default: rankLabel.fontColor = UIColor.darkGray; break
-            }
-            
-            
-            if(rank == 1) {
-                baseline = h - 80
-                
-                // POSITION
-                rankLabel.text = String(describing: rank)
-                rankLabel.horizontalAlignmentMode = .center
-                rankLabel.position = CGPoint(x: w * 0.10, y: baseline - 22)
-                rankLabel.fontSize = 80 //Needs change
-                addChild(rankLabel)
-                
-                // SHIP
-                shipNode = ship
-                shipNode.position = CGPoint(x: w * 0.28, y:  baseline + 0)
-                shipNode.xScale = 2
-                shipNode.yScale = 2
-                addChild(shipNode)
-            } else {
-                // POSITION
-                rankLabel.text = String(describing: rank)
-                rankLabel.horizontalAlignmentMode = .center
-                rankLabel.position = CGPoint(x: w * 0.11, y: baseline - 16)
-                rankLabel.fontSize = 48
-                addChild(rankLabel)
-                
-                // SHIP
-                shipNode = ship
-                shipNode.position = CGPoint(x: w * 0.28, y:  baseline + 0)
-                shipNode.xScale = 1.25
-                shipNode.yScale = 1.25
-                addChild(shipNode)
-            }
-            
-            
-            
-            // USERNAME
-            usernameLabel.text = username
-            usernameLabel.horizontalAlignmentMode = .left
-            usernameLabel.position = CGPoint(x: w * 0.42, y: baseline + 0)
-            usernameLabel.fontSize = 26
-            addChild(usernameLabel)
-            
-            // SCORE
-            scoreLabel.text = numberMachine.string(from: NSNumber(value: score))
-            scoreLabel.horizontalAlignmentMode = .left
-            scoreLabel.position = CGPoint(x: w * 0.42, y: baseline - 32)
-            scoreLabel.fontSize = 26
-            addChild(scoreLabel)
-
-        }
-        
-        required init?(coder aDecoder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
-        
-        func setY (y: CGFloat) {
-            rankLabel.position.y = y - 16
-            usernameLabel.position.y = y
-            scoreLabel.position.y = y - 32
-            shipNode.position.y = y
-        }
-    }
     
     class LeaderboardFrontEnd: SKNode {
         private var backend: LeaderboardBackEnd!
@@ -100,58 +18,21 @@ extension GameScene {
         private var entries = [GKScore]()
         private var player:  GKScore!
         
+        private var loadingLabel = SKLabelNode();
+        
         init (w: Int, h: Int, p: Player) {
             backend = LeaderboardBackEnd()
             
+            loadingLabel.text = LocalisedStringMachine.getString(string: "Loading") + "..."
+            loadingLabel.fontSize = 64
+            loadingLabel.horizontalAlignmentMode = .center
+            loadingLabel.fontColor = UIColor.white
+            loadingLabel.position = CGPoint(x: w / 2, y: h / 2)
+            
             super.init()
+            addChild(loadingLabel)
             loadLeaderboard(w: w, h: h)
             
-            
-            // Dummy Entries (COMMENT OUT WHEN LIVE)
-//            addChild(LeaderboardEntry(
-//                rank: 5,
-//                username: String("myman"),
-//                score: 1000000,
-//                ship: Ship(bID: 10 + (Int(arc4random_uniform(2))), tID: (1 + Int(arc4random_uniform(6))), cID: Int(arc4random_uniform(UInt32(REColour.COLOUR_BOUNDRY.rawValue)))),
-//                w: CGFloat(w),
-//                h: CGFloat(h)
-//            ))
-//
-//            addChild(LeaderboardEntry(
-//                rank: 2,
-//                username: String("yourman"),
-//                score: 900000,
-//                ship: Ship(bID: (Int(arc4random_uniform(3))), tID: (1 + Int(arc4random_uniform(6))), cID: Int(arc4random_uniform(UInt32(REColour.COLOUR_BOUNDRY.rawValue)))),
-//                w: CGFloat(w),
-//                h: CGFloat(h)
-//            ))
-//            
-//            addChild(LeaderboardEntry(
-//                rank: 3,
-//                username: String("hisman"),
-//                score: 800000,
-//                ship: Ship(bID: (Int(arc4random_uniform(3))), tID: (1 + Int(arc4random_uniform(6))), cID: Int(arc4random_uniform(UInt32(REColour.COLOUR_BOUNDRY.rawValue)))),
-//                w: CGFloat(w),
-//                h: CGFloat(h)
-//            ))
-//            
-//            addChild(LeaderboardEntry(
-//                rank: 4,
-//                username: String("herman"),
-//                score: 700000,
-//                ship: Ship(bID: (Int(arc4random_uniform(3))), tID: (1 + Int(arc4random_uniform(6))), cID: Int(arc4random_uniform(UInt32(REColour.COLOUR_BOUNDRY.rawValue)))),
-//                w: CGFloat(w),
-//                h: CGFloat(h)
-//            ))
-//            
-//            addChild(LeaderboardEntry(
-//                rank: 5,
-//                username: String("someman"),
-//                score: 600000,
-//                ship: Ship(bID: (Int(arc4random_uniform(3))), tID: (1 + Int(arc4random_uniform(6))), cID: Int(arc4random_uniform(UInt32(REColour.COLOUR_BOUNDRY.rawValue)))),
-//                w: CGFloat(w),
-//                h: CGFloat(h)
-//            ))
             
         }
         
@@ -159,17 +40,11 @@ extension GameScene {
             fatalError("init(coder:) has not been implemented")
         }
         
-        func scrollUp () {
-
-        }
+        func scrollUp () {}
         
-        func scrollDown () {
-
-        }
+        func scrollDown () {}
         
-        func update () {
-            
-        }
+        func update () {}
         
         func loadLeaderboard (w: Int, h: Int) {
             // Real Entries (only loads when the leaderboard is loaded from server
@@ -189,6 +64,7 @@ extension GameScene {
         }
         
         func generateUI(w: Int, h: Int) {
+            loadingLabel.run(SKAction.removeFromParent());
             
             if (!entries.isEmpty) {entries.removeAll()}
             entries = backend.getEntries()

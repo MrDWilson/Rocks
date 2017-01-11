@@ -34,6 +34,12 @@ extension GameScene {
             
             sprite.alpha = CGFloat(arc4random_uniform(10)) / CGFloat(10)
             
+            let ting = arc4random_uniform(100);
+            
+            if (ting > 50) {
+                velocity.dy *= 1.075
+            }
+            
             // add to scene
             return sprite
         }
@@ -59,6 +65,11 @@ extension GameScene {
         
         func setSpeed (s: Int) {
             velocity.dy = CGFloat(s)
+            
+            let ting = arc4random_uniform(100);
+            if (ting > 50) {
+                velocity.dy *= 1.075
+            }
         }
         
         func destroyed () {
