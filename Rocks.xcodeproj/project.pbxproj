@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		621C0B201E269EEB00557431 /* LeaderboardEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C0B1F1E269EEB00557431 /* LeaderboardEntry.swift */; };
+		6257F31C1E29645900D49376 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6257F31B1E29645900D49376 /* Difficulty.swift */; };
 		62750FEC1DDA580F00358E4A /* ThrusterParticle_0.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62750FEA1DDA580F00358E4A /* ThrusterParticle_0.sks */; };
 		62750FED1DDA580F00358E4A /* ThrusterParticle_1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62750FEB1DDA580F00358E4A /* ThrusterParticle_1.sks */; };
 		62750FF11DDA5B8C00358E4A /* ThrusterParticle_3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62750FEE1DDA5B8C00358E4A /* ThrusterParticle_3.sks */; };
@@ -23,7 +24,6 @@
 		62798A6A1DD8AAEF001F1DA8 /* Asteroid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62798A551DD8AAEF001F1DA8 /* Asteroid.swift */; };
 		62798A6C1DD8AAEF001F1DA8 /* CollisionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62798A571DD8AAEF001F1DA8 /* CollisionHandler.swift */; };
 		62798A6D1DD8AAEF001F1DA8 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62798A581DD8AAEF001F1DA8 /* Counter.swift */; };
-		62798A6E1DD8AAEF001F1DA8 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62798A591DD8AAEF001F1DA8 /* Difficulty.swift */; };
 		62798A6F1DD8AAEF001F1DA8 /* ExplosionParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62798A5A1DD8AAEF001F1DA8 /* ExplosionParticle.sks */; };
 		62798A701DD8AAEF001F1DA8 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62798A5B1DD8AAEF001F1DA8 /* GameScene.sks */; };
 		62798A711DD8AAEF001F1DA8 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62798A5C1DD8AAEF001F1DA8 /* GameScene.swift */; };
@@ -72,6 +72,7 @@
 
 /* Begin PBXFileReference section */
 		621C0B1F1E269EEB00557431 /* LeaderboardEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeaderboardEntry.swift; path = Rocks/LeaderboardEntry.swift; sourceTree = SOURCE_ROOT; };
+		6257F31B1E29645900D49376 /* Difficulty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Difficulty.swift; path = Rocks/Difficulty.swift; sourceTree = SOURCE_ROOT; };
 		62750FEA1DDA580F00358E4A /* ThrusterParticle_0.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = ThrusterParticle_0.sks; path = Rocks/ThrusterParticle_0.sks; sourceTree = SOURCE_ROOT; };
 		62750FEB1DDA580F00358E4A /* ThrusterParticle_1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = ThrusterParticle_1.sks; path = Rocks/ThrusterParticle_1.sks; sourceTree = SOURCE_ROOT; };
 		62750FEE1DDA5B8C00358E4A /* ThrusterParticle_3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = ThrusterParticle_3.sks; path = Rocks/ThrusterParticle_3.sks; sourceTree = SOURCE_ROOT; };
@@ -88,7 +89,6 @@
 		62798A551DD8AAEF001F1DA8 /* Asteroid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Asteroid.swift; path = Rocks/Asteroid.swift; sourceTree = SOURCE_ROOT; };
 		62798A571DD8AAEF001F1DA8 /* CollisionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollisionHandler.swift; path = Rocks/CollisionHandler.swift; sourceTree = SOURCE_ROOT; };
 		62798A581DD8AAEF001F1DA8 /* Counter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Counter.swift; path = Rocks/Counter.swift; sourceTree = SOURCE_ROOT; };
-		62798A591DD8AAEF001F1DA8 /* Difficulty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Difficulty.swift; path = Rocks/Difficulty.swift; sourceTree = SOURCE_ROOT; };
 		62798A5A1DD8AAEF001F1DA8 /* ExplosionParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = ExplosionParticle.sks; path = Rocks/ExplosionParticle.sks; sourceTree = SOURCE_ROOT; };
 		62798A5B1DD8AAEF001F1DA8 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = GameScene.sks; path = Rocks/GameScene.sks; sourceTree = SOURCE_ROOT; };
 		62798A5C1DD8AAEF001F1DA8 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameScene.swift; path = Rocks/GameScene.swift; sourceTree = SOURCE_ROOT; };
@@ -188,7 +188,7 @@
 				62798A571DD8AAEF001F1DA8 /* CollisionHandler.swift */,
 				62798A581DD8AAEF001F1DA8 /* Counter.swift */,
 				CEAA9B301DDB8FD600203FD1 /* CustomiseScreen.swift */,
-				62798A591DD8AAEF001F1DA8 /* Difficulty.swift */,
+				6257F31B1E29645900D49376 /* Difficulty.swift */,
 				62798A5A1DD8AAEF001F1DA8 /* ExplosionParticle.sks */,
 				62750FFA1DDA6EDF00358E4A /* GameHUD.swift */,
 				62750FFE1DDA719200358E4A /* GameOverScreen.swift */,
@@ -404,6 +404,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6257F31C1E29645900D49376 /* Difficulty.swift in Sources */,
 				62798A791DD8AAEF001F1DA8 /* TextureCache.swift in Sources */,
 				CEAA9B371DDBCF9900203FD1 /* Stars.swift in Sources */,
 				62798A761DD8AAEF001F1DA8 /* Player.swift in Sources */,
@@ -423,7 +424,6 @@
 				62798A751DD8AAEF001F1DA8 /* LaserBeam.swift in Sources */,
 				62798A6A1DD8AAEF001F1DA8 /* Asteroid.swift in Sources */,
 				CEAA9B331DDB900C00203FD1 /* AboutScreen.swift in Sources */,
-				62798A6E1DD8AAEF001F1DA8 /* Difficulty.swift in Sources */,
 				CE621EDE1DE106300005360F /* REColour.swift in Sources */,
 				62750FFF1DDA719200358E4A /* GameOverScreen.swift in Sources */,
 				62798A781DD8AAEF001F1DA8 /* Save.swift in Sources */,

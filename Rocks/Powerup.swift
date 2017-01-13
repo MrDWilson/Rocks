@@ -20,7 +20,7 @@ extension GameScene {
         }
     
         private let sprite            = SKSpriteNode(color: UIColor.red, size: CGSize(width: 15, height: 15))
-        private let velocity:CGVector = CGVector(dx: 0, dy: 0 - 4)
+        private var velocity:CGVector = CGVector(dx: 0, dy: -4)
         private var xConfine:Int      = 1080
         private var yConfine:Int      = 1920 // 6 plus default
         private var player: Player!
@@ -32,6 +32,18 @@ extension GameScene {
         
         private var type    = PowerupType.PointsPickup_25 // default to points powerup
 
+        func setSpeed(s: CGFloat) {
+            velocity.dy = s
+        }
+        
+        func getSpeed() -> CGFloat {
+            return velocity.dy
+        }
+        
+        func resetSpeed () {
+            self.setSpeed(s: -4)
+        }
+        
         func generateType () {
             // decide type
             let ting = arc4random_uniform(5)
@@ -129,6 +141,10 @@ extension GameScene {
         
         func collected () {
             reuse()
+        }
+        
+        func culled () {
+            sprite.removeFromParent()
         }
         
         private func reuse () {

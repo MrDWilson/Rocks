@@ -15,7 +15,7 @@ extension GameScene {
         private let sprite  = SKSpriteNode(color: UIColor.brown, size: CGSize(width: 10, height: 10))
         private let ghost   = SKLabelNode()
         private var size    = 2 + Int(arc4random_uniform(24))
-        private let velocity = CGVector(dx: 0, dy: 0 - (2 + Int(arc4random_uniform(6))))
+        private var velocity = CGVector(dx: 0, dy: 0 - (2 + Int(arc4random_uniform(6))))
         
         private let explosionEffect   = SKEmitterNode(fileNamed: "ExplosionParticle.sks")
         
@@ -28,6 +28,18 @@ extension GameScene {
         
         func setXConfine (con: Int) { xConfine = con - Int(sprite.size.width) }
         func setYConfine (con: Int) { yConfine = con + Int(sprite.size.width) }
+        
+        func setSpeed(s: CGFloat) {
+            velocity.dy = s
+        }
+        
+        func getSpeed() -> CGFloat {
+            return velocity.dy
+        }
+        
+        func resetSpeed () {
+            self.setSpeed(s: CGFloat(0 - (2 + Int(arc4random_uniform(6)))))
+        }
         
         func spawn (textureCache: TextureCache) -> SKSpriteNode {
             self.textureCache = textureCache

@@ -67,7 +67,7 @@ extension GameScene {
             }
         }
         
-        func setSpeed (s: Int) {
+        func setSpeed (s: CGFloat) {
             velocity.dy = CGFloat(s)
             
             let ting = arc4random_uniform(100);
@@ -78,6 +78,14 @@ extension GameScene {
             } else if (ting > 66) {
                 velocity.dy *= 1.50
             }
+        }
+        
+        func getSpeed () -> CGFloat {
+            return velocity.dy
+        }
+        
+        func resetSpeed () {
+            self.setSpeed(s: -1)
         }
         
         func destroyed () {
