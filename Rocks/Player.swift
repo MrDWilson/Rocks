@@ -86,7 +86,7 @@ extension GameScene {
             print("\(bodyID)\(thrusterID)\(colourID)")
             
             if (Save.getLaserID().rawValue == 0) {
-                laserColour = .cyan
+                laserColour = .pink
             }
                 
             else {
@@ -97,8 +97,8 @@ extension GameScene {
             if bodyID == 0 {
                 ship = Ship (
                     bID: 10,
-                    tID: 4,
-                    cID: 11
+                    tID: 3,
+                    cID: 2
                 )
             }
                 

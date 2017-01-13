@@ -54,6 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
      *  ENTRY POINT
      * * * * * * * * * * * * * * * * * * * * */
     override func didMove(to view: SKView) {
+        
         Save.iCloudSetUp() //Load previous save values
         sound = Save.getSound()
         vibrate = Save.getVibration()
@@ -109,6 +110,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         // show clear scene
         addChild(clearScene)
+        
     }
     
     /* * * * * * * * * * * * * * * * * * * * *

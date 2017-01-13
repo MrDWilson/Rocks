@@ -43,5 +43,7 @@ extension GameScene {
         backdrop.forEach  { $0.setSpeed(s: $0.getSpeed() - 0.75) }
         asteroids.forEach { $0.setSpeed(s: $0.getSpeed() - 0.75) }
         powerups.forEach  { $0.setSpeed(s: $0.getSpeed() - 0.75) }
+        
+        //self.backgroundColor = UIColor.red
     }
 }
