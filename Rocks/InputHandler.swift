@@ -14,7 +14,23 @@ extension GameScene {
     /* * * * * * * * * * * * * * * * * * * * *
      *  ON - TOUCH
      * * * * * * * * * * * * * * * * * * * * */
+    func touchDown(atPoint pos : CGPoint) {
+        print(pos)
+    }
+    
+    func touchMoved(toPoint pos : CGPoint) {
+        print(pos)
+    }
+    
+    func touchUp(atPoint pos : CGPoint) {
+        print(pos)
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("touch began")
+        
+        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
+        
         for touch: AnyObject in touches {
             
             // get touched node
@@ -114,7 +130,9 @@ extension GameScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        player.stopAutoFire()
+        print("touches ended")
+        
+        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
     
     /* * * * * * * * * * * * * * * * * * * * *
@@ -128,5 +146,17 @@ extension GameScene {
                 }
             }
         }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("touches moved")
+        
+        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
+    }
+
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("")
+        
+        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
 }
