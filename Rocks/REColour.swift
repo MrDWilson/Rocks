@@ -21,7 +21,8 @@ extension GameScene {
         case lightBlue      = 8
         case lightRed       = 9
         case pink           = 10
-        case COLOUR_BOUNDRY = 11
+        case gold           = 11
+        case COLOUR_BOUNDRY = 12
         
         /*
         case lightGray = 0
@@ -46,12 +47,13 @@ extension GameScene {
                 case .mediumGray: return UIColor(red: 0.22, green: 0.22, blue: 0.22, alpha: 1.0)
                 case .lightGray:  return UIColor(red: 0.32, green: 0.32, blue: 0.32, alpha: 1.0)
                 case .white:      return UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-                case .red:        return UIColor(red: 0.75, green: 0.1, blue: 0.1, alpha: 1.0)
-                case .green:      return UIColor(red: 0.0, green: 0.75, blue: 0.0, alpha: 1.0)
-                case .blue:       return UIColor(red: 0.0, green: 0.0, blue: 0.75, alpha: 1.0)
-                case .lightBlue:       return UIColor(red: 0.34, green: 0.34, blue: 1, alpha: 1.0)
-                case .lightRed:   return UIColor(red: 1.0, green: 0.34, blue: 0.34, alpha: 1.0)
+                case .red:        return UIColor(red: 0.6, green: 0.2, blue: 0.2, alpha: 1.0)
+                case .green:      return UIColor(red: 0.2, green: 0.2, blue: 0.0, alpha: 1.0)
+                case .blue:       return UIColor(red: 0.0, green: 0.2, blue: 0.30196, alpha: 1.0)
+                case .lightBlue:  return UIColor(red: 0.7019, green: 0.925, blue: 1, alpha: 1.0)
+                case .lightRed:   return UIColor(red: 1.0, green: 0.678, blue: 0.6, alpha: 1.0)
                 case .pink:       return UIColor.magenta
+                case .gold:       return UIColor.brown
                 default:  return UIColor.white
             }
         }
