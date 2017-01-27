@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		621C0B201E269EEB00557431 /* LeaderboardEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C0B1F1E269EEB00557431 /* LeaderboardEntry.swift */; };
 		6257F31C1E29645900D49376 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6257F31B1E29645900D49376 /* Difficulty.swift */; };
+		626325541E3B763D0091D5C8 /* background.wav in Resources */ = {isa = PBXBuildFile; fileRef = 626325531E3B763D0091D5C8 /* background.wav */; };
 		62750FEC1DDA580F00358E4A /* ThrusterParticle_0.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62750FEA1DDA580F00358E4A /* ThrusterParticle_0.sks */; };
 		62750FED1DDA580F00358E4A /* ThrusterParticle_1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62750FEB1DDA580F00358E4A /* ThrusterParticle_1.sks */; };
 		62750FF11DDA5B8C00358E4A /* ThrusterParticle_3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62750FEE1DDA5B8C00358E4A /* ThrusterParticle_3.sks */; };
@@ -73,6 +74,7 @@
 /* Begin PBXFileReference section */
 		621C0B1F1E269EEB00557431 /* LeaderboardEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeaderboardEntry.swift; path = Rocks/LeaderboardEntry.swift; sourceTree = SOURCE_ROOT; };
 		6257F31B1E29645900D49376 /* Difficulty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Difficulty.swift; path = Rocks/Difficulty.swift; sourceTree = SOURCE_ROOT; };
+		626325531E3B763D0091D5C8 /* background.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = background.wav; path = Rocks/Assets.xcassets/background.wav; sourceTree = SOURCE_ROOT; };
 		62750FEA1DDA580F00358E4A /* ThrusterParticle_0.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = ThrusterParticle_0.sks; path = Rocks/ThrusterParticle_0.sks; sourceTree = SOURCE_ROOT; };
 		62750FEB1DDA580F00358E4A /* ThrusterParticle_1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = ThrusterParticle_1.sks; path = Rocks/ThrusterParticle_1.sks; sourceTree = SOURCE_ROOT; };
 		62750FEE1DDA5B8C00358E4A /* ThrusterParticle_3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = ThrusterParticle_3.sks; path = Rocks/ThrusterParticle_3.sks; sourceTree = SOURCE_ROOT; };
@@ -222,6 +224,7 @@
 				62798A661DD8AAEF001F1DA8 /* ThrusterParticle_2.sks */,
 				62750FEE1DDA5B8C00358E4A /* ThrusterParticle_3.sks */,
 				62750FEF1DDA5B8C00358E4A /* ThrusterParticle_4.sks */,
+				626325531E3B763D0091D5C8 /* background.wav */,
 				62750FF01DDA5B8C00358E4A /* ThrusterParticle_5.sks */,
 				627510001DDA8D9D00358E4A /* ThrusterParticle_6.sks */,
 				62798A5E1DD8AAEF001F1DA8 /* UserInterface.swift */,
@@ -370,6 +373,7 @@
 			files = (
 				627510011DDA8D9D00358E4A /* ThrusterParticle_6.sks in Resources */,
 				62750FF21DDA5B8C00358E4A /* ThrusterParticle_4.sks in Resources */,
+				626325541E3B763D0091D5C8 /* background.wav in Resources */,
 				62798A7A1DD8AAEF001F1DA8 /* ThrusterParticle_2.sks in Resources */,
 				6294E0C51DD8AD5200191D1A /* Main.storyboard in Resources */,
 				62750FF11DDA5B8C00358E4A /* ThrusterParticle_3.sks in Resources */,

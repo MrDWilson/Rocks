@@ -46,9 +46,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // input
     var touches = NSMutableArray()
     
-    
     //Leaderboard
     let leaderboard = LeaderboardBackEnd()
+    
+    // music 
+    var themeMusic = SKAudioNode(fileNamed: "background.wav")
     
     /* * * * * * * * * * * * * * * * * * * * *
      *  ENTRY POINT
@@ -111,6 +113,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // show clear scene
         addChild(clearScene)
         
+        // add music
+        addChild(themeMusic)
+        
+        /*
+        if (!sound) {
+            themeMusic.run(SKAction.changeVolume(by: -10, duration: 0))
+        }
+        */
     }
     
     /* * * * * * * * * * * * * * * * * * * * *
