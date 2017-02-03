@@ -150,9 +150,9 @@ extension GameScene {
             return thrusterID
         }
         
-        static func getLaserID() -> REColour {
-            return REColour(rawValue: laserID)!
-        }
+        //static func getLaserID() -> REColour {
+        //    return REColour(rawValue: laserID)!
+        //}
         
         static func getShip() -> Vector3D {
             return Vector3D(x: shipID, y: thrusterID, z: colourID)
@@ -202,10 +202,10 @@ extension GameScene {
             saveThrusterID()
         }
         
-        static func setLaserID(x: REColour) {
-            laserID = x.rawValue
-            saveLaserID()
-        }
+        //static func setLaserID(x: REColour) {
+        //    laserID = x.rawValue
+        //    saveLaserID()
+        //}
         
         static func setShip(ship: Vector3D) {
             shipID = ship.getX()

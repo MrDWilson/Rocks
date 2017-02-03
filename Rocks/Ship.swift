@@ -24,7 +24,7 @@ extension GameScene {
         // admin
         private var bodyID:     Int!
         private var thrusterID: Int!
-        private var colorID:    REColour!
+        private var colorID:    BodyColour!
         private var exploding   = false
 
         init (bID: Int, tID: Int, cID: Int) {
@@ -32,7 +32,7 @@ extension GameScene {
             
             bodyID = bID
             thrusterID = tID
-            colorID = REColour(rawValue: cID)
+            colorID = BodyColour(rawValue: cID)
             
             /* * * * * * * * * * * *
              *  Gameplay stuff

@@ -9,7 +9,36 @@
 import SpriteKit
 
 extension GameScene {
-    enum REColour: Int {
+    enum LaserColour: Int {
+        case purple         = 0
+        case cyan           = 1
+        case red            = 2
+        case magenta        = 3
+        case COLOUR_BOUNDRY = 4
+    
+        var toUIColor: UIColor {
+            switch (self) {
+                case .purple:          return UIColor.purple
+                case .cyan:            return UIColor.cyan
+                case .red:             return UIColor.red
+                case .magenta:         return UIColor.magenta
+                case .COLOUR_BOUNDRY:   return UIColor.white
+                default:  return UIColor.white
+            }
+        }
+        
+        var nextColour: LaserColour {
+            if (self.rawValue == LaserColour.COLOUR_BOUNDRY.rawValue) {return LaserColour.init(rawValue: 0)!}
+            else {return LaserColour.init(rawValue: self.rawValue + 1)!}
+        }
+        
+        var prevColour: LaserColour {
+            if (self.rawValue == 0) {return LaserColour.init(rawValue: LaserColour.COLOUR_BOUNDRY.rawValue - 1)!}
+            else {return LaserColour.init(rawValue: self.rawValue - 1)!}
+        }
+    }
+    
+    enum BodyColour: Int {
         case black          = 0
         case darkGray       = 1
         case mediumGray     = 2
@@ -23,22 +52,6 @@ extension GameScene {
         case pink           = 10
         case gold           = 11
         case COLOUR_BOUNDRY = 12
-        
-        /*
-        case lightGray = 0
-        case white     = 1
-        case gray      = 2
-        case red       = 3
-        case green     = 4
-        case blue      = 5
-        case cyan      = 6
-        case yellow    = 7
-        case magenta   = 8
-        case orange    = 9
-        case purple    = 10
-        case brown     = 11
-
-        */
         
         var toUIColor: UIColor {
             switch (self) {
@@ -58,24 +71,14 @@ extension GameScene {
             }
         }
         
-        var nextColour: REColour {
-            if (self.rawValue == REColour.COLOUR_BOUNDRY.rawValue) {
-                return REColour.init(rawValue: 0)!
-            }
-                
-            else {
-                return REColour.init(rawValue: self.rawValue + 1)!
-            }
+        var nextColour: BodyColour {
+            if (self.rawValue == BodyColour.COLOUR_BOUNDRY.rawValue) {return BodyColour.init(rawValue: 0)!}
+            else {return BodyColour.init(rawValue: self.rawValue + 1)!}
         }
         
-        var prevColour: REColour {
-            if (self.rawValue == 0) {
-                return REColour.init(rawValue: REColour.COLOUR_BOUNDRY.rawValue - 1)!
-            }
-            
-            else {
-                return REColour.init(rawValue: self.rawValue - 1)!
-            }
+        var prevColour: BodyColour {
+            if (self.rawValue == 0) {return BodyColour.init(rawValue: BodyColour.COLOUR_BOUNDRY.rawValue - 1)!}
+            else {return BodyColour.init(rawValue: self.rawValue - 1)!}
         }
     }
 }

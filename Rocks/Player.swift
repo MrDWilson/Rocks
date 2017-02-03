@@ -21,7 +21,7 @@ extension GameScene {
         private var health       = 25
         private let HEALTH_MAX   = 25
         private var restingY     = 100
-        private var laserColour  = Save.getLaserID()
+        private var laserColour  = LaserColour.purple//Save.getLaserID()
         private var name = "player"
         private var bodyID: Int!
         private var thrusterID: Int!
@@ -55,8 +55,8 @@ extension GameScene {
         func setRestingY (y: Int) { restingY = y }
         func move        (to: CGPoint) { ship.position = to }
         
-        func nextLaserColour () { laserColour = laserColour.nextColour; Save.setLaserID(x: laserColour) }
-        func prevLaserColour () { laserColour = laserColour.prevColour; Save.setLaserID(x: laserColour) }
+        func nextLaserColour () { laserColour = laserColour.nextColour;}// Save.setLaserID(x: laserColour) }
+        func prevLaserColour () { laserColour = laserColour.prevColour;}// Save.setLaserID(x: laserColour) }
         
         func scaleTo (x: CGFloat, y: CGFloat) {
             targetScale = CGVector(dx: x, dy: y)
@@ -85,13 +85,13 @@ extension GameScene {
             colourID = Save.getColourID()
             print("\(bodyID)\(thrusterID)\(colourID)")
             
-            if (Save.getLaserID().rawValue == 0) {
-                laserColour = .pink
-            }
+            //if (Save.getLaserID().rawValue == 0) {
+                laserColour = LaserColour.purple
+            //}
                 
-            else {
-                laserColour = Save.getLaserID()
-            }
+            //else {
+            //    laserColour = Save.getLaserID()
+            //}
             
             // NOT YET SAVED
             if bodyID == 0 {
