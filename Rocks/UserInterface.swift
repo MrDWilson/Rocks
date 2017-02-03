@@ -53,6 +53,9 @@ extension GameScene {
             
         }
         
+        func startGame () {
+            gameHUD.start()
+        }
         
         func showOptions () {
             mainMenu.isHidden = true
@@ -155,7 +158,10 @@ extension GameScene {
                     
                     // animate player
                     if (Int(player.getPosition().y) < Int(CGFloat(screenHeight) * 0.34)) {
-                        gameHUD.isHidden = false
+                        if (gameHUD.isHidden) {
+                            gameHUD.isHidden = false
+                            startGame()
+                        }
                     }
                     
                     gameHUD.update()

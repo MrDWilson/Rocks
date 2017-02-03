@@ -26,6 +26,11 @@ extension GameScene {
         private let bestScoreLabelNode = SKLabelNode(fontNamed: "Arial")
         private var bestScore = 0
         
+        // tutorial
+        private let tutorial            = SKNode()
+        private let shootingInstruction = SKLabelNode()
+        private let movingInstruction   = SKLabelNode()
+        
         private var player: Player!
         
         func flashAmmoBar   () { ammoBarNode.fontColor = UIColor.white }
@@ -106,6 +111,24 @@ extension GameScene {
             thisScoreLabelNode.position                 = CGPoint(x:6, y:6)
             thisScoreLabelNode.fontColor                = UIColor.gray
             addChild(thisScoreLabelNode)
+            
+            // TUTORIAL CODE
+            shootingInstruction.name   = String("Label")
+            shootingInstruction.text   = String("tap the screen to fire")
+            shootingInstruction.fontSize = 30
+            shootingInstruction.position = CGPoint(x: w/2, y: h/2)
+            shootingInstruction.fontColor = UIColor.white
+            shootingInstruction.alpha = 0.0
+            
+            movingInstruction.name = String("Label")
+            movingInstruction.text = String("tilt your phone to move the ship")
+            movingInstruction.fontSize = 30
+            movingInstruction.position = CGPoint(x: w/2, y: h/2)
+            movingInstruction.fontColor = UIColor.white
+            movingInstruction.alpha = 0.0
+            
+            addChild(tutorial)
+
         }
         
         // why not just make the compiler add this...
@@ -113,6 +136,30 @@ extension GameScene {
             fatalError("init(coder:) has not been implemented")
         }
     
+        func start () {
+            if (!player.hasPlayedBefore()) {
+                var shootingActionArray = [SKAction]()
+                var movingActionArray = [SKAction]()
+                
+                shootingActionArray.append(SKAction.wait(forDuration: 2))
+                shootingActionArray.append(SKAction.fadeAlpha(by: 1, duration: 1))
+                shootingActionArray.append(SKAction.wait(forDuration: 4))
+                shootingActionArray.append(SKAction.fadeAlpha(by: -1, duration: 1))
+                shootingActionArray.append(SKAction.removeFromParent())
+                
+                movingActionArray.append(SKAction.wait(forDuration: 8))
+                movingActionArray.append(SKAction.fadeAlpha(by: 1, duration: 1))
+                movingActionArray.append(SKAction.wait(forDuration: 4))
+                movingActionArray.append(SKAction.fadeAlpha(by: -1, duration: 1))
+                movingActionArray.append(SKAction.removeFromParent())
+                
+                tutorial.addChild(shootingInstruction)
+                tutorial.addChild(movingInstruction)
+                shootingInstruction.run(SKAction.sequence(shootingActionArray))
+                movingInstruction.run(SKAction.sequence(movingActionArray))
+            }
+        
+        }
         
         func update () {
             // update score label

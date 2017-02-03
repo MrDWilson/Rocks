@@ -9,6 +9,29 @@
 import SpriteKit
 
 extension GameScene {
+    enum GeneralColour: Int {
+        case clear         = 0
+        case COLOUR_BOUNDRY = 1
+        
+        var toUIColor: UIColor {
+            switch (self) {
+            case .clear:            return UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+            case .COLOUR_BOUNDRY:   return UIColor.white
+            default:  return UIColor.white
+            }
+        }
+        
+        var nextColour: GeneralColour {
+            if (self.rawValue == GeneralColour.COLOUR_BOUNDRY.rawValue) {return GeneralColour.init(rawValue: 0)!}
+            else {return GeneralColour.init(rawValue: self.rawValue + 1)!}
+        }
+        
+        var prevColour: GeneralColour {
+            if (self.rawValue == 0) {return GeneralColour.init(rawValue: GeneralColour.COLOUR_BOUNDRY.rawValue - 1)!}
+            else {return GeneralColour.init(rawValue: self.rawValue - 1)!}
+        }
+    }
+    
     enum LaserColour: Int {
         case purple         = 0
         case cyan           = 1

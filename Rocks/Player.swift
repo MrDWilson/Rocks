@@ -33,6 +33,8 @@ extension GameScene {
         
         private var targetScale = CGVector(dx: 1, dy: 1)
         
+        private var playedBefore = false
+        
         
         func getName     () -> String  { return name }
         func getPosition () -> CGPoint { return ship.position }
@@ -41,10 +43,9 @@ extension GameScene {
         func getScore    () -> Int     { return score.getCount() }
         func getShip     () -> Ship    { return ship }
         func getLaserColour () -> UIColor {return laserColour.toUIColor}
+        func hasPlayedBefore() -> Bool { return playedBefore }
         
-        init () {
-
-        }
+        init () {}
         
         func startAutoFire () { firing = true  }
         func stopAutoFire  () { firing = false }
@@ -58,26 +59,11 @@ extension GameScene {
         func nextLaserColour () { laserColour = laserColour.nextColour;}// Save.setLaserID(x: laserColour) }
         func prevLaserColour () { laserColour = laserColour.prevColour;}// Save.setLaserID(x: laserColour) }
         
-        func scaleTo (x: CGFloat, y: CGFloat) {
-            targetScale = CGVector(dx: x, dy: y)
-        }
-        
-        func hide () {
-            ship.isHidden = true
-        }
-        
-        func show () {
-            ship.isHidden = false
-        }
-        
-        func shrink () {
-            ship.xScale = 1.0
-            ship.yScale = 1.0
-        }
-        
-        func serializeShip () -> Vector3D {
-            return ship.serialize()
-        }
+        func scaleTo (x: CGFloat, y: CGFloat) { targetScale = CGVector(dx: x, dy: y) }
+        func hide () { ship.isHidden = true }
+        func show () { ship.isHidden = false }
+        func shrink () { ship.xScale = 1.0; ship.yScale = 1.0}
+        func serializeShip () -> Vector3D { return ship.serialize() }
         
         func buildShip () {
             bodyID = Save.getShipID()
