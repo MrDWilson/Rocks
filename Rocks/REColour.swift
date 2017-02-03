@@ -9,6 +9,23 @@
 import SpriteKit
 
 extension GameScene {
+    enum StarColour: Int {
+        case white         = 0
+        case blue           = 1
+        case pink           = 2
+        case COLOUR_BOUNDRY = 3
+        
+        var toUIColor: UIColor {
+            switch (self) {
+            case .white:            return UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            case .blue:             return UIColor(red: 0.8, green: 1.0, blue: 1.0, alpha: 1.0)
+            case .pink:             return UIColor(red: 1.0, green: 0.8, blue: 0.8, alpha: 1.0)
+            case .COLOUR_BOUNDRY:   return UIColor.white
+            default:  return UIColor.white
+            }
+        }
+    }
+    
     enum GeneralColour: Int {
         case clear         = 0
         case COLOUR_BOUNDRY = 1
@@ -37,7 +54,8 @@ extension GameScene {
         case cyan           = 1
         case red            = 2
         case magenta        = 3
-        case COLOUR_BOUNDRY = 4
+        case green          = 4
+        case COLOUR_BOUNDRY = 5
     
         var toUIColor: UIColor {
             switch (self) {
@@ -45,6 +63,7 @@ extension GameScene {
                 case .cyan:            return UIColor.cyan
                 case .red:             return UIColor.red
                 case .magenta:         return UIColor.magenta
+                case .green:           return UIColor.green
                 case .COLOUR_BOUNDRY:   return UIColor.white
                 default:  return UIColor.white
             }

@@ -37,6 +37,15 @@ extension GameScene {
         func flashHealthBar () { healthBarNode.fontColor = UIColor.white }
         func flashScore     () { thisScoreLabelNode.fontColor = UIColor.white }
         
+        func clearTutorial () {
+            shootingInstruction.removeAllActions()
+            shootingInstruction.removeFromParent()
+            shootingInstruction.alpha = 0.0
+            movingInstruction.removeAllActions()
+            movingInstruction.removeFromParent()
+            movingInstruction.alpha = 0.0
+        }
+
         init (w: Int, h: Int, p: Player) {
             super.init()
             
@@ -65,7 +74,7 @@ extension GameScene {
             healthBarNode.fontSize                = 24
             healthBarNode.horizontalAlignmentMode = .right
             healthBarNode.position                = CGPoint(x: w-10, y: h-24)
-            healthBarNode.fontColor               = UIColor.red
+            healthBarNode.fontColor               = BodyColour.red.toUIColor
             addChild(healthBarNode)
             
             healthBarLabel.name                            = String("Label")
@@ -179,7 +188,7 @@ extension GameScene {
             for i in 0...player.getAmmo() { if (i > 0) {ammoBarNode.text?.append("I")} }
             
             ammoBarNode.fontColor = player.getLaserColour()
-            healthBarNode.fontColor = UIColor.red
+            healthBarNode.fontColor = BodyColour.red.toUIColor
             thisScoreLabelNode.fontColor = UIColor.gray
         }
     }

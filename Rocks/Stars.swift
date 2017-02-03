@@ -32,6 +32,7 @@ extension GameScene {
             // move to back or render queue
             sprite.zPosition = -10
             
+            sprite.color = StarColour(rawValue: Int(arc4random_uniform(UInt32(StarColour.COLOUR_BOUNDRY.rawValue))))!.toUIColor
             sprite.alpha = CGFloat(arc4random_uniform(10)) / CGFloat(10)
             
             let ting = arc4random_uniform(100);
@@ -101,7 +102,7 @@ extension GameScene {
             // reuse
             sprite.position.x = CGFloat(arc4random_uniform(UInt32(xConfine)))
             sprite.position.y = CGFloat(yConfine + Int(arc4random_uniform(750)))
-            
+            sprite.color = StarColour(rawValue: Int(arc4random_uniform(UInt32(StarColour.COLOUR_BOUNDRY.rawValue))))!.toUIColor
             sprite.alpha = CGFloat(arc4random_uniform(10)) / CGFloat(10)
         }
     }

@@ -173,6 +173,7 @@ extension GameScene {
                     break
                 case .GameOver:
                     gameHUD.isHidden = true
+                    gameHUD.clearTutorial()
                     gameOver.isHidden = false
                     gameOver.update()
                     break
