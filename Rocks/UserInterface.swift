@@ -42,6 +42,14 @@ extension GameScene {
             mainMenu_customise.isHidden = false
         }
         
+        func scrollLeaderboardUp () {
+            leaderboard.scrollUp()
+        }
+        
+        func scrollLeaderboardDown () {
+            leaderboard.scrollDown()
+        }
+        
         func showLeaderboard () {
             mainMenu.isHidden = true
             mainMenu_leaderboard.isHidden = false

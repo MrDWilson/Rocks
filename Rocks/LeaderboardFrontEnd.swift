@@ -40,9 +40,19 @@ extension GameScene {
             fatalError("init(coder:) has not been implemented")
         }
         
-        func scrollUp () {}
+        func scrollUp () {
+            removeList.forEach {
+                $0.position.x -= 0.01
+                $0.position.y -= 0.01
+            }
+        }
         
-        func scrollDown () {}
+        func scrollDown () {
+            removeList.forEach {
+                $0.position.x += 0.01
+                $0.position.y += 0.01
+            }
+        }
         
         func update () {}
         
@@ -75,7 +85,7 @@ extension GameScene {
             entries.forEach {
                 let shipVec = Vector3D(context: $0.context)
                 if ($0.rank <= 5) && ($0.rank > 0) {
-                    removeList.append(                        LeaderboardEntry (
+                    removeList.append(LeaderboardEntry (
                         rank:     $0.rank,
                         username: $0.player!.alias!,
                         score:    $0.value,

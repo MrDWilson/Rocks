@@ -78,9 +78,10 @@ extension GameScene {
                 if (node.name == "ship") {
                     state = .MainMenu
                     userInterface.back()
+                } else if (touch.location(in: self).y > self.size.height / 2) {
+                    userInterface.scrollLeaderboardUp()
                 } else {
-                    state = .MainMenu
-                    userInterface.back()
+                    userInterface.scrollLeaderboardDown()
                 }
                 break
             case .Options:
