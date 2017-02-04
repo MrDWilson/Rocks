@@ -17,13 +17,13 @@ extension GameScene {
         private var vibrateImage = SKSpriteNode()
         private var vibrate_on   = SKTexture(imageNamed: "vibrate_on")
         private var vibrate_off  = SKTexture(imageNamed: "vibrate_off")
-        private var vibrateLabel = SKLabelNode()
+        private var vibrateLabel = SKLabelNode(fontNamed: "AppleSDGothicNeo-UltraLight")
         private var vibrateButton: SKSpriteNode!
         
         private var soundImage = SKSpriteNode()
         private var sound_on   = SKTexture(imageNamed: "sound_on")
         private var sound_off  = SKTexture(imageNamed: "sound_off")
-        private var soundLabel = SKLabelNode()
+        private var soundLabel = SKLabelNode(fontNamed: "AppleSDGothicNeo-UltraLight")
         private var soundButton: SKSpriteNode!
         
         func toggleVibrate () {
@@ -58,7 +58,7 @@ extension GameScene {
             vibrateImage.run(SKAction.colorize(with: UIColor.lightGray, colorBlendFactor: 1.0, duration: 0))
             
             vibrateLabel.text = String("vibration")
-            vibrateLabel.fontColor = .lightGray
+            vibrateLabel.fontColor = UIColor(red: 0.93, green: 0.90, blue: 0.83, alpha: 1)
             vibrateLabel.horizontalAlignmentMode = .left
             vibrateLabel.position = CGPoint(x: Int(Double(w) * 0.5), y:  Int(Double(h) * 0.3))
             addChild(vibrateLabel)
@@ -76,7 +76,7 @@ extension GameScene {
             soundImage.run(SKAction.colorize(with: UIColor.lightGray, colorBlendFactor: 1.0, duration: 0))
             
             soundLabel.text = String("sound")
-            soundLabel.fontColor = .lightGray
+            soundLabel.fontColor = UIColor(red: 0.93, green: 0.90, blue: 0.83, alpha: 1)
             soundLabel.horizontalAlignmentMode = .left
             soundLabel.position = CGPoint(x: Int(Double(w) * 0.5), y:  Int(Double(h) * 0.15))
             addChild(soundLabel)

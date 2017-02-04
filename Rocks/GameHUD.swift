@@ -19,11 +19,11 @@ extension GameScene {
         
         // in-game UI
         private let healthBarNode      = SKLabelNode(fontNamed: "Arial")
-        private let healthBarLabel     = SKLabelNode(fontNamed: "Arial")
+        private let healthBarLabel     = SKLabelNode(fontNamed: "AppleSDGothicNeo-Light")
         private let ammoBarNode        = SKLabelNode(fontNamed: "Arial")
-        private let ammoBarLabel       = SKLabelNode(fontNamed: "Arial")
-        private let thisScoreLabelNode = SKLabelNode(fontNamed: "Arial")
-        private let bestScoreLabelNode = SKLabelNode(fontNamed: "Arial")
+        private let ammoBarLabel       = SKLabelNode(fontNamed: "AppleSDGothicNeo-Light")
+        private let thisScoreLabelNode = SKLabelNode(fontNamed: "AppleSDGothicNeo-UltraLight")
+        private let bestScoreLabelNode = SKLabelNode(fontNamed: "AppleSDGothicNeo-Regular")
         private var bestScore = 0
         
         // tutorial

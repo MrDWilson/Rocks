@@ -134,7 +134,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             case .MainMenu:
                 player.show()
                 player.scaleTo(x: 1.6, y: 1.6)
-                player.setRestingY(y: Int(self.size.height * CGFloat(0.64)))
+                player.setRestingY(y: Int(self.size.height * CGFloat(0.62)))
                 if (player.getPosition().x > (self.size.width / 2) + 5) {
                     player.moveLeft()
                 }

@@ -42,6 +42,7 @@ extension GameScene {
             bloom.position.y = 1
             bloom.zPosition = -3
             bloom.blendMode = .add
+            
             sprite.addChild(bloom);
             
             return sprite

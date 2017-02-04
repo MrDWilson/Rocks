@@ -13,9 +13,9 @@ extension GameScene {
     class GameOverScreen: SKNode {
         private let numberMachine   = NumberFormatter()
         
-        private let deathLabelNode     = SKLabelNode(fontNamed: "Arial")
-        private let finalScoreNode     = SKLabelNode(fontNamed: "Arial")
-        private let highScoreNode      = SKLabelNode (fontNamed: "Arial")
+        private let deathLabelNode     = SKLabelNode(fontNamed: "AppleSDGothicNeo-Light")
+        private let finalScoreNode     = SKLabelNode(fontNamed: "AppleSDGothicNeo-Regular")
+        private let highScoreNode      = SKLabelNode (fontNamed: "AppleSDGothicNeo-UltraLight")
         private var highScore          = 0
         
         private let player: Player!
@@ -32,7 +32,7 @@ extension GameScene {
             deathLabelNode.text                         = String("GAME OVER")
             deathLabelNode.fontSize                     = 48
             deathLabelNode.horizontalAlignmentMode      = .center
-            deathLabelNode.fontColor                    = UIColor.white
+            deathLabelNode.fontColor                    = UIColor(red: 0.93, green: 0.90, blue: 0.83, alpha: 0.88)
             deathLabelNode.position                     = CGPoint(x: w / 2, y: h / 2)
             addChild(deathLabelNode)
             

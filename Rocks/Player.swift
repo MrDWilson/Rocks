@@ -82,13 +82,13 @@ extension GameScene {
             // NOT YET SAVED
             if bodyID == 0 {
                 ship = Ship (
-                    bID: 10,
-                    tID: 3,
-                    cID: 2
+                    bID: 11,
+                    tID: 6,
+                    cID: 1
                 )
             }
-                
-                // SAVED SHIP FOUND
+
+            // SAVED SHIP FOUND
             else {
                 ship = Ship(
                     bID: bodyID,

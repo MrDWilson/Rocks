@@ -18,15 +18,15 @@ extension GameScene {
         private var entries = [GKScore]()
         private var player:  GKScore!
         
-        private var loadingLabel = SKLabelNode();
+        private var loadingLabel = SKLabelNode(fontNamed: "AppleSDGothicNeo-Light");
         
         init (w: Int, h: Int, p: Player) {
             backend = LeaderboardBackEnd()
             
-            loadingLabel.text = LocalisedStringMachine.getString(string: "Loading") + "..."
+            loadingLabel.text = LocalisedStringMachine.getString(string: "loading") + "..."
             loadingLabel.fontSize = 64
             loadingLabel.horizontalAlignmentMode = .center
-            loadingLabel.fontColor = UIColor.white
+            loadingLabel.fontColor = UIColor(red: 0.93, green: 0.90, blue: 0.83, alpha: 0.88)
             loadingLabel.position = CGPoint(x: w / 2, y: h / 2)
             
             super.init()

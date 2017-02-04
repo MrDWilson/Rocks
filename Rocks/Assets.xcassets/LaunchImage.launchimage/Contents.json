@@ -4,7 +4,7 @@
       "extent" : "full-screen",
       "idiom" : "iphone",
       "subtype" : "736h",
-      "filename" : "launch - iphone + new.png",
+      "filename" : "Default-1242@3x~iphone6s-portrait_1242x2208.png",
       "minimum-system-version" : "8.0",
       "orientation" : "portrait",
       "scale" : "3x"
@@ -13,7 +13,7 @@
       "extent" : "full-screen",
       "idiom" : "iphone",
       "subtype" : "667h",
-      "filename" : "launch - iphone +.png",
+      "filename" : "Default~iphone.png",
       "minimum-system-version" : "8.0",
       "orientation" : "portrait",
       "scale" : "2x"
@@ -22,7 +22,7 @@
       "extent" : "full-screen",
       "idiom" : "ipad",
       "subtype" : "1366h",
-      "filename" : "launch - 1536x2048px.png",
+      "filename" : "Default-Portrait@2x~ipad_1536x2008.png",
       "minimum-system-version" : "8.0",
       "orientation" : "portrait",
       "scale" : "2x"
@@ -30,7 +30,7 @@
     {
       "orientation" : "portrait",
       "idiom" : "iphone",
-      "filename" : "launch - 4s 2x.png",
+      "filename" : "Default-568h@2x~iphone_640x1136.png",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
       "scale" : "2x"
@@ -39,7 +39,7 @@
       "extent" : "full-screen",
       "idiom" : "iphone",
       "subtype" : "retina4",
-      "filename" : "launch - 4s final.png",
+      "filename" : "Default-750@2x~iphone6-portrait_750x1334.png",
       "minimum-system-version" : "7.0",
       "orientation" : "portrait",
       "scale" : "2x"
@@ -47,7 +47,7 @@
     {
       "orientation" : "portrait",
       "idiom" : "ipad",
-      "filename" : "launch - ipad 1x.png",
+      "filename" : "Default-Portrait~ipad_768x1024.png",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
       "scale" : "1x"
@@ -55,7 +55,7 @@
     {
       "orientation" : "portrait",
       "idiom" : "ipad",
-      "filename" : "launch - ipad 2x.png",
+      "filename" : "Default-Portrait@2x~ipad_1536x2048.png",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
       "scale" : "2x"
