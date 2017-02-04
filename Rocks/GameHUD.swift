@@ -28,8 +28,8 @@ extension GameScene {
         
         // tutorial
         private let tutorial            = SKNode()
-        private let shootingInstruction = SKLabelNode()
-        private let movingInstruction   = SKLabelNode()
+        private let shootingInstruction = SKLabelNode(fontNamed: "AppleSDGothicNeo-Light")
+        private let movingInstruction   = SKLabelNode(fontNamed: "AppleSDGothicNeo-Light")
         
         private var player: Player!
         
@@ -124,16 +124,16 @@ extension GameScene {
             // TUTORIAL CODE
             shootingInstruction.name   = String("Label")
             shootingInstruction.text   = String("tap the screen to fire")
-            shootingInstruction.fontSize = 30
+            shootingInstruction.fontSize = 26
             shootingInstruction.position = CGPoint(x: w/2, y: h/2)
-            shootingInstruction.fontColor = UIColor.white
+            shootingInstruction.fontColor = UIColor(red: 0.93, green: 0.90, blue: 0.83, alpha: 1)
             shootingInstruction.alpha = 0.0
             
             movingInstruction.name = String("Label")
             movingInstruction.text = String("tilt your phone to move the ship")
-            movingInstruction.fontSize = 30
+            movingInstruction.fontSize = 26
             movingInstruction.position = CGPoint(x: w/2, y: h/2)
-            movingInstruction.fontColor = UIColor.white
+            movingInstruction.fontColor = UIColor(red: 0.93, green: 0.90, blue: 0.83, alpha: 1)
             movingInstruction.alpha = 0.0
             
             addChild(tutorial)
