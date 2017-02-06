@@ -216,7 +216,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.update(currentTime: currentTime)
         
         // "infinitly" increse difficulty
-        if (player.getScore() > (currentLevel*5000)) {
+        if (player.getScore() > (currentLevel*2000)) {
             increaseDifficulty()
             currentLevel += 1
         }
