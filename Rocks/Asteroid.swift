@@ -68,11 +68,6 @@ extension GameScene {
             sprite.zPosition = -1
             sprite.zRotation = CGFloat (arc4random_uniform(360))
             
-            // ghost
-            explosionEffect?.position = CGPoint(x: 0, y: 0)
-            explosionEffect?.numParticlesToEmit = 100
-            explosionEffect?.removeFromParent()
-            
             // add to scene
             return sprite
         }
@@ -93,9 +88,12 @@ extension GameScene {
         }
         
         func destroyed () {
-            sprite.parent?.addChild(explosionEffect!)
-            explosionEffect?.resetSimulation()
-            explosionEffect?.position = CGPoint(x: xConfine - 100, y: yConfine - 100)
+            if (size > 12) {
+                var ghost = SKLabelNode()
+                ghost.text = "boom"
+                ghost.position = sprite.position
+                sprite.parent?.addChild(ghost)
+            }
             reuse()
         }
         
@@ -115,7 +113,6 @@ extension GameScene {
             // reuse
             sprite.position.x = CGFloat(arc4random_uniform(UInt32(xConfine)))
             sprite.position.y = CGFloat(yConfine +  800 + Int(arc4random_uniform(750)))
-            explosionEffect?.removeFromParent()
         }
     }
 }
