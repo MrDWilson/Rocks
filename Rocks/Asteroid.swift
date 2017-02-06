@@ -17,7 +17,7 @@ extension GameScene {
         private var size    = 2 + Int(arc4random_uniform(24))
         private var velocity = CGVector(dx: 0, dy: 0 - (2 + Int(arc4random_uniform(6))))
         
-        private let explosionEffect   = SKEmitterNode(fileNamed: "ExplosionParticle.sks")
+        private let explosionEffect   = SKEmitterNode(fileNamed: "asteroidExplosion.sks")
         
         private var xConfine:Int      = 1080
         private var yConfine:Int      = 1920 // 6 plus default
@@ -88,12 +88,17 @@ extension GameScene {
         }
         
         func destroyed () {
-            if (size > 12) {
-                var ghost = SKLabelNode()
-                ghost.text = "boom"
-                ghost.position = sprite.position
-                sprite.parent?.addChild(ghost)
+            if (size > 6) {
+                explosionEffect?.position = sprite.position
+                explosionEffect?.numParticlesToEmit = size * 10
+                explosionEffect?.removeFromParent()
+                explosionEffect?.resetSimulation()
+                sprite.parent?.addChild(explosionEffect!)
             }
+            reuse()
+        }
+        
+        func quietDestroy () {
             reuse()
         }
         

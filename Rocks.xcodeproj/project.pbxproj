@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		621C0B201E269EEB00557431 /* LeaderboardEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C0B1F1E269EEB00557431 /* LeaderboardEntry.swift */; };
+		623F1DD81E49123400A700DB /* asteroidExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 623F1DD71E49123400A700DB /* asteroidExplosion.sks */; };
 		6257F31C1E29645900D49376 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6257F31B1E29645900D49376 /* Difficulty.swift */; };
 		626325541E3B763D0091D5C8 /* background.wav in Resources */ = {isa = PBXBuildFile; fileRef = 626325531E3B763D0091D5C8 /* background.wav */; };
 		62750FEC1DDA580F00358E4A /* ThrusterParticle_0.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62750FEA1DDA580F00358E4A /* ThrusterParticle_0.sks */; };
@@ -73,6 +74,7 @@
 
 /* Begin PBXFileReference section */
 		621C0B1F1E269EEB00557431 /* LeaderboardEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeaderboardEntry.swift; path = Rocks/LeaderboardEntry.swift; sourceTree = SOURCE_ROOT; };
+		623F1DD71E49123400A700DB /* asteroidExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = asteroidExplosion.sks; path = Rocks/asteroidExplosion.sks; sourceTree = SOURCE_ROOT; };
 		6257F31B1E29645900D49376 /* Difficulty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Difficulty.swift; path = Rocks/Difficulty.swift; sourceTree = SOURCE_ROOT; };
 		626325531E3B763D0091D5C8 /* background.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = background.wav; path = Rocks/Assets.xcassets/background.wav; sourceTree = SOURCE_ROOT; };
 		62750FEA1DDA580F00358E4A /* ThrusterParticle_0.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = ThrusterParticle_0.sks; path = Rocks/ThrusterParticle_0.sks; sourceTree = SOURCE_ROOT; };
@@ -183,6 +185,7 @@
 		CE5B25E41DD02ACE00A0AB64 /* Rocks */ = {
 			isa = PBXGroup;
 			children = (
+				623F1DD71E49123400A700DB /* asteroidExplosion.sks */,
 				CEAA9B321DDB900C00203FD1 /* AboutScreen.swift */,
 				62798A531DD8AAEF001F1DA8 /* AppDelegate.swift */,
 				CE0937FF1DE4D172003815BB /* Assets.xcassets */,
@@ -375,6 +378,7 @@
 				62750FF21DDA5B8C00358E4A /* ThrusterParticle_4.sks in Resources */,
 				626325541E3B763D0091D5C8 /* background.wav in Resources */,
 				62798A7A1DD8AAEF001F1DA8 /* ThrusterParticle_2.sks in Resources */,
+				623F1DD81E49123400A700DB /* asteroidExplosion.sks in Resources */,
 				6294E0C51DD8AD5200191D1A /* Main.storyboard in Resources */,
 				62750FF11DDA5B8C00358E4A /* ThrusterParticle_3.sks in Resources */,
 				6294E0C61DD8AD5200191D1A /* LaunchScreen.storyboard in Resources */,

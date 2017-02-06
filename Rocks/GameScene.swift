@@ -257,7 +257,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         isPaused = false
         
         //  reset all asteroids and powerups
-        asteroids.forEach { $0.destroyed() }
+        asteroids.forEach { $0.quietDestroy() }
         powerups.forEach  { $0.collected() }
     }
     
