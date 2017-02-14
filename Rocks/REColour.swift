@@ -9,6 +9,16 @@
 import SpriteKit
 
 extension GameScene {
+    enum AsteroidColor: Int {
+        case Brown = 0
+        
+        var toUIColor: UIColor {
+            switch (self) {
+                case .Brown: return UIColor(red: 0.61, green: 0.5, blue: 0.39, alpha: 1.0)
+            }
+        }
+    }
+    
     enum StarColour: Int {
         case white         = 0
         case blue           = 1

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		621BB0571E53271D004E9F4D /* AsteroidFragment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621BB0561E53271D004E9F4D /* AsteroidFragment.swift */; };
 		621C0B201E269EEB00557431 /* LeaderboardEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C0B1F1E269EEB00557431 /* LeaderboardEntry.swift */; };
 		623F1DD81E49123400A700DB /* asteroidExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 623F1DD71E49123400A700DB /* asteroidExplosion.sks */; };
 		6257F31C1E29645900D49376 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6257F31B1E29645900D49376 /* Difficulty.swift */; };
@@ -73,6 +74,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		621BB0561E53271D004E9F4D /* AsteroidFragment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AsteroidFragment.swift; path = Rocks/AsteroidFragment.swift; sourceTree = SOURCE_ROOT; };
 		621C0B1F1E269EEB00557431 /* LeaderboardEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeaderboardEntry.swift; path = Rocks/LeaderboardEntry.swift; sourceTree = SOURCE_ROOT; };
 		623F1DD71E49123400A700DB /* asteroidExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = asteroidExplosion.sks; path = Rocks/asteroidExplosion.sks; sourceTree = SOURCE_ROOT; };
 		6257F31B1E29645900D49376 /* Difficulty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Difficulty.swift; path = Rocks/Difficulty.swift; sourceTree = SOURCE_ROOT; };
@@ -194,6 +196,7 @@
 				62798A581DD8AAEF001F1DA8 /* Counter.swift */,
 				CEAA9B301DDB8FD600203FD1 /* CustomiseScreen.swift */,
 				6257F31B1E29645900D49376 /* Difficulty.swift */,
+				621BB0561E53271D004E9F4D /* AsteroidFragment.swift */,
 				62798A5A1DD8AAEF001F1DA8 /* ExplosionParticle.sks */,
 				62750FFA1DDA6EDF00358E4A /* GameHUD.swift */,
 				62750FFE1DDA719200358E4A /* GameOverScreen.swift */,
@@ -413,6 +416,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6257F31C1E29645900D49376 /* Difficulty.swift in Sources */,
+				621BB0571E53271D004E9F4D /* AsteroidFragment.swift in Sources */,
 				62798A791DD8AAEF001F1DA8 /* TextureCache.swift in Sources */,
 				CEAA9B371DDBCF9900203FD1 /* Stars.swift in Sources */,
 				62798A761DD8AAEF001F1DA8 /* Player.swift in Sources */,
@@ -583,7 +587,7 @@
 				INFOPLIST_FILE = Rocks/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Danny.Rocks3.1";
+				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Danny.Rocks3.2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -601,7 +605,7 @@
 				INFOPLIST_FILE = Rocks/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Danny.Rocks3.1";
+				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Danny.Rocks3.2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

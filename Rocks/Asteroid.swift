@@ -12,9 +12,14 @@ import SpriteKit
 extension GameScene {
     
     class Asteroid {
+        
+        // graphics
         private let sprite  = SKSpriteNode(color: UIColor.brown, size: CGSize(width: 10, height: 10))
-        private let ghost   = SKLabelNode()
-        private var size    = 2 + Int(arc4random_uniform(24))
+        private var fragmentSprites = [AsteroidFragment]()
+        
+        
+        // model
+        private var size    = 6 + Int(arc4random_uniform(24))
         private var velocity = CGVector(dx: 0, dy: 0 - (2 + Int(arc4random_uniform(6))))
         
         private let explosionEffect   = SKEmitterNode(fileNamed: "asteroidExplosion.sks")
@@ -25,6 +30,7 @@ extension GameScene {
         private var textureCache: TextureCache!
         
         private var hit = false
+        private var fragmented = false
         
         func setXConfine (con: Int) { xConfine = con - Int(sprite.size.width) }
         func setYConfine (con: Int) { yConfine = con + Int(sprite.size.width) }
@@ -68,6 +74,11 @@ extension GameScene {
             sprite.zPosition = -1
             sprite.zRotation = CGFloat (arc4random_uniform(360))
             
+            // populate fragment queue now
+            for _ in 0...size {
+                fragmentSprites.append(AsteroidFragment())
+            }
+            
             // add to scene
             return sprite
         }
@@ -80,14 +91,29 @@ extension GameScene {
                 reuse()
             }
             
+            fragmentSprites.forEach { $0.update() }
+            
             sprite.physicsBody?.allContactedBodies().forEach {
                 if ($0.node?.name == "laserbeam") {
-                    destroyed()
+                    if (!fragmented) {
+                        destroyed()
+                    }
                 }
             }
         }
         
         func destroyed () {
+            fragmented = true
+            
+            // dispurse fragments
+            fragmentSprites.forEach {
+                $0.setPosition(x: sprite.position.x, y: sprite.position.y)
+                $0.getSprite().removeFromParent()
+                sprite.parent?.addChild($0.getSprite())
+                $0.boom()
+            }
+            
+            // occasional explosion
             if (size > 6) {
                 explosionEffect?.position = sprite.position
                 explosionEffect?.numParticlesToEmit = size * 10
@@ -108,7 +134,6 @@ extension GameScene {
         
         private func reuse () {
             
-            
             // randomise appearence
             size          = 2 + Int(arc4random_uniform(24))
             sprite.xScale = CGFloat(size)
@@ -118,6 +143,8 @@ extension GameScene {
             // reuse
             sprite.position.x = CGFloat(arc4random_uniform(UInt32(xConfine)))
             sprite.position.y = CGFloat(yConfine +  800 + Int(arc4random_uniform(750)))
+            
+            fragmented = false
         }
     }
 }

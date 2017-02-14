@@ -61,6 +61,15 @@ extension GameScene {
             userInterface.flashScore()
         }
         
+        // PLAYER HITS FRAGMENT
+        if (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == "fragment" ) {
+            contact.bodyA.applyImpulse(contact.contactNormal, at: contact.contactPoint)
+        }
+
+        if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "fragment" ) {
+            contact.bodyB.applyImpulse(contact.contactNormal, at: contact.contactPoint)
+        }
+        
         // PLAYER HITS ASTEROID
         if (contact.bodyA.node?.name == "player" && contact.bodyB.node?.name == "asteroid" ) ||
             (contact.bodyB.node?.name == "player" && contact.bodyA.node?.name == "asteroid" ) {
