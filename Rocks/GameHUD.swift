@@ -231,7 +231,7 @@ extension GameScene {
             healthBarNode.fontColor = BodyColour.red.toUIColor
             thisScoreLabelNode.fontColor = UIColor.gray
             
-            let speed: CGFloat = 0.18;
+            let speed: CGFloat = 0.08;
             
             // Animation
             // health

@@ -122,7 +122,7 @@ extension GameScene {
             addChild(mainMenu_options)
             addChild(mainMenu_about)
 
-            mainMenu.isHidden  = true
+            mainMenu.hide()
             mainMenu_customise.isHidden = true
             mainMenu_leaderboard.isHidden = true
             mainMenu_options.hide ()
