@@ -33,6 +33,8 @@ extension GameScene {
         
         private var needsRefresh = true;
         
+        private var inGame = false;
+        
         func flashScore     () { gameHUD.flashScore() }
         func flashAmmoBar   () { gameHUD.flashAmmoBar() }
         func flashHealthBar () { gameHUD.flashHealthBar() }
@@ -62,7 +64,8 @@ extension GameScene {
         }
         
         func startGame () {
-            gameHUD.start()
+            gameHUD.start ()
+            gameHUD.show  ()
         }
         
         func showOptions () {
@@ -125,7 +128,7 @@ extension GameScene {
             mainMenu_options.hide ()
             mainMenu_about.hide()
             
-            gameHUD.isHidden   = true
+            gameHUD.hide()
             pauseMenu.isHidden = true
             gameOver.isHidden  = true
             
@@ -146,6 +149,7 @@ extension GameScene {
                     mainMenu.show()
                     mainMenu.update()
                     
+                    //gameHUD.update()
                     mainMenu_options.update()
                     mainMenu_about.update()
                     break
@@ -184,21 +188,21 @@ extension GameScene {
                     
                     // animate player
                     if (Int(player.getPosition().y) < Int(CGFloat(screenHeight) * 0.34)) {
-                        if (gameHUD.isHidden) {
-                            gameHUD.isHidden = false
-                            startGame()
-                        }
+                        startGame()
                     }
                     
+                    gameHUD.show()
                     gameHUD.update()
                     break
                 case .Paused:
-                    gameHUD.isHidden = true
+                    gameHUD.hide()
+                    gameHUD.update()
                     pauseMenu.isHidden = false
                     pauseMenu.update()
                     break
                 case .GameOver:
-                    gameHUD.isHidden = true
+                    gameHUD.hide()
+                    gameHUD.update()
                     gameHUD.clearTutorial()
                     gameOver.isHidden = false
                     gameOver.update()

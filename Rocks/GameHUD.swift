@@ -18,10 +18,16 @@ extension GameScene {
         private let pauseLabelNode     = SKLabelNode()
         
         // in-game UI
+        private var barsY: CGFloat!
+        private var labelsY: CGFloat!
+        
         private let healthBarNode      = SKLabelNode(fontNamed: "Arial")
         private let healthBarLabel     = SKLabelNode(fontNamed: "AppleSDGothicNeo-Light")
         private let ammoBarNode        = SKLabelNode(fontNamed: "Arial")
         private let ammoBarLabel       = SKLabelNode(fontNamed: "AppleSDGothicNeo-Light")
+        
+        private var thisScoreY: CGFloat!
+        private var bestScoreY: CGFloat!
         private let thisScoreLabelNode = SKLabelNode(fontNamed: "AppleSDGothicNeo-UltraLight")
         private let bestScoreLabelNode = SKLabelNode(fontNamed: "AppleSDGothicNeo-Regular")
         private var bestScore = 0
@@ -32,6 +38,9 @@ extension GameScene {
         private let movingInstruction   = SKLabelNode(fontNamed: "AppleSDGothicNeo-Light")
         
         private var player: Player!
+        
+        private var screenWidth: CGFloat!
+        private var screenHeight: CGFloat!
         
         func flashAmmoBar   () { ammoBarNode.fontColor = UIColor.white }
         func flashHealthBar () { healthBarNode.fontColor = UIColor.white }
@@ -50,6 +59,15 @@ extension GameScene {
             super.init()
             
             player = p
+            
+            barsY = CGFloat(h-24)
+            labelsY = CGFloat(h-42)
+            
+            thisScoreY = 6
+            bestScoreY = 28
+            
+            screenWidth = CGFloat(w)
+            screenHeight = CGFloat(h)
             
             numberMachine.numberStyle = .decimal
             
@@ -73,7 +91,7 @@ extension GameScene {
             for _ in 0...player.getHealth() { healthBarNode.text?.append("I") }
             healthBarNode.fontSize                = 24
             healthBarNode.horizontalAlignmentMode = .right
-            healthBarNode.position                = CGPoint(x: w-10, y: h-24)
+            healthBarNode.position                = CGPoint(x: w-10, y: h + 24)
             healthBarNode.fontColor               = BodyColour.red.toUIColor
             addChild(healthBarNode)
             
@@ -81,7 +99,7 @@ extension GameScene {
             healthBarLabel.text                            = LocalisedStringMachine.getString(string: "health")
             healthBarLabel.fontSize                        = 18
             healthBarLabel.horizontalAlignmentMode         = .right
-            healthBarLabel.position                        = CGPoint(x: w-10, y: h-42)
+            healthBarLabel.position                        = CGPoint(x: w-10, y: h + 42)
             healthBarLabel.fontColor                       = UIColor.gray
             addChild(healthBarLabel)
             
@@ -91,7 +109,7 @@ extension GameScene {
             for _ in 0...player.getAmmo() { ammoBarNode.text?.append("I") }
             ammoBarNode.fontSize                        = 24
             ammoBarNode.horizontalAlignmentMode         = .left
-            ammoBarNode.position                        = CGPoint(x: 10, y: h-24)
+            ammoBarNode.position                        = CGPoint(x: 10, y: h + 24)
             ammoBarNode.fontColor                       = player.getLaserColour()
             addChild(ammoBarNode)
             
@@ -99,7 +117,7 @@ extension GameScene {
             ammoBarLabel.text                            = LocalisedStringMachine.getString(string: "ammo")
             ammoBarLabel.fontSize                        = 18
             ammoBarLabel.horizontalAlignmentMode         = .left
-            ammoBarLabel.position                        = CGPoint(x: 10, y: h-42)
+            ammoBarLabel.position                        = CGPoint(x: 10, y: h + 42)
             ammoBarLabel.fontColor                       = UIColor.gray
             addChild(ammoBarLabel)
             
@@ -108,7 +126,7 @@ extension GameScene {
             bestScoreLabelNode.text                     = String(String(describing: Save.getHighScore())) // previous best icloud score should be visible in game
             bestScoreLabelNode.fontSize                 = 20
             bestScoreLabelNode.horizontalAlignmentMode  = .left
-            bestScoreLabelNode.position                 = CGPoint(x:6, y:28)
+            bestScoreLabelNode.position                 = CGPoint(x:6, y: -42)
             bestScoreLabelNode.fontColor                = UIColor.lightGray
             addChild(bestScoreLabelNode)
             
@@ -117,7 +135,7 @@ extension GameScene {
             thisScoreLabelNode.text                     = String(0)
             thisScoreLabelNode.fontSize                 = 20
             thisScoreLabelNode.horizontalAlignmentMode  = .left
-            thisScoreLabelNode.position                 = CGPoint(x:6, y:6)
+            thisScoreLabelNode.position                 = CGPoint(x:6, y: -42)
             thisScoreLabelNode.fontColor                = UIColor.gray
             addChild(thisScoreLabelNode)
             
@@ -144,8 +162,30 @@ extension GameScene {
         required init?(coder aDecoder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
+        
+        func show () {
+            barsY = CGFloat(screenHeight - 24)
+            labelsY = CGFloat(screenHeight - 42)
+            pauseLabelNode.isHidden = false
+            pauseButtonNode.isHidden = false
+            
+            thisScoreY = 6
+            bestScoreY = 28
+        }
+        
+        func hide () {
+            barsY = CGFloat(screenHeight + 42)
+            labelsY = CGFloat(screenHeight + 42)
+            pauseLabelNode.isHidden = true
+            pauseButtonNode.isHidden = true
+            
+            
+            thisScoreY = -42
+            bestScoreY = -42
+        }
     
         func start () {
+        /*
             if (!player.hasPlayedBefore()) {
                 var shootingActionArray = [SKAction]()
                 var movingActionArray = [SKAction]()
@@ -167,7 +207,7 @@ extension GameScene {
                 shootingInstruction.run(SKAction.sequence(shootingActionArray))
                 movingInstruction.run(SKAction.sequence(movingActionArray))
             }
-        
+        */
         }
         
         func update () {
@@ -190,6 +230,39 @@ extension GameScene {
             ammoBarNode.fontColor = player.getLaserColour()
             healthBarNode.fontColor = BodyColour.red.toUIColor
             thisScoreLabelNode.fontColor = UIColor.gray
+            
+            let speed: CGFloat = 0.18;
+            
+            // Animation
+            // health
+            if (healthBarLabel.position.y < labelsY) {
+                healthBarLabel.position.y  += (labelsY - healthBarLabel.position.y) * speed
+                healthBarNode.position.y += (barsY - healthBarNode.position.y) * speed
+            }
+            
+            if (healthBarLabel.position.y > labelsY) {
+                healthBarLabel.position.y  -= (healthBarLabel.position.y - labelsY) * speed
+                healthBarNode.position.y -= (healthBarNode.position.y - barsY) * speed
+            }
+            
+            // ammo
+            if (ammoBarLabel.position.y < labelsY) {
+                ammoBarLabel.position.y  += (labelsY - ammoBarLabel.position.y) * speed
+                ammoBarNode.position.y += (barsY - ammoBarNode.position.y) * speed
+            }
+            
+            if (ammoBarLabel.position.y > labelsY) {
+                ammoBarLabel.position.y  -= (ammoBarLabel.position.y - labelsY) * speed
+                ammoBarNode.position.y -= (ammoBarNode.position.y - barsY) * speed
+            }
+            
+            // this score
+            if (thisScoreLabelNode.position.y < thisScoreY) { thisScoreLabelNode.position.y += (thisScoreY - thisScoreLabelNode.position.y) * speed }
+            if (thisScoreLabelNode.position.y > thisScoreY) { thisScoreLabelNode.position.y -= (thisScoreLabelNode.position.y - thisScoreY) * speed }
+            
+            if (bestScoreLabelNode.position.y < bestScoreY) { bestScoreLabelNode.position.y += (bestScoreY - bestScoreLabelNode.position.y) * speed }
+            if (bestScoreLabelNode.position.y > bestScoreY) { bestScoreLabelNode.position.y -= (bestScoreLabelNode.position.y - bestScoreY) * speed }
+            
         }
     }
 }
