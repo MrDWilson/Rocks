@@ -30,6 +30,7 @@ extension GameScene {
     class AsteroidFragment {
         private let sprite: SKSpriteNode!
         private var path: CGVector!
+        private var spin: CGFloat!
         
         init () {
             sprite = SKSpriteNode(color: AsteroidColor.Brown.toUIColor, size: CGSize(width: 8, height: 8))
@@ -42,6 +43,8 @@ extension GameScene {
             sprite.physicsBody?.collisionBitMask   = playerCollisionCat
             sprite.physicsBody!.mass               = 0.0005
             sprite.physicsBody?.allowsRotation     = true
+            
+            spin = betterRand()
         }
         
         func setPosition (x: CGFloat, y: CGFloat) {
@@ -65,6 +68,7 @@ extension GameScene {
             
             // keep moving down
             sprite.position.y -= 1
+            sprite.zRotation += spin
             
             
             // print("x: \(sprite.position.x), y: \(sprite.position.y)")

@@ -54,7 +54,7 @@ extension GameScene {
             title.text = LocalisedStringMachine.getString(string: "Rocks")
             title.fontSize = 50
             title.horizontalAlignmentMode = .center
-            title.fontColor = UIColor(red: 0.93, green: 0.90, blue: 0.83, alpha: 0.88)
+            title.fontColor = UIColor(red: 0.93, green: 0.90, blue: 0.83, alpha: 1)
             title.position = CGPoint(x: w / 2, y: h)
             title.zPosition = 1
             addChild(title)
@@ -124,12 +124,21 @@ extension GameScene {
         }
         
         func hide () {
+            isHidden     = false
+            titleY       = CGFloat(screenHeight)
+            customiseY   = -24
+            leaderboardY = -24
+            optionsY     = -24
+            aboutY       = -24
+        }
+        
+        func hideHard () {
             isHidden     = true
             titleY       = CGFloat(screenHeight)
-            customiseY   = 0
-            leaderboardY = 0
-            optionsY     = 0
-            aboutY       = 0
+            customiseY   = -24
+            leaderboardY = -24
+            optionsY     = -24
+            aboutY       = -24
         }
         
         func show () {

@@ -158,32 +158,30 @@ extension GameScene {
                     showCustomiseMenu()
                     mainMenu_customise.update()
                     
-                    mainMenu.hide()
+                    mainMenu.hideHard()
                     mainMenu.update()
                     break
                 case .Leaderboard:
                     showLeaderboard()
                     
-                    mainMenu.hide()
+                    mainMenu.hideHard()
                     mainMenu.update()
                     break
                 case .Options:
                     showOptions()
                     mainMenu_options.update()
                     
-                    mainMenu.hide()
+                    mainMenu.hideHard()
                     mainMenu.update()
                     break
                 case .About:
                     showAbout()
                     mainMenu_about.update()
                     
-                    mainMenu.hide()
+                    mainMenu.hideHard()
                     mainMenu.update()
                     break
                 case .InGame:
-                    mainMenu.hide()
-                    mainMenu.update()
                     pauseMenu.isHidden = true
                     
                     // animate player
@@ -193,6 +191,8 @@ extension GameScene {
                     
                     gameHUD.show()
                     gameHUD.update()
+                    mainMenu.hide()
+                    mainMenu.update()
                     break
                 case .Paused:
                     gameHUD.hide()

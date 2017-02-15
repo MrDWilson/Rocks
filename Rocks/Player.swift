@@ -21,7 +21,7 @@ extension GameScene {
         private var health       = 25
         private let HEALTH_MAX   = 25
         private var restingY     = 100
-        private var laserColour  = LaserColour.purple//Save.getLaserID()
+        private var laserColour  = LaserColour.cyan//Save.getLaserID()
         private var name = "player"
         private var bodyID: Int!
         private var thrusterID: Int!
@@ -72,7 +72,7 @@ extension GameScene {
             print("\(bodyID)\(thrusterID)\(colourID)")
             
             //if (Save.getLaserID().rawValue == 0) {
-                laserColour = LaserColour.purple
+                laserColour = LaserColour.cyan
             //}
                 
             //else {
@@ -83,8 +83,8 @@ extension GameScene {
             if bodyID == 0 {
                 ship = Ship (
                     bID: 11,
-                    tID: 6,
-                    cID: 1
+                    tID: 5,
+                    cID: 6
                 )
             }
 

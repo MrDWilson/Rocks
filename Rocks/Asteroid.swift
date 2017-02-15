@@ -32,6 +32,8 @@ extension GameScene {
         private var hit = false
         private var fragmented = false
         
+        private var spin: CGFloat = CGFloat(Float(arc4random_uniform(10)) * 0.000001)
+        
         func setXConfine (con: Int) { xConfine = con - Int(sprite.size.width) }
         func setYConfine (con: Int) { yConfine = con + Int(sprite.size.width) }
         
@@ -86,6 +88,7 @@ extension GameScene {
         func update () {
             sprite.position.x += velocity.dx
             sprite.position.y += velocity.dy
+            sprite.zRotation += spin
             
             if (sprite.position.y < 0 - (sprite.size.height * 2)) {
                 reuse()
@@ -136,6 +139,7 @@ extension GameScene {
             
             // randomise appearence
             size          = 2 + Int(arc4random_uniform(24))
+            spin          = CGFloat(Float(arc4random_uniform(10)) * 0.000001)
             sprite.xScale = CGFloat(size)
             sprite.yScale = CGFloat(size)
             sprite.zRotation = CGFloat (arc4random_uniform(360))
