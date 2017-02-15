@@ -29,11 +29,11 @@ extension GameScene {
     
     class AsteroidFragment {
         private let sprite: SKSpriteNode!
-        private let path: CGVector!
+        private var path: CGVector!
         
         init () {
             sprite = SKSpriteNode(color: AsteroidColor.Brown.toUIColor, size: CGSize(width: 8, height: 8))
-            path = CGVector(dx: betterRand(), dy: betterRand())
+            path = CGVector(dx: betterRand(), dy: CGFloat(Float(arc4random_uniform(100)) / 100) * -1)
             sprite.name = "fragment"
             sprite.physicsBody                     = SKPhysicsBody(rectangleOf: sprite.size)
             sprite.physicsBody?.isDynamic          = true
@@ -60,6 +60,8 @@ extension GameScene {
         func update () {
             sprite.position.x += path.dx
             sprite.position.y += path.dy
+            
+            //path.dx -= (path.dx * 0.1)
             
             // keep moving down
             sprite.position.y -= 1

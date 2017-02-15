@@ -114,7 +114,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(clearScene)
         
         // add music
-        addChild(themeMusic)
+        if (sound) {
+            addChild(themeMusic)   
+        }
         
         /*
         if (!sound) {
@@ -169,7 +171,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 break
             case .Options:
                 
-                player.setRestingY(y: Int(self.size.height * CGFloat(0.64)))
+                player.setRestingY(y: Int(self.size.height * CGFloat(0.7)))
                 player.update(currentTime: currentTime)
                 
                 break

@@ -38,7 +38,7 @@ extension GameScene {
         func flashHealthBar () { gameHUD.flashHealthBar() }
         
         func showCustomiseMenu () {
-            mainMenu.isHidden = true
+            mainMenu.hide()
             mainMenu_customise.isHidden = false
         }
         
@@ -51,7 +51,7 @@ extension GameScene {
         }
         
         func showLeaderboard () {
-            mainMenu.isHidden = true
+            mainMenu.hide()
             mainMenu_leaderboard.isHidden = false
             
             if (needsRefresh) {
@@ -66,20 +66,20 @@ extension GameScene {
         }
         
         func showOptions () {
-            mainMenu.isHidden = true
-            mainMenu_options.isHidden = false
+            mainMenu.hide()
+            mainMenu_options.show()
         }
         
         func showAbout () {
-            mainMenu.isHidden = true
-            mainMenu_about.isHidden = false
+            mainMenu.hide()
+            mainMenu_about.show()
         }
         
         func back () {
             mainMenu_customise.isHidden = true
             mainMenu_leaderboard.isHidden = true
-            mainMenu_options.isHidden = true
-            mainMenu_about.isHidden = true
+            mainMenu_options.hide ()
+            mainMenu_about.hide()
             needsRefresh = true;
 
             Save.setShip(ship: player.serializeShip())
@@ -122,8 +122,8 @@ extension GameScene {
             mainMenu.isHidden  = true
             mainMenu_customise.isHidden = true
             mainMenu_leaderboard.isHidden = true
-            mainMenu_options.isHidden = true
-            mainMenu_about.isHidden = true
+            mainMenu_options.hide ()
+            mainMenu_about.hide()
             
             gameHUD.isHidden   = true
             pauseMenu.isHidden = true
@@ -143,25 +143,43 @@ extension GameScene {
             switch (state) {
                 case .MainMenu:
                     gameOver.isHidden = true
-                    mainMenu.isHidden = false
+                    mainMenu.show()
                     mainMenu.update()
+                    
+                    mainMenu_options.update()
+                    mainMenu_about.update()
                     break
                 case .Customise:
-
+                    
                     showCustomiseMenu()
                     mainMenu_customise.update()
+                    
+                    mainMenu.hide()
+                    mainMenu.update()
                     break
                 case .Leaderboard:
                     showLeaderboard()
+                    
+                    mainMenu.hide()
+                    mainMenu.update()
                     break
                 case .Options:
                     showOptions()
+                    mainMenu_options.update()
+                    
+                    mainMenu.hide()
+                    mainMenu.update()
                     break
                 case .About:
                     showAbout()
+                    mainMenu_about.update()
+                    
+                    mainMenu.hide()
+                    mainMenu.update()
                     break
                 case .InGame:
-                    mainMenu.isHidden = true
+                    mainMenu.hide()
+                    mainMenu.update()
                     pauseMenu.isHidden = true
                     
                     // animate player
