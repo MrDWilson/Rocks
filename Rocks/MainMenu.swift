@@ -126,19 +126,19 @@ extension GameScene {
         func hide () {
             isHidden     = false
             titleY       = CGFloat(screenHeight)
-            customiseY   = -24
-            leaderboardY = -24
-            optionsY     = -24
-            aboutY       = -24
+            customiseY   = -50
+            leaderboardY = -50
+            optionsY     = -50
+            aboutY       = -50
         }
         
         func hideHard () {
             isHidden     = true
             titleY       = CGFloat(screenHeight)
-            customiseY   = -24
-            leaderboardY = -24
-            optionsY     = -24
-            aboutY       = -24
+            customiseY   = -50
+            leaderboardY = -50
+            optionsY     = -50
+            aboutY       = -50
         }
         
         func show () {

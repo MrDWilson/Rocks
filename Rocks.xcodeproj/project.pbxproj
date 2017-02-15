@@ -47,6 +47,7 @@
 		CE5B26011DD02ACE00A0AB64 /* RocksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B26001DD02ACE00A0AB64 /* RocksTests.swift */; };
 		CE5B260C1DD02ACE00A0AB64 /* RocksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B260B1DD02ACE00A0AB64 /* RocksUITests.swift */; };
 		CE621EDE1DE106300005360F /* REColour.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE621EDD1DE106300005360F /* REColour.swift */; };
+		CE8083B91E54B89300749B52 /* FragmentEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8083B81E54B89300749B52 /* FragmentEmitter.swift */; };
 		CEA114921DDD192300E47335 /* Ship.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA114911DDD192300E47335 /* Ship.swift */; };
 		CEAA9B2D1DDB8B9F00203FD1 /* LeaderboardFrontEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA9B2C1DDB8B9F00203FD1 /* LeaderboardFrontEnd.swift */; };
 		CEAA9B2F1DDB8BAE00203FD1 /* LeaderboardBackEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAA9B2E1DDB8BAE00203FD1 /* LeaderboardBackEnd.swift */; };
@@ -122,6 +123,7 @@
 		CE5B260B1DD02ACE00A0AB64 /* RocksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocksUITests.swift; sourceTree = "<group>"; };
 		CE5B260D1DD02ACE00A0AB64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE621EDD1DE106300005360F /* REColour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = REColour.swift; path = Rocks/REColour.swift; sourceTree = SOURCE_ROOT; };
+		CE8083B81E54B89300749B52 /* FragmentEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FragmentEmitter.swift; path = Rocks/FragmentEmitter.swift; sourceTree = SOURCE_ROOT; };
 		CEA114911DDD192300E47335 /* Ship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ship.swift; path = Rocks/Ship.swift; sourceTree = SOURCE_ROOT; };
 		CEAA9B2C1DDB8B9F00203FD1 /* LeaderboardFrontEnd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeaderboardFrontEnd.swift; path = Rocks/LeaderboardFrontEnd.swift; sourceTree = SOURCE_ROOT; };
 		CEAA9B2E1DDB8BAE00203FD1 /* LeaderboardBackEnd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeaderboardBackEnd.swift; path = Rocks/LeaderboardBackEnd.swift; sourceTree = SOURCE_ROOT; };
@@ -214,6 +216,7 @@
 				CE0084461DE309F9006DE43A /* LocalisedStringMachine.swift */,
 				6294E0C31DD8AD5200191D1A /* Main.storyboard */,
 				62750FF81DDA6ED500358E4A /* MainMenu.swift */,
+				CE8083B81E54B89300749B52 /* FragmentEmitter.swift */,
 				CEAA9B341DDB905C00203FD1 /* OptionsScreen.swift */,
 				62750FFC1DDA6EE600358E4A /* PauseMenu.swift */,
 				62798A611DD8AAEF001F1DA8 /* Player.swift */,
@@ -445,6 +448,7 @@
 				621C0B201E269EEB00557431 /* LeaderboardEntry.swift in Sources */,
 				62750FF71DDA6AE900358E4A /* GameState.swift in Sources */,
 				62798A6C1DD8AAEF001F1DA8 /* CollisionHandler.swift in Sources */,
+				CE8083B91E54B89300749B52 /* FragmentEmitter.swift in Sources */,
 				62798A681DD8AAEF001F1DA8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -26,6 +26,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var asteroids       = [Asteroid]()
     var powerups        = [Powerup]()
     var player          = Player()
+    var emitter         = FragmentEmitter()
     
     // difficulty
     let initialAsteroidCount = 5
@@ -118,6 +119,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addChild(themeMusic)   
         }
         
+        emitter.add(to: self)
+        
         /*
         if (!sound) {
             themeMusic.run(SKAction.changeVolume(by: -10, duration: 0))
@@ -145,6 +148,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     player.moveRight()
                 }
                 updateMainMenu(currentTime: currentTime)
+                
+                // spray
+                emitter.setPosition(x: 0, y: self.size.height)
                 
                 break
             case .Customise:
