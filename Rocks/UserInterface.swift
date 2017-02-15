@@ -149,7 +149,7 @@ extension GameScene {
                     mainMenu.show()
                     mainMenu.update()
                     
-                    //gameHUD.update()
+                    gameHUD.update()
                     mainMenu_options.update()
                     mainMenu_about.update()
                     break
