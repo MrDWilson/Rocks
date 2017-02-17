@@ -31,6 +31,9 @@ extension GameScene {
         // NEW SETUP
         private var nextX: CGFloat!
         private var prevX: CGFloat!
+        
+        // RANDOMISE BUTTON NEEDED
+        // COLOUR BUTTONS NEEDED
      
         private var bodyY: CGFloat!
         private let bodyLabel = SKLabelNode(fontNamed: "AppleSDGothicNeo-Light")
@@ -322,10 +325,10 @@ extension GameScene {
         
         func hide () {
             isHidden = false
-            bodyY = -50
-            leftWingY = -50
-            rightWingY = -50
-            energyColourY =  -50
+            bodyY = -60
+            leftWingY = -60
+            rightWingY = -60
+            energyColourY =  -60
             
             nextX = CGFloat(Double(screenWidth) + 50)
             prevX = CGFloat(-50)
@@ -345,7 +348,7 @@ extension GameScene {
         func update () {
             //player.fireLaser()
             //player.pickupAmmo()
-            let speed: CGFloat = 0.16
+            let speed: CGFloat = 0.10
             
             // BODY
             if (bodyLabel.position.y < bodyY) { bodyLabel.position.y += (bodyY - bodyLabel.position.y) * speed }

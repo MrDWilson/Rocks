@@ -155,7 +155,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 break
             case .Customise:
                 
-                player.scaleTo(x: 3.5, y: 3.5)
+                //player.scaleTo(x: 3.5, y: 3.5)
                 player.setRestingY(y: Int(self.size.height * CGFloat(0.75)))
                 player.update(currentTime: currentTime)
             

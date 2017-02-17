@@ -57,18 +57,46 @@ extension GameScene {
                 }
                 break
             case .Customise:
-                if (node.name == "NEXT_SHIP") {
-                    player.getShip().nextColour()
-                } else if (node.name == "PREV_SHIP") {
-                    player.getShip().prevColour()
-                } else if (node.name == "NEXT_THRUSTER") {
-                    player.getShip().nextThruster()
-                } else if (node.name == "PREV_THRUSTER") {
-                    player.getShip().prevThruster()
-                } else if (node.name == "NEXT_LASER") {
-                    player.nextLaserColour()
-                } else if (node.name == "PREV_LASER") {
-                    player.prevLaserColour()
+                if (node.name == "NEXT_BODY") {
+                    
+                    // SWAP BODY
+                    print ("next body")
+                    
+                } else if (node.name == "PREV_BODY") {
+                    
+                    // SWAP BODY
+                    print ("prev body")
+                    
+                } else if (node.name == "NEXT_LWING") {
+                    
+                    // SWAP LEFT WING
+                    print ("next left wing")
+                    
+                } else if (node.name == "PREV_LWING") {
+                    
+                    // SWAP LEFT WING
+                    print ("prev left wing")
+                
+                } else if (node.name == "NEXT_RWING") {
+                
+                    // SWAP RIGHT WING
+                    print ("next right wing")
+                    
+                } else if (node.name == "PREV_RWING") {
+                    
+                    // SWAP RIGHT WING
+                    print ("prev right wing")
+                    
+                } else if (node.name == "NEXT_CORE") {
+                    
+                    // SWAP CORE
+                    print ("next core")
+                    
+                } else if (node.name == "PREV_CORE") {
+                    
+                    // SWAP CORE
+                    print ("prev core")
+                    
                 } else {
                     state = .MainMenu
                     userInterface.back()
