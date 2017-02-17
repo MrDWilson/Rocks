@@ -41,7 +41,7 @@ extension GameScene {
         
         func showCustomiseMenu () {
             mainMenu.hide()
-            mainMenu_customise.isHidden = false
+            mainMenu_customise.show()
         }
         
         func scrollLeaderboardUp () {
@@ -79,7 +79,7 @@ extension GameScene {
         }
         
         func back () {
-            mainMenu_customise.isHidden = true
+            mainMenu_customise.hide()
             mainMenu_leaderboard.isHidden = true
             mainMenu_options.hide ()
             mainMenu_about.hide()
@@ -123,7 +123,7 @@ extension GameScene {
             addChild(mainMenu_about)
 
             mainMenu.hide()
-            mainMenu_customise.isHidden = true
+            mainMenu_customise.hide()
             mainMenu_leaderboard.isHidden = true
             mainMenu_options.hide ()
             mainMenu_about.hide()
@@ -150,11 +150,11 @@ extension GameScene {
                     mainMenu.update()
                     
                     gameHUD.update()
+                    mainMenu_customise.update()
                     mainMenu_options.update()
                     mainMenu_about.update()
                     break
                 case .Customise:
-                    
                     showCustomiseMenu()
                     mainMenu_customise.update()
                     
