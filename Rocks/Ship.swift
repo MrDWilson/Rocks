@@ -189,11 +189,11 @@ extension GameScene {
             
             // pieces holding
             else {
-                physicsBody?.allowsRotation = true
-                zRotation = 0
-                physicsBody?.allowsRotation = false
-                leftWing.zRotation = 0
-                rightWing.zRotation = 0
+               // physicsBody?.allowsRotation = true
+               // zRotation = 0
+               // physicsBody?.allowsRotation = false
+               // leftWing.zRotation = 0
+               // rightWing.zRotation = 0
             }
         }
     
@@ -254,7 +254,7 @@ extension GameScene {
             rightWing.physicsBody?.pinned = false
             rightWing.physicsBody?.allowsRotation = true
             
-            physicsBody?.allowsRotation = true
+            //physicsBody?.allowsRotation = true
             
             leftWing.physicsBody?.applyImpulse  (leftWingVelocity,  at: position)
             rightWing.physicsBody?.applyImpulse (rightWingVelocity, at: position)
