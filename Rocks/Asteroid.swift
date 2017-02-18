@@ -118,11 +118,11 @@ extension GameScene {
             
             // occasional explosion
             if (size > 6) {
-                explosionEffect?.position = sprite.position
-                explosionEffect?.numParticlesToEmit = size * 10
-                explosionEffect?.removeFromParent()
-                explosionEffect?.resetSimulation()
-                sprite.parent?.addChild(explosionEffect!)
+                //explosionEffect?.position = sprite.position
+                //explosionEffect?.numParticlesToEmit = size * 10
+                //explosionEffect?.removeFromParent()
+                //explosionEffect?.resetSimulation()
+                //sprite.parent?.addChild(explosionEffect!)
             }
             reuse()
         }

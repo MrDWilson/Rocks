@@ -89,7 +89,7 @@ extension GameScene {
             healthBarNode.name                    = String("Label")
             healthBarNode.text                    = String("")
             for _ in 0...player.getHealth() { healthBarNode.text?.append("I") }
-            healthBarNode.fontSize                = 24
+            healthBarNode.fontSize                = screenWidth * 0.05
             healthBarNode.horizontalAlignmentMode = .right
             healthBarNode.position                = CGPoint(x: w-10, y: h + 24)
             healthBarNode.fontColor               = BodyColour.red.toUIColor
@@ -107,7 +107,7 @@ extension GameScene {
             ammoBarNode.name                            = String("Label")
             ammoBarNode.text                            = String("")
             for _ in 0...player.getAmmo() { ammoBarNode.text?.append("I") }
-            ammoBarNode.fontSize                        = 24
+            ammoBarNode.fontSize                        = screenWidth * 0.05
             ammoBarNode.horizontalAlignmentMode         = .left
             ammoBarNode.position                        = CGPoint(x: 10, y: h + 24)
             ammoBarNode.fontColor                       = player.getLaserColour()

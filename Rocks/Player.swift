@@ -98,6 +98,14 @@ extension GameScene {
             }
         }
         
+        func disassembleShip() {
+            ship.disassemble()
+        }
+        
+        func reassembleShip () {
+            ship.animatedReassemble()
+        }
+        
         func resetAt (x: Int, y: Int) {
             // reset health and ammo
             restingY = y
@@ -119,7 +127,7 @@ extension GameScene {
             ship.position = CGPoint(x: x, y: y)
             
             // Give physics
-            ship.physicsBody                                  = SKPhysicsBody(rectangleOf: ship.size)
+            ship.physicsBody                                  = SKPhysicsBody(rectangleOf: CGSize(width: ship.metaWidth, height: ship.metaHeight))
             ship.physicsBody?.isDynamic                       = true
             ship.physicsBody?.categoryBitMask                 = playerCollisionCat
             ship.physicsBody?.contactTestBitMask              = asteroidCollisionCat
@@ -135,16 +143,14 @@ extension GameScene {
         
         func update (currentTime: TimeInterval) {
         
-            // auto-fire
-            if firing && (currentTime.remainder(dividingBy: 16) < 8) {
-                fireLaser()
-            }
-
+            
             // move
-            if (ship.position.y < CGFloat(restingY - 10)) {
-                velocity.dy += 0.0025 * (ship.position.y + CGFloat(restingY))
-            } else if (ship.position.y > CGFloat(restingY + 10)) {
-                velocity.dy -= 0.0025 * (ship.position.y + CGFloat(restingY))
+            if (!isExploding()) {
+                if (ship.position.y < CGFloat(restingY - 10)) {
+                    velocity.dy += 0.0025 * (ship.position.y + CGFloat(restingY))
+                } else if (ship.position.y > CGFloat(restingY + 10)) {
+                    velocity.dy -= 0.0025 * (ship.position.y + CGFloat(restingY))
+                }
             }
             
             // scale
@@ -156,6 +162,8 @@ extension GameScene {
             // apply velocity
             ship.position.x += velocity.dx
             ship.position.y += velocity.dy
+            
+            ship.update()
             
             // dampen
             velocity.dx = velocity.dx / 2

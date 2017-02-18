@@ -44,6 +44,7 @@ extension GameScene {
                 player.setRestingY(y: Int((Double(self.size.width) * 0.25)))
                 if (node.name == "customiseButton") {
                     state = .Customise
+                    player.disassembleShip()
                 } else if (node.name == "leaderboardButton") {
                     state = .Leaderboard
                     player.cullLasers()
@@ -57,49 +58,20 @@ extension GameScene {
                 }
                 break
             case .Customise:
-                if (node.name == "NEXT_BODY") {
-                    
-                    // SWAP BODY
-                    print ("next body")
-                    
-                } else if (node.name == "PREV_BODY") {
-                    
-                    // SWAP BODY
-                    print ("prev body")
-                    
-                } else if (node.name == "NEXT_LWING") {
-                    
-                    // SWAP LEFT WING
-                    print ("next left wing")
-                    
-                } else if (node.name == "PREV_LWING") {
-                    
-                    // SWAP LEFT WING
-                    print ("prev left wing")
-                
-                } else if (node.name == "NEXT_RWING") {
-                
-                    // SWAP RIGHT WING
-                    print ("next right wing")
-                    
-                } else if (node.name == "PREV_RWING") {
-                    
-                    // SWAP RIGHT WING
-                    print ("prev right wing")
-                    
-                } else if (node.name == "NEXT_CORE") {
-                    
-                    // SWAP CORE
-                    print ("next core")
-                    
-                } else if (node.name == "PREV_CORE") {
-                    
-                    // SWAP CORE
-                    print ("prev core")
-                    
-                } else {
+                if      (node.name == "NEXT_BODY")  { player.getShip().nextBody() }
+                else if (node.name == "PREV_BODY")  { player.getShip().prevBody() }
+                else if (node.name == "NEXT_LWING") { player.getShip().nextLeftWing() }
+                else if (node.name == "PREV_LWING") { player.getShip().prevLefttWing() }
+                else if (node.name == "NEXT_RWING") { player.getShip().nextRightWing() }
+                else if (node.name == "PREV_RWING") { player.getShip().prevRightWing() }
+                else if (node.name == "NEXT_CORE")  { player.getShip().nextCore() }
+                else if (node.name == "PREV_CORE")  { player.getShip().prevCore() }
+                else if (node.name == "NEXT_PAINT") { player.getShip().nextColour() }
+                else if (node.name == "PREV_PAINT") { player.getShip().prevColour() }
+                else {
                     state = .MainMenu
                     userInterface.back()
+                    player.reassembleShip()
                 }
                 break
             case .Leaderboard:

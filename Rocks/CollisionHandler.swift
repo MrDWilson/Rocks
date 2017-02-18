@@ -86,18 +86,18 @@ extension GameScene {
                 player.clearLasers()
                 userInterface.update(state: state)
                 
-                // REMOVE FOR COMMERCIAL RELEASE
+                //
                 let ghost = SKLabelNode()
                 var action = [SKAction]()
                 
-                ghost.text = String("Bad luck")
+                ghost.text = String("Bad luck") // get from pool
                 ghost.position = contact.contactPoint
                 ghost.fontSize = 20
                 action.append(SKAction.move(by: CGVector(dx: 0, dy: -100), duration: 2))
                 action.append(SKAction.removeFromParent())
                 ghost.run(SKAction.sequence(action))
                 addChild(ghost)
-                // REMOVE FOR COMMERCIAL RELEASE
+                //
                 
                 player.give(points: 25)
                 userInterface.flashScore()
