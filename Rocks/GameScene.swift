@@ -140,7 +140,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 player.show()
                 player.scaleTo(x: 2, y: 2)
                 player.setRestingY(y: Int(self.size.height * CGFloat(0.65)))
-                player.update(currentTime: currentTime)
                 if (player.getPosition().x > (self.size.width / 2) + 5) {
                     player.moveLeft()
                 }
@@ -152,6 +151,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 // spray
                 emitter.setPosition(x: 0, y: self.size.height)
+                emitter.update()
                 
                 break
             case .Customise:
