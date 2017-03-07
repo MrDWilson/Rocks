@@ -27,6 +27,13 @@ extension GameScene {
         private var dannyCreditY: CGFloat!
         private var dannyCredit = SKLabelNode(fontNamed: "AppleSDGothicNeo-UltraLight")
         
+        private var musicTitleY: CGFloat!
+        private var musicTitle = SKLabelNode(fontNamed: "AppleSDGothicNeo-Light")
+        
+        private var jamesCreditY: CGFloat!
+        private var jamesCredit = SKLabelNode(fontNamed: "AppleSDGothicNeo-UltraLight")
+        
+        
         private var backLabel = SKLabelNode()
         private var backButton = SKSpriteNode(color: UIColor.clear, size: CGSize(width: 200, height: 100))
         
@@ -40,6 +47,8 @@ extension GameScene {
             authorsTitleY  = CGFloat(Double(h) * 0.28)
             ryanCreditY    = CGFloat(Double(h) * 0.24)
             dannyCreditY   = CGFloat(Double(h) * 0.20)
+            musicTitleY    = CGFloat(Double(h) * 0.12)
+            jamesCreditY   = CGFloat(Double(h) * 0.08)
             
             screenWidth = CGFloat(w)
             screenHeight = CGFloat(h)
@@ -80,6 +89,20 @@ extension GameScene {
             dannyCredit.position = CGPoint(x: w / 2, y: 0)
             addChild(dannyCredit)
             
+            musicTitle.text = String("music")
+            musicTitle.fontSize = 42
+            musicTitle.horizontalAlignmentMode = .center
+            musicTitle.fontColor = UIColor(red: 0.93, green: 0.90, blue: 0.83, alpha: 1)
+            musicTitle.position = CGPoint(x: w / 2, y: 0)
+            addChild(musicTitle)
+            
+            jamesCredit.text = String("James Sutherland")
+            jamesCredit.fontSize = 20
+            jamesCredit.horizontalAlignmentMode = .center
+            jamesCredit.fontColor = UIColor(red: 0.93, green: 0.90, blue: 0.83, alpha: 1)
+            jamesCredit.position = CGPoint(x: w / 2, y: 0)
+            addChild(jamesCredit)
+            
             backLabel.text = String("back")
             backLabel.horizontalAlignmentMode = .left
             backLabel.position = CGPoint(x: 10, y: h - 50)
@@ -103,6 +126,8 @@ extension GameScene {
             authorsTitleY  = 0
             ryanCreditY    = 0
             dannyCreditY   = 0
+            musicTitleY    = 0
+            jamesCreditY   = 0
         }
         
         func show () {
@@ -112,6 +137,8 @@ extension GameScene {
             authorsTitleY  = CGFloat(Double(screenHeight) * 0.28)
             ryanCreditY    = CGFloat(Double(screenHeight) * 0.24)
             dannyCreditY   = CGFloat(Double(screenHeight) * 0.20)
+            musicTitleY    = CGFloat(Double(screenHeight) * 0.12)
+            jamesCreditY   = CGFloat(Double(screenHeight) * 0.08)
         }
         
         func update () {
@@ -136,6 +163,14 @@ extension GameScene {
             // DANNY CREDIT
             if (dannyCredit.position.y < dannyCreditY) { dannyCredit.position.y += (dannyCreditY - dannyCredit.position.y) * speed}
             if (dannyCredit.position.y > dannyCreditY) { dannyCredit.position.y -= (dannyCredit.position.y - dannyCreditY) * speed}
+            
+            // Music Title
+            if (musicTitle.position.y < musicTitleY) { musicTitle.position.y += (musicTitleY - musicTitle.position.y) * speed}
+            if (musicTitle.position.y > musicTitleY) { musicTitle.position.y -= (musicTitle.position.y - musicTitleY) * speed}
+            
+            // DANNY CREDIT
+            if (jamesCredit.position.y < jamesCreditY) { jamesCredit.position.y += (jamesCreditY - jamesCredit.position.y) * speed}
+            if (jamesCredit.position.y > jamesCreditY) { jamesCredit.position.y -= (jamesCredit.position.y - jamesCreditY) * speed}
             
         }
     }

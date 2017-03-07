@@ -14,10 +14,14 @@ extension GameScene {
         private var fragmentCount = 10
         private var position: CGPoint!
         
+        private let screenWidth: CGFloat!
+        
         // spit particles at ship on menu
         
-        init () {
+        init (w: CGFloat) {
             position = CGPoint(x: 0, y: 0)
+        
+            screenWidth = w
         
             for _ in 0 ... fragmentCount {
                 fragments.append(AsteroidFragment())
@@ -35,8 +39,9 @@ extension GameScene {
             
             fragments.forEach {
                 if ($0.getSprite().position.y < -20) {
-                    $0.getSprite().position = position
-                    $0.boom()
+                    $0.getSprite().position.x = CGFloat(0 + Int(arc4random_uniform(UInt32(screenWidth))))
+                    $0.getSprite().position.y = position.y
+                    //$0.boom()
                 }
             }
             

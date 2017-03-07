@@ -26,7 +26,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var asteroids       = [Asteroid]()
     var powerups        = [Powerup]()
     var player          = Player()
-    var emitter         = FragmentEmitter()
+    var emitter: FragmentEmitter!
     
     // difficulty
     let initialAsteroidCount = 5
@@ -119,6 +119,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             addChild(themeMusic)   
         }
         
+        emitter = FragmentEmitter(w: self.size.width)
         emitter.add(to: self)
         
         /*
@@ -150,7 +151,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 updateMainMenu(currentTime: currentTime)
                 
                 // spray
-                emitter.setPosition(x: 0, y: self.size.height)
+                emitter.setPosition(x: self.size.width / 2, y: self.size.height)
                 emitter.update()
                 
                 break
@@ -159,6 +160,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 //player.scaleTo(x: 3.5, y: 3.5)
                 player.setRestingY(y: Int(self.size.height * CGFloat(0.75)))
                 player.update(currentTime: currentTime)
+                
+                emitter.update()
             
                 break
             case .Leaderboard:
