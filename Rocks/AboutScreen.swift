@@ -12,26 +12,21 @@ import SpriteKit
 extension GameScene {
     class AboutScreen: SKNode {
     
-        private var versionTitleY: CGFloat!
-        private var versionTitle = SKLabelNode(fontNamed: "AppleSDGothicNeo-Light")
-        
+        private var versionTitleY:  CGFloat!
         private var versionNumberY: CGFloat!
+        private var authorsTitleY:  CGFloat!
+        private var ryanCreditY:    CGFloat!
+        private var dannyCreditY:   CGFloat!
+        private var musicTitleY:    CGFloat!
+        private var jamesCreditY:   CGFloat!
+        
+        private var versionTitle  = SKLabelNode(fontNamed: "AppleSDGothicNeo-Light")
         private var versionNumber = SKLabelNode(fontNamed: "AppleSDGothicNeo-UltraLight")
-        
-        private var authorsTitleY: CGFloat!
-        private var authorsTitle = SKLabelNode(fontNamed: "AppleSDGothicNeo-Light")
-        
-        private var ryanCreditY: CGFloat!
-        private var ryanCredit = SKLabelNode(fontNamed: "AppleSDGothicNeo-UltraLight")
-        
-        private var dannyCreditY: CGFloat!
-        private var dannyCredit = SKLabelNode(fontNamed: "AppleSDGothicNeo-UltraLight")
-        
-        private var musicTitleY: CGFloat!
-        private var musicTitle = SKLabelNode(fontNamed: "AppleSDGothicNeo-Light")
-        
-        private var jamesCreditY: CGFloat!
-        private var jamesCredit = SKLabelNode(fontNamed: "AppleSDGothicNeo-UltraLight")
+        private var authorsTitle  = SKLabelNode(fontNamed: "AppleSDGothicNeo-Light")
+        private var ryanCredit    = SKLabelNode(fontNamed: "AppleSDGothicNeo-UltraLight")
+        private var dannyCredit   = SKLabelNode(fontNamed: "AppleSDGothicNeo-UltraLight")
+        private var musicTitle    = SKLabelNode(fontNamed: "AppleSDGothicNeo-Light")
+        private var jamesCredit   = SKLabelNode(fontNamed: "AppleSDGothicNeo-UltraLight")
         
         
         private var backLabel = SKLabelNode()
