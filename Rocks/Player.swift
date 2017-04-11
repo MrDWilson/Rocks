@@ -65,6 +65,9 @@ extension GameScene {
         func shrink () { ship.xScale = 1.0; ship.yScale = 1.0}
         func serializeShip () -> Vector3D { return ship.serialize() }
         
+        func setX (x: CGFloat) { ship.position.x = x }
+        func setY (y: CGFloat) { ship.position.y = y }
+        
         func buildShip () {
             bodyID = Save.getShipID()
             thrusterID = Save.getThrusterID()

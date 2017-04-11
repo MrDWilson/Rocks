@@ -51,7 +51,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let leaderboard = LeaderboardBackEnd()
     
     // music 
-    var themeMusic = SKAudioNode(fileNamed: "background.wav")
+    var themeMusic = SKAudioNode(fileNamed: "background.mp3")
     
     /* * * * * * * * * * * * * * * * * * * * *
      *  ENTRY POINT
@@ -122,6 +122,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         emitter = FragmentEmitter(w: self.size.width)
         emitter.add(to: self)
         
+        themeMusic.autoplayLooped = true;
+        
         /*
         if (!sound) {
             themeMusic.run(SKAction.changeVolume(by: -10, duration: 0))
@@ -141,6 +143,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 player.show()
                 player.scaleTo(x: 2, y: 2)
                 player.setRestingY(y: Int(self.size.height * CGFloat(0.65)))
+                
+                // ONCE PLAYER IS AT REST, HOLD THEM TO STOP BEING SHUNTED TO THE BOTTOM OF THE MENU
+                
                 if (player.getPosition().x > (self.size.width / 2) + 5) {
                     player.moveLeft()
                 }
@@ -159,6 +164,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 //player.scaleTo(x: 3.5, y: 3.5)
                 player.setRestingY(y: Int(self.size.height * CGFloat(0.75)))
+                player.setX (x: (self.size.width * 0.5))
                 player.update(currentTime: currentTime)
                 
                 emitter.update()
@@ -184,17 +190,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 player.setRestingY(y: Int(self.size.height * CGFloat(0.7)))
                 player.update(currentTime: currentTime)
                 
+                emitter.update()
+                
                 break
             case .About:
             
                 player.setRestingY(y: Int(self.size.height * CGFloat(0.7)))
                 player.update(currentTime: currentTime)
+                
+                emitter.update()
             
                 break
             case .InGame:
                 
                 player.scaleTo(x: 1.0, y: 1.0)
                 updateRunning(currentTime: currentTime)
+                
+                emitter.update()
                 
                 break
             case .Paused:

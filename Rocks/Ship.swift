@@ -13,12 +13,12 @@ extension GameScene {
 
     class Ship: SKSpriteNode {
     
-        let MAX_BODY = 7
-        let MAX_WING = 7
+        let MAX_BODY                  = 7
+        let MAX_WING                  = 7
     
         // COLOURS
-        private var coreColour = LaserColour.cyan
-        private var bodyColour = BodyColour.green
+        private var coreColour        = LaserColour.cyan
+        private var bodyColour        = BodyColour.green
     
         // LEFT WING
         private let leftWing          = SKSpriteNode ()
@@ -31,12 +31,12 @@ extension GameScene {
         private var rightWingVelocity = CGVector     (dx: 4, dy: 1)
         
         // BODY
-        private var bodyID       = CGFloat(0)
-        private var bodyVelocity = CGVector     (dx: 1, dy: 4)
+        private var bodyID            = CGFloat(0)
+        private var bodyVelocity      = CGVector     (dx: 1, dy: 4)
         
         // CORE
-        private let core        = SKShapeNode (circleOfRadius: 6.5)
-        private var coreVelocity = CGVector (dx: 1, dy: 4)
+        private let core              = SKShapeNode (circleOfRadius: 6.5)
+        private var coreVelocity      = CGVector (dx: 1, dy: 4)
         
         // EFFECTS
         private let explosionEffect   = SKEmitterNode(fileNamed: "ExplosionParticle.sks")
@@ -44,69 +44,54 @@ extension GameScene {
         private var colourChangeArray = [SKAction]()
 
         // admin
-        //private var bodyID:     Int!
-       // private var thrusterID: Int!
-       // private var colorID:    BodyColour!
-        private var exploding   = false
-
-        public var metaWidth: CGFloat = 24
-        public var metaHeight: CGFloat = 24
-        
-        private var disassembled = false
-        private var animationSpeed: CGFloat = 0.04
+        public let metaWidth: CGFloat   = 28
+        public let metaHeight: CGFloat  = 28
+        private var exploding           = false
+        private var disassembled        = false
+        private var animationSpeed      = CGFloat(0.04);
 
         init (bID: Int, tID: Int, cID: Int) {
             super.init(texture: SKTexture(imageNamed: "body_" + String(describing: bodyID)), color: UIColor.white, size: CGSize(width: 24, height: 24))
             
-            
-            //bodyID = bID
-            //thrusterID = tID
-            //colorID = BodyColour(rawValue: cID)
-            
-            // Give Name, Position
-            name                                         = "player"
-            position                                     = CGPoint(x: 0 , y: 0)
-            //   texture                                      = SKTexture(imageNamed: "Ship_1") // add spaceship texture to sprite
-            let metaWidth:CGFloat                                   = 24
-            let metaHeight:CGFloat                               = 24
-            
-            size.width = metaWidth * 0.8
-            size.height = metaHeight * 1.2
+            // META
+            name                                = "player"
+            position                            = CGPoint(x: 0 , y: 0)
+            size.width                          = metaWidth * 1
+            size.height                         = metaHeight * 1.2
 
             // LEFT WING
-            leftWing.name                             = "ShipPart"
-            leftWing.texture                          = SKTexture(imageNamed: "wing_" + String(describing: Int(leftWingID)))
-            leftWing.size.width                       = metaWidth * 0.62
-            leftWing.size.height                      = metaHeight * 1.2
-            leftWing.position                         = CGPoint(x: (metaWidth * 0.45) * -1, y: 0)
+            leftWing.name                       = "ShipPart"
+            leftWing.texture                    = SKTexture(imageNamed: "wing_" + String(describing: Int(leftWingID)))
+            leftWing.size.width                 = metaWidth * 0.62
+            leftWing.size.height                = metaHeight * 1.2
+            leftWing.position                   = CGPoint(x: (metaWidth * 0.45) * -1, y: 0)
             leftWing.zPosition = -3
             
             // RIGHT WING
-            rightWing.name                            = "ShipPart"
-            rightWing.texture                         = SKTexture(imageNamed: "wing_" + String(describing: Int(rightWingID)))
-            rightWing.xScale                          = rightWing.xScale * -1
-            rightWing.size.width                      = metaWidth * 0.62
-            rightWing.size.height                     = metaHeight * 1.2
-            rightWing.position                        = CGPoint(x: (metaWidth * 0.45) * 1, y: 0)
-            rightWing.zPosition = -3
+            rightWing.name                      = "ShipPart"
+            rightWing.texture                   = SKTexture(imageNamed: "wing_" + String(describing: Int(rightWingID)))
+            rightWing.xScale                    = rightWing.xScale * -1
+            rightWing.size.width                = metaWidth * 0.62
+            rightWing.size.height               = metaHeight * 1.2
+            rightWing.position                  = CGPoint(x: (metaWidth * 0.45) * 1, y: 0)
+            rightWing.zPosition                 = -3
             
-            // CORE (TO DO)
-            core.name = "ShipPart"
-            // core.texture = ...
-            core.zPosition = -4
-            core.fillColor = LaserColour.cyan.toUIColor
-            core.strokeColor = LaserColour.cyan.toUIColor
+            // CORE
+            core.name                           = "ShipPart"
+            core.zPosition                      = -4
+            core.fillColor                      = LaserColour.cyan.toUIColor
+            core.strokeColor                    = LaserColour.cyan.toUIColor
             
-            // Give Particle Effect
-            explosionEffect?.name                               = String("explosion")
-            explosionEffect?.position                           = CGPoint(x: 0, y: 0)
-            explosionEffect?.numParticlesToEmit                 = 64
+            // Give Particle Effects
+            explosionEffect?.name               = String("explosion")
+            explosionEffect?.position           = CGPoint(x: 0, y: 0)
+            explosionEffect?.numParticlesToEmit = 64
             explosionEffect?.removeFromParent()
             explosionEffect?.resetSimulation()
-            
-            thrusterEffect = SKEmitterNode(fileNamed: "ThrusterParticle_" + String(describing: Int(5)) + ".sks")
-            thrusterEffect?.name                                = String("thruster")
-            thrusterEffect?.position                            = CGPoint(x: 0, y: -1)
+
+            thrusterEffect                      = SKEmitterNode(fileNamed: "ThrusterParticle_" + String(describing: Int(5)) + ".sks")
+            thrusterEffect?.name                = String("thruster")
+            thrusterEffect?.position            = CGPoint(x: 0, y: -1)
             thrusterEffect?.removeFromParent()
             addChild(thrusterEffect!)
             
@@ -170,21 +155,21 @@ extension GameScene {
                 leftWing.position.y  += leftWingVelocity.dy
                 rightWing.position.x += rightWingVelocity.dx
                 rightWing.position.y += rightWingVelocity.dy
-                position.x += bodyVelocity.dx
-                position.y += bodyVelocity.dy
+                position.x           += bodyVelocity.dx
+                position.y           += bodyVelocity.dy
     
                 // dampen
                 leftWingVelocity.dx  *= 0.98
                 leftWingVelocity.dy  *= 0.98
                 rightWingVelocity.dx *= 0.98
                 rightWingVelocity.dy *= 0.98
-                bodyVelocity.dx *= 0.98
-                bodyVelocity.dy *= 0.98
+                bodyVelocity.dx      *= 0.98
+                bodyVelocity.dy      *= 0.98
     
                 // keep parts moving "forward"
                 leftWingVelocity.dy  += 0.04
                 rightWingVelocity.dy += 0.04
-                bodyVelocity.dy += 0.04
+                bodyVelocity.dy      += 0.04
             }
             
             // pieces holding
@@ -203,21 +188,13 @@ extension GameScene {
             rightWing.run (SKAction.colorize(with: bodyColour.toUIColor, colorBlendFactor: 0.85, duration: 0))
         }
         
-        func refreshLeftWing () {
-            leftWing.texture = SKTexture(imageNamed: String("wing_" + String(describing: Int(leftWingID))))
-        }
-        
-        func refreshRightWing () {
-            rightWing.texture = SKTexture(imageNamed: String("wing_" + String(describing: Int(rightWingID))))
-        }
+        func refreshLeftWing  () { leftWing.texture  = SKTexture(imageNamed: String("wing_" + String(describing: Int(leftWingID)))) }
+        func refreshRightWing () { rightWing.texture = SKTexture(imageNamed: String("wing_" + String(describing: Int(rightWingID)))) }
+        func refreshBody      () { self.texture      = SKTexture(imageNamed: String("body_" + String(describing: Int(bodyID)))) }
         
         func refreshCore () {
             thrusterEffect?.particleColor = coreColour.toUIColor
             thrusterEffect?.resetSimulation()
-        }
-        
-        func refreshBody () {
-            texture = SKTexture(imageNamed: String("body_" + String(describing: Int(bodyID))))
         }
     
         func explode () {
@@ -232,9 +209,6 @@ extension GameScene {
             /**
              * BREAK TO PIECES
              */
-            // turn normal sprite (kind of) invisible
-            //isHidden = true
-            
             // show the pieces
             name = "ShipPart"
             
@@ -319,13 +293,8 @@ extension GameScene {
             }
         }
         
-        func disassemble () {
-            disassembled = true
-        }
-        
-        func animatedReassemble () {
-            disassembled = false
-        }
+        func disassemble        () { disassembled = true }
+        func animatedReassemble () { disassembled = false }
         
         /* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
          *  Custom Ship
@@ -335,75 +304,43 @@ extension GameScene {
         /* *
          *  paint colour
          */
-        func nextColour () {
-            bodyColour = bodyColour.nextColour
-            colourize ()
-        }
-        
-        func prevColour () {
-            bodyColour = bodyColour.prevColour
-            colourize ()
-        }
+        func nextColour () { bodyColour = bodyColour.nextColour; colourize () }
+        func prevColour () { bodyColour = bodyColour.prevColour; colourize () }
         
         /* *
          *  left wing
          */
-        func nextLeftWing () {
-            leftWingID = CGFloat(Int(leftWingID + 1) % MAX_WING)
-            refreshLeftWing ()
-        }
-    
-        func prevLefttWing () {
-            if (leftWingID == 0) { leftWingID = CGFloat(MAX_WING) } else { leftWingID -= 1 }
-            refreshLeftWing ()
-        }
+        func nextLeftWing  () { leftWingID = CGFloat(Int(leftWingID + 1) % MAX_WING); refreshLeftWing () }
+        func prevLefttWing () { if (leftWingID == 0) { leftWingID = CGFloat(MAX_WING) } else { leftWingID -= 1 }; refreshLeftWing () }
         
         /* *
          *  right wing
          */
-        func nextRightWing () {
-            rightWingID = CGFloat(Int(rightWingID + 1) % MAX_WING)
-            refreshRightWing ()
-        }
-        
-        func prevRightWing () {
-            if (rightWingID == 0) { rightWingID = CGFloat(MAX_WING) } else { rightWingID -= 1 }
-            refreshRightWing ()
-        }
+        func nextRightWing () { rightWingID = CGFloat(Int(rightWingID + 1) % MAX_WING); refreshRightWing () }
+        func prevRightWing () { if (rightWingID == 0) { rightWingID = CGFloat(MAX_WING) } else { rightWingID -= 1 }; refreshRightWing () }
         
         /* *
          *  body
          */
-        func nextBody () {
-            bodyID = CGFloat(Int(bodyID + 1) % MAX_BODY)
-            refreshBody ()
-        }
-        
-        func prevBody () {
-            if (bodyID == 0) { bodyID = CGFloat(MAX_BODY) } else { bodyID -= 1 }
-            refreshBody ()
-        }
+        func nextBody () { bodyID = CGFloat(Int(bodyID + 1) % MAX_BODY); refreshBody () }
+        func prevBody () { if (bodyID == 0) { bodyID = CGFloat(MAX_BODY) } else { bodyID -= 1 }; refreshBody () }
         
         /* *
          *  core/laser/thruster colour
          */
-        func nextCore () {
-            coreColour = coreColour.nextColour
-            refreshCore ()
-        }
-        
-        func prevCore () {
-            coreColour = coreColour.prevColour
-            refreshCore ()
-        }
+        func nextCore () { coreColour = coreColour.nextColour; refreshCore () }
+        func prevCore () { coreColour = coreColour.prevColour; refreshCore () }
     
+        /** 
+         *  disassembley recovery
+         */
         private func resetFragmentedVelocities () {
             leftWingVelocity.dx  = -4
             leftWingVelocity.dy  = 1
             rightWingVelocity.dx = 4
             rightWingVelocity.dy = 1
-            bodyVelocity.dx = 1
-            bodyVelocity.dy = 4
+            bodyVelocity.dx      = 1
+            bodyVelocity.dy      = 4
         }
     
         private func resetFragmentedPieces () {
